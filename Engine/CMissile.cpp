@@ -1,0 +1,155 @@
+#include "pch.h"
+#include "CMissile.h"
+#include "CTimeMgr.h"
+#include "CResMgr.h"
+#include "CTexture.h"
+
+#include "CCore.h"
+#include "CCollider.h"
+#include "CAnimator.h"
+
+
+CMissile::CMissile()
+	: m_fTheta(0.f)
+	, m_vDir(Vec2(1.f,1.f))
+	, m_pTex(nullptr)
+	, m_fVec(0.f)
+
+{
+	
+	m_vDir.Normalize();
+	CreaeteCollider();
+	GetCollider()->SetScale(Vec2(25.f, 25.f));
+	m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex0", L"texture\\Missile00.png");
+	CreaeteAnimator();
+	GetAnimator()->CreateAnimation(L"Missile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+	GetAnimator()->Play(L"Missile0", true);
+}
+
+CMissile::~CMissile()
+{
+}
+
+void CMissile::update()
+{
+	Vec2 vPos = GetPos();
+	Vec2 resolution = CCore::GetInst()->GetResolution();
+
+	if (vPos.y > resolution.y || vPos.y < -100.f)
+	{
+		DeleteObject(this);
+	}
+	//vPos.x += 700.f * cos(m_fTheta) * fDT;
+	//vPos.y -= 700.f * sin(m_fTheta) * fDT;
+
+	vPos.x += m_fVec * m_vDir.x * fDT;
+	vPos.y -= m_fVec * m_vDir.y * fDT;
+	SetPos(vPos);
+	if (nullptr != GetAnimator())
+	{
+		GetAnimator()->update();
+	}
+	
+}
+
+void CMissile::render(HDC _dc)
+{
+	//Vec2 vPos = GetPos();
+	//Vec2 vScale = GetScale();
+
+	//Ellipse(_dc, (int)vPos.x - vScale.x / 2.f
+	//	, (int)vPos.y - vScale.y / 2.f
+	//	, (int)vPos.x + vScale.x / 2.f
+	//	, (int)vPos.y + vScale.y / 2.f);
+
+	//switch (m_iType)
+	//{
+	//case 0:
+	//{
+	//	
+	//	Vec2 Scale;
+	//	Scale.x = (1 * m_pTex->Width()) / 3;
+	//	Scale.y = (1 * m_pTex->Height())/3;
+	//	GetCollider()->SetScale(Scale);
+	//	
+	//}
+	//break;
+	//case 1:
+	//{
+	//	m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex0R", L"texture\\Missile0R.bmp");
+	//	GetCollider()->SetScale(Vec2(20.f, 20.f));
+	//	int iWidith = (int)m_pTex->Width();
+	//	int iHeight = (int)m_pTex->Height();
+	//	Vec2 vPos = GetPos();
+
+
+
+	//	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
+	//	//	, int(vPos.y - (float)(iHeight / 2))
+	//	//	, iWidith, iHeight
+	//	//	, m_pTex->GetDC()
+	//	//	, 0, 0, SRCCOPY);
+
+	//	TransparentBlt(_dc
+	//		, int(vPos.x - (float)(iWidith / 2))
+	//		, int(vPos.y - (float)(iHeight / 2))
+	//		, iWidith, iHeight
+	//		, m_pTex->GetDC()
+	//		, 0, 0, iWidith, iHeight
+	//		, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
+	//	break;
+	//}
+	//case 3:
+	//{
+	//	m_pTex = CResMgr::GetInst()->LoadTexture(L"Missileboom0Tex", L"texture\\Missileboom0.bmp");
+	//	int iWidith = (int)m_pTex->Width();
+	//	int iHeight = (int)m_pTex->Height();
+	//	Vec2 vPos = GetPos();
+
+
+
+	//	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
+	//	//	, int(vPos.y - (float)(iHeight / 2))
+	//	//	, iWidith, iHeight
+	//	//	, m_pTex->GetDC()
+	//	//	, 0, 0, SRCCOPY);
+
+	//	TransparentBlt(_dc
+	//		, int(vPos.x - (float)(iWidith / 2))
+	//		, int(vPos.y - (float)(iHeight / 2))
+	//		, iWidith, iHeight
+	//		, m_pTex->GetDC()
+	//		, 0, 0, iWidith, iHeight
+	//		, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
+	//}
+	//break;
+	//}
+	
+	component_render(_dc);
+}
+
+void CMissile::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Monster")
+	{
+		m_iType = 3;
+		m_fVec = 200.f;
+	}
+}
+
+void CMissile::OnCollision(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+	m_dAcc += fDT;
+	if (pOtherObj->GetName() == L"Monster")
+	{
+		if (m_dAcc > 0.2f)
+		{
+			m_dAcc = 0;
+			DeleteObject(this);
+
+		}
+	}
+}

@@ -1,0 +1,33 @@
+#include "pch.h"
+#include "func.h"
+
+#include "CEventMgr.h"
+void CreateObject(CObject* _pObj, GROUP_TYPE _eGroup)
+{
+	tEvent even = {};
+	even.eEven = EVENT_TYPE::CREATE_OBJECT;
+	even.lParam = (DWORD_PTR)_pObj;
+	even.wParam = (DWORD_PTR)_eGroup;
+
+	CEventMgr::GetInst()->AddEvent(even);
+}
+
+void DeleteObject(CObject* _pObj)
+{
+	tEvent even = {};
+	even.eEven = EVENT_TYPE::DELETE_OBJECT;
+	even.lParam = (DWORD_PTR)_pObj;
+	
+
+	CEventMgr::GetInst()->AddEvent(even);
+}
+
+void ChangeScene(SCENE_TYPE _eNext)
+{
+	tEvent even = {};
+	even.eEven = EVENT_TYPE::SCENE_CHANGE;
+	even.lParam = (DWORD_PTR)_eNext;
+
+
+	CEventMgr::GetInst()->AddEvent(even);
+}
