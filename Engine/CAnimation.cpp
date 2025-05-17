@@ -30,13 +30,16 @@ void CAnimation::update()
 	{
 
 		++m_iCurFrm;
-	
+		
 		if (m_vecFrm.size() <= m_iCurFrm)
 		{
 			m_iCurFrm = -1;
 			m_bFinish = true;
+			m_fAccTime = 0;
+			return;
 		}
-		m_fAccTime = m_fAccTime - m_vecFrm[0].fDuration;
+
+		m_fAccTime = m_fAccTime - m_vecFrm[m_iCurFrm].fDuration;
 		
 	}
 }
@@ -47,8 +50,13 @@ void CAnimation::render(HDC _dc)
 		return;
 	CObject* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
-	int iWidith = (int)m_pTex->GetImage()->GetWidth();
-	int iHeight = (int)m_pTex->GetImage()->GetHeight();
+	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(vPos);
+	vRenderPos += m_vecFrm[m_iCurFrm].vOffset; // Ovject Position Offset만큼 추가 이동위치
+
+
+	
+	int iWidith = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
 
 
 	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
@@ -57,28 +65,11 @@ void CAnimation::render(HDC _dc)
 	//	, m_pTex->GetDC()
 	//	, 0, 0, SRCCOPY);
 
-	Graphics graphics(_dc);
-	graphics.SetInterpolationMode(InterpolationModeNearestNeighbor);
-
 	
-	Rect rect(
-		(int)vPos.x - m_vecFrm[m_iCurFrm].vSlicce.x / 2.f,
-		(int)vPos.y - m_vecFrm[m_iCurFrm].vSlicce.y / 2.f,
-		(int)m_vecFrm[m_iCurFrm].vSlicce.x,
-		(int)m_vecFrm[m_iCurFrm].vSlicce.y);
 	
-	graphics.DrawImage(
-		m_pTex->GetImage()
-	    , rect
-		, (int)m_vecFrm[m_iCurFrm].vLT.x
-		, (int)m_vecFrm[m_iCurFrm].vLT.y
-		, (int)m_vecFrm[m_iCurFrm].vSlicce.x
-		, (int)m_vecFrm[m_iCurFrm].vSlicce.y
-		,UnitPixel
-	);
-	/*TransparentBlt(_dc
-		, (int)vPos.x - m_vecFrm[m_iCurFrm].vSlicce.x / 2.f
-		, (int)vPos.y - m_vecFrm[m_iCurFrm].vSlicce.y / 2.f
+	TransparentBlt(_dc
+		, (int)vRenderPos.x - m_vecFrm[m_iCurFrm].vSlicce.x / 2.f
+		, (int)vRenderPos.y - m_vecFrm[m_iCurFrm].vSlicce.y / 2.f
 		, (int)m_vecFrm[m_iCurFrm].vSlicce.x
 		, (int)m_vecFrm[m_iCurFrm].vSlicce.y
 		, m_pTex->GetDC()
@@ -86,7 +77,7 @@ void CAnimation::render(HDC _dc)
 		, (int)m_vecFrm[m_iCurFrm].vLT.y
 		, (int)m_vecFrm[m_iCurFrm].vSlicce.x
 		, (int)m_vecFrm[m_iCurFrm].vSlicce.y
-		, RGB(255,0,255));*/
+		, RGB(255,0,255));
 }
 
 void CAnimation::Create(CTexture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, float _fDuration, UINT _iFrameCount)
@@ -94,12 +85,12 @@ void CAnimation::Create(CTexture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vSte
 	m_pTex = _pTex;
 
 	tAnimFrm frm = {};
-	for (UINT i = 0; i < _iFrameCount; ++i)
+	for (int i = 0; i < _iFrameCount; ++i)
 	{
 		frm.fDuration = _fDuration;
 		frm.vSlicce = _vSliceSize;
 		frm.vLT = _vLT + _vStep * i;
-
+		frm.vOffset = Vec2(0.f, 0.f);
 		m_vecFrm.push_back(frm);
 	}
 }

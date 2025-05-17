@@ -23,7 +23,7 @@ public:
     virtual void update();
     virtual void render(HDC _dc);
 public:
-    void CreateMissileP0();
+    void CreateMissileP0(int type);
     void CreateMissileP1();
     void CreatereverseMissileP1();
     void CreaeteMisiileP2();

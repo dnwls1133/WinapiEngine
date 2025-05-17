@@ -7,6 +7,7 @@
 #include "CCore.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CAnimation.h"
 
 
 CMissile::CMissile()
@@ -20,7 +21,7 @@ CMissile::CMissile()
 	m_vDir.Normalize();
 	CreaeteCollider();
 	GetCollider()->SetScale(Vec2(25.f, 25.f));
-	m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex0", L"texture\\Missile00.png");
+	m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex0", L"texture\\Missile00.bmp");
 	CreaeteAnimator();
 	GetAnimator()->CreateAnimation(L"Missile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
 	GetAnimator()->Play(L"Missile0", true);
@@ -134,8 +135,17 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 
 	if (pOtherObj->GetName() == L"Monster")
 	{
-		m_iType = 3;
-		m_fVec = 200.f;
+		m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex1", L"texture\\missile_explosion.png");
+		CreaeteAnimator();
+		GetAnimator()->CreateAnimation(L"Missile1", m_pTex, Vec2(0.f, 0.f), Vec2(25.4f, 72.f), Vec2(25.4f, 0.f), 0.1f, 17);
+		GetAnimator()->Play(L"Missile1", false);
+		CAnimation* pAnim = GetAnimator()->FindAnimation(L"Missile1");
+		for (int i = 0; i < pAnim->GetMaxFrame(); ++i)
+		{
+			pAnim->GetFrame(i).vOffset = Vec2(0.f, -20.f);
+		}
+		
+		m_fVec = 300.f;
 	}
 }
 
@@ -145,7 +155,7 @@ void CMissile::OnCollision(CCollider* _pOther)
 	m_dAcc += fDT;
 	if (pOtherObj->GetName() == L"Monster")
 	{
-		if (m_dAcc > 0.2f)
+		if (m_dAcc > 0.8f)
 		{
 			m_dAcc = 0;
 			DeleteObject(this);
