@@ -16,7 +16,7 @@
 #include "CTexture.h"
 #include "CCollider.h"
 #include "CAnimator.h"
-
+#include "CAnimation.h"
 CPlayer::CPlayer()
 	:dAcc(0.)
 	
@@ -28,11 +28,13 @@ CPlayer::CPlayer()
 	GetCollider()->SetOffsetPos(Vec2(0.f, 30.f));
 
 
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player_Walk.png");
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player_Walk.bmp");
 	CreaeteAnimator();
 	GetAnimator()->CreateAnimation(L"Player_walk0",m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 19);
 
 	GetAnimator()->Play(L"Player_walk0",true);
+	
+	
 }
 
 CPlayer::~CPlayer()
@@ -63,13 +65,14 @@ void CPlayer::update()
 	if (KEY_HOLD((KEY::SPACE)))
 	{
 		dAcc += fDT;
-		if (dAcc > 0.1f)
+		if (dAcc > 0.15f)
 		{
 			dAcc = 0;
 			CreateMissile(0);
 			CreateMissile(1);
 			CreateMissile(2);
 		}
+	
 		
 
 		
@@ -124,7 +127,7 @@ void CPlayer::CreateMissile(int type)
 	pMissile->SetPos(vMissilePos);
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetDir(Vec2(0.f,1.f));
-	pMissile->SetVec(700);
+	pMissile->SetVec(1000);
 	pMissile->SetType(0);
 	pMissile->SetName(L"Missile_Player");
 

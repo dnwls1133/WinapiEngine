@@ -56,26 +56,24 @@ void CBackground::update()
 
 void CBackground::render(HDC _dc)
 {
-//	int iWidith = (int)m_pTex->Width();
-//	int iHeight = (int)m_pTex->Height();
-//	Vec2 vPos = GetPos();
-//
-//	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-//	//	, int(vPos.y - (float)(iHeight / 2))
-//	//	, iWidith, iHeight
-//	//	, m_pTex->GetDC()
-//	//	, 0, 0, SRCCOPY);
-//
-//	TransparentBlt(_dc
-//		, int(vPos.x - (float)(iWidith / 2))
-//		, int(vPos.y - (float)(iHeight / 2))
-//		, iWidith, iHeight
-//		, m_pTex->GetDC()
-//		, 0, 0, iWidith, iHeight
-//		, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
-	int iWidith = (int)m_pTex->GetImage()->GetWidth();
-	int iHeight = (int)m_pTex->GetImage()->GetHeight();
+	int iWidith = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
 	Vec2 vPos = GetPos();
+
+	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
+	//	, int(vPos.y - (float)(iHeight / 2))
+	//	, iWidith, iHeight
+	//	, m_pTex->GetDC()
+	//	, 0, 0, SRCCOPY);
+
+	TransparentBlt(_dc
+		, int(vPos.x - (float)(iWidith / 2))
+		, int(vPos.y - (float)(iHeight / 2))
+		, iWidith, iHeight
+		, m_pTex->GetDC()
+		, 0, 0, iWidith, iHeight
+		, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
+	
 
 
 
@@ -85,16 +83,5 @@ void CBackground::render(HDC _dc)
 	//	, m_pTex->GetDC()
 	//	, 0, 0, SRCCOPY);
 
-	Graphics graphics(_dc);
-	graphics.SetInterpolationMode(InterpolationModeHighQualityBicubic);
-
 	
-
-	graphics.DrawImage(
-		m_pTex->GetImage()
-		, int(vPos.x - (float)(iWidith / 2))
-		, int(vPos.y - (float)(iHeight / 2))
-		, iWidith
-		, iHeight
-	);
 }

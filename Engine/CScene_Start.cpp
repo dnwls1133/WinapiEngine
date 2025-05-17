@@ -15,6 +15,7 @@
 #include "CSceneMgr.h"
 
 #include "CTexture.h"
+#include "CCamera.h"
 CScene_Start::CScene_Start()
 {
 }
@@ -32,7 +33,14 @@ void CScene_Start::update()
 		
 		ChangeScene(SCENE_TYPE::TOOL);
 	}
+
+	if (KEY_TAP(KEY::LBTN))
+	{
+		Vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);
+		CCamera::GetInst()->SetLookAt(vLookAt);
+	}
 	
+
 }
 
 void CScene_Start::Enter()
@@ -83,6 +91,9 @@ void CScene_Start::Enter()
 	CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::PROJ_MONSTER);
 	CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 
+	//Camera ÁöÁ¤
+	Vec2 vResoultion = CCore::GetInst()->GetResolution();
+	CCamera::GetInst()->SetLookAt(vResoultion /2.f);
 }
 
 

@@ -44,6 +44,8 @@ int g_arrVK[(int)KEY::LAST] =
 	VK_RETURN,//ENTER,
 	VK_ESCAPE,//ESC,
 
+	VK_LBUTTON,
+	VK_RBUTTON,
 	//LAST,
 };
 
@@ -134,6 +136,13 @@ void CKeyMgr::update()
 
 		}
 	}
+	// Mouse 위치 계산
+	POINT ptPos = {};
+	// 전체 윈도우 마우스좌표 구하는 함수
+	GetCursorPos(&ptPos);
+	// 그 좌표를 내 클라이언트 기준으로 바꾸어주는 함수
+	ScreenToClient(CCore::GetInst()->GetMainHwnd(), &ptPos);
+	m_vCurMousePos = ptPos;
 	}
 
 

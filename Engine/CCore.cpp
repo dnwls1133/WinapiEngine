@@ -9,6 +9,8 @@
 #include "CEventMgr.h"
 
 #include "CObject.h"
+
+#include "CCamera.h"
 //CCore* CCore::g_pInst = nullptr;
 
 
@@ -72,6 +74,8 @@ void CCore::progress()
 	// Manager Update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	//CCamera::GetInst()->update();
+
 
 	CSceneMgr::GetInst()->update();
 

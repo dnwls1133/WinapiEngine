@@ -20,14 +20,20 @@ public:
 		return *this;
 	}
 
-
+	
 public:
-	Vec2& operator = (POINT _pt)
+	Vec2 operator = (POINT _pt)
 	{
 		x = (float)_pt.x;
 		y = (float)_pt.y;
+		return Vec2(x, y);
 	}
-
+	void operator += (Vec2 _vOther)
+	{
+		x += _vOther.x;
+		y += _vOther.y;
+	}
+	
 	Vec2 operator + (Vec2 _vOther)
 	{
 		return Vec2(x + _vOther.x, y + _vOther.y);
@@ -41,6 +47,12 @@ public:
 	{
 		return Vec2(x * (float)_i, y * (float)_i);
 	}
+
+	Vec2 operator * (float _f)
+	{
+		return Vec2(x * _f, y * _f);
+	}
+
 	Vec2 operator * (Vec2 _vOther)
 	{
 		return Vec2(x * _vOther.x, y * _vOther.y);
@@ -49,6 +61,11 @@ public:
 	{
 		assert(!(0.f == _vOther.x || 0.f == _vOther.y));
 		return Vec2(x / _vOther.x, y / _vOther.y);
+	}
+	Vec2 operator / (float _f)
+	{
+		assert(!(0.f == _f));
+		return Vec2(x / _f, y / _f);
 	}
 public:
 	Vec2()

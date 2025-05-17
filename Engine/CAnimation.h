@@ -6,6 +6,7 @@ struct tAnimFrm
 {
 	Vec2	vLT;
 	Vec2	vSlicce;
+	Vec2	vOffset;
 	float	fDuration;
 };
 
@@ -33,6 +34,9 @@ public:
 		m_iCurFrm = _iFrameIdx;
 		m_fAccTime = 0.f;
 	}
+
+	tAnimFrm& GetFrame(int _idx){ return m_vecFrm[_idx]; }
+	int GetMaxFrame() { return m_vecFrm.size(); }
 
 public:
 	void update();
