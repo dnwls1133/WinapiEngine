@@ -24,6 +24,7 @@ public:
 public:
     virtual void update();
     virtual void render(HDC _dc);
+    void init(GROUP_TYPE _eType);
 
 public:
     virtual void OnCollisionEnter(CCollider* _pOther);

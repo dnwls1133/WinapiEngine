@@ -19,7 +19,7 @@ CColliderMgr::~CColliderMgr()
 {
 
 }
-bool CColliderMgr::isCollision(CCollider* _pLeftCol, CCollider* _pRightCol)
+bool CColliderMgr::isCollision(CCollider* _pLeftCol, CCollider* _pRightCol,CObject* _pLeftObj)
 {
 	Vec2 vLeftPos = _pLeftCol->GetFinalPos();
 	Vec2 vLeftScale = _pLeftCol->GetScale();
@@ -28,7 +28,7 @@ bool CColliderMgr::isCollision(CCollider* _pLeftCol, CCollider* _pRightCol)
 	Vec2 vRightScale = _pRightCol->GetScale();
 
 	if (abs(vRightPos.x - vLeftPos.x) < (vLeftScale.x + vRightScale.x / 2.f)
-		&& abs(vRightPos.y - vLeftPos.y) < (vLeftScale.y + vRightScale.y / 2.f))
+		&& abs(vRightPos.y - vLeftPos.y) < (vLeftScale.y + vRightScale.y / 2.f)&&!_pLeftObj->IsCollideroff())
 	{
 		return true;
 	}
@@ -45,7 +45,7 @@ void CColliderMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 	for (size_t i = 0; i < vecLeft.size(); ++i)
 	{
 		// 충돌체를 보유하지 않은 경우
-		if (nullptr == vecLeft[i]->GetCollider())
+		if (nullptr == vecLeft[i]->GetCollider() )
 		{
 			continue;
 		}
@@ -76,7 +76,7 @@ void CColliderMgr::CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 			}
 
 			// 충돌 체크
-			if (isCollision(pLeftCol, pRightCol))
+			if (isCollision(pLeftCol, pRightCol, vecLeft[i]))
 			{
 				// 현재 충돌 중이다.
 

@@ -17,10 +17,6 @@ CMonster::CMonster()
 	,m_fSpeed(100.f)
 	,m_fMaxDistance(100.f)
 	,m_iDir(1)
-	, m_vxDir1(1)
-	, m_vxDir(0.f)
-	, m_vxrDir1(1)
-	, m_vxrDir(0.f)
 	, dAccTime0(0.)
 	, dAccTime1(0.)
 	, m_pTex(nullptr)
@@ -51,19 +47,13 @@ void CMonster::update()
 	dAccTime1 += fDT;
 	if (dAccTime0 > 2.f)
 	{
-		if (dAccTime1 > 0.05f)
+		if (dAccTime1 > 0.25f)
 		{
 			dAccTime1 = 0;
-			CreateMissileP0(0);
-			CreateMissileP0(1);
-			CreateMissileP0(2);
-			CreateMissileP0(-1);
-			CreateMissileP0(-2);
-			CreateMissileP0(-3);
-			//CreaeteMisiileP2();
-
-			//CreateMissileP1();
-			//CreatereverseMissileP1();
+			CreateMissile(0);
+		
+			
+			
 		}
 	}
 	if (dAccTime0 > 2.5f)
@@ -99,7 +89,7 @@ void CMonster::render(HDC _dc)
 	component_render(_dc);
 }
 
-void CMonster::CreateMissileP0(int type)
+void CMonster::CreateMissile(int type)
 {
 	Vec2 vMissilePos = GetPos();
 	vMissilePos.y += GetScale().y / 2.f;
@@ -121,6 +111,7 @@ void CMonster::CreateMissileP0(int type)
 	vpPos.y = vMissilePos.y - vpPos.y;
 	// Missile Object
 	CMissile* pMissile = new CMissile;
+	pMissile->init(GROUP_TYPE::PROJ_MONSTER);
 	pMissile->SetPos(vMissilePos);
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetDir(vpPos);
@@ -131,84 +122,6 @@ void CMonster::CreateMissileP0(int type)
 	CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 }
 
-void CMonster::CreateMissileP1()
-{
-	Vec2 vMissilePos = GetPos();
-	vMissilePos.y += GetScale().y / 2.f;
-	vMissilePos.x -= GetScale().x / 2.f;
-	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
-	
-	
-	m_vxDir += ((PI) / 9 )* m_vxDir1;
-
-	if (m_vxDir > PI || m_vxDir < -1.f)
-	{
-		m_vxDir1 *= -1;
-	}
-	
-
-	// Missile Object
-	CMissile* pMissile = new CMissile;
-	pMissile->SetPos(vMissilePos);
-	pMissile->SetScale(Vec2(25.f, 25.f));
-	pMissile->SetDir(Vec2(m_vxDir,-1.f));
-	pMissile->SetVec(100);
-	pMissile->SetType(1);
-	pMissile->SetName(L"MsMissile");
-	CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
-}
-
-void CMonster::CreatereverseMissileP1()
-{
-	Vec2 vMissilePos = GetPos();
-	vMissilePos.y += GetScale().y / 2.f;
-	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
-
-
-	m_vxrDir -= ((2 * PI) / 36) * m_vxrDir1;
-
-	if (m_vxrDir > PI / 4 || m_vxrDir < -1.f)
-	{
-		m_vxrDir1 *= -1;
-	}
-
-
-	// Missile Object
-	CMissile* pMissile = new CMissile;
-	pMissile->SetPos(vMissilePos);
-	pMissile->SetScale(Vec2(25.f, 25.f));
-	pMissile->SetDir(Vec2(m_vxrDir, -1.f));
-	pMissile->SetVec(200);
-	pMissile->SetType(1);
-	pMissile->SetName(L"MsMissile");
-	CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
-}
-
-void CMonster::CreaeteMisiileP2()
-{
-	Vec2 vMissilePos = GetPos();
-	vMissilePos.y += GetScale().y / 2.f;
-	CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
-
-
-	m_vxDir += ((2 * PI) /100) * m_vxDir1;
-
-	if (m_vxDir > PI /2  || m_vxDir < -1.f)
-	{
-		m_vxDir1 *= -1;
-	}
-
-
-	// Missile Object
-	CMissile* pMissile = new CMissile;
-	pMissile->SetPos(vMissilePos);
-	pMissile->SetScale(Vec2(25.f, 25.f));
-	pMissile->SetDir(Vec2(m_vxDir, -1.f));
-	pMissile->SetVec(200);
-	pMissile->SetType(1);
-	pMissile->SetName(L"MsMissile");
-	CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
-}
 
 void CMonster::OnCollisionEnter(CCollider* _pOther)
 {

@@ -7,6 +7,8 @@
 #include "CPathMgr.h"
 #include "CColliderMgr.h"
 #include "CEventMgr.h"
+#include "CUIMgr.h"
+
 
 #include "CObject.h"
 
@@ -82,6 +84,9 @@ void CCore::progress()
 	// 충돌체크 
 	CColliderMgr::GetInst()->update();
 	
+	// UI 체크
+	CUIMgr::GetInst()->update();
+
 	// =========
 	// Rendering
 	// =========

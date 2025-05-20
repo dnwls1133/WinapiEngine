@@ -27,7 +27,7 @@ CScene_Start::~CScene_Start()
 void CScene_Start::update()
 {
 	CScene::update();
-
+	
 	if (KEY_TAP(KEY::ESC))
 	{
 		
@@ -76,7 +76,7 @@ void CScene_Start::Enter()
 		for (int i = 0; i < Monstercount; ++i)
 		{
 			CMonster* pMonsterObj = new CMonster;
-			pMonsterObj->SetPos(Vec2((fMoveDist + fObjScale / 2) + (float)i * fTerm, 50.f));
+			pMonsterObj->SetPos(Vec2((fMoveDist + fObjScale / 2) + (float)i * fTerm, 250.f));
 			pMonsterObj->SetCenterPos(pMonsterObj->GetPos());
 			pMonsterObj->SetMoveDistance(fMoveDist);
 			pMonsterObj->SetScale(Vec2(50.f, 50.f));
