@@ -12,6 +12,7 @@
 
 #include "CScene.h"
 #include "CMissile.h"
+#include "CPlayerDead.h"
 
 #include "CTexture.h"
 #include "CCollider.h"
@@ -19,6 +20,7 @@
 #include "CAnimation.h"
 CPlayer::CPlayer()
 	:dAcc(0.)
+	,m_iHp(3)
 	
 {
 	//Texture 로딩하기
@@ -45,40 +47,56 @@ void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
 
-
-	if (KEY_HOLD(KEY::W))
-	{
-		vPos.y -= 500.f * fDT;
-	}
-	if (KEY_HOLD(KEY::S))
-	{
-		vPos.y += 500.f * fDT;
-	}
-	if (KEY_HOLD(KEY::A))
-	{
-		vPos.x -= 500.f * fDT;
-	}
-	if (KEY_HOLD(KEY::D))
-	{
-		vPos.x += 500.f * fDT;
-	}
-	if (KEY_HOLD((KEY::SPACE)))
+	if (m_bHit == true)
 	{
 		dAcc += fDT;
-		if (dAcc > 0.15f)
+		vPos.y -= 350.f * fDT;
+		if (dAcc > 1.5f)
 		{
 			dAcc = 0;
-			CreateMissile(0);
-			CreateMissile(1);
-			CreateMissile(2);
+			SetCollideron();
+			m_bHit = false;
 		}
-	
-		
+		SetPos(vPos);
 
-		
 	}
-	SetPos(vPos);
-	GetAnimator()->update();
+	else
+	{
+		if (KEY_HOLD(KEY::W))
+		{
+			vPos.y -= 500.f * fDT;
+		}
+		if (KEY_HOLD(KEY::S))
+		{
+			vPos.y += 500.f * fDT;
+		}
+		if (KEY_HOLD(KEY::A))
+		{
+			vPos.x -= 500.f * fDT;
+		}
+		if (KEY_HOLD(KEY::D))
+		{
+			vPos.x += 500.f * fDT;
+		}
+		if (KEY_HOLD((KEY::SPACE)))
+		{
+			dAcc += fDT;
+			if (dAcc > 0.15f)
+			{
+				dAcc = 0;
+				CreateMissile(0);
+				CreateMissile(1);
+				CreateMissile(2);
+			}
+
+
+
+
+		}
+		SetPos(vPos);
+	}
+	
+	//GetAnimator()->update();
 }
 
 void CPlayer::render(HDC _dc)
@@ -124,6 +142,7 @@ void CPlayer::CreateMissile(int type)
 	}
 	// Missile Object
 	CMissile* pMissile = new CMissile;
+	pMissile->init(GROUP_TYPE::PROJ_PLAYER);
 	pMissile->SetPos(vMissilePos);
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetDir(Vec2(0.f,1.f));
@@ -133,6 +152,29 @@ void CPlayer::CreateMissile(int type)
 
 	CreateObject(pMissile,GROUP_TYPE::PROJ_PLAYER);
 }
+
+
+void CPlayer::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"MsMissile")
+	{
+		CPlayerDead* pDead = new CPlayerDead;
+		pDead->SetPos(GetPos());
+		pDead->SetName(L"Player_Dead");
+		CreateObject(pDead, GROUP_TYPE::DEAD_PLAYER);
+		--m_iHp;
+		m_bHit = true;
+		Vec2 vPos = GetPos();
+		vPos.y = 1200;
+		SetPos(vPos);
+		SetCollideroff();
+	}
+		
+	
+}
+
+
 
 
 

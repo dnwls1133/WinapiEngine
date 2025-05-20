@@ -89,6 +89,27 @@
     <Filter Include="Engine\07. Component\Animator\Animation">
       <UniqueIdentifier>{8791899e-99a5-4de7-9f7a-b31df0f3cc82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04.Object\Tile">
+      <UniqueIdentifier>{c2e10328-f94a-4c56-a644-fead7fd73d50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\PlayerDead">
+      <UniqueIdentifier>{fe8ddb6f-f017-45a5-91bd-bad4e2c33bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\UI">
+      <UniqueIdentifier>{806a212c-44b7-4764-b1f6-1f8bcbfd784f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\Monster\Eenemis">
+      <UniqueIdentifier>{3e75c1d8-5849-499d-b657-b02b1002e094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03.Manager\UIMgr">
+      <UniqueIdentifier>{70f961b7-1869-4895-afe0-ebbc31cfc048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\UI\PanelUI">
+      <UniqueIdentifier>{a47333f1-fdec-4a6f-bd42-28bd064140fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\UI\ButtonUI">
+      <UniqueIdentifier>{832bc207-473b-4918-8ad1-6a7f9511b17c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -182,7 +203,30 @@
     <ClInclude Include="CAnimation.h">
       <Filter>Engine\07. Component\Animator\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CTile.h">
+      <Filter>Engine\04.Object\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerDead.h">
+      <Filter>Engine\04.Object\PlayerDead</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI.h">
+      <Filter>Engine\04.Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CEenemi0.h">
+      <Filter>Engine\04.Object\Monster\Eenemis</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIMgr.h">
+      <Filter>Engine\03.Manager\UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CPanelUI.h">
+      <Filter>Engine\04.Object\UI\PanelUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBtnUI.h">
+      <Filter>Engine\04.Object\UI\ButtonUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -271,6 +315,29 @@
     <ClCompile Include="CAnimation.cpp">
       <Filter>Engine\07. Component\Animator\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CTile.cpp">
+      <Filter>Engine\04.Object\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerDead.cpp">
+      <Filter>Engine\04.Object\PlayerDead</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI.cpp">
+      <Filter>Engine\04.Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CEenemi0.cpp">
+      <Filter>Engine\04.Object\Monster\Eenemis</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMgr.cpp">
+      <Filter>Engine\03.Manager\UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CPanelUI.cpp">
+      <Filter>Engine\04.Object\UI\PanelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBtnUI.cpp">
+      <Filter>Engine\04.Object\UI\ButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

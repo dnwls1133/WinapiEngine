@@ -23,18 +23,23 @@
 
 #define PI 3.1415926535f
 
+#define TILE_SIZE 64
+
 enum class GROUP_TYPE
 {
 	DEFAULT, //0
+	TILE,
 	BACKGROUND,
 	PLAYER, // 1
 	MONSTER, // 3
 	PROJ_PLAYER,// 4
 	PROJ_MONSTER,
 	BOSS,
+	DEAD_PLAYER,
 
 
-
+	//UI는 가장 끝에
+	UI = 31,
 	END = 32,
 };
 

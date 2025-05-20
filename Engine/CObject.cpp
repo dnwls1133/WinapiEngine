@@ -11,6 +11,8 @@ CObject::CObject()
 	, m_pCollider(nullptr)
 	, m_strName{}
 	, m_bAlive(true)
+	, m_pAnimator(nullptr)
+	, m_bCollideroff(false)
 {
 
 }
@@ -22,6 +24,7 @@ CObject::CObject(const CObject& _origin)
 	, m_pCollider(nullptr)
 	, m_pAnimator(nullptr)
 	, m_bAlive(true)
+	, m_bCollideroff(false)
 {
 	if (_origin.m_pCollider)
 	{
@@ -61,6 +64,10 @@ void CObject::finalupdate()
 	if (m_pCollider)
 	{
 		m_pCollider->finalupdate();
+	}
+	if (m_pAnimator)
+	{
+		m_pAnimator->finalupdate();
 	}
 }
 

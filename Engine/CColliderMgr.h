@@ -27,6 +27,6 @@ public:
 
 private:
 	void CollisionGroupUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight);
-	bool isCollision(CCollider* _pLeftCol, CCollider* _pRightCol);
+	bool isCollision(CCollider* _pLeftCol, CCollider* _pRightCol,CObject* _pLeftObj);
 };
 
