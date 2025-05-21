@@ -38,7 +38,7 @@ enum class GROUP_TYPE
 	DEAD_PLAYER,
 
 
-	//UI´Â °¡Àå ³¡¿¡
+	//UIëŠ” ê°€ìž¥ ëì—
 	UI = 31,
 	END = 32,
 };
@@ -47,6 +47,8 @@ enum class SCENE_TYPE
 {
 	TOOL,
 	START,
+    TITLE,
+    MAINMENU,
 	STAGE_01,
 	STAGE_02,
 	END,
