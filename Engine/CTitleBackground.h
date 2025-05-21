@@ -37,5 +37,10 @@ private:
      */
     std::unique_ptr<CTexture> m_pTexture;
 
+    const size_t m_introStartIndex = 0;
+    const size_t m_introEndIndex = 0;
+    const size_t m_titleStartIndex = 0;
+    const size_t m_titleEndIndex = 0;
+
 };
 
