@@ -56,6 +56,7 @@ void CScene_Title::update()
             return;
         }
 
+        CSceneMgr::
     }
 
 }
