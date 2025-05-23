@@ -22,3 +22,6 @@
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CCore.cpp"
 
+
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CEenemi0.cpp"
+
