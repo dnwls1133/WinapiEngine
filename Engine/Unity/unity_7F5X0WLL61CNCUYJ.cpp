@@ -1,7 +1,4 @@
 
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CEenemi0.cpp"
-
-
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CEventMgr.cpp"
 
 
@@ -21,4 +18,10 @@
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CPathMgr.cpp"
+
+
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CPlayer.cpp"
+
+
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CPlayerDead.cpp"
 
