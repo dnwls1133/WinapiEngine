@@ -3,7 +3,7 @@
 
 CTitleBackground::CTitleBackground()
 {
-    const std::wstring textureKey = L"Title Background No.0";
+    const std::wstring textureKey = L"Introduction No.0";
     const std::wstring filePath = L"texture\\Sprites\\Backgrounds\\Title\\Opening\\Sprite_Background_Opening_0.bmp";
     m_pTexture = CResMgr::GetInst()->LoadTexture(textureKey, filePath);
 }
@@ -29,15 +29,32 @@ void CTitleBackground::update()
     if (m_dAnimDeltaTime >= m_dAnimTime)
     {
         m_dAnimDeltaTime = 0.0f;
-        if (++m_currentIndex >= IDX_INTRO_END)
+
+        if (!m_bIsIntroState)
         {
-            m_currentIndex = IDX_INTRO_START;
+            if (++m_currentIndex >= IDX_INTRO_END)
+            {
+                m_currentIndex = IDX_TITLE_START;
+                m_bIsIntroState = true;
+                return;
+            }
+
+            const std::wstring textureKey = std::format(L"Introduction No.{}", m_currentIndex);
+            const std::wstring filePath = std::format(L"texture\\Sprites\\Backgrounds\\Title\\Opening\\Sprite_Background_Opening_{}.bmp", m_currentIndex);
+            m_pTexture = CResMgr::GetInst()->LoadTexture(textureKey, filePath);
+        }
+        else
+        {
+            if (++m_currentIndex >= IDX_TITLE_END)
+            {
+                m_currentIndex = IDX_TITLE_START;
+            }
+
+            const std::wstring textureKey = std::format(L"Main Title No.{}", m_currentIndex);
+            const std::wstring filePath = std::format(L"texture\\Sprites\\Backgrounds\\Title\\Main Title\\Sprite_Background_MainTitle_{}.bmp", m_currentIndex);
+            m_pTexture = CResMgr::GetInst()->LoadTexture(textureKey, filePath);
         }
     }
-
-    const std::wstring textureKey = std::format(L"Title Background No.{}", m_currentIndex);
-    const std::wstring filePath = std::format(L"texture\\Sprites\\Backgrounds\\Title\\Opening\\Sprite_Background_Opening_{}.bmp", m_currentIndex);
-    m_pTexture = CResMgr::GetInst()->LoadTexture(textureKey, filePath);
 }
 
 void CTitleBackground::render(HDC dc)
