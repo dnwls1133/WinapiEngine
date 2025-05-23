@@ -6,6 +6,7 @@
 #include "CTexture.h"
 #include "CObject.h"
 #include "CResMgr.h"
+#include "CTimeMgr.h"
 
 class CTexture;
 
@@ -16,26 +17,48 @@ class CTitleBackground :
     public CObject
 {
 public:
-    /**
-     * @brief 생성자.
-     */
     CTitleBackground();
-
-    /**
-     * @brief 소멸자.
-     */
     virtual ~CTitleBackground() override;
 
-    /**
-     * @brief 매 프레임마다 호출됩니다.
-     */
     virtual void update() override;
+    virtual void render(HDC dc) override;
+
+    CLONE(CTitleBackground)
 
 private:
     /**
-     * @brief 백그라운드 텍스쳐.
+     * @brief 인트로 시작 지점.
      */
-    std::unique_ptr<CTexture> m_pTexture;
+    static constexpr size_t IDX_INTRO_START = 0;
+
+    /**
+     * @brief 인트로 종료 지점.
+     */
+    static constexpr size_t IDX_INTRO_END = 70;
+
+    /**
+     * @brief 타이틀 시작 지점.
+     */
+    static constexpr size_t IDX_TITLE_START = 0;
+
+    /**
+     * @brief 타이틀 종료 지점.
+     */
+    static constexpr size_t IDX_TITLE_END = 0;
+
+    /**
+     * @brief 텍스쳐.
+     */
+    CTexture* m_pTexture = nullptr;
+
+    /**
+     * @brief 현재 지점.
+     */
+    size_t m_currentIndex = 0;
+
+    float m_dAnimDeltaTime = 0.0f;
+
+    static constexpr float m_dAnimTime = 0.05f;
 
 };
 
