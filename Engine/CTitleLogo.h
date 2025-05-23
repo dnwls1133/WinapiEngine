@@ -1,12 +1,14 @@
 #pragma once
 
+#include "CObject.h"
+#include "CTexture.h"
+
 class CTitleLogo
     : public CObject
 {
 public:
     virtual void update() override;
     virtual void render(HDC dc) override;
-
     CLONE(CTitleLogo)
 
 private:

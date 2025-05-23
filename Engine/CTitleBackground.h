@@ -6,6 +6,7 @@
 #include "CTexture.h"
 #include "CObject.h"
 #include "CResMgr.h"
+#include "CTimeMgr.h"
 
 class CTexture;
 
@@ -16,6 +17,9 @@ class CTitleBackground :
     public CObject
 {
 public:
+    CTitleBackground();
+    virtual ~CTitleBackground() override;
+
     virtual void update() override;
     virtual void render(HDC dc) override;
 
@@ -30,7 +34,7 @@ private:
     /**
      * @brief 인트로 종료 지점.
      */
-    static constexpr size_t IDX_INTRO_END = 0;
+    static constexpr size_t IDX_INTRO_END = 70;
 
     /**
      * @brief 타이틀 시작 지점.
@@ -45,12 +49,16 @@ private:
     /**
      * @brief 텍스쳐.
      */
-    CTexture* m_pTexture;
+    CTexture* m_pTexture = nullptr;
 
     /**
      * @brief 현재 지점.
      */
     size_t m_currentIndex = 0;
+
+    float m_dAnimDeltaTime = 0.0f;
+
+    static constexpr float m_dAnimTime = 0.05f;
 
 };
 

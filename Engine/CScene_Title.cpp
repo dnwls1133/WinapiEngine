@@ -15,12 +15,18 @@ CScene_Title::~CScene_Title()
 
 void CScene_Title::Enter()
 {
+    const Vec2 vResolution = CCore::GetInst()->GetResolution();
+
     m_pBackground = new CTitleBackground();
+    m_pBackground->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
+    m_pBackground->SetScale(Vec2(1, 1));
+    m_pBackground->SetName(L"Background");
+    AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
 }
 
 void CScene_Title::update()
 {
-    
+    CScene::update();
 
 }
 
