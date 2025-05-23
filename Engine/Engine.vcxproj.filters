@@ -110,6 +110,12 @@
     <Filter Include="Engine\04.Object\UI\ButtonUI">
       <UniqueIdentifier>{832bc207-473b-4918-8ad1-6a7f9511b17c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05.Scene\Scene_Title">
+      <UniqueIdentifier>{839043f9-47c1-4630-9baa-998298c4397f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\Background\TitleBackground">
+      <UniqueIdentifier>{37aa73b6-5b13-436c-8782-56ebeaae6c02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -227,9 +233,13 @@
     <ClInclude Include="CBtnUI.h">
       <Filter>Engine\04.Object\UI\ButtonUI</Filter>
     </ClInclude>
-    <ClInclude Include="CScene_Title.h" />
-    <ClInclude Include="CTitleBackground.h" />
     <ClInclude Include="CTitleLogo.h" />
+    <ClInclude Include="CScene_Title.h">
+      <Filter>Engine\05.Scene\Scene_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleBackground.h">
+      <Filter>Engine\04.Object\Background\TitleBackground</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -342,8 +352,12 @@
     <ClCompile Include="CBtnUI.cpp">
       <Filter>Engine\04.Object\UI\ButtonUI</Filter>
     </ClCompile>
-    <ClCompile Include="CScene_Title.cpp" />
-    <ClCompile Include="CTitleBackground.cpp" />
     <ClCompile Include="CTitleLogo.cpp" />
+    <ClCompile Include="CScene_Title.cpp">
+      <Filter>Engine\05.Scene\Scene_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleBackground.cpp">
+      <Filter>Engine\04.Object\Background\TitleBackground</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
