@@ -15,17 +15,8 @@ CTitleBackground::~CTitleBackground()
 
 void CTitleBackground::update()
 {
-    // if (curAnimationIdx >= maxAnimationIdx)
-    // {
-    //     curAnimationIdx = 0;
-    //     return;
-    // }
-    // 
-    // std::wstring textureKey = std::format(L"Title Background No.{}", curAnimationIdx);
-    // std::wstring filePath = std::format(L"texture\\Backgrounds\\Title\\Opening\\Sprite_Background_Opening_{}.bmp", curAnimationIdx);
-    // m_pTexture = std::unique_ptr<CTexture>(CResMgr::GetInst()->LoadTexture(textureKey, filePath));
     m_dAnimDeltaTime += CTimeMgr::GetInst()->GetfDT();
-
+    
     if (m_dAnimDeltaTime >= m_dAnimTime)
     {
         m_dAnimDeltaTime = 0.0f;
@@ -34,8 +25,7 @@ void CTitleBackground::update()
         {
             if (++m_currentIndex >= IDX_INTRO_END)
             {
-                m_currentIndex = IDX_TITLE_START;
-                m_bIsIntroState = true;
+                ChangeState();
                 return;
             }
 
@@ -59,29 +49,34 @@ void CTitleBackground::update()
 
 void CTitleBackground::render(HDC dc)
 {
-    const int iWidith = static_cast<int>(m_pTexture->Width());
-    const int iHeight = static_cast<int>(m_pTexture->Height());
-    const Vec2 vPos = GetPos();
+    if (!m_pTexture)
+        return;
 
-    //BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-    //	, int(vPos.y - (float)(iHeight / 2))
-    //	, iWidith, iHeight
-    //	, m_pTex->GetDC()
-    //	, 0, 0, SRCCOPY);
+    const int width = static_cast<int>(m_pTexture->Width());
+    const int height = static_cast<int>(m_pTexture->Height());
+    const Vec2 pos = GetPos();
 
-    TransparentBlt(dc
-        , static_cast<int>(vPos.x - (float)(iWidith / 2))
-        , static_cast<int>(vPos.y - (float)(iHeight / 2))
-        , iWidith, iHeight
-        , m_pTexture->GetDC()
-        , 0, 0, iWidith, iHeight
-        , RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
+    const int drawX = static_cast<int>(pos.x - static_cast<float>(width) / 2.0f);
+    const int drawY = static_cast<int>(pos.y - static_cast<float>(height) / 2.0f);
 
-    //BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-    //	, int(vPos.y - (float)(iHeight / 2))
-    //	, iWidith, iHeight
-    //	, m_pTex->GetDC()
-    //	, 0, 0, SRCCOPY);
+    TransparentBlt(
+        dc,
+        drawX, drawY,
+        width, height,
+        m_pTexture->GetDC(),
+        0, 0, width, height,
+        RGB(255, 0, 255) // 마젠타 색상 투명 처리
+    );
+}
 
+void CTitleBackground::ChangeState() noexcept
+{
+    m_bIsIntroState = !m_bIsIntroState;
 
+    if (!m_bIsIntroState) {
+        m_currentIndex = IDX_TITLE_START;
+    }
+    else {
+        m_currentIndex = IDX_INTRO_START;
+    }
 }
