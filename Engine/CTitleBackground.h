@@ -44,7 +44,7 @@ private:
     /**
      * @brief 타이틀 종료 지점.
      */
-    static constexpr size_t IDX_TITLE_END = 0;
+    static constexpr size_t IDX_TITLE_END = 25;
 
     /**
      * @brief 텍스쳐.
@@ -60,5 +60,6 @@ private:
 
     static constexpr float m_dAnimTime = 0.05f;
 
+    bool m_bIsIntroState = false;
 };
 
