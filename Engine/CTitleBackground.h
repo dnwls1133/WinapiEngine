@@ -22,6 +22,10 @@ public:
     virtual void update() override;
     virtual void render(HDC dc) override;
 
+    void ChangeState() noexcept;
+
+    bool IsPlayIntroAnimation() const noexcept;
+
     CLONE(CTitleBackground)
 
 private:
