@@ -28,7 +28,7 @@ CCollider::~CCollider()
 
 void CCollider::finalupdate()
 {
-	// Object¸¦ µû¶ó°£´Ù.
+	// Objectë¥¼ ë”°ë¼ê°„ë‹¤.
 	Vec2 vObjectPos = m_pOwner->GetPos();
 	m_vFinalPos = vObjectPos + m_vOffsetPos;
 	assert(0 <= m_iCol);
@@ -46,10 +46,10 @@ void CCollider::render(HDC _dc)
 
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
 	Rectangle(_dc
-		, (int)vRenderPos.x - (m_vScale.x / 2.f)
-		, (int)vRenderPos.y - (m_vScale.y / 2.f)
-		, (int)vRenderPos.x + (m_vScale.x / 2.f)
-		, (int)vRenderPos.y + (m_vScale.y / 2.f)
+		, (int)(vRenderPos.x - (m_vScale.x / 2.f))
+		, (int)(vRenderPos.y - (m_vScale.y / 2.f))
+		, (int)(vRenderPos.x + (m_vScale.x / 2.f))
+		, (int)(vRenderPos.y + (m_vScale.y / 2.f))
 	);
 	
 }

@@ -1,15 +1,26 @@
 #pragma once
 #include "CUI.h"
 
+#include "CScene.h"
+#include "CObject.h"
 typedef void(*BRN_FUNC) (DWORD_PTR, DWORD_PTR);
 
+typedef void(CScene::*SCENE_MEMFUNC)(void);
+typedef void(CObject::*Object_MEMFUNC)(void);
 class CBtnUI :
     public CUI
 {
 private:
-    BRN_FUNC    m_pFunc;
-    DWORD_PTR   m_param1;
-    DWORD_PTR   m_param2;
+    BRN_FUNC         m_pFunc;
+    DWORD_PTR        m_param1;
+    DWORD_PTR        m_param2;
+
+    SCENE_MEMFUNC    m_pSceneFunc;
+    CScene*     m_pSceneInst;
+
+
+
+
 public:
     virtual void MouseOn();
     virtual void MouseLbtnDown();
@@ -22,6 +33,9 @@ public:
         m_param1 = _param1;
         m_param2 = _param2;
     }
+
+    void SetClickedCallBack(CScene* _pScene, SCENE_MEMFUNC _pSceneFunc);
+   
 
     CLONE(CBtnUI);
 public:

@@ -8,9 +8,12 @@
 #include "CColliderMgr.h"
 #include "CEventMgr.h"
 #include "CUIMgr.h"
+#include "CResMgr.h"
 
 
 #include "CObject.h"
+#include "CTexture.h"
+
 
 #include "CCamera.h"
 //CCore* CCore::g_pInst = nullptr;
@@ -23,8 +26,7 @@ CCore::CCore()
 	: m_hWnd(0)
 	, m_ptResolution{}
 	, m_hDC(0)
-	, m_hBit(0)
-	, m_memDC(0)
+	, m_pMemTex(nullptr)
 	, m_arrBrush{}
 	, m_arrPen{}
 {
@@ -33,8 +35,7 @@ CCore::CCore()
 CCore::~CCore()
 {
 	ReleaseDC(m_hWnd, m_hDC);
-	DeleteDC(m_memDC);
-	DeleteObject(m_hBit);
+	
 	for (int i = 0; i < (UINT)PEN_TYPE::END; ++i)
 	{
 		DeleteObject(m_arrPen[i]);
@@ -45,24 +46,28 @@ int CCore::init(HWND _hWnd, POINT _ptresolution)
 {
 	m_hWnd = _hWnd;
 	m_ptResolution = _ptresolution;
-	// ÇØ»óµµ¿¡ ¸Â°Ô À©µµ¿ì Å©±â Á¶Á¤
+	// í•´ìƒë„ì— ë§žê²Œ ìœˆë„ìš° í¬ê¸° ì¡°ì •
 	RECT rt = {0,0, m_ptResolution.x,m_ptResolution .y};
 	AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, true);
 	SetWindowPos(m_hWnd,nullptr,100,100, rt.right - rt.left, rt.bottom - rt.top,0);
 
 	m_hDC = GetDC(m_hWnd);
-	// ÀÌÁß ¹öÆÛ¸µ ¿ëµµÀÇ ºñÆ®¸Ê°ú DC ¸¦ ¸¸µç´Ù.
-	m_hBit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
-	m_memDC = CreateCompatibleDC(m_hDC);
 
 
+	// ì´ì¤‘ ë²„í¼ë§ ìš©ë„ì˜ í…ìŠ¤ì³ í•œìž¥ì„ ë§Œë“ ë‹¤.
+    m_pMemTex = CResMgr::GetInst()->CreateTexture(L"BackVuffer", (UINT)m_ptResolution.x, (UINT)m_ptResolution.y);
+
+
+
+
+    // ìžì£¼ ì‚¬ìš©í•  íŽœ ë¸ŒëŸ¬ì‰¬ ìƒì„±
 	CreateBrushPen();
-	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit);
-	DeleteObject(hOldBit);
-	// Manager ÃÊ±âÈ­
+
+	// Manager ì´ˆê¸°í™”
 	CPathMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
+    CCamera::GetInst()->init();
 	CSceneMgr::GetInst()->init();
 	
 	
@@ -81,29 +86,31 @@ void CCore::progress()
 
 	CSceneMgr::GetInst()->update();
 
-	// Ãæµ¹Ã¼Å© 
+	// ì¶©ëŒì²´í¬ 
 	CColliderMgr::GetInst()->update();
 	
-	// UI Ã¼Å©
+	// UI ì²´í¬
 	CUIMgr::GetInst()->update();
 
 	// =========
 	// Rendering
 	// =========
-	// È­¸é Clear
+	// í™”ë©´ Clear
 
-	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
+	Rectangle(m_pMemTex->GetDC(), -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
-	CSceneMgr::GetInst()->render(m_memDC);
+	CSceneMgr::GetInst()->render((m_pMemTex->GetDC()));
+    CCamera::GetInst()->render((m_pMemTex->GetDC()));
+
 
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y
-		, m_memDC, 0, 0, SRCCOPY);
+		, m_pMemTex->GetDC(), 0, 0, SRCCOPY);
 
 	CTimeMgr::GetInst()->render();
 
 
 	//===============
-	// ÀÌº¥Æ® Áö¿¬Ã³¸®
+	// ì´ë²¤íŠ¸ ì§€ì—°ì²˜ë¦¬
 	//===============
 	CEventMgr::GetInst()->update();
 }

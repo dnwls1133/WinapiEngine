@@ -51,7 +51,7 @@ void CAnimation::render(HDC _dc)
 	CObject* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(vPos);
-	vRenderPos += m_vecFrm[m_iCurFrm].vOffset; // Ovject Position Offset¸¸Å­ Ãß°¡ ÀÌµ¿À§Ä¡
+	vRenderPos += m_vecFrm[m_iCurFrm].vOffset; // Ovject Position Offsetë§Œí¼ ì¶”ê°€ ì´ë™ìœ„ì¹˜
 
 
 	
@@ -68,10 +68,10 @@ void CAnimation::render(HDC _dc)
 	
 	
 	TransparentBlt(_dc
-		, (int)vRenderPos.x - m_vecFrm[m_iCurFrm].vSlicce.x / 2.f
-		, (int)vRenderPos.y - m_vecFrm[m_iCurFrm].vSlicce.y / 2.f
-		, (int)m_vecFrm[m_iCurFrm].vSlicce.x
-		, (int)m_vecFrm[m_iCurFrm].vSlicce.y
+		, (int)(vRenderPos.x - m_vecFrm[m_iCurFrm].vSlicce.x / 2.f)
+		, (int)(vRenderPos.y - m_vecFrm[m_iCurFrm].vSlicce.y / 2.f)
+		, (int)(m_vecFrm[m_iCurFrm].vSlicce.x )
+		, (int)(m_vecFrm[m_iCurFrm].vSlicce.y )
 		, m_pTex->GetDC()
 		, (int)m_vecFrm[m_iCurFrm].vLT.x
 		, (int)m_vecFrm[m_iCurFrm].vLT.y

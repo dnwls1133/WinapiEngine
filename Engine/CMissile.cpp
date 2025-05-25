@@ -122,7 +122,7 @@ void CMissile::render(HDC _dc)
 	//		, iWidith, iHeight
 	//		, m_pTex->GetDC()
 	//		, 0, 0, iWidith, iHeight
-	//		, RGB(255, 0, 255)); // »ö»óÀ» ¹«½ÃÇÏ°í ³ª¸ÓÁö º¹»çÇØ¶ó
+	//		, RGB(255, 0, 255)); // ìƒ‰ìƒì„ ë¬´ì‹œí•˜ê³  ë‚˜ë¨¸ì§€ ë³µì‚¬í•´ë¼
 	//	break;
 	//}
 	//case 3:
@@ -146,7 +146,7 @@ void CMissile::render(HDC _dc)
 	//		, iWidith, iHeight
 	//		, m_pTex->GetDC()
 	//		, 0, 0, iWidith, iHeight
-	//		, RGB(255, 0, 255)); // »ö»óÀ» ¹«½ÃÇÏ°í ³ª¸ÓÁö º¹»çÇØ¶ó
+	//		, RGB(255, 0, 255)); // ìƒ‰ìƒì„ ë¬´ì‹œí•˜ê³  ë‚˜ë¨¸ì§€ ë³µì‚¬í•´ë¼
 	//}
 	//break;
 	//}
@@ -173,7 +173,7 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 			pAnim->GetFrame(i).vOffset = Vec2(0.f, -50.f);
 		}
 		
-		m_fVec = 400.f;
+		m_fVec = 100.f;
 	}
 }
 

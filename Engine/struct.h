@@ -21,7 +21,7 @@ public:
 	Vec2& Normalize()
 	{
 		float fLen = Length();
-		// 0À¸·Î ³ª´©¾î Áö¸é ¾ÈµË´Ï´Ù.
+		// 0ìœ¼ë¡œ ë‚˜ëˆ„ì–´ ì§€ë©´ ì•ˆë©ë‹ˆë‹¤.
 		assert(fLen != 0.f);
 		x /= fLen;
 		y /= fLen;

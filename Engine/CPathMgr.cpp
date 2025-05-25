@@ -5,7 +5,7 @@
 CPathMgr::CPathMgr()
 	: m_szContentPath{}
 {
-
+    
 }
 CPathMgr::~CPathMgr()
 {
@@ -14,9 +14,9 @@ CPathMgr::~CPathMgr()
 
 void CPathMgr::init()
 {
-	GetCurrentDirectory(255, m_szContentPath); // ½ÇÇàÆÄÀÏÀÌ ÀÖ´Â µð·ºÅä¸® ÀÚµ¿À¸·Î Ã£¾ÆÁÖ´Â ¸ÞÅ©·Î 
-
-	int iLen = wcslen(m_szContentPath);
+	GetCurrentDirectory(255, m_szContentPath); // ì‹¤í–‰íŒŒì¼ì´ ìžˆëŠ” ë””ë ‰í† ë¦¬ ìžë™ìœ¼ë¡œ ì°¾ì•„ì£¼ëŠ” ë©”í¬ë¡œ 
+    
+	int iLen = (int)wcslen(m_szContentPath);
 
 	for (int i = iLen - 1; i >= 0; --i)
 	{
@@ -28,11 +28,23 @@ void CPathMgr::init()
 	}
 
 	wcscat_s(m_szContentPath, 255, L"\\bin\\content\\");
-	// »óÀ§Æú´õ·Î
+	// ìƒìœ„í´ë”ë¡œ
 
 	// + bin\\content\\
 
 
 
-	SetWindowText(CCore::GetInst()->GetMainHwnd(), m_szContentPath);
+	//SetWindowText(CCore::GetInst()->GetMainHwnd(), m_szContentPath);
 }
+
+wstring CPathMgr::GetRelativePath(const wchar_t* _filepath)
+{
+    wstring strFilePath = _filepath;
+
+    size_t iAbsLen = wcslen(m_szContentPath);
+    size_t iFullLen = strFilePath.length();
+
+    wstring strRelativePaht = strFilePath.substr(iAbsLen,iFullLen);
+    return strRelativePaht;
+}
+

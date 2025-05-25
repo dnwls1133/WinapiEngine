@@ -1,7 +1,6 @@
 #pragma once
 
-#include <format>
-#include <memory>
+
 
 #include "CTexture.h"
 #include "CObject.h"

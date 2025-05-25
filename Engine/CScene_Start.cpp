@@ -16,6 +16,12 @@
 
 #include "CTexture.h"
 #include "CCamera.h"
+
+#include "AI.h"
+#include "CState.h"
+#include "CIdleState.h"
+#include "CTraceState.h"
+
 CScene_Start::CScene_Start()
 {
 }
@@ -46,54 +52,67 @@ void CScene_Start::update()
 void CScene_Start::Enter()
 {
 	Vec2 vResolution = CCore::GetInst()->GetResolution();
-	
-		// BackGround Object Ãß°¡
-		CObject* pBackgroundObj = new CBackground;
-		pBackgroundObj->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
-		pBackgroundObj->SetScale(Vec2(100.f, 100.f));
-		pBackgroundObj->SetName(L"Background");
-		AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
-
-		// Player Object Ãß°¡
-		CObject* pObj = new CPlayer;
-		pObj->SetPos(Vec2(640.f, 384.f));
-		pObj->SetScale(Vec2(100.f, 100.f));
-		pObj->SetName(L"Player");
-		AddObject(pObj, GROUP_TYPE::PLAYER);
-
-	
 
 
-		// Monster Object Ãß°¡
-		int Monstercount = 4;
-		float fMoveDist = 25.f;
-		float fObjScale = 50.f;
+	// BackGround Object ì¶”ê°€
+	CObject* pBackgroundObj = new CBackground;
+	pBackgroundObj->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
+	pBackgroundObj->SetScale(Vec2(100.f, 100.f));
+	pBackgroundObj->SetName(L"Background");
+	AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
 
-
-
-		float fTerm = (vResolution.x - ((fMoveDist + fObjScale / 2) * 2)) / (float)(Monstercount - 1);
-		CMonster* pMonsterObj = nullptr;
-		for (int i = 0; i < Monstercount; ++i)
-		{
-			CMonster* pMonsterObj = new CMonster;
-			pMonsterObj->SetPos(Vec2((fMoveDist + fObjScale / 2) + (float)i * fTerm, 250.f));
-			pMonsterObj->SetCenterPos(pMonsterObj->GetPos());
-			pMonsterObj->SetMoveDistance(fMoveDist);
-			pMonsterObj->SetScale(Vec2(50.f, 50.f));
-			pMonsterObj->SetName(L"Monster");
-			AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
-		}
+	// Player Object ì¶”ê°€
+	CObject* pObj = new CPlayer;
+	pObj->SetPos(Vec2(640.f, 384.f));
+	pObj->SetScale(Vec2(100.f, 100.f));
+	pObj->SetName(L"Player");
+	AddObject(pObj, GROUP_TYPE::PLAYER);
 
 	
+
+
+	// Monster Object ì¶”ê°€
+	int Monstercount = 1;
+	float fObjScale = 50.f;
+
+    AI* pAI = new AI;
+    pAI->AddState(new CIdleState);
+    //pAI->AddState(new CTraceState);
+
+	CMonster* pMonsterObj = nullptr;
+	for (int i = 0; i < Monstercount; ++i)
+	{
+		CMonster* pMonsterObj = new CMonster;
+		pMonsterObj->SetPos(vResolution/2.f - Vec2(0.f,300.f));
+		pMonsterObj->SetScale(Vec2(50.f, 50.f));
+		pMonsterObj->SetName(L"Monster");
+        pMonsterObj->SetAI(pAI);
+
+
+		AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
+	}
+
+    // íƒ€ì¼ ë¡œë”©
+    //LoadTile(L"Tile\\Start.tile");
 	
-	// Ãæµ¹ ÁöÁ¤
-	// Player ±×·ì°ú Monster ±×·ì°£ÀÇ Ãæµ¹Ã¼Å©
+	
+	// ì¶©ëŒ ì§€ì •
+	// Player ê·¸ë£¹ê³¼ Monster ê·¸ë£¹ê°„ì˜ ì¶©ëŒì²´í¬
 	CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::PROJ_MONSTER);
 	CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
 
-	//Camera ÁöÁ¤
-	Vec2 vResoultion = CCore::GetInst()->GetResolution();
-	CCamera::GetInst()->SetLookAt(vResoultion /2.f);
+	//Camera ì§€ì •
+   
+	CCamera::GetInst()->SetLookAt(vResolution /2.f);
+
+    CCamera::GetInst()->FadeOut(1.f);
+    CCamera::GetInst()->FadeIn(1.f);
+ 
+    //Camera íš¨ê³¼ ì§€ì •
+   // CCamera::GetInst()->Fadeout(5.f);
+
+
+
 }
 
 

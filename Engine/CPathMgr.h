@@ -3,9 +3,14 @@ class CPathMgr
 {
 	SINGLE(CPathMgr);
 private:
-	wchar_t		m_szContentPath[255]; // À©µµ¿ì °æ·Î Á¦ÇÑ 255±ÛÀÚ
+	wchar_t		m_szContentPath[256]; // ìœˆë„ìš° ê²½ë¡œ ì œí•œ 255ê¸€ì
+    wchar_t     m_szRelativePath[256];
+
 public:
 	void init();
 	const wchar_t* GetContentPath() { return m_szContentPath; }
+
+    wstring GetRelativePath(const wchar_t* _filepath);
 };
+
 

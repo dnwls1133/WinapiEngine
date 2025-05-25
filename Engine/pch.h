@@ -8,6 +8,9 @@
 #include <cmath>
 #include <assert.h>
 
+#include <format>
+#include <memory>
+
 #include <list>
 using std::list;
 

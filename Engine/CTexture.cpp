@@ -21,21 +21,38 @@ void CTexture::Load(const wstring& _strFilePath)
 	CImage image;
 	HRESULT hr = image.Load(_strFilePath.c_str());
 	if (SUCCEEDED(hr)) {
-		m_hBit = image.Detach(); // CImage ³»ºÎÀÇ HBITMAPÀ» ³Ñ±ä´Ù
+		m_hBit = image.Detach(); // CImage ë‚´ë¶€ì˜ HBITMAPì„ ë„˜ê¸´ë‹¤
 	}
 	//m_hBit = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str(), IMAGE_BITMAP
 	//	, 0, 0, LR_CREATEDIBSECTION | LR_LOADFROMFILE);
-	// ºñÆ®¸Ê°ú ¿¬°áÇÒ DC
+	// ë¹„íŠ¸ë§µê³¼ ì—°ê²°í•  DC
 	m_hdc = CreateCompatibleDC(CCore::GetInst()->GetMainDC());
 	
-	// ºñÆ®¸Ê°ú DC ¿¬°á
+	// ë¹„íŠ¸ë§µê³¼ DC ì—°ê²°
 
 	HBITMAP hPrevBit = (HBITMAP)SelectObject(m_hdc, m_hBit);
 	DeleteObject(hPrevBit);
 	
-	// ºñÆ®¸Ê Á¤º¸
+	// ë¹„íŠ¸ë§µ ì •ë³´
 	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
 
 	
 	assert(m_hBit);
+}
+
+void CTexture::Create(UINT _iWidth, UINT _iHeight)
+{
+    HDC maindc = CCore::GetInst()->GetMainDC();
+    m_hBit = CreateCompatibleBitmap(maindc, _iWidth, _iHeight);
+    m_hdc = CreateCompatibleDC(maindc);
+
+
+    
+    HBITMAP hOldBit = (HBITMAP)SelectObject(m_hdc, m_hBit);
+    DeleteObject(hOldBit);
+
+    GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
+
+
+    assert(m_hBit);
 }

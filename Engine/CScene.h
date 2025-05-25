@@ -1,16 +1,16 @@
 #pragma once
 
-// Àü¹æ ¼±¾ğ
+// ì „ë°© ì„ ì–¸
 class CObject;
 class CPlayer;
 class CScene
 {
-private: // ÀÚ½Ä Å¬·¡½º¿¡°Ô ¸â¹öÇÔ¼ö ±ÇÇÑ ºÎ¿©
-	vector<CObject*> m_arrObj[(UINT)GROUP_TYPE::END]; // ¿ÀºêÁ§Æ®¸¦ ÀúÀå ¹× °ü¸®ÇÒ º¤ÅÍ¸¦ ±×·ì °³¼ö¸¸Å­ ¼±¾ğ
-	wstring			 m_strName; // Scene ÀÌ¸§
+private: // ìì‹ í´ë˜ìŠ¤ì—ê²Œ ë©¤ë²„í•¨ìˆ˜ ê¶Œí•œ ë¶€ì—¬
+	vector<CObject*> m_arrObj[(UINT)GROUP_TYPE::END]; // ì˜¤ë¸Œì íŠ¸ë¥¼ ì €ì¥ ë° ê´€ë¦¬í•  ë²¡í„°ë¥¼ ê·¸ë£¹ ê°œìˆ˜ë§Œí¼ ì„ ì–¸
+	wstring			 m_strName; // Scene ì´ë¦„
 
-	UINT			 m_iTileX;  // Å¸ÀÏ °¡·Î °³¼ö
-	UINT			 m_iTileY;  // Å¸ÀÏ ¼¼·Î °³¼ö
+	UINT			 m_iTileX;  // íƒ€ì¼ ê°€ë¡œ ê°œìˆ˜
+	UINT			 m_iTileY;  // íƒ€ì¼ ì„¸ë¡œ ê°œìˆ˜
 
 
 	bool			 is_change;
@@ -33,9 +33,11 @@ public:
 	virtual void update();
 	virtual void finalupdate();
 	virtual void render(HDC _dc);
+    void render_tile(HDC _dc);
 
-	virtual void Enter() = 0; // ÇØ´ç Scene ¿¡ ÁøÀÔ ½Ã È£Ãâ
-	virtual void Exit() = 0; // ÇØ´ç Scenen ¿¡ Å»Ãâ ½Ã È£Ãâ
+
+	virtual void Enter() = 0; // í•´ë‹¹ Scene ì— ì§„ì… ì‹œ í˜¸ì¶œ
+	virtual void Exit() = 0; // í•´ë‹¹ Scenen ì— íƒˆì¶œ ì‹œ í˜¸ì¶œ
 public:
 	void AddObject(CObject* _pObj, GROUP_TYPE _eType)
 	{
@@ -45,13 +47,14 @@ public:
 	
 	void DeleteGroup(GROUP_TYPE _eTarget);
 	void DeleteAll();
-	
 	void CreateTile(UINT _iXCount, UINT _iYCount);
+
+    void LoadTile(const wstring& _strRelativePath);
 	vector<CObject*>& GetUIGroup() { return m_arrObj[(UINT)GROUP_TYPE::UI]; }
 	
 public:
 	CScene();
-	virtual ~CScene(); // »ó¼ÓÇÏ´Â ¼ø°£ ¼Ò¸êÀÚ °¡»óÇÔ¼ö ¸¸µé¾îÁÖ¾î¾ßÇÕ´Ï´Ù.
+	virtual ~CScene(); // ìƒì†í•˜ëŠ” ìˆœê°„ ì†Œë©¸ì ê°€ìƒí•¨ìˆ˜ ë§Œë“¤ì–´ì£¼ì–´ì•¼í•©ë‹ˆë‹¤.
 	
 };
 
