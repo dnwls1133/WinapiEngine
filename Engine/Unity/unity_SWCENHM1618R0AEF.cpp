@@ -1,8 +1,14 @@
 
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\AI.cpp"
+
+
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CAnimation.cpp"
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CAnimator.cpp"
+
+
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CAttackState.cpp"
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CBackground.cpp"
@@ -15,13 +21,4 @@
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CCollider.cpp"
-
-
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CColliderMgr.cpp"
-
-
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CCore.cpp"
-
-
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CEenemi0.cpp"
 
