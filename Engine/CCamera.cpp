@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CCamera.h"
 
 #include "CObject.h"
@@ -83,12 +83,12 @@ void CCamera::render(HDC _dc)
     bf.SourceConstantAlpha = iAlpha;
 
     AlphaBlend(_dc, 0, 0
-        , m_pVeilTex->Width()
-        , m_pVeilTex->Height()
+        , m_pVeilTex->GetWidth()
+        , m_pVeilTex->GetHeight()
         , m_pVeilTex->GetDC()
         , 0, 0
-        , m_pVeilTex->Width()
-        , m_pVeilTex->Height()
+        , m_pVeilTex->GetWidth()
+        , m_pVeilTex->GetHeight()
         , bf);
 
 

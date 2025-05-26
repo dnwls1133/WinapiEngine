@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CResMgr.h"
 
 #include "CPathMgr.h"
@@ -10,7 +10,7 @@ CResMgr::CResMgr()
 }
 CResMgr::~CResMgr()
 {
-	Safe_Delete_Map(m_mapTex);
+	Safe_Delete_Map(m_TextureBank);
 }
 
 CTexture* CResMgr::LoadTexture(const wstring& _strKey, const wstring& _strRelativePath)
@@ -28,7 +28,7 @@ CTexture* CResMgr::LoadTexture(const wstring& _strKey, const wstring& _strRelati
 	pTex->Load(strFilPath);
 	pTex->SetKey(_strKey);
 	pTex->SetRelativePath(_strRelativePath);
-	m_mapTex.insert(make_pair(_strKey, pTex));
+	m_TextureBank.insert(make_pair(_strKey, pTex));
 	
 	
 	
@@ -47,7 +47,7 @@ CTexture* CResMgr::CreateTexture(const wstring& _strKey, UINT _iWidth, UINT _iHe
     pTex = new CTexture;
     pTex->Create(_iWidth, _iHeight);
     pTex->SetKey(_strKey);
-    m_mapTex.insert(make_pair(_strKey, pTex));
+    m_TextureBank.insert(make_pair(_strKey, pTex));
 
 
 
@@ -56,9 +56,9 @@ CTexture* CResMgr::CreateTexture(const wstring& _strKey, UINT _iWidth, UINT _iHe
 
 CTexture* CResMgr::FindTexture(const wstring& _strKey)
 {
-	map<wstring, CResource*>::iterator iter = m_mapTex.find(_strKey);
+	auto iter = m_TextureBank.find(_strKey);
 	
-	if (iter == m_mapTex.end())
+	if (iter == m_TextureBank.end())
 	{
 		return nullptr;
 	}

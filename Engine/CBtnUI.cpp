@@ -5,7 +5,7 @@
 
 CBtnUI::CBtnUI()
     :CUI(false)
-    , m_pSelectedFunc(nullptr)
+    , m_pFunc(nullptr)
     , m_param1(0)
     , m_param2(0)
     , m_pSceneFunc(nullptr)
@@ -32,9 +32,9 @@ void CBtnUI::MouseLbtnUP()
 
 void CBtnUI::MouseLbtnClicked()
 {
-	if (nullptr != m_pSelectedFunc)
+	if (nullptr != m_pFunc)
 	{
-		m_pSelectedFunc(m_param1,m_param2);
+		m_pFunc(m_param1,m_param2);
 	}
 
     if (m_pSceneInst && m_pSceneFunc)

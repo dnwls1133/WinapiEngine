@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CResource.h"
 class CTexture :
     public CResource
@@ -12,14 +12,14 @@ public:
     void Load(const wstring& _strFilePath);
     void Create(UINT _iWidth, UINT _iHeight);
 
-    UINT Width() { return m_bitInfo.bmWidth; }
-    UINT Height() { return m_bitInfo.bmHeight; }
+    UINT GetWidth() const { return m_bitInfo.bmWidth; }
+    UINT GetHeight() const { return m_bitInfo.bmHeight; }
 
-    HDC GetDC() { return m_hdc; }
-    HBITMAP GetBitmap() { return m_hBit; }
+    HDC GetDC() const { return m_hdc; }
+    HBITMAP GetBitmap() const { return m_hBit; }
   
 public:
     CTexture();
-   virtual  ~CTexture();
+    virtual ~CTexture();
 };
 

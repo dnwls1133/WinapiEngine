@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CBackground.h"
 #include "CResMgr.h"
 #include "CTimeMgr.h"
@@ -56,8 +56,8 @@ void CBackground::update()
 
 void CBackground::render(HDC _dc)
 {
-	int iWidith = (int)m_pTex->Width();
-	int iHeight = (int)m_pTex->Height();
+	int iWidith = (int)m_pTex->GetWidth();
+	int iHeight = (int)m_pTex->GetHeight();
 	Vec2 vPos = GetPos();
 
 	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
@@ -72,7 +72,7 @@ void CBackground::render(HDC _dc)
 		, iWidith, iHeight
 		, m_pTex->GetDC()
 		, 0, 0, iWidith, iHeight
-		, RGB(255, 0, 255)); // »ö»óÀ» ¹«½ÃÇÏ°í ³ª¸ÓÁö º¹»çÇØ¶ó
+		, RGB(255, 0, 255)); // ìƒ‰ìƒì„ ë¬´ì‹œí•˜ê³  ë‚˜ë¨¸ì§€ ë³µì‚¬í•´ë¼
 	
 
 

@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CTitleBackground.h"
 
 #include "CTexture.h"
@@ -57,8 +57,8 @@ void CTitleBackground::render(HDC dc)
     if (!m_pTexture)
         return;
 
-    const int width = static_cast<int>(m_pTexture->Width());
-    const int height = static_cast<int>(m_pTexture->Height());
+    const int width = static_cast<int>(m_pTexture->GetWidth());
+    const int height = static_cast<int>(m_pTexture->GetHeight());
     const Vec2 pos = GetPos();
 
     const int drawX = static_cast<int>(pos.x - static_cast<float>(width) / 2.0f);
