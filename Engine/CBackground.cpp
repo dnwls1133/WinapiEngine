@@ -1,8 +1,9 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CBackground.h"
 #include "CResMgr.h"
 #include "CTimeMgr.h"
 
+#include "CCore.h"
 #include "CTexture.h"
 
 CBackground::CBackground()
@@ -59,21 +60,26 @@ void CBackground::render(HDC _dc)
 	int iWidith = (int)m_pTex->Width();
 	int iHeight = (int)m_pTex->Height();
 	Vec2 vPos = GetPos();
+    Vec2 vResolution = CCore::GetInst()->GetResolution();
 
-	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
+	BitBlt(_dc, 0,0,vResolution.x,vResolution.y
+		, m_pTex->GetDC()
+		, 0, 0, SRCCOPY);
+
+	//TransparentBlt(_dc
+	//	, int(vPos.x - (float)(iWidith / 2))
 	//	, int(vPos.y - (float)(iHeight / 2))
 	//	, iWidith, iHeight
 	//	, m_pTex->GetDC()
-	//	, 0, 0, SRCCOPY);
-
-	TransparentBlt(_dc
-		, int(vPos.x - (float)(iWidith / 2))
-		, int(vPos.y - (float)(iHeight / 2))
-		, iWidith, iHeight
-		, m_pTex->GetDC()
-		, 0, 0, iWidith, iHeight
-		, RGB(255, 0, 255)); // ������ �����ϰ� ������ �����ض�
-	
+	//	, 0, 0, iWidith, iHeight
+	//	, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
+    //TransparentBlt(_dc
+    //    , 0
+    //    , 0
+    //    , vResolution.x, vResolution.y
+    //    , m_pTex->GetDC()
+    //    , 0, 0, iWidith, iHeight
+    //    , RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
 
 
 

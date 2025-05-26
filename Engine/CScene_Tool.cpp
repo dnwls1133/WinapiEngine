@@ -49,7 +49,7 @@ void CScene_Tool::Enter()
     ((CBtnUI*)pBtnUI)->SetClickedCallBack(this, (SCENE_MEMFUNC)&CScene_Tool::SaveTileData);
 	pPanelUI->AddChild(pBtnUI);
 	AddObject(pPanelUI, GROUP_TYPE::UI);
-
+    int a = 0; 
 	//CUI* pClonePanel = pPanelUI->Clone();
 	//pClonePanel->SetPos(pClonePanel->GetPos() + Vec2(-300.f, 0.f));
 	//((CBtnUI*)pClonePanel->GetChildUI()[0])->SetClickedCallBack(this, (SCENE_MEMFUNC) & CScene_Tool::SaveTileData); // 명시적 캐스팅 중요
