@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 
 #include "CSceneMgr.h"
 #include "CScene.h"
@@ -18,10 +18,11 @@
 
 
 CMonster::CMonster()
-	:m_fSpeed(100.f)
+	: m_tInfo{}
 	, dAccTime0(0.)
 	, dAccTime1(0.)
 	, m_pTex(nullptr)
+    , m_pAI(nullptr)
 {
 	//Texture 로딩하기
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"Enemie0Tex", L"texture\\Enemie0.bmp");

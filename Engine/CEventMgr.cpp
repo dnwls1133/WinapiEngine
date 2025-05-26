@@ -1,8 +1,12 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CEventMgr.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
 #include "CUIMgr.h"
+
+#include "AI.h"
+#include "CState.h"
+
 
 #include "CObject.h"
 CEventMgr::CEventMgr()
@@ -17,7 +21,7 @@ CEventMgr::~CEventMgr()
 void CEventMgr::update()
 {
 	// =================================================
-	// ÀÌÀü ÇÁ·¹ÀÓ¿¡¼­ µî·ÏÇØµĞ Dead Object µéÀ» »èÁ¦ÇÑ´Ù.
+	// ì´ì „ í”„ë ˆì„ì—ì„œ ë“±ë¡í•´ë‘” Dead Object ë“¤ì„ ì‚­ì œí•œë‹¤.
 	// =================================================
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
@@ -29,7 +33,7 @@ void CEventMgr::update()
 	m_vecDead.clear();
 
 	//============
-	//Event Ã³¸®
+	//Event ì²˜ë¦¬
 	//===========
 
 	for (size_t i = 0; i < m_vecEvent.size(); ++i)
@@ -57,8 +61,8 @@ void CEventMgr::Excute(const tEvent& _eve)
 	case EVENT_TYPE::DELETE_OBJECT:
 	{
 		// lParam : Object Adress
-		// Object ¸¦  Dead »óÅÂ·Î º¯°æ
-		// »èÁ¦¿¹Á¤ ¿ÀºêÁ§Æ®µéÀ» ¸ğ¾ÆµĞ´Ù.
+		// Object ë¥¼  Dead ìƒíƒœë¡œ ë³€ê²½
+		// ì‚­ì œì˜ˆì • ì˜¤ë¸Œì íŠ¸ë“¤ì„ ëª¨ì•„ë‘”ë‹¤.
 		CObject* pDeadObj = (CObject*)_eve.lParam;
 		pDeadObj->SetDead();
 		m_vecDead.push_back(pDeadObj);
@@ -69,14 +73,23 @@ void CEventMgr::Excute(const tEvent& _eve)
 	case EVENT_TYPE::SCENE_CHANGE:
 	{
 		// lparam : Next Scene Type
-		// Scene º¯°æ
+		// Scene ë³€ê²½
 		CSceneMgr::GetInst()->ChangeScene((SCENE_TYPE)_eve.lParam);
 		
-		// Æ÷Ä¿½º UI ÇìÁ¦ (ÀÌÀü SCENEÀ» °¡¸£Å°°íÀÖ´Â UI¸¦ ÇØÁ¦ÇØÁØ´Ù)
+		// í¬ì»¤ìŠ¤ UI í—¤ì œ (ì´ì „ SCENEì„ ê°€ë¥´í‚¤ê³ ìˆëŠ” UIë¥¼ í•´ì œí•´ì¤€ë‹¤)
 		CUIMgr::GetInst()->SetFocusedUI(nullptr);
 	}
 		break;
+    case EVENT_TYPE::CHANGE_AI_STATE:
+    {
+        // lParam : AI
+        // wParam : Next type
+        AI* pAI = (AI*)_eve.lParam;
+        MON_STATE eNextState = (MON_STATE)_eve.wParam;
 
+        pAI->ChangeState(eNextState);
+    }
+    break;
 	}
 
 }

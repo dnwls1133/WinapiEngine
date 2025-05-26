@@ -1,9 +1,14 @@
-#pragma once
+﻿#pragma once
 
 class CObject;
+class AI;
+
 void CreateObject(CObject* _pObj,GROUP_TYPE _eGroup);
 void DeleteObject(CObject* _pObj);
 void ChangeScene(SCENE_TYPE _eNext);
+void ChangeAIState(AI* _pAI, MON_STATE _eNextState);
+
+
 
 template<typename T>
 void Safe_Delete_Vec(vector<T>& _vec)
@@ -32,3 +37,8 @@ void Safe_Delete_Map(map<T1, T2>& _map)
 	}
 	_map.clear();
 }
+
+
+
+void SaveWString(const wstring& _str, FILE* _pFile);
+void LoadWString(wstring& _str,FILE* _pFile);

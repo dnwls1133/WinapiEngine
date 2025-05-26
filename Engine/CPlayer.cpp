@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CPlayer.h"
 
 
@@ -30,13 +30,18 @@ CPlayer::CPlayer()
 	GetCollider()->SetOffsetPos(Vec2(0.f, 30.f));
 
 
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player_Walk.bmp");
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player_Walk.bmp");
 	CreaeteAnimator();
-	GetAnimator()->CreateAnimation(L"Player_walk0",m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 19);
 
-	GetAnimator()->Play(L"Player_walk0",true);
+    //GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
+
+	GetAnimator()->CreateAnimation(L"Player_walk",m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 19);
 	
-	
+
+    // Animation 저장해보기
+    GetAnimator()->FindAnimation(L"Player_walk")->Save(L"animation\\player_walk_left.anim");
+
+    GetAnimator()->Play(L"Player_walk", true);
 }
 
 CPlayer::~CPlayer()

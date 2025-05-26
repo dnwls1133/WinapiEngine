@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 class CAnimator;
 class CTexture;
 
@@ -17,12 +17,12 @@ class CAnimation
 private:
 	wstring				m_strName;
 	CAnimator*			m_pAnimator;
-	CTexture*			m_pTex;   // Animation ÀÌ »ç¿ëÇÏ´Â ÅØ½ºÃÄ
-	vector<tAnimFrm>	m_vecFrm; // ¸ğµç ÇÁ·¹ÀÓ Á¤º¸
-	int					m_iCurFrm; // ÇöÀç ÇÁ·¹ÀÓ
+	CTexture*			m_pTex;   // Animation ì´ ì‚¬ìš©í•˜ëŠ” í…ìŠ¤ì³
+	vector<tAnimFrm>	m_vecFrm; // ëª¨ë“  í”„ë ˆì„ ì •ë³´
+	int					m_iCurFrm; // í˜„ì¬ í”„ë ˆì„
 	float				m_fAccTime;
 
-	bool				m_bFinish;	// Àç»ı ³¡¿¡ µµ´Ş ¿©ºÎ
+	bool				m_bFinish;	// ì¬ìƒ ëì— ë„ë‹¬ ì—¬ë¶€
 private:
 	void SetName(const wstring& _strName) { m_strName = _strName;}
 public:
@@ -36,8 +36,12 @@ public:
 	}
 
 	tAnimFrm& GetFrame(int _idx){ return m_vecFrm[_idx]; }
-	int GetMaxFrame() { return m_vecFrm.size(); }
+	UINT GetMaxFrame() { return (UINT)m_vecFrm.size(); }
 
+
+public:
+    void Save(const wstring& _strRelativePath);
+    void Load(const wstring& _strRelativePath);
 public:
 	void update();
 	void render(HDC _dc);

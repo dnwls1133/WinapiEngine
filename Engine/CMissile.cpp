@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CMissile.h"
 #include "CTimeMgr.h"
 #include "CResMgr.h"
@@ -164,7 +164,7 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 	{
 		m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex1", L"texture\\missile_explosion.png");
 		CreaeteAnimator();
-		GetAnimator()->CreateAnimation(L"Missile1", m_pTex, Vec2(0.f, 0.f), Vec2(25.4f, 72.f), Vec2(25.4f, 0.f), 0.05f, 17);
+		GetAnimator()->CreateAnimation(L"Missile1", m_pTex, Vec2(0.f, 0.f), Vec2(25.4f, 72.f), Vec2(25.4f, 0.f), 0.03f, 17);
 		GetAnimator()->Play(L"Missile1", false);
 		CAnimation* pAnim = GetAnimator()->FindAnimation(L"Missile1");
 		
@@ -183,7 +183,7 @@ void CMissile::OnCollision(CCollider* _pOther)
 	m_dAcc += fDT;
 	if (pOtherObj->GetName() == L"Monster")
 	{
-		if (m_dAcc > 0.4f)
+		if (m_dAcc > 0.3f)
 		{
 			m_dAcc = 0;
 			DeleteObject(this);

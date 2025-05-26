@@ -1,0 +1,236 @@
+[Animation Name]
+Player_walk
+[Texture Name]
+PlayerWalk
+[Texture Path]
+texture\Player_Walk.bmp
+[Frame Count]
+19
+[Frame Index]
+0
+[Left Top]
+0,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+1
+[Left Top]
+170,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+2
+[Left Top]
+340,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+3
+[Left Top]
+510,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+4
+[Left Top]
+680,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+5
+[Left Top]
+850,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+6
+[Left Top]
+1020,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+7
+[Left Top]
+1190,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+8
+[Left Top]
+1360,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+9
+[Left Top]
+1530,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+10
+[Left Top]
+1700,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+11
+[Left Top]
+1870,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+12
+[Left Top]
+2040,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+13
+[Left Top]
+2210,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+14
+[Left Top]
+2380,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+15
+[Left Top]
+2550,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+16
+[Left Top]
+2720,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+17
+[Left Top]
+2890,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
+[Frame Index]
+18
+[Left Top]
+3060,0
+[Slice Size]
+170,170
+[Offset]
+0,0
+[Duration]
+0.000000
+
+
