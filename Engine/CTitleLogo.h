@@ -1,5 +1,10 @@
 #pragma once
 
+#include "CObject.h"
+
+class CObject;
+class CTexture;
+
 class CTitleLogo
     : public CObject
 {

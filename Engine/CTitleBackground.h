@@ -1,5 +1,8 @@
 #pragma once
 
+#include "CObject.h"
+
+class CObject;
 class CTexture;
 
 /**
@@ -58,4 +61,3 @@ private:
 
     bool m_bIsIntroState = false;
 };
-

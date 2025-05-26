@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CTitleBackground.h"
 
+#include "CTexture.h"
+#include "CObject.h"
+#include "CResMgr.h"
+#include "CTimeMgr.h"
+
 CTitleBackground::CTitleBackground()
 {
     const std::wstring textureKey = L"Introduction No.0";
@@ -16,7 +21,7 @@ CTitleBackground::~CTitleBackground()
 void CTitleBackground::update()
 {
     m_dAnimDeltaTime += CTimeMgr::GetInst()->GetfDT();
-    
+
     if (m_dAnimDeltaTime >= m_dAnimTime)
     {
         m_dAnimDeltaTime = 0.0f;

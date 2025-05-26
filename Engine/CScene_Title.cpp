@@ -11,17 +11,19 @@
 #include "CSceneMgr.h"
 
 #include "CTitleBackground.h"
+#include "CTitleLogo.h"
+// #include "CTitleMessage.h"
 
 CScene_Title::CScene_Title()
     : m_pBackground(nullptr)
     , m_pLogo(nullptr)
-    , m_pMessage(nullptr)
+    // , m_pMessage(nullptr)
 {
 }
 
 CScene_Title::~CScene_Title()
 {
-  
+
 }
 
 void CScene_Title::Enter()
@@ -49,6 +51,6 @@ void CScene_Title::Exit()
     if (nullptr != m_pLogo)
         delete m_pLogo;
 
-    if (nullptr != m_pMessage)
-        delete m_pMessage;
+    // if (nullptr != m_pMessage)
+    //     delete m_pMessage;
 }

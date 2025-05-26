@@ -10,6 +10,7 @@
 
 #include <format>
 #include <memory>
+#include <functional>
 
 #include <list>
 using std::list;
@@ -32,9 +33,6 @@ using std::to_wstring;
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 using namespace Gdiplus;
-
-
-
 
 #include "define.h"
 #include "struct.h"
