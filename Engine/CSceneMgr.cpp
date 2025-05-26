@@ -31,12 +31,11 @@ void CSceneMgr::init()
     m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)] = new CScene_Title();
     m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)]->SetName(TEXT("Title Scene"));
 
-	m_arrScene[(UINT)SCENE_TYPE::START] = new CScene_Start;
-	m_arrScene[(UINT)SCENE_TYPE::START]->SetName(L"Start Scene");
+	m_arrScene[static_cast<UINT>(SCENE_TYPE::START)] = new CScene_Start;
+	m_arrScene[static_cast<UINT>(SCENE_TYPE::START)]->SetName(L"Start Scene");
 	
-	m_arrScene[(UINT)SCENE_TYPE::TOOL] = new CScene_Tool;
-	m_arrScene[(UINT)SCENE_TYPE::TOOL]->SetName(L"Tool Scene");
-
+	m_arrScene[static_cast<UINT>(SCENE_TYPE::TOOL)] = new CScene_Tool;
+	m_arrScene[static_cast<UINT>(SCENE_TYPE::TOOL)]->SetName(L"Tool Scene");
 
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage_01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage_02;
