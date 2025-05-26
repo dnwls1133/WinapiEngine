@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CScene.h"
 
 #include "CResMgr.h"
@@ -14,6 +14,7 @@ CScene::CScene()
 	: is_change(false)
 	, m_iTileX(0)
 	, m_iTileY(0)
+    , m_pPlayer(nullptr)
 {
 }
 

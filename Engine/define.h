@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define SINGLE(type) public: static type* GetInst()\
 						{\
@@ -57,6 +57,7 @@ enum class SCENE_TYPE
 enum class BRUSH_TYPE
 {
 	HOLLOW,
+    BLACK,
 	END,
 };
 
@@ -73,7 +74,7 @@ enum class EVENT_TYPE
 	CREATE_OBJECT,
 	DELETE_OBJECT,
 	SCENE_CHANGE,
-	
+	CHANGE_AI_STATE,
 
 
 
@@ -92,4 +93,17 @@ enum class MON_STATE
     RUN,
     DEAD,
 
+};
+
+enum class MISSILE_PTRN
+{
+    PTRN1,
+    PTRN2,
+    PTRN3,
+    PTRN4,
+    PTRN5,
+    PTRN6,
+
+
+    END,
 };

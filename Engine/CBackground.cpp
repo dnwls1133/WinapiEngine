@@ -62,9 +62,11 @@ void CBackground::render(HDC _dc)
 	Vec2 vPos = GetPos();
     Vec2 vResolution = CCore::GetInst()->GetResolution();
 
-	BitBlt(_dc, 0,0,vResolution.x,vResolution.y
-		, m_pTex->GetDC()
-		, 0, 0, SRCCOPY);
+    BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
+    	, int(vPos.y - (float)(iHeight / 2))
+    	, iWidith, iHeight
+    	, m_pTex->GetDC()
+    	, 0, 0, SRCCOPY);
 
 	//TransparentBlt(_dc
 	//	, int(vPos.x - (float)(iWidith / 2))
@@ -83,11 +85,7 @@ void CBackground::render(HDC _dc)
 
 
 
-	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-	//	, int(vPos.y - (float)(iHeight / 2))
-	//	, iWidith, iHeight
-	//	, m_pTex->GetDC()
-	//	, 0, 0, SRCCOPY);
+	
 
 	
 }
