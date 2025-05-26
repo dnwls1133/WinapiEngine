@@ -1,6 +1,13 @@
 #include "pch.h"
 #include "CTitleBackground.h"
 
+#include <format>
+
+#include "CTexture.h"
+#include "CObject.h"
+#include "CResMgr.h"
+#include "CTimeMgr.h"
+
 CTitleBackground::CTitleBackground()
 {
     const std::wstring textureKey = L"Introduction No.0";

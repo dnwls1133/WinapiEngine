@@ -1,13 +1,5 @@
 #pragma once
 
-#include <format>
-#include <memory>
-
-#include "CTexture.h"
-#include "CObject.h"
-#include "CResMgr.h"
-#include "CTimeMgr.h"
-
 class CTexture;
 
 /**
