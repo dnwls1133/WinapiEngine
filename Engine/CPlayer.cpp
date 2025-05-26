@@ -23,7 +23,7 @@ CPlayer::CPlayer()
 	,m_iHp(3)
 	
 {
-	//Texture ·ÎµùÇÏ±â
+	//Texture ë¡œë”©í•˜ê¸°
 	//m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
 	CreaeteCollider();
 	GetCollider()->SetScale(Vec2(10.f, 20.f));
@@ -85,8 +85,8 @@ void CPlayer::update()
 			{
 				dAcc = 0;
 				CreateMissile(0);
-				CreateMissile(1);
-				CreateMissile(2);
+				//CreateMissile(1);
+				//CreateMissile(2);
 			}
 
 
@@ -117,10 +117,31 @@ void CPlayer::render(HDC _dc)
 	//	, iWidith, iHeight
 	//	, m_pTex->GetDC()
 	//	, 0, 0, iWidith, iHeight
-	//	, RGB(255, 0, 255)); // »ö»óÀ» ¹«½ÃÇÏ°í ³ª¸ÓÁö º¹»çÇØ¶ó
+	//	, RGB(255, 0, 255)); // ìƒ‰ìƒì„ ë¬´ì‹œí•˜ê³  ë‚˜ë¨¸ì§€ ë³µì‚¬í•´ë¼
 	
 	component_render(_dc);
+   /* CTexture* pTex  = CResMgr::GetInst()->LoadTexture(L"M4Tex", L"texture\\Player_Walk_A.png");
 
+    Vec2 vPos = GetPos();
+    vPos = CCamera::GetInst()->GetRenderPos(vPos);
+
+    float width = (float)pTex->Width();
+    float height = (float)pTex->Height();
+
+    BLENDFUNCTION bf = {};
+
+    bf.BlendOp = AC_SRC_OVER;
+    bf.BlendFlags = 0;
+    bf.AlphaFormat = AC_SRC_ALPHA;
+    bf.SourceConstantAlpha = 255;
+
+    AlphaBlend(_dc
+        , int(vPos.x - width / 2.f)
+        , int(vPos.y - height / 2.f)
+        , width, height
+        , pTex->GetDC()
+        , 0, 0, width, height
+        , bf);*/
 }
 
 void CPlayer::CreateMissile(int type)
@@ -146,7 +167,7 @@ void CPlayer::CreateMissile(int type)
 	pMissile->SetPos(vMissilePos);
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetDir(Vec2(0.f,1.f));
-	pMissile->SetVec(1000);
+	pMissile->SetVec(2000);
 	pMissile->SetType(0);
 	pMissile->SetName(L"Missile_Player");
 

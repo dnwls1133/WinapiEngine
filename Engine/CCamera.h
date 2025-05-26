@@ -2,22 +2,48 @@
 
 class CObject;
 
+class CTexture;
+
+enum class CAM_EFFECT
+{
+    FADE_IN,
+    FADE_OUT,
+    NONE,
+};
+
+struct tCamEffect
+{
+    CAM_EFFECT eEffect;
+    float      m_fDuration;
+    float      m_fCurTime;
+};
+
+
 class CCamera
 {
 	SINGLE(CCamera);
 private:
-	Vec2		m_vLookAt;		// Ä«¸Ş¶ó°¡ º¸´Â À§Ä¡ 
-	Vec2		m_vCurLookAt;   // ÀÌÀüÀ§Ä¡¿Í ÇöÀçÀ§Ä¡ º¸Á¤À§Ä¡
-	Vec2		m_vPrevLookAt;  // Ä«¸Ş¶ó°¡ º¸´Â ÀÌÀüÇÁ·¹ÀÓ À§Ä¡
+	Vec2		       m_vLookAt;		// ì¹´ë©”ë¼ê°€ ë³´ëŠ” ìœ„ì¹˜ 
+	Vec2		       m_vCurLookAt;   // ì´ì „ìœ„ì¹˜ì™€ í˜„ì¬ìœ„ì¹˜ ë³´ì •ìœ„ì¹˜
+	Vec2		       m_vPrevLookAt;  // ì¹´ë©”ë¼ê°€ ë³´ëŠ” ì´ì „í”„ë ˆì„ ìœ„ì¹˜
 
-	CObject*	m_pTargetObj;   // Ä«¸Ş¶ó°¡ µû¶ó°¡´Â À§Ä¡
+	CObject*	       m_pTargetObj;   // ì¹´ë©”ë¼ê°€ ë”°ë¼ê°€ëŠ” ìœ„ì¹˜
 
-	Vec2		m_vDiff;        // ÇØ»óµµ Áß½ÉÀ§Ä¡¿Í, Ä«¸Ş¶ó
+	Vec2		       m_vDiff;        // í•´ìƒë„ ì¤‘ì‹¬ìœ„ì¹˜ì™€, ì¹´ë©”ë¼
 
-	float		m_fTime;		// Å¸°ÙÀ» µû¶ó°¡´Âµ¥ °É¸®´Â ½Ã°£
-	float		m_fSpeed;		// Å¸°ÙÀ» µû¶ó°¡´Â ¼Óµµ
-	float		m_fAccTime;     // ´©Àû ½Ã°£
+	float		       m_fTime;		// íƒ€ê²Ÿì„ ë”°ë¼ê°€ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„
+	float		       m_fSpeed;		// íƒ€ê²Ÿì„ ë”°ë¼ê°€ëŠ” ì†ë„
+	float		       m_fAccTime;     // ëˆ„ì  ì‹œê°„
+
+    list<tCamEffect>   m_listCamEffect;
+    CTexture*          m_pVeilTex;         // ì¹´ë©”ë¼ ê°€ë¦¼ë§‰ í…ìŠ¤ì³(ê²€ì€ìƒ‰ìœ¼ë¡œ)
+ 
+
 public:
+   
+
+
+
 	void SetLookAt(Vec2 _vLook)
 	{
 		m_vLookAt = _vLook;
@@ -25,13 +51,69 @@ public:
 		m_fSpeed = fMoveDist / m_fTime;
 		m_fAccTime = 0.f;
 	}
+    void FadeIn(float _fDuration)
+    {
+        tCamEffect ef = {};
+        ef.eEffect = CAM_EFFECT::FADE_IN;
+        ef.m_fDuration = _fDuration;
+        ef.m_fCurTime = 0.f;
+
+        m_listCamEffect.push_back(ef);
+        if (0.f == _fDuration)
+        {
+            assert(nullptr);
+        }
+    }
+    void FadeOut(float _fDuration)
+    {
+        tCamEffect ef = {};
+        ef.eEffect = CAM_EFFECT::FADE_OUT;
+        ef.m_fDuration = _fDuration;
+        ef.m_fCurTime = 0.f;
+        m_listCamEffect.push_back(ef);
+        if (0.f == _fDuration)
+        {
+            assert(nullptr);
+        }
+    }
 	void SetTarget(CObject* _pTarget) { m_pTargetObj = _pTarget;}
 	Vec2 GetLookAt() { return m_vCurLookAt; }
 	Vec2 GetRenderPos(Vec2 _vObjPos) { return _vObjPos - m_vDiff; }
 	Vec2 GetRealPos(Vec2 _vRenderPos) { return _vRenderPos + m_vDiff; }
 public:
-	void update();
 
+  /*  void FadeIn(float _fDuration)
+    {
+        tCamEffect ef = {};
+        ef.eEffect = CAM_EFFECT::FADE_IN;
+        ef.m_fDuration = _fDuration;
+        ef.m_fCurTime = 0.f;
+
+        m_listCamEffect.push_back(ef);
+        if (0.f == _fDuration)
+        {
+            assert(nullptr);
+        }
+    }
+
+    void Fadeout(float _fDuration)
+    {
+        tCamEffect ef = {};
+        ef.eEffect = CAM_EFFECT::FADE_OUT;
+        ef.m_fDuration = _fDuration;
+        ef.m_fCurTime = 0.f;
+        m_listCamEffect.push_back(ef);
+        if (0.f == _fDuration)
+        {
+            assert(nullptr);
+        }
+    }*/
+   
+    
+public:
+	void update();
+    void init();
+    void render(HDC _dc);
 private:
 	void CalDiff();
 

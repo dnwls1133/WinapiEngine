@@ -25,7 +25,10 @@ public:
 private:
     virtual void render(HDC _dc);
     virtual void update();
+public:
 
+    virtual void Save(FILE* _pFile);
+    virtual void Load(FILE* _pFile);
 
     CLONE(CTile);
 public:

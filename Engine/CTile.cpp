@@ -29,7 +29,7 @@ void CTile::render(HDC _dc)
 	UINT iCurCol = (UINT)m_iImgidx % iMaxCol;
 
 
-	// ÀÌ¹ÌÁö ¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º
+	// ì´ë¯¸ì§€ ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤
 	if (iMaxRaw <= iCurRow)
 	{
 		assert(nullptr);
@@ -52,4 +52,14 @@ void CTile::render(HDC _dc)
 
 void CTile::update()
 {
+}
+
+void CTile::Save(FILE* _pFile)
+{
+    fwrite(&m_iImgidx, sizeof(int), 1, _pFile);
+}
+
+void CTile::Load(FILE* _pFile)
+{
+    fread(&m_iImgidx, sizeof(int), 1, _pFile);
 }

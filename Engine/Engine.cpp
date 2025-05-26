@@ -1,4 +1,4 @@
-﻿// Engine.cpp : 애플리케이션에 대한 진입점을 정의합니다.
+// Engine.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 #include "pch.h"
 #include "framework.h"
@@ -50,6 +50,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
     GdiplusStartupInput gdiInput;
     GdiplusStartup(&gdiToken, &gdiInput, nullptr);
+
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     // Core 초기화
     if (FAILED(CCore::GetInst()->init(g_hwnd,POINT{1280,960})))
     {

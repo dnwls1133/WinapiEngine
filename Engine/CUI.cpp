@@ -21,7 +21,7 @@ CUI::CUI(const CUI& _origin)
 	 ,m_bMouseOn(false)
 	 ,m_bLbtnDown(false)
 {
-	// ÀÚ½Ä UI¿¡´ëÇÑ ±íÀº º¹»ç°¡ ÇÊ¿äÇÏ´Ù
+	// ìì‹ UIì—ëŒ€í•œ ê¹Šì€ ë³µì‚¬ê°€ í•„ìš”í•˜ë‹¤
 	for (size_t i = 0; i < _origin.m_veChildUI.size(); ++i)
 	{
 		AddChild(_origin.m_veChildUI[i]->Clone());
@@ -43,7 +43,7 @@ void CUI::finalupdate()
 {
 	CObject::finalupdate();
 
-	// UI ÀÇ ÃÖÁ¾ ÁÂÇ¥¸¦ ±¸ÇÑ´Ù.
+	// UI ì˜ ìµœì¢… ì¢Œí‘œë¥¼ êµ¬í•œë‹¤.
 	m_vFinalPos = GetPos();
 	
 	if (GetParent())
@@ -52,7 +52,7 @@ void CUI::finalupdate()
 		m_vFinalPos += vParentPos;
 	}
 
-	// UI Mouse Ã¼Å©
+	// UI Mouse ì²´í¬
 	MouseOnCheck();
 
 
@@ -75,16 +75,16 @@ void CUI::render(HDC _dc)
 		Rectangle(_dc
 			, (int)vPos.x
 			, (int)vPos.y
-			, (int)vPos.x + vScale.x
-			, (int)vPos.y + vScale.y);
+			, (int)(vPos.x + vScale.x)
+			, (int)(vPos.y + vScale.y));
 	}
 	else
 	{
 		Rectangle(_dc
 			, (int)vPos.x
 			, (int)vPos.y
-			, (int)vPos.x + vScale.x
-			, (int)vPos.y + vScale.y);
+			, (int)(vPos.x + vScale.x)
+			, (int)(vPos.y + vScale.y));
 	}
 	
 	

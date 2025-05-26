@@ -116,6 +116,27 @@
     <Filter Include="Engine\04.Object\Background\TitleBackground">
       <UniqueIdentifier>{37aa73b6-5b13-436c-8782-56ebeaae6c02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03.Manager\Camera">
+      <UniqueIdentifier>{79092597-8090-4a90-9bb4-60f53b6f77ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI">
+      <UniqueIdentifier>{b76f494c-0023-4452-a217-e16e85fd7666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI\State">
+      <UniqueIdentifier>{f969cafb-b4c0-48b7-a3e2-184018f15bec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI\State\Dead">
+      <UniqueIdentifier>{50525a1e-2699-4183-aefb-2ef1b99d9e01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI\State\Trace">
+      <UniqueIdentifier>{bc166322-746c-4169-aa2a-968c428be8e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI\State\Attack">
+      <UniqueIdentifier>{99ab5d27-7f15-4563-90f0-cee7137442ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module\AI\State\Idle">
+      <UniqueIdentifier>{402381ae-67d8-41c9-8b9b-a81d71bef049}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -215,9 +236,6 @@
     <ClInclude Include="CPlayerDead.h">
       <Filter>Engine\04.Object\PlayerDead</Filter>
     </ClInclude>
-    <ClInclude Include="CCamera.h">
-      <Filter>Engine\08. Module</Filter>
-    </ClInclude>
     <ClInclude Include="CUI.h">
       <Filter>Engine\04.Object\UI</Filter>
     </ClInclude>
@@ -239,6 +257,24 @@
     </ClInclude>
     <ClInclude Include="CTitleBackground.h">
       <Filter>Engine\04.Object\Background\TitleBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Engine\03.Manager\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Engine\08. Module\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>Engine\08. Module\AI\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CIdleState.h">
+      <Filter>Engine\08. Module\AI\State\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CAttackState.h">
+      <Filter>Engine\08. Module\AI\State\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CTraceState.h">
+      <Filter>Engine\08. Module\AI\State\Trace</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -334,9 +370,6 @@
     <ClCompile Include="CPlayerDead.cpp">
       <Filter>Engine\04.Object\PlayerDead</Filter>
     </ClCompile>
-    <ClCompile Include="CCamera.cpp">
-      <Filter>Engine\08. Module</Filter>
-    </ClCompile>
     <ClCompile Include="CUI.cpp">
       <Filter>Engine\04.Object\UI</Filter>
     </ClCompile>
@@ -358,6 +391,24 @@
     </ClCompile>
     <ClCompile Include="CTitleBackground.cpp">
       <Filter>Engine\04.Object\Background\TitleBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Engine\03.Manager\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.cpp">
+      <Filter>Engine\08. Module\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>Engine\08. Module\AI\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CIdleState.cpp">
+      <Filter>Engine\08. Module\AI\State\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttackState.cpp">
+      <Filter>Engine\08. Module\AI\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CTraceState.cpp">
+      <Filter>Engine\08. Module\AI\State\Trace</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

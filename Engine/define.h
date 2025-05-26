@@ -79,3 +79,17 @@ enum class EVENT_TYPE
 
 	END,
 };
+
+enum class MON_STATE
+{
+    IDLE,
+    PATROL1,
+    PATROL2,
+    PATROL3,
+    PATROL4,
+    TRACE,
+    ATT,
+    RUN,
+    DEAD,
+
+};

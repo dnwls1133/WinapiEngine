@@ -9,19 +9,21 @@
 #include "CResMgr.h"
 #include "CTexture.h"
 
+#include "AI.h"
+
+
 #include "CMissile.h"
 #include "CCollider.h"
 
+
+
 CMonster::CMonster()
-	:m_vCenterPos(Vec2(0.f,0.f))
-	,m_fSpeed(100.f)
-	,m_fMaxDistance(100.f)
-	,m_iDir(1)
+	:m_fSpeed(100.f)
 	, dAccTime0(0.)
 	, dAccTime1(0.)
 	, m_pTex(nullptr)
 {
-	//Texture ∑Œµ˘«œ±‚
+	//Texture Î°úÎî©ÌïòÍ∏∞
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"Enemie0Tex", L"texture\\Enemie0.bmp");
 	CreaeteCollider();
 	GetCollider()->SetScale(Vec2(50.f, 50.f));
@@ -29,37 +31,15 @@ CMonster::CMonster()
 
 CMonster::~CMonster()
 {
+    if (nullptr != m_pAI)
+    {
+        delete m_pAI;
+    }
 }
 
 void CMonster::update()
 {
-	Vec2 vCurPos = GetPos();
-	// ¡¯«‡ πÊ«‚¿∏∑Œ Ω√∞£¥Á m_fSpeed∑Œ ¿Ãµø∞°¥… 
-	vCurPos.x += fDT * m_fSpeed * m_iDir;
-	float fDist = abs(m_vCenterPos.x - vCurPos.x) - m_fMaxDistance;
-	if (0.f < fDist)
-	{
-		m_iDir *= -1;
-		vCurPos.x += fDist * m_iDir; // «—∞Ë¡°ø°º≠ √ ∞˙«— ∞≈∏Æ∏∏≈≠ ¥ŸΩ√ ª©¡ÿ¥Ÿ.
-	}
-	SetPos(vCurPos);
-	dAccTime0 += fDT;
-	dAccTime1 += fDT;
-	if (dAccTime0 > 2.f)
-	{
-		if (dAccTime1 > 0.25f)
-		{
-			dAccTime1 = 0;
-			CreateMissile(0);
-		
-			
-			
-		}
-	}
-	if (dAccTime0 > 2.5f)
-	{
-		dAccTime0 = 0;
-	}
+    m_pAI->update();
 
 	
 }
@@ -128,5 +108,10 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 	CObject* pOtherobj = _pOther->GetObj();
 	
 
+}
+void CMonster::SetAI(AI* _AI)
+{
+    m_pAI = _AI;
+    m_pAI->m_pOwner = this;
 }
 
