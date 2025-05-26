@@ -56,11 +56,12 @@ void CScene_Start::Enter()
 
 	// BackGround Object 추가
 	CObject* pBackgroundObj = new CBackground;
-	pBackgroundObj->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
+	pBackgroundObj->SetPos(Vec2(vResolution.x / 3, vResolution.y / 2));
 	pBackgroundObj->SetScale(Vec2(100.f, 100.f));
 	pBackgroundObj->SetName(L"Background");
 	AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
 
+    
 	// Player Object 추가
 	CObject* pObj = new CPlayer;
 	pObj->SetPos(Vec2(640.f, 384.f));
