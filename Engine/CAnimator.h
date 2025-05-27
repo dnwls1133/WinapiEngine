@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 
 class CObject;
 class CAnimation;
@@ -8,17 +8,17 @@ class CTexture;
 class CAnimator
 {
 private:
-	map<wstring, CAnimation*>	m_mapAnim;		// ëª¨ë“  Animation
-	CAnimation*					m_pCurAnim;		// í˜„ì¬ ì¬ìƒì¤‘ì¸ Animation
-	CObject*					m_pOwner;		// Animator ì†Œìœ  ì˜¤ë¸Œì íŠ¸
-	bool						m_bRepeat;		// ë°˜ë³µì¬ìƒ ì—¬ë¶€
+	map<wstring, CAnimation*>	m_mapAnim;		// ¸ğµç Animation
+	CAnimation*					m_pCurAnim;		// ÇöÀç Àç»ıÁßÀÎ Animation
+	CObject*					m_pOwner;		// Animator ¼ÒÀ¯ ¿ÀºêÁ§Æ®
+	bool						m_bRepeat;		// ¹İº¹Àç»ı ¿©ºÎ
 public:
 	CObject* GetObj() { return m_pOwner; }
 
 public:
 	void CreateAnimation(const wstring& _strName, CTexture* _pTex, Vec2 _vLT,
 		Vec2 _vSliceSize, Vec2 _vStep, float _fDuration,UINT _iFrameCount);
-	CAnimation* const FindAnimation(const wstring& _strName);
+	CAnimation* FindAnimation(const wstring& _strName);
 	void Play(const wstring& _strName,bool _bRepeat);
 
 	void update();

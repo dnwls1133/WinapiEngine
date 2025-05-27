@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "CTile.h"
 #include "CTexture.h"
 
@@ -20,8 +20,8 @@ void CTile::render(HDC _dc)
 		return;
 	}
 
-	UINT iWidit = m_pTileTex->GetWidth();
-	UINT iHeight = m_pTileTex->GetHeight();
+	UINT iWidit = m_pTileTex->Width();
+	UINT iHeight = m_pTileTex->Height();
 
 	UINT iMaxCol = iWidit / TILE_SIZE;
 	UINT iMaxRaw = iHeight / TILE_SIZE;

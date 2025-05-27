@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <Windows.h>
 
@@ -24,13 +24,10 @@ using std::map;
 using std::make_pair;
 
 #include <string>
-#include <string_view>
 
 using std::string;
 using std::wstring;
 using std::to_wstring;
-
-#include <filesystem>
 
 #pragma comment(lib, "Msimg32.lib")
 #include <gdiplus.h>

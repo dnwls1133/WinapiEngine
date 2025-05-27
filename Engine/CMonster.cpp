@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 
 #include "CSceneMgr.h"
 #include "CScene.h"
@@ -46,8 +46,8 @@ void CMonster::update()
 
 void CMonster::render(HDC _dc)
 {
-	int iWidith = (int)m_pTex->GetWidth();
-	int iHeight = (int)m_pTex->GetHeight();
+	int iWidith = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
 	Vec2 vPos = GetPos();
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(vPos);
 	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))

@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "CAnimation.h"
 #include "CAnimator.h"
 #include "CTexture.h"
@@ -55,8 +55,8 @@ void CAnimation::render(HDC _dc)
 
 
 	
-	int iWidith = (int)m_pTex->GetWidth();
-	int iHeight = (int)m_pTex->GetHeight();
+	int iWidith = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
 
 
 	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))

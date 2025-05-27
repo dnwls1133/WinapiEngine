@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "CScene_Title.h"
 
 #include "CCore.h"
@@ -11,6 +11,8 @@
 #include "CSceneMgr.h"
 
 #include "CTitleBackground.h"
+#include "CTitleLogo.h"
+// #include "CTitleMessage.h"
 
 CScene_Title::CScene_Title()
     : m_pBackground(nullptr)

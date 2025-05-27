@@ -137,9 +137,6 @@
     <Filter Include="Engine\08. Module\AI\State\Idle">
       <UniqueIdentifier>{402381ae-67d8-41c9-8b9b-a81d71bef049}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03.Manager\SoundMgr">
-      <UniqueIdentifier>{e4ab1589-c4f4-4917-bbea-169caf26f115}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -254,6 +251,7 @@
     <ClInclude Include="CBtnUI.h">
       <Filter>Engine\04.Object\UI\ButtonUI</Filter>
     </ClInclude>
+    <ClInclude Include="CTitleLogo.h" />
     <ClInclude Include="CScene_Title.h">
       <Filter>Engine\05.Scene\Scene_Title</Filter>
     </ClInclude>
@@ -277,19 +275,6 @@
     </ClInclude>
     <ClInclude Include="CTraceState.h">
       <Filter>Engine\08. Module\AI\State\Trace</Filter>
-    </ClInclude>
-    <ClInclude Include="CAnimationBase.h">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="CCellAnimation.h">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="CSheetAnimation.h">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="CScene_TestAnimation.h" />
-    <ClInclude Include="CSoundMgr.h">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -400,6 +385,7 @@
     <ClCompile Include="CBtnUI.cpp">
       <Filter>Engine\04.Object\UI\ButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="CTitleLogo.cpp" />
     <ClCompile Include="CScene_Title.cpp">
       <Filter>Engine\05.Scene\Scene_Title</Filter>
     </ClCompile>
@@ -423,19 +409,6 @@
     </ClCompile>
     <ClCompile Include="CTraceState.cpp">
       <Filter>Engine\08. Module\AI\State\Trace</Filter>
-    </ClCompile>
-    <ClCompile Include="CAnimationBase.cpp">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="CCellAnimation.cpp">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="CSheetAnimation.cpp">
-      <Filter>Engine\07. Component\Animator\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="CScene_TestAnimation.cpp" />
-    <ClCompile Include="CSoundMgr.cpp">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
