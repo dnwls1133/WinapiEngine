@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CScene_Start.h"
 
 #include "CObject.h"
@@ -61,6 +61,8 @@ void CScene_Start::Enter()
 	pBackgroundObj->SetName(L"Background");
 	AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
 
+    
+    
 	// Player Object 추가
 	CObject* pObj = new CPlayer;
 	pObj->SetPos(Vec2(640.f, 384.f));
@@ -68,29 +70,13 @@ void CScene_Start::Enter()
 	pObj->SetName(L"Player");
 	AddObject(pObj, GROUP_TYPE::PLAYER);
 
-	
+    RegisterPlayer(pObj);
 
 
 	// Monster Object 추가
-	int Monstercount = 1;
-	float fObjScale = 50.f;
-
-    AI* pAI = new AI;
-    pAI->AddState(new CIdleState);
-    //pAI->AddState(new CTraceState);
-
-	CMonster* pMonsterObj = nullptr;
-	for (int i = 0; i < Monstercount; ++i)
-	{
-		CMonster* pMonsterObj = new CMonster;
-		pMonsterObj->SetPos(vResolution/2.f - Vec2(0.f,300.f));
-		pMonsterObj->SetScale(Vec2(50.f, 50.f));
-		pMonsterObj->SetName(L"Monster");
-        pMonsterObj->SetAI(pAI);
-
-
-		AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
-	}
+    CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL, vResolution / 2.f - Vec2(0.f, 300.f));
+    pMon->SetName(L"Monster");
+    AddObject(pMon, GROUP_TYPE::MONSTER);
 
     // 타일 로딩
     //LoadTile(L"Tile\\Start.tile");

@@ -29,7 +29,7 @@ CScene_Title::~CScene_Title()
 void CScene_Title::Enter()
 {
     const Vec2 vResolution = CCore::GetInst()->GetResolution();
-
+    int a = 0;
     m_pBackground = new CTitleBackground();
     m_pBackground->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
     m_pBackground->SetScale(Vec2(1, 1));

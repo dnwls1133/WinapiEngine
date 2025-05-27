@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CAnimator.h"
 
 #include "CAnimation.h"
@@ -28,6 +28,16 @@ void CAnimator::CreateAnimation(const wstring& _strName, CTexture* _pTex
 	pAnim->Create(_pTex, _vLT, _vSliceSize, _vStep, _fDuration,_iFrameCount);
 
 	m_mapAnim.insert(make_pair(_strName, pAnim));
+}
+
+void CAnimator::LoadAnimation(const wstring& _strRelativePath)
+{
+    CAnimation* pAnim = new CAnimation;
+    pAnim->Load(_strRelativePath);
+
+    pAnim->m_pAnimator = this;
+    m_mapAnim.insert(make_pair(pAnim->GetName(), pAnim));
+
 }
 
 CAnimation* CAnimator::FindAnimation(const wstring& _strName)
