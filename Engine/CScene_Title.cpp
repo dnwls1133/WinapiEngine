@@ -10,9 +10,13 @@
 #include "CScene.h"
 #include "CSceneMgr.h"
 
+#include "CSound.h"
+#include "CSoundMgr.h"
+
+#include "CResMgr.h"
+
 #include "CTitleBackground.h"
 #include "CTitleLogo.h"
-// #include "CTitleMessage.h"
 
 CScene_Title::CScene_Title()
     : m_pBackground(nullptr)
@@ -35,6 +39,14 @@ void CScene_Title::Enter()
     m_pBackground->SetScale(Vec2(1, 1));
     m_pBackground->SetName(L"Background");
     AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
+
+    auto testBGM = CResMgr::GetInst()->LoadSound(L"Test BGM", L"content\\sound\\BGM_Test.mp3");
+    if (!testBGM)
+    {
+        return;
+    }
+
+    CSoundMgr::GetInst()->PlayBGM(testBGM);
 }
 
 void CScene_Title::update()

@@ -1,16 +1,19 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CResMgr.h"
 
 #include "CPathMgr.h"
-#include "CTexture.h"
+
 #include "CResource.h"
+#include "CTexture.h"
+#include "CSound.h"
+
 CResMgr::CResMgr()
 {
 
 }
 CResMgr::~CResMgr()
 {
-	Safe_Delete_Map(m_mapTex);
+	Safe_Delete_Map(m_Resources);
 }
 
 CTexture* CResMgr::LoadTexture(const wstring& _strKey, const wstring& _strRelativePath)
@@ -28,9 +31,7 @@ CTexture* CResMgr::LoadTexture(const wstring& _strKey, const wstring& _strRelati
 	pTex->Load(strFilPath);
 	pTex->SetKey(_strKey);
 	pTex->SetRelativePath(_strRelativePath);
-	m_mapTex.insert(make_pair(_strKey, pTex));
-	
-	
+	m_Resources.insert(make_pair(_strKey, pTex));
 	
 	return pTex;
 }
@@ -47,7 +48,7 @@ CTexture* CResMgr::CreateTexture(const wstring& _strKey, UINT _iWidth, UINT _iHe
     pTex = new CTexture;
     pTex->Create(_iWidth, _iHeight);
     pTex->SetKey(_strKey);
-    m_mapTex.insert(make_pair(_strKey, pTex));
+    m_Resources.insert(make_pair(_strKey, pTex));
 
 
 
@@ -56,12 +57,38 @@ CTexture* CResMgr::CreateTexture(const wstring& _strKey, UINT _iWidth, UINT _iHe
 
 CTexture* CResMgr::FindTexture(const wstring& _strKey)
 {
-	map<wstring, CResource*>::iterator iter = m_mapTex.find(_strKey);
+	map<wstring, CResource*>::iterator iter = m_Resources.find(_strKey);
 	
-	if (iter == m_mapTex.end())
+	if (iter == m_Resources.end())
 	{
 		return nullptr;
 	}
 	return (CTexture*)iter->second;
 	
+}
+
+CSound* const CResMgr::LoadSound(const wstring& key_, const wstring& relativePath_)
+{
+    CSound* pTex = FindSound(key_);
+    if (nullptr != pTex)
+    {
+        return pTex;
+    }
+
+    pTex = new CSound();
+    pTex->Load(relativePath_);
+    pTex->SetKey(key_);
+    m_Resources.insert(make_pair(key_, pTex));
+    return pTex;
+}
+
+CSound* const CResMgr::FindSound(const wstring& key_)
+{
+    auto iter = m_Resources.find(key_);
+    if (iter == m_Resources.end())
+    {
+        return nullptr;
+    }
+
+    return dynamic_cast<CSound*>(iter->second);
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CScene.h"
 class CScene;
@@ -7,6 +7,8 @@ class CSceneMgr;
 class CTitleBackground;
 class CTitleLogo;
 // class CTitleMessage;
+
+class CSound;
 
 class CScene_Title :
     public CScene
@@ -25,5 +27,5 @@ private:
     CTitleLogo* m_pLogo;
 
     // CTitleMessage* m_pMessage;
-
+    // CSound* m_pTheme;
 };
