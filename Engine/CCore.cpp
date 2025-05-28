@@ -13,6 +13,7 @@
 
 #include "CObject.h"
 #include "CTexture.h"
+#include "CScene.h"
 
 
 #include "CCamera.h"
@@ -53,7 +54,8 @@ int CCore::init(HWND _hWnd, POINT _ptresolution)
 	m_ptResolution = _ptresolution;
 	// 해상도에 맞게 윈도우 크기 조정
     ChangeWindowSize(m_ptResolution, false);
-
+    RECT rt = { 0,0, m_ptResolution.x,m_ptResolution.y };
+    SetWindowPos(m_hWnd, nullptr, 100, 50, rt.right - rt.left, rt.bottom - rt.top, 0);
     // 메뉴바 생성
     m_hMenu = LoadMenu(nullptr, MAKEINTRESOURCEW(IDC_ENGINE));
 
@@ -108,8 +110,8 @@ void CCore::progress()
     Clear();
 
 	CSceneMgr::GetInst()->render((m_pMemTex->GetDC()));
-    CCamera::GetInst()->render((m_pMemTex->GetDC()));
 
+    CCamera::GetInst()->render((m_pMemTex->GetDC()));
 
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y
 		, m_pMemTex->GetDC(), 0, 0, SRCCOPY);

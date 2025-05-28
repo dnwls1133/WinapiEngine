@@ -30,7 +30,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType,Vec2 _vPos)
         info.fAttRange = 10.f;
         info.fHP = 50.f;
         info.fRecogRange = 300.f;
-        info.fSpeed = 150.f;
+        info.fSpeed = 50.f;
         info.ePattern = MISSILE_PTRN::PTRN1;
 
         pMon->SetMonInfo(info);

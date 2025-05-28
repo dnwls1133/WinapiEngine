@@ -143,9 +143,6 @@
     <Filter Include="Engine\09. Factory\MonFactory">
       <UniqueIdentifier>{a612a1f6-1341-4ae5-b546-3aaa184b4cd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03.Manager\SoundMgr">
-      <UniqueIdentifier>{bf045883-3864-45c5-82e4-73674498bda7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -288,9 +285,7 @@
     <ClInclude Include="CMonFactory.h">
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClInclude>
-    <ClInclude Include="CSoundMgr.h">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
-    </ClInclude>
+    <ClInclude Include="CDeadState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -428,8 +423,6 @@
     <ClCompile Include="CMonFactory.cpp">
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClCompile>
-    <ClCompile Include="CSoundMgr.cpp">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
-    </ClCompile>
+    <ClCompile Include="CDeadState.cpp" />
   </ItemGroup>
 </Project>

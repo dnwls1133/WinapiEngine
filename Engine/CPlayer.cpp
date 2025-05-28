@@ -33,13 +33,13 @@ CPlayer::CPlayer()
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player_Walk.bmp");
 	CreaeteAnimator();
 
-    //GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
+    GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
 
-	GetAnimator()->CreateAnimation(L"Player_walk",m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 19);
-	
+	//GetAnimator()->CreateAnimation(L"Player_walk",m_pTex, Vec2(0.f, 0.f), Vec2(140.f, 140.f), Vec2(140.f, 0.f), 0.05f, 19);
+	//
 
-    // Animation 저장해보기
-    GetAnimator()->FindAnimation(L"Player_walk")->Save(L"animation\\player_walk_left.anim");
+ //   // Animation 저장해보기
+    //GetAnimator()->FindAnimation(L"Player_walk")->Save(L"animation\\player_walk_left.anim");
 
     GetAnimator()->Play(L"Player_walk", true);
 }
@@ -56,7 +56,7 @@ void CPlayer::update()
 	{
 		dAcc += fDT;
 		vPos.y -= 350.f * fDT;
-		if (dAcc > 1.5f)
+		if (dAcc > 1.0f)
 		{
 			dAcc = 0;
 			SetCollideron();
@@ -65,7 +65,7 @@ void CPlayer::update()
 		SetPos(vPos);
 
 	}
-	else
+	
 	{
 		if (KEY_HOLD(KEY::W))
 		{

@@ -16,6 +16,8 @@ CBackground::CBackground()
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"Background0tex", L"texture\\Background110.bmp");
 	m_strKey = L"Background0tex";
 	m_strRelativePath = L"texture\\Background0.bmp";
+    m_vBScale.x = m_pTex->Width();
+    m_vBScale.y = m_pTex->Height();
 }
 CBackground::~CBackground()
 {
