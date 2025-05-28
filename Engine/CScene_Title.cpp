@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CScene_Title.h"
 
 #include "CCore.h"
@@ -10,9 +10,13 @@
 #include "CScene.h"
 #include "CSceneMgr.h"
 
+#include "CSound.h"
+#include "CSoundMgr.h"
+
+#include "CResMgr.h"
+
 #include "CTitleBackground.h"
 #include "CTitleLogo.h"
-// #include "CTitleMessage.h"
 
 CScene_Title::CScene_Title()
     : m_pBackground(nullptr)
@@ -23,24 +27,47 @@ CScene_Title::CScene_Title()
 
 CScene_Title::~CScene_Title()
 {
-
+    
 }
 
 void CScene_Title::Enter()
 {
     const Vec2 vResolution = CCore::GetInst()->GetResolution();
-    int a = 0;
+
     m_pBackground = new CTitleBackground();
     m_pBackground->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
     m_pBackground->SetScale(Vec2(1, 1));
     m_pBackground->SetName(L"Background");
     AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
+
+    auto testBGM = CResMgr::GetInst()->LoadSound(L"Test BGM", L"content\\sound\\BGM_Test.mp3");
+    if (!testBGM)
+    {
+        return;
+    }
+
+    CSoundMgr::GetInst()->PlayBGM(testBGM);
 }
 
 void CScene_Title::update()
 {
     CScene::update();
 
+    if (KEY_TAP(KEY::ENTER))
+    {
+        if (!m_pBackground)
+            return;
+
+        if (m_pBackground->IsPlayIntroAnimation())
+        {
+            m_pBackground->ChangeState();
+            return;
+        }
+        else
+        {
+            ChangeScene(SCENE_TYPE::START);
+        }
+    }
 }
 
 void CScene_Title::Exit()

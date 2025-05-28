@@ -1,12 +1,12 @@
-#pragma once
+ï»¿#pragma once
 class CResource
 {
 private:
-	wstring m_strKey;          // ¸®¼Ò½º¸¦ ºÒ·¯¿Ã¶§ ÇÊ¿äÇÑ Å°°ª
-	wstring m_strRelativePath; // ¸®¼Ò¸£ »ó´ë°æ·Î
+	wstring m_strKey;          // ë¦¬ì†ŒìŠ¤ë¥¼ ë¶ˆëŸ¬ì˜¬ë•Œ í•„ìš”í•œ í‚¤ê°’
+	wstring m_strRelativePath; // ë¦¬ì†Œë¥´ ìƒëŒ€ê²½ë¡œ
 
 public:
-	void SetKey(const wstring& _strKey) { m_strKey = _strKey;}
+	void SetKey(const wstring& _strKey) { m_strKey = _strKey; }
 	void SetRelativePath(const wstring& _strPath) { m_strRelativePath = _strPath; }
 	
 	const wstring& GetKey() { return m_strKey; }
