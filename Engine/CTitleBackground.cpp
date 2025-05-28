@@ -20,13 +20,13 @@ CTitleBackground::~CTitleBackground()
 
 void CTitleBackground::update()
 {
-    m_dAnimDeltaTime += CTimeMgr::GetInst()->GetfDT();
+    m_fAnimDeltaTime += CTimeMgr::GetInst()->GetfDT();
 
-    if (m_dAnimDeltaTime >= m_dAnimTime)
+    if (m_fAnimDeltaTime >= m_fAnimTime)
     {
-        m_dAnimDeltaTime = 0.0f;
+        m_fAnimDeltaTime = 0.0f;
 
-        if (!m_bIsIntroState)
+        if (m_bIsIntroState)
         {
             if (++m_currentIndex >= IDX_INTRO_END)
             {
@@ -84,4 +84,9 @@ void CTitleBackground::ChangeState() noexcept
     else {
         m_currentIndex = IDX_INTRO_START;
     }
+}
+
+bool CTitleBackground::IsPlayIntroAnimation() const noexcept
+{
+    return m_bIsIntroState;
 }
