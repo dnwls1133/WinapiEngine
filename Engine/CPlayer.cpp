@@ -65,7 +65,7 @@ void CPlayer::update()
 		SetPos(vPos);
 
 	}
-	else
+	
 	{
 		if (KEY_HOLD(KEY::W))
 		{

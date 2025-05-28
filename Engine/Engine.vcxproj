@@ -44,7 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -52,7 +52,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -161,6 +161,7 @@
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CColliderMgr.h" />
     <ClInclude Include="CCore.h" />
+    <ClInclude Include="CDeadState.h" />
     <ClInclude Include="CEenemi0.h" />
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CIdleState.h" />
@@ -181,7 +182,6 @@
     <ClInclude Include="CScene_Title.h" />
     <ClInclude Include="CScene_Tool.h" />
     <ClInclude Include="CSound.h" />
-    <ClInclude Include="CSoundMgr.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
@@ -212,6 +212,7 @@
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CColliderMgr.cpp" />
     <ClCompile Include="CCore.cpp" />
+    <ClCompile Include="CDeadState.cpp" />
     <ClCompile Include="CEenemi0.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
     <ClCompile Include="CIdleState.cpp" />
@@ -232,7 +233,6 @@
     <ClCompile Include="CScene_Title.cpp" />
     <ClCompile Include="CScene_Tool.cpp" />
     <ClCompile Include="CSound.cpp" />
-    <ClCompile Include="CSoundMgr.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
