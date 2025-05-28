@@ -7,7 +7,7 @@ class CSoundMgr
     SINGLE(CSoundMgr);
 public:
     void PlayBGM(CSound* const bgm_) const;
-    void PlaySE(CSound* const se_);
+    void PlaySE(const std::wstring& path_);
 
     // void StopBGM();
     // void PauseBGM();
