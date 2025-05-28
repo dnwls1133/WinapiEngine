@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CTexture.h"
 #include "CCore.h"
 
@@ -42,17 +42,23 @@ void CTexture::Load(const wstring& _strFilePath)
 
 void CTexture::Create(UINT _iWidth, UINT _iHeight)
 {
-    HDC maindc = CCore::GetInst()->GetMainDC();
-    m_hBit = CreateCompatibleBitmap(maindc, _iWidth, _iHeight);
-    m_hdc = CreateCompatibleDC(maindc);
+   HDC maindc = CCore::GetInst()->GetMainDC();
+   m_hBit = CreateCompatibleBitmap(maindc, _iWidth, _iHeight);
+   m_hdc = CreateCompatibleDC(maindc);
 
+   // Select the new bitmap into the DC and store the old bitmap
+   HBITMAP hOldBit = (HBITMAP)SelectObject(m_hdc, m_hBit);
 
-    
-    HBITMAP hOldBit = (HBITMAP)SelectObject(m_hdc, m_hBit);
-    DeleteObject(hOldBit);
+   // Ensure the old bitmap is deleted only if it exists
+   if (hOldBit != nullptr)
+   {
+       DeleteObject(hOldBit);
+   }
 
-    GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
+   // Retrieve bitmap information
+   GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
 
-
-    assert(m_hBit);
+   // Assert to ensure the bitmap creation was successful
+   assert(m_hBit);
 }
+
