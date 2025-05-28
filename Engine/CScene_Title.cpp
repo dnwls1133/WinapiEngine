@@ -68,6 +68,10 @@ void CScene_Title::update()
             ChangeScene(SCENE_TYPE::START);
         }
     }
+
+    static CSound* testSE = CResMgr::GetInst()->LoadSound(L"Test SE", L"content\\sound\\SE_Test.mp3");
+    if (KEY_TAP(KEY::SPACE))
+        CSoundMgr::GetInst()->PlaySE(testSE);
 }
 
 void CScene_Title::Exit()

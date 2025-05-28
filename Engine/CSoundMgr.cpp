@@ -23,7 +23,8 @@ void CSoundMgr::PlayBGM(CSound* const bgm_) const
     bgm_->Play(true);
 }
 
-void CSoundMgr::PlaySE(const std::wstring& path_)
+void CSoundMgr::PlaySE(CSound* const se_)
 {
-    
+    se_->SetVolume(m_fSEVolume);
+    se_->Play(false);
 }
