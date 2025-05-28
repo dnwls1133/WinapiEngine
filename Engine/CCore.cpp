@@ -13,7 +13,6 @@
 
 #include "CObject.h"
 #include "CTexture.h"
-#include "CScene.h"
 
 
 #include "CCamera.h"
@@ -109,8 +108,8 @@ void CCore::progress()
     Clear();
 
 	CSceneMgr::GetInst()->render((m_pMemTex->GetDC()));
-
     CCamera::GetInst()->render((m_pMemTex->GetDC()));
+
 
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y
 		, m_pMemTex->GetDC(), 0, 0, SRCCOPY);

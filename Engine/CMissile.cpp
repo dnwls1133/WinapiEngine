@@ -2,12 +2,7 @@
 #include "CMissile.h"
 #include "CTimeMgr.h"
 #include "CResMgr.h"
-
-#include "CSceneMgr.h"
-#include "CScene.h"
-
 #include "CTexture.h"
-#include "CBackground.h"
 
 #include "CCore.h"
 #include "CCollider.h"
@@ -52,9 +47,9 @@ void CMissile::init(GROUP_TYPE _eType)
 		break;
 	case GROUP_TYPE::PROJ_MONSTER:
 	{
-		m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex0", L"texture\\Monster_Middle_Bullet.png");
+		m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex0", L"texture\\MonsterMissile0.png");
 		CreaeteAnimator();
-		GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(42.f, 42.f), Vec2(42.f, 0.f), 0.5f, 2);
+		GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 0.05f, 4);
 		GetAnimator()->Play(L"MonsterMissile0", true);
 	}
 	break;
@@ -65,13 +60,8 @@ void CMissile::update()
 {
 	Vec2 vPos = GetPos();
 	Vec2 resolution = CCore::GetInst()->GetResolution();
-    CBackground* Background = (CBackground*)CSceneMgr::GetInst()->GetCurScene()->GetBackground();
-    Vec2 vBackPos = Background->GetPos();
-    Vec2 vBackScale = Background->GetbackgroundScale();
-
-	if (vPos.y > resolution.y || vPos.y < -100.f
-        || vPos.x > vBackPos.x + vBackScale.x/2 + 50.f
-        || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f)
+	
+	if (vPos.y > resolution.y || vPos.y < -100.f)
 	{
 		DeleteObject(this);
 	}

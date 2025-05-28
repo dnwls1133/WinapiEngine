@@ -289,12 +289,15 @@
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="CDeadState.h" />
 =======
     <ClInclude Include="CSoundMgr.h">
       <Filter>Engine\03.Manager\SoundMgr</Filter>
     </ClInclude>
 >>>>>>> main
+=======
+>>>>>>> parent of 3bb6aa6 (123)
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -433,11 +436,14 @@
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="CDeadState.cpp" />
 =======
     <ClCompile Include="CSoundMgr.cpp">
       <Filter>Engine\03.Manager\SoundMgr</Filter>
     </ClCompile>
 >>>>>>> main
+=======
+>>>>>>> parent of 3bb6aa6 (123)
   </ItemGroup>
 </Project>

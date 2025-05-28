@@ -17,8 +17,6 @@
 #include "CTexture.h"
 #include "CCamera.h"
 
-#include "SelectGDI.h"
-
 #include "AI.h"
 #include "CState.h"
 #include "CIdleState.h"
@@ -50,23 +48,7 @@ void CScene_Start::update()
 	
 
 }
-void CScene_Start::render(HDC _dc)
-{
-    CScene::render(_dc);
-    CBackground* back = (CBackground*)GetBackground();
-    Vec2 backinfo = back->GetbackgroundScale();
-    Vec2 backPos = back->GetPos();
-    POINT resolution = CCore::GetInst()->GetResolution();
-    SelectGDI gdi(_dc, BRUSH_TYPE::BLACK);
-    Rectangle(_dc, 0, 0
-        , (int)(backPos.x - backinfo.x / 2)
-        , (int)(backPos.y + backinfo.y / 2));
-    Rectangle(_dc
-        , (int)(backPos.x + backinfo.x / 2)
-        , 0
-        , (int)resolution.x
-        , (int)resolution.y);
-}
+
 void CScene_Start::Enter()
 {
 	Vec2 vResolution = CCore::GetInst()->GetResolution();
@@ -79,7 +61,7 @@ void CScene_Start::Enter()
 	pBackgroundObj->SetName(L"Background");
 	AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
 
-    RegisterBackground(pBackgroundObj);
+    
     
 	// Player Object 추가
 	CObject* pObj = new CPlayer;
@@ -118,8 +100,6 @@ void CScene_Start::Enter()
 
 
 }
-
-
 
 
 void CScene_Start::Exit()

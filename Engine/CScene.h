@@ -15,8 +15,6 @@ private: // 자식 클래스에게 멤버함수 권한 부여
 	UINT			 m_iTileY;  // 타일 세로 개수
 
     CObject*         m_pPlayer; // Player
-    CObject*         m_pBackground; // Background
-
 
 	bool			 is_change;
 public:
@@ -26,7 +24,6 @@ public:
 	UINT GetTileY() { return m_iTileY; }
 
     CObject* GetPlayer() { return m_pPlayer; }
-    CObject* GetBackground() { return m_pBackground; }
 
 	void SetChange() 
 	{
@@ -44,7 +41,7 @@ public:
 public:
 	void AddObject(CObject* _pObj, GROUP_TYPE _eType){m_arrObj[(UINT)_eType].push_back(_pObj);}
     void RegisterPlayer(CObject* _pPlayer) {m_pPlayer = _pPlayer;}
-    void RegisterBackground(CObject* _pBackground) { m_pBackground = _pBackground; }
+
 
 	const vector<CObject*>& GetGroupObject(GROUP_TYPE _eType) { return m_arrObj[(UINT)_eType]; }
 	
