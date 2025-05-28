@@ -9,7 +9,8 @@ private:
     AI*       m_pAI;
     MON_STATE m_eState;
 
-
+public:
+    float     m_fAdt;
 public:
     AI* GetAi() { return m_pAI; }
     MON_STATE GetType() { return m_eState; }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CScene.h"
 class CScene_Start :
     public CScene
@@ -6,6 +6,7 @@ class CScene_Start :
 public:
     virtual void update();
     virtual void Enter();
+    virtual void render(HDC _dc);
     virtual void Exit();
 public:
     CScene_Start();

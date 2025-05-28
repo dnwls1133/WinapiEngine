@@ -107,7 +107,17 @@ void CMonster::CreateMissile(int type)
 void CMonster::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherobj = _pOther->GetObj();
-	
+    if (pOtherobj->GetName() == L"Missile_Player")
+    {
+      
+        m_tInfo.fHP -= 5;
+        if (m_tInfo.fHP < 0)
+        {
+           // m_pAI->ChangeState(MON_STATE::DEAD);
+            DeleteObject(this);
+        }
+       
+    }
 
 }
 void CMonster::SetAI(AI* _AI)
