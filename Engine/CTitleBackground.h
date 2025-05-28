@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CObject.h"
 
@@ -19,6 +19,9 @@ public:
     virtual void render(HDC dc) override;
 
     void ChangeState() noexcept;
+
+    void PlayIntroAnimation();
+    void PlayTitleAnimation();
 
     bool IsPlayIntroAnimation() const noexcept;
 
@@ -55,9 +58,12 @@ private:
      */
     size_t m_currentIndex = 0;
 
-    float m_dAnimDeltaTime = 0.0f;
+    static constexpr float m_fAnimTime = 0.05f;
 
-    static constexpr float m_dAnimTime = 0.05f;
+    /**
+     * @brief 스프라이트 
+     */
+    float m_fAnimDeltaTime = 0.0f;
 
     bool m_bIsIntroState = false;
 };

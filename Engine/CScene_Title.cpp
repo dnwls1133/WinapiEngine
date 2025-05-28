@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CScene_Title.h"
 
 #include "CCore.h"
@@ -23,13 +23,13 @@ CScene_Title::CScene_Title()
 
 CScene_Title::~CScene_Title()
 {
-
+    
 }
 
 void CScene_Title::Enter()
 {
     const Vec2 vResolution = CCore::GetInst()->GetResolution();
-    int a = 0;
+
     m_pBackground = new CTitleBackground();
     m_pBackground->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
     m_pBackground->SetScale(Vec2(1, 1));
@@ -41,6 +41,21 @@ void CScene_Title::update()
 {
     CScene::update();
 
+    if (KEY_TAP(KEY::ENTER))
+    {
+        if (!m_pBackground)
+            return;
+
+        if (m_pBackground->IsPlayIntroAnimation())
+        {
+            m_pBackground->ChangeState();
+            return;
+        }
+        else
+        {
+            ChangeScene(SCENE_TYPE::START);
+        }
+    }
 }
 
 void CScene_Title::Exit()
