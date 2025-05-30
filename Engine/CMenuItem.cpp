@@ -3,6 +3,29 @@
 
 #include "CTexture.h"
 
+#include "CSound.h"
+#include "CSoundMgr.h"
+
+#include "CResMgr.h"
+
+// CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_)
+//     : m_pTexture(idleTex_)
+//     , m_pIdleTexture(idleTex_)
+//     , m_pHoverTexture(hoverTex_)
+// {
+//     // SetScale();
+//     // m_pHoverSound = 
+// }
+
+CMenuItem::CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_)
+    : m_pTexture(idleTex_)
+    , m_pIdleTexture(idleTex_)
+    , m_pHoverTexture(hoverTex_)
+{
+    m_pHoverSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\menu_click.mp3");
+    m_pClickSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\menu_click.mp3");
+}
+
 void CMenuItem::MouseOn()
 {
     if (m_bHoverFlag)
@@ -15,6 +38,9 @@ void CMenuItem::MouseOn()
     const float curScaleY = GetScale().y * 1.05f;
 
     SetScale(Vec2(curScaleX, curScaleY));
+
+    if (m_pHoverSound)
+        CSoundMgr::GetInst()->PlaySE(m_pHoverSound);
 
     m_bHoverFlag = true;
 }
@@ -45,6 +71,9 @@ void CMenuItem::MouseLbtnUP()
     const float curScaleX = GetScale().x * 1.1f;
     const float curScaleY = GetScale().y * 1.1f;
     SetScale(Vec2(curScaleX, curScaleY));
+
+    if (m_pClickSound)
+        CSoundMgr::GetInst()->PlaySE(m_pClickSound);
 
     m_bClickedFlag = true;
 }
