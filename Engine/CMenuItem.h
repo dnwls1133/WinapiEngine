@@ -23,6 +23,7 @@ public:
     }
 
     virtual void MouseOn() override;
+    virtual void MouseOff() override;
     virtual void MouseLbtnDown() override;
     virtual void MouseLbtnUP() override;
     // virtual void MouseLbtnClicked() override;
@@ -30,7 +31,8 @@ public:
     virtual void render(HDC canvas_) override;
 
 private:
-    bool m_bIsHover = false;
+    bool m_bHoverFlag = false;
+    bool m_bClickedFlag = false;
 
     CTexture* m_pTexture;               // 현재 사용중인 텍스쳐.
     CTexture* const m_pIdleTexture;     // 일반 텍스쳐.

@@ -62,4 +62,6 @@ private:
 
     bool m_bIsPlaying;
     bool m_bIsIntroState;
+
+    std::function<void()> m_pCallback;
 };

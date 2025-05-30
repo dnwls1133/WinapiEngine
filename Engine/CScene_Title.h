@@ -3,9 +3,11 @@
 #include "CScene.h"
 class CScene;
 
-class CTitleBackground;
 class CTitleLogo;
+class CTitleBackground;
 // class CTitleMessage;
+
+class CSound;
 
 class CBtnUI;
 
@@ -21,15 +23,26 @@ public:
     virtual void Exit() override;
 
 private:
+    // void mChangeToIntro();
+    // void mChangeToTitle();
+
     CTitleBackground* m_pBackground;    // 배경
 
-    CObject* m_pLogo;                   // 로고
+    CTitleLogo* m_pLogo;                   // 로고
     CObject* m_pMessage;                // 메시지
 
     CBtnUI* m_pStartButton;             // 시작 버튼
-    CBtnUI* m_pHowToPlayButton;         // 조작법 버튼
-    CBtnUI* m_pOptionButton;            // 옵션 버튼
-    CBtnUI* m_pCreditButton;            // 크레딧 버튼
+    CBtnUI* m_pManuelButton;            // 조작법 버튼
     CBtnUI* m_pExitButton;              // 종료 버튼
 
+    CSound* m_pTitleTheme;
+
+    enum class EState
+    {
+        None,
+        Intro,
+        Title,
+    };
+
+    EState m_CurrentState;
 };
