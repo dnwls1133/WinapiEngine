@@ -50,7 +50,7 @@ void AI::ChangeState(MON_STATE _eNextState)
     assert(m_pCurState != pNextState);
 
     m_pCurState->Exit();
-
+    
     m_pCurState = pNextState;
 
     m_pCurState->Enter();

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 
 #include "CCamera.h"
@@ -14,6 +14,8 @@ private:
 	wstring m_strName;
 	Vec2	m_vPos;
 	Vec2	m_vScale;
+
+
 
 	// Component
 	CCollider* m_pCollider;
@@ -58,12 +60,12 @@ public:
 
 	void component_render(HDC _dc);
 
-	virtual CObject* Clone() = 0; // º¹»ç »ı¼ºÀÚ´Â ÀÚ½ÄÀÌÀÖ´Â Å¬·¡½º¿¡¼­ ±¸ÇöµÇ¾îÀÖÀ¸¸é ¾ÈµÈ´Ù.
+	virtual CObject* Clone() = 0; // ë³µì‚¬ ìƒì„±ìëŠ” ìì‹ì´ìˆëŠ” í´ë˜ìŠ¤ì—ì„œ êµ¬í˜„ë˜ì–´ìˆìœ¼ë©´ ì•ˆëœë‹¤.
 
 public:
 	CObject();
-	CObject(const CObject& _origin); // ÀÚ½Ä Å¬·¡½º ÀÚÃ¼ÀûÀÎ º¹»ç »ı¼ºÀÚ¸¦ ±¸ÇöÇÏ¸é ºÎ¸ğÂÊ º¹»ç »ı¼ºÀÚ¸¦ »ç¿ëÇÏ°Ú´Ù°í ¸í½ÃÇØ¾ßÇÑ´Ù.
-	virtual ~CObject(); // ÀÚ½Ä Å¬·¡½ºÀÇ ¼Ò¸êÀÚµµ È£Ãâ ½ÃÅ°°Ô ÇÏ±âÀ§ÇØ ¼Ò¸êÀÚ °¡»óÇÔ¼ö·Î ÇØ¾ßÇÑ´Ù.
+	CObject(const CObject& _origin); // ìì‹ í´ë˜ìŠ¤ ìì²´ì ì¸ ë³µì‚¬ ìƒì„±ìë¥¼ êµ¬í˜„í•˜ë©´ ë¶€ëª¨ìª½ ë³µì‚¬ ìƒì„±ìë¥¼ ì‚¬ìš©í•˜ê² ë‹¤ê³  ëª…ì‹œí•´ì•¼í•œë‹¤.
+	virtual ~CObject(); // ìì‹ í´ë˜ìŠ¤ì˜ ì†Œë©¸ìë„ í˜¸ì¶œ ì‹œí‚¤ê²Œ í•˜ê¸°ìœ„í•´ ì†Œë©¸ì ê°€ìƒí•¨ìˆ˜ë¡œ í•´ì•¼í•œë‹¤.
 	friend class CEventMgr;
 	friend class CPlayer;
 };

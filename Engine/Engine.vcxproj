@@ -173,10 +173,12 @@
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CPatorl1State.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CPlayerDead.h" />
     <ClInclude Include="CResMgr.h" />
     <ClInclude Include="CResource.h" />
+    <ClInclude Include="CRunState.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneMgr.h" />
     <ClInclude Include="CScene_Stage01.h" />
@@ -198,6 +200,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="func.h" />
+    <ClInclude Include="MissileMgr.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectGDI.h" />
@@ -227,10 +230,12 @@
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CPanelUI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CPatorl1State.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CPlayerDead.cpp" />
     <ClCompile Include="CResMgr.cpp" />
     <ClCompile Include="CResource.cpp" />
+    <ClCompile Include="CRunState.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneMgr.cpp" />
     <ClCompile Include="CScene_Stage01.cpp" />
@@ -250,6 +255,7 @@
     <ClCompile Include="CUIMgr.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="func.cpp" />
+    <ClCompile Include="MissileMgr.cpp" />
     <ClCompile Include="SelectGDI.cpp" />
   </ItemGroup>
   <ItemGroup>

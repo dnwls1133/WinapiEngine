@@ -1,5 +1,5 @@
 ﻿#include "pch.h"
-#include "CTraceState.h"
+#include "CPatorl1State.h"
 
 #include "MissileMgr.h"
 #include "CSceneMgr.h"
@@ -9,16 +9,16 @@
 #include "CMissile.h"
 
 #include "CTimeMgr.h"
-void CreateMissile(Vec2 vMonPos, Vec2 vMonScale);
-CTraceState::CTraceState()
-    :CState(MON_STATE::TRACE)
+CPatorl1State::CPatorl1State()
+    :CState(MON_STATE::PATROL1)
 {
 }
 
-CTraceState::~CTraceState()
+CPatorl1State::~CPatorl1State()
 {
 }
-void CTraceState::update()
+void CreateMissile(Vec2 vMonPos, Vec2 vMonScale);
+void CPatorl1State::update()
 {
     // 타겟팅 된 Player 를 쫒아간다.
     CPlayer* pPlayer = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
@@ -27,30 +27,39 @@ void CTraceState::update()
     Vec2 vMonScale = GetMonster()->GetScale();
     Vec2 vMonDir = vPlayerPos - vMonPos;
     vMonDir.Normalize();
-    Vec2 vStraight = { -20,10 };
+    Vec2 vStraight = { -15,10 };
     vStraight.Normalize();
-    vMonPos += vStraight * GetMonster()->GetInfo().fSpeed * 0.5f* fDT;
+    vMonPos += vStraight * GetMonster()->GetInfo().fSpeed * 0.1f * fDT;
     m_fAdt += fDT;
-    if (m_fAdt > 0.5f)
+    m_fSTimeAcc += fDT;
+    if (m_fSTimeAcc >= 10.f)
+    {
+        m_fSTimeAcc = 0.f;
+        ChangeAIState(GetAi(), MON_STATE::RUN);
+    }
+    if (m_fAdt > 1.f)
     {
         CreateMissile(vMonPos, vMonScale);
-       // CreateMissile1(vMonPos, vMonScale);
+       
         //CreateMissile2(vMonPos, vMonScale);
        // CreateMissile3(vMonPos, vMonScale);
         m_fAdt = 0.f;
-      
+
     }
-   
-  
+    
+
     GetMonster()->SetPos(vMonPos);
+   
 }
 
-void CTraceState::Enter()
+void CPatorl1State::Enter()
 {
 }
 
-void CTraceState::Exit()
+void CPatorl1State::Exit()
 {
+    
 }
+
 
 
