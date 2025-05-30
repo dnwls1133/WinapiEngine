@@ -108,3 +108,14 @@ enum class MISSILE_PTRN
 
     END,
 };
+
+enum class MON_TYPE
+{
+    NORMAL1,
+    NORMAL2,
+    NORMAL3,
+    NORMAL4,
+    RARE,
+    EPIC,
+    BOSS,
+};

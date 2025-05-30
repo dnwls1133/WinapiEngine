@@ -36,21 +36,26 @@ void CCollider::finalupdate()
 
 void CCollider::render(HDC _dc)
 {
-	//PEN_TYPE ePen = PEN_TYPE::GREEN;
-	//if (m_iCol)
-	//{
-	//	ePen = PEN_TYPE::RED;
-	//}
-	//SelectGDI p(_dc, ePen);
-	//SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
+#ifdef _DEBUG
+    PEN_TYPE ePen = PEN_TYPE::GREEN;
+    if (m_iCol)
+    {
+        ePen = PEN_TYPE::RED;
+    }
+    SelectGDI p(_dc, ePen);
+    SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
 
-	//Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
-	//Rectangle(_dc
-	//	, (int)(vRenderPos.x - (m_vScale.x / 2.f))
-	//	, (int)(vRenderPos.y - (m_vScale.y / 2.f))
-	//	, (int)(vRenderPos.x + (m_vScale.x / 2.f))
-	//	, (int)(vRenderPos.y + (m_vScale.y / 2.f))
-	//);
+    Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
+    Rectangle(_dc
+        , (int)(vRenderPos.x - (m_vScale.x / 2.f))
+        , (int)(vRenderPos.y - (m_vScale.y / 2.f))
+        , (int)(vRenderPos.x + (m_vScale.x / 2.f))
+        , (int)(vRenderPos.y + (m_vScale.y / 2.f))
+    );
+
+#endif
+
+	
 	
 }
 

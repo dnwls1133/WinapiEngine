@@ -3,7 +3,7 @@ Player_walk
 [Texture_Name]
 PlayerWalk
 [Textur_ Path]
-texture\Player_Walk.bmp
+texture\Player\Player_Walk.png
 [Frame_Count]
 19
 [Frame_Index]

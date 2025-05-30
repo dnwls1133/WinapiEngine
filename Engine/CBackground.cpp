@@ -6,6 +6,9 @@
 #include "CCore.h"
 #include "CTexture.h"
 
+#include "CAnimator.h"
+#include "CAnimation.h"
+
 CBackground::CBackground()
 	: m_pTex(nullptr)
 	, m_dAcc(0.f)
@@ -13,11 +16,15 @@ CBackground::CBackground()
 	, m_strKey{}
 	, m_iAnimationidx(0)
 {
-	m_pTex = CResMgr::GetInst()->LoadTexture(L"Background0tex", L"texture\\Background110.bmp");
-	m_strKey = L"Background0tex";
-	m_strRelativePath = L"texture\\Background0.bmp";
-    m_vBScale.x = m_pTex->Width();
-    m_vBScale.y = m_pTex->Height();
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Background0tex", L"texture\\Stage1\\Stage1_Sprite.png");
+    CreaeteAnimator();
+    GetAnimator()->CreateAnimation(L"Stage1_Background",m_pTex, Vec2(0.f, 0.f), Vec2(540.f, 960.f), Vec2(540.f, 0.f), 0.048f, 60);
+    
+
+      // Animation 저장해보기
+    GetAnimator()->FindAnimation(L"Stage1_Background")->Save(L"animation\\Stage1_Background.anim");
+
+    GetAnimator()->Play(L"Stage1_Background", true);
 }
 CBackground::~CBackground()
 {
@@ -28,65 +35,15 @@ void CBackground::update()
 {
 	//m_dAcc += fDT;
 
-	if (m_dAcc < -0.08f)
-	{
-		m_strKey.clear();
-		m_strKey += L"Background";
-		m_strKey += to_wstring(m_iAnimationidx);
-		m_strKey += L"tex";
-
-		m_strRelativePath.clear();
-		m_strRelativePath += L"texture\\Background";
-		m_strRelativePath += to_wstring(m_iAnimationidx);
-		m_strRelativePath += L".bmp";
-
-		
-		
-		if (m_iAnimationidx >= 55)
-		{
-			m_iAnimationidx = 0;
-		}
-		else
-		{
-			++m_iAnimationidx;
-		}
-
-		m_pTex = CResMgr::GetInst()->LoadTexture(m_strKey, m_strRelativePath);
-		m_dAcc = 0;
-	}
+	
 	
 }
 
 void CBackground::render(HDC _dc)
 {
-	int iWidith = (int)m_pTex->Width();
-	int iHeight = (int)m_pTex->Height();
-	Vec2 vPos = GetPos();
-    Vec2 vResolution = CCore::GetInst()->GetResolution();
+	
 
-    BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-    	, int(vPos.y - (float)(iHeight / 2))
-    	, iWidith, iHeight
-    	, m_pTex->GetDC()
-    	, 0, 0, SRCCOPY);
-
-	//TransparentBlt(_dc
-	//	, int(vPos.x - (float)(iWidith / 2))
-	//	, int(vPos.y - (float)(iHeight / 2))
-	//	, iWidith, iHeight
-	//	, m_pTex->GetDC()
-	//	, 0, 0, iWidith, iHeight
-	//	, RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
-    //TransparentBlt(_dc
-    //    , 0
-    //    , 0
-    //    , vResolution.x, vResolution.y
-    //    , m_pTex->GetDC()
-    //    , 0, 0, iWidith, iHeight
-    //    , RGB(255, 0, 255)); // 색상을 무시하고 나머지 복사해라
-
-
-
+    component_render(_dc);
 	
 
 	

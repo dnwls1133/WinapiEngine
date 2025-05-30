@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CPlayerDead.h"
 #include"CResMgr.h"
 #include"CTimeMgr.h"
@@ -12,10 +12,12 @@ CPlayerDead::CPlayerDead()
 	:m_fAcc(0.f)
 {
 
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex1", L"texture\\missile_explosion.png");
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"Player_Dead", L"texture\\Player\\Player_Dead.png");
 	CreaeteAnimator();
-	GetAnimator()->CreateAnimation(L"Missile1", m_pTex, Vec2(0.f, 0.f), Vec2(25.4f, 72.f), Vec2(25.4f, 0.f), 0.05f, 17);
-	GetAnimator()->Play(L"Missile1", false);
+	GetAnimator()->CreateAnimation(L"Player_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(140.f, 140.f), Vec2(140.f, 0.f), 0.05f, 20);
+    GetAnimator()->FindAnimation(L"Player_Dead")->Save(L"Player_Dead.anim");
+
+	GetAnimator()->Play(L"Player_Dead", false);
 }
 
 CPlayerDead::~CPlayerDead()
@@ -25,7 +27,7 @@ CPlayerDead::~CPlayerDead()
 void CPlayerDead::update()
 {
 	m_fAcc += fDT;
-	if (m_fAcc > 0.9f)
+	if (m_fAcc > 1.f)
 	{
 		DeleteObject(this);
 	}

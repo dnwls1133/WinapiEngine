@@ -15,19 +15,72 @@
 #include "CMissile.h"
 #include "CCollider.h"
 
-
+#include "CAnimator.h"
+#include "CAnimation.h"
 
 CMonster::CMonster()
 	: m_tInfo{}
 	, dAccTime0(0.)
 	, dAccTime1(0.)
-	, m_pTex(nullptr)
+	
     , m_pAI(nullptr)
 {
+
+    CreaeteCollider();
+    GetCollider()->SetScale(Vec2(50.f, 50.f));
+
 	//Texture 로딩하기
-	m_pTex = CResMgr::GetInst()->LoadTexture(L"Enemie0Tex", L"texture\\Enemie0.bmp");
-	CreaeteCollider();
-	GetCollider()->SetScale(Vec2(50.f, 50.f));
+    CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"N1Enemy_Move", L"texture\\Enemies\\normal1_enemy_Move.png");
+    CreaeteAnimator();
+
+   
+    {
+        //GetAnimator()->CreateAnimation(L"N1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(190.f, 190.f), Vec2(190.f, 0.f), 0.05f, 40);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"N1Enemy_Move")->Save(L"animation\\N1Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N2Enemy_Move", L"texture\\Enemies\\normal2_enemy_Move.png");
+   //GetAnimator()->CreateAnimation(L"N2Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(150.f, 150.f), Vec2(150.f, 0.f), 0.05f, 40);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"N2Enemy_Move")->Save(L"animation\\N2Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N2Enemy_Dead", L"texture\\Enemies\\normal2_enemy_Dead.png");
+   //GetAnimator()->CreateAnimation(L"N2Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(150.f, 150.f), Vec2(150.f, 0.f), 0.05f, 12);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"N2Enemy_Dead")->Save(L"animation\\N2Enemy_Dead.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N3Enemy_Move", L"texture\\Enemies\\normal3_enemy_Move.png");
+   //GetAnimator()->CreateAnimation(L"N3Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 20);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"N3Enemy_Move")->Save(L"animation\\N3Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N4Enemy_Move", L"texture\\Enemies\\normal4_enemy_Move.png");
+   //GetAnimator()->CreateAnimation(L"N4Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(170.f, 170.f), Vec2(170.f, 0.f), 0.05f, 20);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"N4Enemy_Move")->Save(L"animation\\N4Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"E1Enemy_Move", L"texture\\Enemies\\Epic1_Enemy_Move.png");
+   //GetAnimator()->CreateAnimation(L"E1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 40);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"E1Enemy_Move")->Save(L"animation\\E1Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"E1Enemy_Dead", L"texture\\Enemies\\Epic1_Enemy_Dead.png");
+   //GetAnimator()->CreateAnimation(L"E1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 13);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"E1Enemy_Dead")->Save(L"animation\\E1Enemy_Dead.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Move", L"texture\\Enemies\\Boss1_Enemy_Move.png");
+   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 60);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"Boss1Enemy_Move")->Save(L"animation\\Boss1Enemy_Move.anim");
+
+   //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Dead", L"texture\\Enemies\\Boss1_Enemy_Dead.png");
+   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 50);
+   ////Animation 저장
+   //GetAnimator()->FindAnimation(L"Boss1Enemy_Dead")->Save(L"animation\\Boss1Enemy_Dead.anim");
+    }
+   
+   
 }
 
 CMonster::~CMonster()
@@ -47,26 +100,7 @@ void CMonster::update()
 
 void CMonster::render(HDC _dc)
 {
-	int iWidith = (int)m_pTex->Width();
-	int iHeight = (int)m_pTex->Height();
-	Vec2 vPos = GetPos();
-	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(vPos);
-	//BitBlt(_dc, int(vPos.x - (float)(iWidith / 2))
-	//	, int(vPos.y - (float)(iHeight / 2))
-	//	, iWidith, iHeight
-	//	, m_pTex->GetDC()
-	//	, 0, 0, SRCCOPY);
-
 	
-	TransparentBlt(_dc
-		, (int)vRenderPos.x - iWidith / 2
-		, (int)vRenderPos.y - iHeight / 2
-		, iWidith
-		, iHeight
-		, m_pTex->GetDC()
-		, 0, 0, iWidith, iHeight
-		,RGB(255,0,255)
-	);
 	component_render(_dc);
 }
 
@@ -110,7 +144,7 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
     if (pOtherobj->GetName() == L"Missile_Player")
     {
       
-        m_tInfo.fHP -= 5;
+        m_tInfo.fHP -= 1;
         if (m_tInfo.fHP < 0)
         {
            // m_pAI->ChangeState(MON_STATE::DEAD);
@@ -124,5 +158,58 @@ void CMonster::SetAI(AI* _AI)
 {
     m_pAI = _AI;
     m_pAI->m_pOwner = this;
+}
+
+void CMonster::SetAnim(MON_TYPE eType)
+{
+    switch (eType)
+    {
+    case MON_TYPE::NORMAL1:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\N1Enemy_Move.anim");
+        GetAnimator()->Play(L"N1Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::NORMAL2:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Move.anim");
+        GetAnimator()->Play(L"N2Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::NORMAL3:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\N3Enemy_Move.anim");
+        GetAnimator()->Play(L"N3Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::NORMAL4:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\N4Enemy_Move.anim");
+        GetAnimator()->Play(L"N4Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::RARE:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Move.anim");
+        GetAnimator()->Play(L"Boss1Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::EPIC:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\E1Enemy_Move.anim");
+        GetAnimator()->Play(L"E1Enemy_Move", true);
+    }
+        break;
+    case MON_TYPE::BOSS:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Move.anim");
+        GetAnimator()->Play(L"N2Enemy_Move", true);
+    }
+        break;
+    default:
+        break;
+    }
+   
+   
 }
 

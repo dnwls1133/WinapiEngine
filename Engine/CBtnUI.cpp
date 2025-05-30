@@ -22,6 +22,10 @@ void CBtnUI::MouseOn()
 {
 }
 
+void CBtnUI::MouseOff()
+{
+}
+
 void CBtnUI::MouseLbtnDown()
 {
 }
