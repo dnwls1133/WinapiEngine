@@ -45,7 +45,6 @@ void CSceneMgr::init()
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage_01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage_02;
 
-	// 현재 씬 지정
 	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::STAGE_01];
 	m_pCurScene->Enter();
 }

@@ -1,12 +1,15 @@
-#pragma once
+﻿#pragma once
 
 #include "CScene.h"
 class CScene;
-class CSceneMgr;
 
-class CTitleBackground;
 class CTitleLogo;
+class CTitleBackground;
 // class CTitleMessage;
+
+class CSound;
+
+class CBtnUI;
 
 class CScene_Title :
     public CScene
@@ -20,10 +23,26 @@ public:
     virtual void Exit() override;
 
 private:
-    CTitleBackground* m_pBackground;
+    // void mChangeToIntro();
+    // void mChangeToTitle();
 
-    CTitleLogo* m_pLogo;
+    CTitleBackground* m_pBackground;    // 배경
 
-    // CTitleMessage* m_pMessage;
+    CTitleLogo* m_pLogo;                   // 로고
+    CObject* m_pMessage;                // 메시지
 
+    CBtnUI* m_pStartButton;             // 시작 버튼
+    CBtnUI* m_pManuelButton;            // 조작법 버튼
+    CBtnUI* m_pExitButton;              // 종료 버튼
+
+    CSound* m_pTitleTheme;
+
+    enum class EState
+    {
+        None,
+        Intro,
+        Title,
+    };
+
+    EState m_CurrentState;
 };

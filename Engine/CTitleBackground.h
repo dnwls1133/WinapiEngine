@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CObject.h"
 
@@ -18,9 +18,10 @@ public:
     virtual void update() override;
     virtual void render(HDC dc) override;
 
-    void ChangeState() noexcept;
+    void PlayIntroAnimation() noexcept; // 인트로 애니메이션 재생.
+    void PlayTitleAnimation() noexcept; // 타이틀 애니메이션 재생.
 
-    bool IsPlayIntroAnimation() const noexcept;
+    bool IsPlayIntroAnimation() const noexcept; // 인트로 애니메이션 재생 여부 확인.
 
     CLONE(CTitleBackground)
 
@@ -59,5 +60,8 @@ private:
 
     static constexpr float m_dAnimTime = 0.05f;
 
-    bool m_bIsIntroState = false;
+    bool m_bIsPlaying;
+    bool m_bIsIntroState;
+
+    std::function<void()> m_pCallback;
 };

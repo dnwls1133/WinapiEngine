@@ -1,22 +1,21 @@
-#pragma once
+﻿#pragma once
+#include "CUI.h"
 
-#include "CObject.h"
-
-class CObject;
 class CTexture;
 
 class CTitleLogo
-    : public CObject
+    : public CUI
 {
 public:
-    virtual void update() override;
-    virtual void render(HDC dc) override;
-    CLONE(CTitleLogo)
+    CTitleLogo();
+    virtual ~CTitleLogo() override;
+
+    virtual void render(HDC canvas_) override;
+
+    CLONE(CTitleLogo);
 
 private:
-    /**
-     * @brief 로고 텍스쳐.
-     */
-    CTexture* m_pTexture = nullptr;
+    CTexture* m_pTexture;
 
 };
+

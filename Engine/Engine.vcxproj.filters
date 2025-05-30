@@ -300,6 +300,7 @@
     <ClInclude Include="CDeadState.h">
       <Filter>Engine\08. Module\AI\State\Dead</Filter>
     </ClInclude>
+    <ClInclude Include="CMenuItem.h" />
     <ClInclude Include="CSoundMgr.h" />
     <ClInclude Include="CPatorl1State.h">
       <Filter>Engine\08. Module\AI\State\Patrol</Filter>
@@ -453,6 +454,7 @@
     <ClCompile Include="CDeadState.cpp">
       <Filter>Engine\08. Module\AI\State\Dead</Filter>
     </ClCompile>
+    <ClCompile Include="CMenuItem.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
     <ClCompile Include="CPatorl1State.cpp">
       <Filter>Engine\08. Module\AI\State\Patrol</Filter>

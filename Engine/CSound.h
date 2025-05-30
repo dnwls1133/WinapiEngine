@@ -18,6 +18,8 @@ public:
     void SetVolume(float volume_);
 
 private:
+    static size_t m_StartIndex;
+
     size_t m_index;
 
 };

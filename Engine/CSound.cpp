@@ -1,8 +1,10 @@
 ﻿#include "pch.h"
 #include "CSound.h"
 
+size_t CSound::m_StartIndex = 0;
+
 CSound::CSound()
-    : m_index(0)
+    : m_index(m_StartIndex++)
 {
 }
 
@@ -15,8 +17,6 @@ CSound::~CSound()
 
 void CSound::Load(const std::wstring& path_)
 {
-    static size_t Index = 0;
-    m_index = Index++;
     SetRelativePath(path_);
 
     wchar_t buffer[256];
