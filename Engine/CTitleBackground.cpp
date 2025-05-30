@@ -20,6 +20,9 @@ CTitleBackground::~CTitleBackground()
 
 void CTitleBackground::update()
 {
+    if (!m_bIsPlaying)
+        return;
+
     m_dAnimDeltaTime += CTimeMgr::GetInst()->GetfDT();
 
     if (m_dAnimDeltaTime >= m_dAnimTime)
@@ -30,8 +33,8 @@ void CTitleBackground::update()
         {
             if (++m_currentIndex >= IDX_INTRO_END)
             {
-                ChangeState();
-                return;
+                m_bIsPlaying = false;
+                m_currentIndex = IDX_INTRO_END;
             }
 
             const std::wstring textureKey = std::format(L"Introduction No.{}", m_currentIndex);
@@ -42,7 +45,8 @@ void CTitleBackground::update()
         {
             if (++m_currentIndex >= IDX_TITLE_END)
             {
-                m_currentIndex = IDX_TITLE_START;
+                m_bIsPlaying = false;
+                m_currentIndex = IDX_TITLE_END;
             }
 
             const std::wstring textureKey = std::format(L"Main Title No.{}", m_currentIndex);
@@ -69,19 +73,24 @@ void CTitleBackground::render(HDC dc)
         drawX, drawY,
         width, height,
         m_pTexture->GetDC(),
-        0, 0, width, height,
+        0, 0, 1280, 960,
         RGB(255, 0, 255) // 마젠타 색상 투명 처리
     );
 }
 
-void CTitleBackground::ChangeState() noexcept
+void CTitleBackground::PlayIntroAnimation() noexcept
 {
-    m_bIsIntroState = !m_bIsIntroState;
+    m_bIsIntroState = true;
+    m_currentIndex = IDX_INTRO_START;
+}
 
-    if (!m_bIsIntroState) {
-        m_currentIndex = IDX_TITLE_START;
-    }
-    else {
-        m_currentIndex = IDX_INTRO_START;
-    }
+void CTitleBackground::PlayTitleAnimation() noexcept
+{
+    m_bIsIntroState = false;
+    m_currentIndex = IDX_TITLE_START;
+}
+
+bool CTitleBackground::IsPlayIntroAnimation() const noexcept
+{
+    return m_bIsIntroState;
 }

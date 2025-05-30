@@ -166,6 +166,7 @@
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CKeyMgr.h" />
+    <ClInclude Include="CMenuItem.h" />
     <ClInclude Include="CMissile.h" />
     <ClInclude Include="CMonFactory.h" />
     <ClInclude Include="CMonster.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="CEventMgr.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
+    <ClCompile Include="CMenuItem.cpp" />
     <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CMonFactory.cpp" />
     <ClCompile Include="CMonster.cpp" />

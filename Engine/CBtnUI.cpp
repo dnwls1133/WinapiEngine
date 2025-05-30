@@ -20,14 +20,17 @@ CBtnUI::~CBtnUI()
 
 void CBtnUI::MouseOn()
 {
+
 }
 
 void CBtnUI::MouseLbtnDown()
 {
+
 }
 
 void CBtnUI::MouseLbtnUP()
 {
+
 }
 
 void CBtnUI::MouseLbtnClicked()

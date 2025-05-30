@@ -33,6 +33,7 @@ using std::to_wstring;
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 using namespace Gdiplus;
+#pragma comment(lib, "winmm.lib")
 
 #include "define.h"
 #include "struct.h"
