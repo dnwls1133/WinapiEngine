@@ -12,6 +12,8 @@
 #include "CSceneMgr.h"
 
 #include "CResMgr.h"
+#include "CSound.h"
+#include "CSoundMgr.h"
 
 #include "CBtnUI.h"
 #include "CMenuItem.h"
@@ -93,6 +95,9 @@ void CScene_Title::Enter()
         (DWORD_PTR)0, (DWORD_PTR)0
     );
     // AddObject(m_pExitButton, GROUP_TYPE::UI);
+
+    m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\AllClear.mp3");
+    CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme);
 
     m_pBackground->PlayIntroAnimation();
     m_CurrentState = EState::Intro;

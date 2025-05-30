@@ -3,24 +3,14 @@
 #include "CBtnUI.h"
 
 class CTexture;
+class CSound;
 
 class CMenuItem
     : public CBtnUI
 {
     friend class CBtnUI;
 public:
-    CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_)
-        : m_pTexture(idleTex_)
-        , m_pIdleTexture(idleTex_)
-        , m_pHoverTexture(hoverTex_)
-    {
-        // SetScale();
-    }
-
-    virtual ~CMenuItem() override
-    {
-        // 텍스쳐는 외부에서 관리하므로 소멸자는 비워둠.
-    }
+    CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_);
 
     virtual void MouseOn() override;
     virtual void MouseOff() override;
@@ -38,5 +28,7 @@ private:
     CTexture* const m_pIdleTexture;     // 일반 텍스쳐.
     CTexture* const m_pHoverTexture;    // 호버 텍스쳐.
 
+    CSound* m_pHoverSound;
+    CSound* m_pClickSound;
 };
 
