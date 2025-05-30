@@ -24,7 +24,7 @@ class CMonster :
     public CObject
 {
 protected:
-    CTexture*   m_pTex;
+   
     tMonInfo    m_tInfo;
     double      dAccTime0;
     double      dAccTime1;
@@ -43,7 +43,7 @@ public:
     float GetSpeed() { return m_tInfo.fSpeed; }
     void SetAI(AI* _AI);
     const tMonInfo& GetInfo() { return m_tInfo; }
-
+    void SetAnim(MON_TYPE eType);
 
 private:
     void SetMonInfo(const tMonInfo& _info)

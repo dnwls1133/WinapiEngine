@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include "CObject.h"
 class CCollider;
 class CTexture;
@@ -9,7 +9,7 @@ private:
     CTexture* m_pTex;
     
     float     m_dAcc;
-    float     m_fTheta; // ¿ßæ∆∑° πÊ«‚ ∞≥≥‰
+    float     m_fTheta; // ÏúÑÏïÑÎûò Î∞©Ìñ• Í∞úÎÖê
     float     m_fVec;
     int       m_iType;
     Vec2      m_vDir;
@@ -29,7 +29,7 @@ public:
 public:
     virtual void OnCollisionEnter(CCollider* _pOther);
     virtual void OnCollision(CCollider* _pOther);
-
+    virtual void OnCollisionExit(CCollider* _pOther);
     CLONE(CMissile);
 public:
     CMissile();

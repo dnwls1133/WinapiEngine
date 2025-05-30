@@ -54,7 +54,7 @@ void CScene_Start::render(HDC _dc)
 {
     CScene::render(_dc);
     CBackground* back = (CBackground*)GetBackground();
-    Vec2 backinfo = back->GetbackgroundScale();
+    Vec2 backinfo = back->GetScale();
     Vec2 backPos = back->GetPos();
     POINT resolution = CCore::GetInst()->GetResolution();
     SelectGDI gdi(_dc, BRUSH_TYPE::BLACK);
@@ -74,8 +74,8 @@ void CScene_Start::Enter()
 
 	// BackGround Object 추가
 	CObject* pBackgroundObj = new CBackground;
-	pBackgroundObj->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
-	pBackgroundObj->SetScale(Vec2(100.f, 100.f));
+	pBackgroundObj->SetPos(Vec2(vResolution.x/2.f, vResolution.y/2.f));
+	pBackgroundObj->SetScale(Vec2(540.f, 960.f));
 	pBackgroundObj->SetName(L"Background");
 	AddObject(pBackgroundObj, GROUP_TYPE::BACKGROUND);
 
@@ -92,7 +92,7 @@ void CScene_Start::Enter()
 
 
 	// Monster Object 추가
-    CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL, vResolution / 2.f - Vec2(0.f, 300.f));
+    CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, vResolution / 2.f - Vec2(0.f, 300.f));
     pMon->SetName(L"Monster");
     AddObject(pMon, GROUP_TYPE::MONSTER);
 

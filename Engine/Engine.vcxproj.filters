@@ -143,8 +143,8 @@
     <Filter Include="Engine\09. Factory\MonFactory">
       <UniqueIdentifier>{a612a1f6-1341-4ae5-b546-3aaa184b4cd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03.Manager\SoundMgr">
-      <UniqueIdentifier>{cb750293-cf55-4481-8a97-8a9e98bb0573}</UniqueIdentifier>
+    <Filter Include="Engine\05.Scene\Scene_Stage01">
+      <UniqueIdentifier>{63c4768c-35ff-4662-a5b2-0d5cb7e1d486}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -288,9 +288,11 @@
     <ClInclude Include="CMonFactory.h">
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClInclude>
-    <ClInclude Include="CDeadState.h" />
-    <ClInclude Include="CSoundMgr.h">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
+    <ClInclude Include="CScene_Stage01.h">
+      <Filter>Engine\05.Scene\Scene_Stage01</Filter>
+    </ClInclude>
+    <ClInclude Include="CDeadState.h">
+      <Filter>Engine\08. Module\AI\State\Dead</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -429,9 +431,11 @@
     <ClCompile Include="CMonFactory.cpp">
       <Filter>Engine\09. Factory\MonFactory</Filter>
     </ClCompile>
-    <ClCompile Include="CDeadState.cpp" />
-    <ClCompile Include="CSoundMgr.cpp">
-      <Filter>Engine\03.Manager\SoundMgr</Filter>
+    <ClCompile Include="CScene_Stage01.cpp">
+      <Filter>Engine\05.Scene\Scene_Stage01</Filter>
+    </ClCompile>
+    <ClCompile Include="CDeadState.cpp">
+      <Filter>Engine\08. Module\AI\State\Dead</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

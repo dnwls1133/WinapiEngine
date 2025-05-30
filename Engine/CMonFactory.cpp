@@ -20,16 +20,20 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType,Vec2 _vPos)
     CMonster* pMon = nullptr;
     switch (_eType)
     {
-    case MON_TYPE::NORMAL:
+    case MON_TYPE::NORMAL1:
     {
         pMon = new CMonster;
+        pMon->SetAnim(MON_TYPE::NORMAL1);
+
         pMon->SetPos(_vPos);
+
+
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
         info.fHP = 50.f;
-        info.fRecogRange = 300.f;
+        info.fRecogRange = 3.f;
         info.fSpeed = 50.f;
         info.ePattern = MISSILE_PTRN::PTRN1;
 

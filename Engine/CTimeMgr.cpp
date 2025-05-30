@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CTimeMgr.h"
 #include "CCore.h"
 CTimeMgr::CTimeMgr()

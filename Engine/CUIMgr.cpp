@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CUIMgr.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
@@ -17,9 +17,10 @@ CUIMgr::~CUIMgr()
 
 void CUIMgr::update()
 {
-	// 1. FocusedUI È®ÀÎ 
+    
+	// 1. FocusedUI í™•ì¸ 
 	m_pFocusedUI = GetFocusedUI();
-
+  
 	if (!m_pFocusedUI)
 	{
 		return;
@@ -30,7 +31,7 @@ void CUIMgr::update()
 	
 	
 
-	// ºÎ¸ğ UI Æ÷ÇÔ, ÀÚ½Ä UI µé Áß ½ÇÁ¦ Å¸°¹ÆÃ µÈ UI¸£ °¡Á®¿Â´Ù.
+	// ë¶€ëª¨ UI í¬í•¨, ìì‹ UI ë“¤ ì¤‘ ì‹¤ì œ íƒ€ê°¯íŒ… ëœ UIë¥´ ê°€ì ¸ì˜¨ë‹¤.
 	CUI* pTargetUI = GetTargetedUI(m_pFocusedUI);
 
 
@@ -60,7 +61,7 @@ void CUIMgr::update()
 
 void CUIMgr::SetFocusedUI(CUI* _pUI)
 {
-	// ÀÌ¹Ì Æ÷Ä¿½Ì ÁßÀÎ °æ¿ì or Æ÷Ä¿½Ì ÇØÁ¦¿äÃ»ÀÎ °æ¿ì
+	// ì´ë¯¸ í¬ì»¤ì‹± ì¤‘ì¸ ê²½ìš° or í¬ì»¤ì‹± í•´ì œìš”ì²­ì¸ ê²½ìš°
 	if (m_pFocusedUI == _pUI || nullptr == _pUI)
 	{
 		m_pFocusedUI = _pUI;
@@ -85,7 +86,7 @@ void CUIMgr::SetFocusedUI(CUI* _pUI)
 
 	}
 
-	// º¤ÅÍ ³»¿¡¼­ ¸Ç µÚ·Î ¼ø¹ø ±³Ã¼
+	// ë²¡í„° ë‚´ì—ì„œ ë§¨ ë’¤ë¡œ ìˆœë²ˆ êµì²´
 	vecUI.erase(iter);
 	vecUI.push_back(m_pFocusedUI);
 
@@ -97,17 +98,17 @@ CUI* CUIMgr::GetFocusedUI()
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
 	vector<CObject*>& vecUI = pCurScene->GetUIGroup();
 
-	// ±âÁ¸ Æ÷Ä¿½Ì UI ¸¦ ¹Ş¾ÆµÎ°í º¯°æµÇ¾ú´ÂÁö È®ÀÎÇÑ´Ù.
+	// ê¸°ì¡´ í¬ì»¤ì‹± UI ë¥¼ ë°›ì•„ë‘ê³  ë³€ê²½ë˜ì—ˆëŠ”ì§€ í™•ì¸í•œë‹¤.
 	CUI* pFocusedUI = m_pFocusedUI;
 	bool bLbtnTap = KEY_TAP(KEY::LBTN);
 	bool bLbtnAway = KEY_AWAY(KEY::LBTN);
 
-	if (!bLbtnTap)
+	/*if (!bLbtnTap)
 	{
 		return pFocusedUI;
-	}
+	}*/
 
-	// ¿ŞÂÊ¹öÆ° TAP ÀÌ ¹ß»ıÇß´Ù´Â ÀüÀç
+	// ì™¼ìª½ë²„íŠ¼ TAP ì´ ë°œìƒí–ˆë‹¤ëŠ” ì „ì¬
 	vector<CObject*>::iterator targetiter = vecUI.end();
 	vector<CObject*>::iterator iter = vecUI.begin();
 
@@ -128,7 +129,7 @@ CUI* CUIMgr::GetFocusedUI()
 
 	pFocusedUI = (CUI*)*targetiter;
 
-	// º¤ÅÍ ³»¿¡¼­ ¸Ç µÚ·Î ¼ø¹ø ±³Ã¼
+	// ë²¡í„° ë‚´ì—ì„œ ë§¨ ë’¤ë¡œ ìˆœë²ˆ êµì²´
 	vecUI.erase(targetiter);
 	vecUI.push_back(pFocusedUI);
 	return pFocusedUI;
@@ -139,10 +140,10 @@ CUI* CUIMgr::GetTargetedUI(CUI* _pParentUI)
 	bool bLbtnAway = KEY_AWAY(KEY::LBTN);
 
 	CUI* pTargetUI = nullptr;
-	// 1. ºÎ¸ğ UI Æ÷ÇÔ, ¸ğµç ÀÚ½ÄµéÀ» °Ë»ç ÇÑ´Ù.
-	// 2. Å¸°¹ UI µé Áß, ´õ ¿ì¼±¼øÀ§°¡ ³ôÀº ±âÁØÀº ´õ ³·Àº °èÃşÀÇ ÀÚ½Ä UI
-	// Level ¼øÈ¸
-	// Queue¸¦ »ç¿ë
+	// 1. ë¶€ëª¨ UI í¬í•¨, ëª¨ë“  ìì‹ë“¤ì„ ê²€ì‚¬ í•œë‹¤.
+	// 2. íƒ€ê°¯ UI ë“¤ ì¤‘, ë” ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ê¸°ì¤€ì€ ë” ë‚®ì€ ê³„ì¸µì˜ ìì‹ UI
+	// Level ìˆœíšŒ
+	// Queueë¥¼ ì‚¬ìš©
 	static list<CUI*> queue;
 	static vector<CUI*> vecNoneTargetUI;
 
@@ -155,11 +156,11 @@ CUI* CUIMgr::GetTargetedUI(CUI* _pParentUI)
 	
 	while (!queue.empty())
 	{
-		// Å¥¿¡¼­ µ¥ÀÌÅÍ ÇÏ³ª ²¨³»±â
+		// íì—ì„œ ë°ì´í„° í•˜ë‚˜ êº¼ë‚´ê¸°
 		CUI* pUI  = queue.front();
 		queue.pop_front();
 
-		// Å¥¿¡¼­ ²¨³»¿Â UI °¡ TargetUI ÀÎÁö È®ÀÎ
+		// íì—ì„œ êº¼ë‚´ì˜¨ UI ê°€ TargetUI ì¸ì§€ í™•ì¸
 		if (pUI->IsMouseOn())
 		{
 			if (nullptr != pTargetUI)

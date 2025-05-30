@@ -23,6 +23,7 @@ private:
 
 public:
     virtual void MouseOn();
+    virtual void MouseOff();
     virtual void MouseLbtnDown();
     virtual void MouseLbtnUP();
     virtual void MouseLbtnClicked();

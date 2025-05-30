@@ -17,8 +17,11 @@ private: // 자식 클래스에게 멤버함수 권한 부여
     CObject*         m_pPlayer; // Player
     CObject*         m_pBackground; // Background
 
-
+    
 	bool			 is_change;
+
+protected:
+    float            m_dAcc;
 public:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
 	const wstring& GetName() { return m_strName; }
