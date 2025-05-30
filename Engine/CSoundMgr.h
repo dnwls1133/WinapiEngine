@@ -27,4 +27,3 @@ private:
     float m_fSEVolume;
 
 };
-
