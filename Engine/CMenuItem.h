@@ -7,6 +7,7 @@ class CTexture;
 class CMenuItem
     : public CBtnUI
 {
+    friend class CBtnUI;
 public:
     CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_)
         : m_pTexture(idleTex_)
@@ -29,6 +30,8 @@ public:
     virtual void render(HDC canvas_) override;
 
 private:
+    bool m_bIsHover = false;
+
     CTexture* m_pTexture;               // 현재 사용중인 텍스쳐.
     CTexture* const m_pIdleTexture;     // 일반 텍스쳐.
     CTexture* const m_pHoverTexture;    // 호버 텍스쳐.
