@@ -9,7 +9,9 @@ struct tMonInfo
     float           fRecogRange;    // 인지 범위
     float           fAttRange;      // 공격 범위
     float           fAtt;           // 공격력
+    Vec2            vDestPos;        // 시작 지점
     MISSILE_PTRN    ePattern;        // 공격 패턴
+    MON_TYPE        eMType;          // 몬스터 타입
 };
 
 
@@ -29,6 +31,7 @@ protected:
     double      dAccTime0;
     double      dAccTime1;
     AI*         m_pAI;
+    bool        m_signaldead;
 public:
     virtual void update();
     virtual void render(HDC _dc);

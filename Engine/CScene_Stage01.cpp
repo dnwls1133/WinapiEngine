@@ -35,19 +35,34 @@ void CScene_Stage01::update()
 {
     CScene::update();
     Vec2 vResolution = CCore::GetInst()->GetResolution();
+    Vec2 vBackPos = GetBackground()->GetPos();
+    Vec2 vBackScale = GetBackground()->GetScale();
+    RECT rBackrect = { (vBackPos.x - vBackScale.x / 2.f),(vBackPos.y - vBackScale.y / 2.f),(vBackPos.x + vBackScale.x / 2.f),(vBackPos.x + vBackScale.y / 2.f) };
+
+
     m_dAcc += fDT;
 
     if (1.f + fDT>= m_dAcc && m_dAcc > 1.f)
     {
-        CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, Vec2(vResolution.x / 2.f, -100.f));
+        CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, Vec2(vBackPos.x/2.f, -100.f),Vec2(rBackrect.left + 200.f,rBackrect.top + 200.f));
+        pMon->SetName(L"Monster");
+        AddObject(pMon, GROUP_TYPE::MONSTER);
+        pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, Vec2(vBackPos.x / 2.f+30.f, -150.f), Vec2(rBackrect.left + 230.f, rBackrect.top + 150.f));
+        pMon->SetName(L"Monster");
+        AddObject(pMon, GROUP_TYPE::MONSTER);
+        pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, Vec2(vBackPos.x / 2.f+60.f, -200.f), Vec2(rBackrect.left + 260.f, rBackrect.top + 100.f));
         pMon->SetName(L"Monster");
         AddObject(pMon, GROUP_TYPE::MONSTER);
     }
     if(10.f + fDT >= m_dAcc && m_dAcc > 10.f)
     {
-        CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, Vec2(vResolution.x / 2.f, -100.f));
-        pMon->SetName(L"Monster1");
+        CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL2, Vec2(vBackPos.x / 1.5f, -100.f), Vec2(rBackrect.left + 400.f, rBackrect.top + 100.f));
+        pMon->SetName(L"Monster");
         AddObject(pMon, GROUP_TYPE::MONSTER);
+    }
+    if (2.f + fDT >= m_dAcc && m_dAcc > 2.f)
+    {
+        
     }
 
 }

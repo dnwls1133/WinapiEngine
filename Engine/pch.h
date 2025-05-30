@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma comment(lib, "winmm.lib")
 #pragma warning(disable: 4819)
 #include <Windows.h>
 

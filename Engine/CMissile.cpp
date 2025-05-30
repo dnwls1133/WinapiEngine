@@ -17,6 +17,7 @@
 
 CMissile::CMissile()
 	: m_dAcc(0.f)
+    , m_bHit(false)
     ,m_fTheta(0.f)
 	, m_vDir(Vec2(1.f,1.f))
 	, m_pTex(nullptr)
@@ -70,14 +71,27 @@ void CMissile::update()
     Vec2 vBackPos = Background->GetPos();
     Vec2 vBackScale = Background->GetScale();
 
+  
+
 	if (vPos.y > resolution.y || vPos.y < -100.f
         || vPos.x > vBackPos.x + vBackScale.x/2 + 50.f
-        || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f)
+        || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f && m_bHit==false)
 	{
 		DeleteObject(this);
 	}
 	//vPos.x += 700.f * cos(m_fTheta) * fDT;
 	//vPos.y -= 700.f * sin(m_fTheta) * fDT;
+
+    if (m_bHit)
+    {
+        m_dAcc += fDT;
+        if (m_dAcc > 1.f)
+        {
+            m_dAcc = 0;
+          
+            DeleteObject(this);
+        }
+    }
    
     if (GetName() == L"MsMissile")
     {
@@ -85,8 +99,8 @@ void CMissile::update()
         {
             m_dAcc += fDT;
         }
-      
-        if ( m_dAcc > 1.f)
+
+        if (m_dAcc > 1.f)
         {
             m_fVec /= 2.f;
             m_dAcc = -1.f;
@@ -196,8 +210,8 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 		{
 			pAnim->GetFrame(i).vOffset = Vec2(0.f, -100.f);
 		}
-		
-		m_fVec = 100.f;
+        m_bHit = true;
+		m_fVec = 5.f;
 	}
 }
 
@@ -208,13 +222,8 @@ void CMissile::OnCollision(CCollider* _pOther)
 
 void CMissile::OnCollisionExit(CCollider* _pOther)
 {
-    CObject* pOtherObj = _pOther->GetObj();
  
-    if (pOtherObj->GetName() == L"Monster")
-    {
-       
-           DeleteObject(this);
 
        
-    }
+   
 }

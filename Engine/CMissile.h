@@ -7,7 +7,7 @@ class CMissile :
 {
 private:
     CTexture* m_pTex;
-    
+    bool      m_bHit;
     float     m_dAcc;
     float     m_fTheta; // 위아래 방향 개념
     float     m_fVec;

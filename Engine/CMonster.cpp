@@ -22,7 +22,7 @@ CMonster::CMonster()
 	: m_tInfo{}
 	, dAccTime0(0.)
 	, dAccTime1(0.)
-	
+	, m_signaldead(false)
     , m_pAI(nullptr)
 {
 
@@ -94,8 +94,16 @@ CMonster::~CMonster()
 void CMonster::update()
 {
     m_pAI->update();
-
-	
+    Vec2 vBPos = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetPos();
+    Vec2 vBScale = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetScale();
+    Vec2 vMonPos = GetPos();
+    if (vMonPos.x < vBPos.x - vBScale.x - 200.f
+        || vMonPos.x > vBPos.x + vBScale.x + 200.f
+        || vMonPos.y < vBPos.y - vBScale.y - 200.f
+        || vMonPos.y > vBPos.y + vBScale.y + 200.f)
+    {
+        DeleteObject(this);
+    }
 }
 
 void CMonster::render(HDC _dc)
@@ -145,10 +153,11 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
     {
       
         m_tInfo.fHP -= 1;
-        if (m_tInfo.fHP < 0)
+        if (m_tInfo.fHP < 0 && m_signaldead == false)
         {
-           // m_pAI->ChangeState(MON_STATE::DEAD);
-            DeleteObject(this);
+            m_pAI->ChangeState(MON_STATE::DEAD);
+            m_signaldead = true;
+            //DeleteObject(this);
         }
        
     }
