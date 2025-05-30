@@ -29,22 +29,22 @@ void CTraceState::update()
     Vec2 vMonScale = GetMonster()->GetScale();
     Vec2 vMonDir = vPlayerPos - vMonPos;
     vMonDir.Normalize();
-    Vec2 vStraight = { -10,10 };
+    Vec2 vStraight = { -20,10 };
     vStraight.Normalize();
-    vMonPos += vStraight * GetMonster()->GetInfo().fSpeed* fDT;
+    vMonPos += vStraight * GetMonster()->GetInfo().fSpeed * 0.3f* fDT;
     m_fAdt += fDT;
-    if (m_fAdt > 0.02f)
+    if (m_fAdt > 0.5f)
     {
         CreateMissile(vMonPos, vMonScale);
         CreateMissile1(vMonPos, vMonScale);
-        CreateMissile2(vMonPos, vMonScale);
-        CreateMissile3(vMonPos, vMonScale);
+        //CreateMissile2(vMonPos, vMonScale);
+       // CreateMissile3(vMonPos, vMonScale);
         m_fAdt = 0.f;
       
     }
    
   
-    //GetMonster()->SetPos(vMonPos);
+    GetMonster()->SetPos(vMonPos);
 }
 
 void CTraceState::Enter()
@@ -80,7 +80,7 @@ void CreateMissile(Vec2 vMonPos,Vec2 vMonScale )
     CMissile* pMissile = new CMissile;
     pMissile->init(GROUP_TYPE::PROJ_MONSTER);
     pMissile->SetPos(vMissilePos);
-    pMissile->SetScale(Vec2(25.f, 25.f));
+    pMissile->SetScale(Vec2(20.f, 20.f));
     pMissile->SetDir(vpPos);
     pMissile->SetVec(300);
     pMissile->SetType(1);
@@ -117,7 +117,7 @@ void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale)
     CMissile* pMissile = new CMissile;
     pMissile->init(GROUP_TYPE::PROJ_MONSTER);
     pMissile->SetPos(vMissilePos);
-    pMissile->SetScale(Vec2(25.f, 25.f));
+    pMissile->SetScale(Vec2(20.f, 20.f));
     pMissile->SetDir(vpPos);
     pMissile->SetVec(300);
     pMissile->SetType(1);
@@ -154,7 +154,7 @@ void CreateMissile2(Vec2 vMonPos, Vec2 vMonScale)
     CMissile* pMissile = new CMissile;
     pMissile->init(GROUP_TYPE::PROJ_MONSTER);
     pMissile->SetPos(vMissilePos);
-    pMissile->SetScale(Vec2(25.f, 25.f));
+    pMissile->SetScale(Vec2(20.f, 20.f));
     pMissile->SetDir(vpPos);
     pMissile->SetVec(300);
     pMissile->SetType(1);
@@ -191,7 +191,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale)
     CMissile* pMissile = new CMissile;
     pMissile->init(GROUP_TYPE::PROJ_MONSTER);
     pMissile->SetPos(vMissilePos);
-    pMissile->SetScale(Vec2(25.f, 25.f));
+    pMissile->SetScale(Vec2(20.f, 20.f));
     pMissile->SetDir(vpPos);
     pMissile->SetVec(300);
     pMissile->SetType(1);

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CObject.h"
 class CUI :
     public CObject
@@ -8,9 +8,10 @@ private:
     CUI*                m_pParentUI;
     Vec2                m_vFinalPos;
 
-    bool                m_bCamAffected; // UI Ä«¸Ş¶ó ¿µÇâÀ¯¹«
-    bool                m_bMouseOn;     // UI À§¿¡ ¸¶¿ì½º°¡ ÀÖ´ÂÁö
-    bool                m_bLbtnDown;    // UI À§¿¡¼­ LBTNÀÌ ´­·È´ÂÁö
+    bool                m_bCamAffected; // UI ì¹´ë©”ë¼ ì˜í–¥ìœ ë¬´
+    bool                m_bMouseOn;     // UI ìœ„ì— ë§ˆìš°ìŠ¤ê°€ ìˆëŠ”ì§€
+    bool                m_bPMouseOn;    // UI ìœ„ì— ë§ˆìš°ìŠ¤ê°€ ìˆëŠ”ì§€ ê³¼ê±° ì •ë³´
+    bool                m_bLbtnDown;    // UI ìœ„ì—ì„œ LBTNì´ ëˆŒë ¸ëŠ”ì§€
 public:
    
     Vec2 GetFinalPos() { return m_vFinalPos; }
@@ -36,6 +37,7 @@ private:
 
 public:
     virtual void MouseOn();
+    virtual void MouseOff();
     virtual void MouseLbtnDown();
     virtual void MouseLbtnUP();
     virtual void MouseLbtnClicked();

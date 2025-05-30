@@ -2,13 +2,6 @@
 
 class CMonster;
 
-enum class MON_TYPE
-{
-    NORMAL,
-    RARE,
-    EPIC,
-    BOSS,
-};
 
 class CMonFactory
 {

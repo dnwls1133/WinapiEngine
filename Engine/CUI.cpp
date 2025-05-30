@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CUI.h"
 
 #include "CKeyMgr.h"
@@ -54,7 +54,16 @@ void CUI::finalupdate()
 
 	// UI Mouse 체크
 	MouseOnCheck();
-
+    if (m_bMouseOn)
+    {
+        m_bPMouseOn = true;
+        MouseOn();
+    }
+    else if(!m_bMouseOn && m_bPMouseOn)
+    {
+        m_bPMouseOn = false;
+        MouseOff();
+    }
 
 	// child finalupdate
 	finalupdate_child();
@@ -141,6 +150,11 @@ void CUI::MouseOnCheck()
 
 
 void CUI::MouseOn()
+{
+    int a = 0;
+}
+
+void CUI::MouseOff()
 {
 }
 

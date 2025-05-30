@@ -21,25 +21,28 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
+    ,m_bHit(false)
 	
 {
 	//Texture 로딩하기
 	//m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
 	CreaeteCollider();
-	GetCollider()->SetScale(Vec2(10.f, 20.f));
-	GetCollider()->SetOffsetPos(Vec2(0.f, 30.f));
+	GetCollider()->SetScale(Vec2(10.f, 15.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 20.f));
 
 
-	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player_Walk.bmp");
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player\\Player_Walk.png");
 	CreaeteAnimator();
 
     GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
 
-	//GetAnimator()->CreateAnimation(L"Player_walk",m_pTex, Vec2(0.f, 0.f), Vec2(140.f, 140.f), Vec2(140.f, 0.f), 0.05f, 19);
-	//
+	/*GetAnimator()->CreateAnimation(L"Player_walk",m_pTex, Vec2(0.f, 0.f), Vec2(140.f, 140.f), Vec2(140.f, 0.f), 0.05f, 19);
+    m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerInvincible", L"texture\\Player\\Player_Invincible.png");
+    GetAnimator()->CreateAnimation(L"Player_Invincible", m_pTex, Vec2(0.f, 0.f), Vec2(140.f, 140.f), Vec2(140.f, 0.f), 0.05f, 20);
 
- //   // Animation 저장해보기
-    //GetAnimator()->FindAnimation(L"Player_walk")->Save(L"animation\\player_walk_left.anim");
+    Animation 저장해보기
+    GetAnimator()->FindAnimation(L"Player_walk")->Save(L"animation\\player_walk_left.anim");
+    GetAnimator()->FindAnimation(L"Player_Invincible")->Save(L"animation\\player_Invincible.anim");*/
 
     GetAnimator()->Play(L"Player_walk", true);
 }
@@ -55,33 +58,38 @@ void CPlayer::update()
 	if (m_bHit == true)
 	{
 		dAcc += fDT;
-		vPos.y -= 350.f * fDT;
-		if (dAcc > 1.0f)
+        if (dAcc < 1.5f)
+        {
+            vPos.y -= 300.f * fDT;
+        }
+		
+		if (dAcc > 2.f)
 		{
 			dAcc = 0;
+            GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
+            GetAnimator()->Play(L"Player_walk", true);
 			SetCollideron();
 			m_bHit = false;
 		}
 		SetPos(vPos);
 
 	}
-	
-	{
+    {
 		if (KEY_HOLD(KEY::W))
 		{
-			vPos.y -= 500.f * fDT;
+			vPos.y -= 250.f * fDT;
 		}
 		if (KEY_HOLD(KEY::S))
 		{
-			vPos.y += 500.f * fDT;
+			vPos.y += 250.f * fDT;
 		}
 		if (KEY_HOLD(KEY::A))
 		{
-			vPos.x -= 500.f * fDT;
+			vPos.x -= 250.f * fDT;
 		}
 		if (KEY_HOLD(KEY::D))
 		{
-			vPos.x += 500.f * fDT;
+			vPos.x += 250.f * fDT;
 		}
 		if (KEY_HOLD((KEY::SPACE)))
 		{
@@ -183,8 +191,10 @@ void CPlayer::CreateMissile(int type)
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherObj = _pOther->GetObj();
-	if (pOtherObj->GetName() == L"MsMissile")
+	if (pOtherObj->GetName() == L"MsMissile" && m_bHit == false)
 	{
+        GetAnimator()->LoadAnimation(L"animation\\player_Invincible.anim");
+        GetAnimator()->Play(L"Player_Invincible", true);
 		CPlayerDead* pDead = new CPlayerDead;
 		pDead->SetPos(GetPos());
 		pDead->SetName(L"Player_Dead");
