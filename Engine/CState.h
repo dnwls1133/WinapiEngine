@@ -11,6 +11,7 @@ private:
 
 public:
     float     m_fAdt;
+    float     m_fSTimeAcc;
 public:
     AI* GetAi() { return m_pAI; }
     MON_STATE GetType() { return m_eState; }

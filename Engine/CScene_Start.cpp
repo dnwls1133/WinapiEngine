@@ -92,7 +92,7 @@ void CScene_Start::Enter()
 
 
 	// Monster Object 추가
-    CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, vResolution / 2.f - Vec2(0.f, 300.f));
+    CMonster* pMon = CMonFactory::CreateMonster(MON_TYPE::NORMAL1, vResolution / 2.f - Vec2(0.f, 300.f),Vec2(0,0));
     pMon->SetName(L"Monster");
     AddObject(pMon, GROUP_TYPE::MONSTER);
 
