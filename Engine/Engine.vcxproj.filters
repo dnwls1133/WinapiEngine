@@ -311,6 +311,12 @@
     <ClInclude Include="CRunState.h">
       <Filter>Engine\08. Module\AI\State\Run</Filter>
     </ClInclude>
+    <ClInclude Include="CPatorl2State.h">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatorl3State.h">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -464,6 +470,12 @@
     </ClCompile>
     <ClCompile Include="CRunState.cpp">
       <Filter>Engine\08. Module\AI\State\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatorl2State.cpp">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatorl3State.cpp">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

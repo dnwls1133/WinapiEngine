@@ -46,12 +46,14 @@ public:
 	virtual void OnCollisionEnter(CCollider* _pOther){}
 	virtual void OnCollisionExit(CCollider* _pOther){}
 
-
+protected:
+    void SetCollideroff() { m_bCollideroff = true; }
+    void SetCollideron() { m_bCollideroff = false; }
+    void SafeColliderdelete();
 private:
 	void SetDead() { m_bAlive = false; }
 	void SetAlive() { m_bAlive = true; }
-	void SetCollideroff() { m_bCollideroff = true; }
-	void SetCollideron() { m_bCollideroff = false; }
+	
 
 public:
 	virtual void update()=0;

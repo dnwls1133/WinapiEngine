@@ -1,9 +1,9 @@
 [Animation_Name]
-N1Enemy_Move
+E2Enemy_Move
 [Texture_Name]
-N1Enemy_Move
+E2Enemy_Move
 [Textur_ Path]
-texture\Enemies\normal1_enemy_Move.png
+texture\Enemies\Epic2_Enemy_Move.png
 [Frame_Count]
 40
 [Frame_Index]
@@ -11,7 +11,7 @@ texture\Enemies\normal1_enemy_Move.png
 [Left_Top]
 0 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -21,9 +21,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 1
 [Left_Top]
-240 0
+450 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -33,9 +33,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 2
 [Left_Top]
-480 0
+900 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -45,9 +45,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 3
 [Left_Top]
-720 0
+1350 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -57,9 +57,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 4
 [Left_Top]
-960 0
+1800 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -69,9 +69,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 5
 [Left_Top]
-1200 0
+2250 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -81,9 +81,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 6
 [Left_Top]
-1440 0
+2700 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -93,9 +93,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 7
 [Left_Top]
-1680 0
+3150 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -105,9 +105,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 8
 [Left_Top]
-1920 0
+3600 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -117,9 +117,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 9
 [Left_Top]
-2160 0
+4050 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -129,9 +129,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 10
 [Left_Top]
-2400 0
+4500 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -141,9 +141,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 11
 [Left_Top]
-2640 0
+4950 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -153,9 +153,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 12
 [Left_Top]
-2880 0
+5400 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -165,9 +165,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 13
 [Left_Top]
-3120 0
+5850 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -177,9 +177,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 14
 [Left_Top]
-3360 0
+6300 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -189,9 +189,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 15
 [Left_Top]
-3600 0
+6750 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -201,9 +201,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 16
 [Left_Top]
-3840 0
+7200 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -213,9 +213,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 17
 [Left_Top]
-4080 0
+7650 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -225,9 +225,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 18
 [Left_Top]
-4320 0
+8100 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -237,9 +237,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 19
 [Left_Top]
-4560 0
+8550 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -249,9 +249,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 20
 [Left_Top]
-4800 0
+9000 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -261,9 +261,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 21
 [Left_Top]
-5040 0
+9450 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -273,9 +273,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 22
 [Left_Top]
-5280 0
+9900 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -285,9 +285,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 23
 [Left_Top]
-5520 0
+10350 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -297,9 +297,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 24
 [Left_Top]
-5760 0
+10800 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -309,9 +309,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 25
 [Left_Top]
-6000 0
+11250 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -321,9 +321,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 26
 [Left_Top]
-6240 0
+11700 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -333,9 +333,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 27
 [Left_Top]
-6480 0
+12150 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -345,9 +345,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 28
 [Left_Top]
-6720 0
+12600 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -357,9 +357,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 29
 [Left_Top]
-6960 0
+13050 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -369,9 +369,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 30
 [Left_Top]
-7200 0
+13500 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -381,9 +381,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 31
 [Left_Top]
-7440 0
+13950 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -393,9 +393,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 32
 [Left_Top]
-7680 0
+14400 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -405,9 +405,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 33
 [Left_Top]
-7920 0
+14850 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -417,9 +417,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 34
 [Left_Top]
-8160 0
+15300 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -429,9 +429,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 35
 [Left_Top]
-8400 0
+15750 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -441,9 +441,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 36
 [Left_Top]
-8640 0
+16200 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -453,9 +453,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 37
 [Left_Top]
-8880 0
+16650 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -465,9 +465,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 38
 [Left_Top]
-9120 0
+17100 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]
@@ -477,9 +477,9 @@ texture\Enemies\normal1_enemy_Move.png
 [Frame_Index]
 39
 [Left_Top]
-9360 0
+17550 0
 [Slice_Size]
-240 240
+450 450
 [Offset]
 0 0
 [Duration]

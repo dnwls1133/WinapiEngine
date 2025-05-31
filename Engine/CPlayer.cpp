@@ -21,6 +21,8 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
+    ,m_iAtk(2)
+    ,dStartAcc(3.f)
     ,m_bHit(false)
 	
 {
@@ -54,60 +56,70 @@ CPlayer::~CPlayer()
 void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
-
-	if (m_bHit == true)
-	{
-		dAcc += fDT;
-        if (dAcc < 1.5f)
-        {
-            vPos.y -= 300.f * fDT;
-        }
-		
-		if (dAcc > 2.f)
-		{
-			dAcc = 0;
-            GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
-            GetAnimator()->Play(L"Player_walk", true);
-			SetCollideron();
-			m_bHit = false;
-		}
-		SetPos(vPos);
-
-	}
+    if (dStartAcc > 0.f)
     {
-		if (KEY_HOLD(KEY::W))
-		{
-			vPos.y -= 250.f * fDT;
-		}
-		if (KEY_HOLD(KEY::S))
-		{
-			vPos.y += 250.f * fDT;
-		}
-		if (KEY_HOLD(KEY::A))
-		{
-			vPos.x -= 250.f * fDT;
-		}
-		if (KEY_HOLD(KEY::D))
-		{
-			vPos.x += 250.f * fDT;
-		}
-		if (KEY_HOLD((KEY::SPACE)))
-		{
-			dAcc += fDT;
-			if (dAcc > 0.15f)
-			{
-				dAcc = 0;
-				CreateMissile(0);
-				//CreateMissile(1);
-				//CreateMissile(2);
-			}
+        dStartAcc -= fDT;
+        vPos.y -= 100.f * fDT;
+        SetPos(vPos);
+    }
+    else
+    {
+        if (m_bHit == true)
+        {
+            dAcc += fDT;
+            if (dAcc < 1.5f)
+            {
+                vPos.y -= 300.f * fDT;
+            }
+
+            if (dAcc > 2.f)
+            {
+                dAcc = 0;
+                GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
+                GetAnimator()->Play(L"Player_walk", true);
+                SetCollideron();
+                m_bHit = false;
+            }
+            SetPos(vPos);
+
+        }
+        else
+        {
+            if (KEY_HOLD(KEY::W))
+            {
+                vPos.y -= 300.f * fDT;
+            }
+            if (KEY_HOLD(KEY::S))
+            {
+                vPos.y += 300.f * fDT;
+            }
+            if (KEY_HOLD(KEY::A))
+            {
+                vPos.x -= 300.f * fDT;
+            }
+            if (KEY_HOLD(KEY::D))
+            {
+                vPos.x += 300.f * fDT;
+            }
+            if (KEY_HOLD((KEY::SPACE)))
+            {
+                dAcc += fDT;
+                if (dAcc > 0.15f)
+                {
+                    dAcc = 0;
+                    CreateMissile(0);
+                    CreateMissile(1);
+                    CreateMissile(2);
+                }
 
 
 
 
-		}
-		SetPos(vPos);
-	}
+            }
+            SetPos(vPos);
+        }
+    }
+	
 	
 	//GetAnimator()->update();
 }
@@ -166,11 +178,13 @@ void CPlayer::CreateMissile(int type)
 	case 1:
 	{
 		vMissilePos.x -= 30.f;
+        vMissilePos.y += 20.f;
 	}
 		break;
 	case 2:
 	{
 		vMissilePos.x += 30.f;
+        vMissilePos.y += 20.f;
 	}
 		break;
 	}

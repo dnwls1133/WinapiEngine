@@ -2,6 +2,18 @@
 
 #include "CMonFactory.h"
 
+struct SpawnEvent
+{
+    double triggerTime; // 몬스터 등장 시간
+    MON_TYPE type;
+    MISSILE_PTRN mtype;
+    Vec2 spawnPos;
+    Vec2 targetPos;
+    Vec2 exitPos;
+    bool triggered = false;
+};
+
+
 // 전방 선언
 class CObject;
 class CPlayer;
@@ -9,7 +21,8 @@ class CScene
 {
 private: // 자식 클래스에게 멤버함수 권한 부여
 	vector<CObject*> m_arrObj[(UINT)GROUP_TYPE::END]; // 오브젝트를 저장 및 관리할 벡터를 그룹 개수만큼 선언
-	wstring			 m_strName; // Scene 이름
+   
+    wstring			 m_strName; // Scene 이름
 
 	UINT			 m_iTileX;  // 타일 가로 개수
 	UINT			 m_iTileY;  // 타일 세로 개수

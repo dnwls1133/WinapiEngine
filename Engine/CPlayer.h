@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "CObject.h"
 class CTexture;
 
@@ -9,11 +9,16 @@ class CPlayer :
 private:
   //  CTexture*   m_pTex;
     double      dAcc;
+    double      dStartAcc;
     int         m_iHp;
     bool        m_bHit;
+    int         m_iAtk;
+
 public:
     virtual void update();
     virtual void render(HDC _dc);
+
+    int GetPlayerAtk() { return m_iAtk; }
 private:
     void CreateMissile(int type);
     

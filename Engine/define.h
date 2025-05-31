@@ -98,6 +98,7 @@ enum class MON_STATE
 
 enum class MISSILE_PTRN
 {
+    NONE,
     PTRN1,
     PTRN2,
     PTRN3,
@@ -115,7 +116,10 @@ enum class MON_TYPE
     NORMAL2,
     NORMAL3,
     NORMAL4,
+    NORMAL5,
+    NORMAL6,
     RARE,
     EPIC,
+    EPIC2,
     BOSS,
 };

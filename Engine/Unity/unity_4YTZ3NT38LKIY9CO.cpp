@@ -5,6 +5,9 @@
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CCore.cpp"
 
 
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CDeadState.cpp"
+
+
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CEenemi0.cpp"
 
 
@@ -17,8 +20,5 @@
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CKeyMgr.cpp"
 
 
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CMissile.cpp"
-
-
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CMonster.cpp"
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CMenuItem.cpp"
 

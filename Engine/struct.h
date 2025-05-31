@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 struct Vec2
 {
@@ -22,7 +22,7 @@ public:
 	{
 		float fLen = Length();
 		// 0으로 나누어 지면 안됩니다.
-		assert(fLen != 0.f);
+		//assert(fLen != 0.f);
 		x /= fLen;
 		y /= fLen;
 		return *this;

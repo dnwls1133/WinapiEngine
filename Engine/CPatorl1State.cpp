@@ -8,6 +8,10 @@
 #include "CMonster.h"
 #include "CMissile.h"
 
+#include "CAnimator.h"
+#include "CAnimation.h"
+
+
 #include "CTimeMgr.h"
 CPatorl1State::CPatorl1State()
     :CState(MON_STATE::PATROL1)
@@ -17,7 +21,7 @@ CPatorl1State::CPatorl1State()
 CPatorl1State::~CPatorl1State()
 {
 }
-void CreateMissile(Vec2 vMonPos, Vec2 vMonScale);
+
 void CPatorl1State::update()
 {
     // 타겟팅 된 Player 를 쫒아간다.
@@ -27,23 +31,34 @@ void CPatorl1State::update()
     Vec2 vMonScale = GetMonster()->GetScale();
     Vec2 vMonDir = vPlayerPos - vMonPos;
     vMonDir.Normalize();
-    Vec2 vStraight = { -15,10 };
+    Vec2 vStraight = { 1,-10 };
     vStraight.Normalize();
+    if (vMonPos.y <= GetMonster()->GetInfo().vDestPos.y - 50.f)
+    {
+        vStraight.y *= -1;
+    }
     vMonPos += vStraight * GetMonster()->GetInfo().fSpeed * 0.1f * fDT;
+    
     m_fAdt += fDT;
     m_fSTimeAcc += fDT;
-    if (m_fSTimeAcc >= 10.f)
+    if (m_fSTimeAcc >= 7.f)
     {
         m_fSTimeAcc = 0.f;
         ChangeAIState(GetAi(), MON_STATE::RUN);
     }
     if (m_fAdt > 1.f)
     {
-        CreateMissile(vMonPos, vMonScale);
+        CreateMissile1(vMonPos, vMonScale);
+        CreateMissile2(vMonPos, vMonScale);
+        if (m_fAdt > 1.f +fDT)
+        {
+            CreateMissile1(vMonPos, vMonScale);
+            CreateMissile2(vMonPos, vMonScale);
+            m_fAdt = 0.f;
+        }
        
-        //CreateMissile2(vMonPos, vMonScale);
        // CreateMissile3(vMonPos, vMonScale);
-        m_fAdt = 0.f;
+       
 
     }
     

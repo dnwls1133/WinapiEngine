@@ -10,6 +10,7 @@ struct tMonInfo
     float           fAttRange;      // 공격 범위
     float           fAtt;           // 공격력
     Vec2            vDestPos;        // 시작 지점
+    Vec2            vExitPos;        // 탈춤 지점
     MISSILE_PTRN    ePattern;        // 공격 패턴
     MON_TYPE        eMType;          // 몬스터 타입
 };
@@ -47,12 +48,18 @@ public:
     void SetAI(AI* _AI);
     const tMonInfo& GetInfo() { return m_tInfo; }
     void SetAnim(MON_TYPE eType);
+    bool GetsignalDead() { return m_signaldead; }
 
+    void SetMissiletype(MISSILE_PTRN eType)
+    {
+        m_tInfo.ePattern = eType;
+    }
 private:
     void SetMonInfo(const tMonInfo& _info)
     {
         m_tInfo = _info;
     }
+   
 
 public:
 
@@ -62,5 +69,6 @@ public:
     virtual ~CMonster();
 
     friend class CMonFactory;
+   
 };
 

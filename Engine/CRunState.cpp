@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "CRunState.h"
 
+#include "MissileMgr.h"
 
 #include "CObject.h"
 #include "CPlayer.h"
@@ -30,7 +31,8 @@ void CRunState::update()
     // 몬스터의 범위 안에 들어오면 추적 상태로 전환
     CMonster* pMonster = GetMonster();
     Vec2 vMonPos = pMonster->GetPos();
-    Vec2 vDestPos = Vec2(-250.f,vMonPos.y +100.f);
+    Vec2 vMonScale = pMonster->GetScale();
+    Vec2 vDestPos = GetMonster()->GetInfo().vExitPos;
     Vec2 vDir = vDestPos - vMonPos;
     vDir.Normalize();
 
@@ -38,7 +40,15 @@ void CRunState::update()
 
     Vec2 vDiff = vDestPos - vMonPos;
     float fLen = vDiff.Length();
-
+    if (GetMonster()->GetInfo().ePattern == MISSILE_PTRN::PTRN2)
+    {
+        m_fAdt += fDT;
+        if (m_fAdt > 1.0f)
+        {
+            CreateMissile(vMonPos, vMonScale);
+            m_fAdt = 0.f;
+        }
+    }
     // 플레이어가 몬스터의 인식범위 안으로 진입
     
     vMonPos += vDir * GetMonster()->GetInfo().fSpeed * fDT;
