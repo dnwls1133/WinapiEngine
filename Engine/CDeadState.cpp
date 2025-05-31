@@ -33,12 +33,12 @@ void CDeadState::Enter()
     {
     case MON_TYPE::NORMAL1:
     {
-        CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"N1Enemy_Dead", L"texture\\Enemies\\normal1_enemy_Dead.png");
-        GetMonster()->GetAnimator()->CreateAnimation(L"N1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(190.f, 190.f), Vec2(190.f, 0.f), 0.05f, 13);
-        //Animation 저장
-        GetMonster()->GetAnimator()->FindAnimation(L"N1Enemy_Dead")->Save(L"animation\\N1Enemy_Dead.anim");
-        //GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N1Enemy_Dead.anim");
-        GetMonster()->GetAnimator()->Play(L"N1Enemy_Dead", false);
+       // CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"N1Enemy_Dead", L"texture\\Enemies\\normal1_enemy_Dead.png");
+        //GetMonster()->GetAnimator()->CreateAnimation(L"N1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(240.f, 240.f), Vec2(240.f, 0.f), 0.05f, 13);
+        ////Animation 저장
+        //GetMonster()->GetAnimator()->FindAnimation(L"N1Enemy_Dead")->Save(L"animation\\N1Enemy_Dead.anim");
+        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N1EnemyH_Dead.anim");
+        GetMonster()->GetAnimator()->Play(L"N1EnemyH_Dead", false);
     }
     break;
     case MON_TYPE::NORMAL2:
@@ -49,14 +49,20 @@ void CDeadState::Enter()
     break;
     case MON_TYPE::NORMAL3:
     {
-        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N3Enemy_Dead.anim");
-        GetMonster()->GetAnimator()->Play(L"N3Enemy_Dead", false);
+        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N34Enemy_Dead.anim");
+        GetMonster()->GetAnimator()->Play(L"N34Enemy_Dead", false);
     }
     break;
     case MON_TYPE::NORMAL4:
     {
-        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N4Enemy_Dead.anim");
-        GetMonster()->GetAnimator()->Play(L"N4Enemy_Dead", false);
+        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N34Enemy_Dead.anim");
+        GetMonster()->GetAnimator()->Play(L"N34Enemy_Dead", false);
+    }
+    break;
+    case MON_TYPE::NORMAL5:
+    {
+        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N34Enemy_Dead.anim");
+        GetMonster()->GetAnimator()->Play(L"N34Enemy_Dead", false);
     }
     break;
     case MON_TYPE::RARE:
@@ -69,6 +75,12 @@ void CDeadState::Enter()
     {
         GetMonster()->GetAnimator()->LoadAnimation(L"animation\\E1Enemy_Dead.anim");
         GetMonster()->GetAnimator()->Play(L"E1Enemy_Dead", false);
+    }
+    break;
+    case MON_TYPE::EPIC2:
+    {
+        GetMonster()->GetAnimator()->LoadAnimation(L"animation\\E2Enemy_Dead.anim");
+        GetMonster()->GetAnimator()->Play(L"E2Enemy_Dead", false);
     }
     break;
     case MON_TYPE::BOSS:

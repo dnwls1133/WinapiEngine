@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CObject.h"
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
@@ -57,6 +57,14 @@ void CObject::CreaeteAnimator()
 {
 	m_pAnimator = new CAnimator;
 	m_pAnimator->m_pOwner = this;
+}
+
+void CObject::SafeColliderdelete()
+{
+    if (nullptr != m_pCollider)
+    {
+        delete m_pCollider;
+    }
 }
 
 void CObject::finalupdate()

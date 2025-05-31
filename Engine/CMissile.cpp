@@ -14,6 +14,7 @@
 #include "CAnimator.h"
 #include "CAnimation.h"
 
+#include "CMonster.h"
 
 CMissile::CMissile()
 	: m_dAcc(0.f)
@@ -72,26 +73,28 @@ void CMissile::update()
     Vec2 vBackScale = Background->GetScale();
 
   
+    if (m_bHit)
+    {
+        m_dAcc += fDT;
+        if (1.f + fDT >= m_dAcc && m_dAcc > 1.f)
+        {
 
-	if (vPos.y > resolution.y || vPos.y < -100.f
+
+            DeleteObject(this);
+            return;
+        }
+    }
+	else if (vPos.y > resolution.y || vPos.y < -100.f
         || vPos.x > vBackPos.x + vBackScale.x/2 + 50.f
         || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f && m_bHit==false)
 	{
 		DeleteObject(this);
+        return;
 	}
 	//vPos.x += 700.f * cos(m_fTheta) * fDT;
 	//vPos.y -= 700.f * sin(m_fTheta) * fDT;
 
-    if (m_bHit)
-    {
-        m_dAcc += fDT;
-        if (m_dAcc > 1.f)
-        {
-            m_dAcc = 0;
-          
-            DeleteObject(this);
-        }
-    }
+   
    
     if (GetName() == L"MsMissile")
     {
@@ -197,8 +200,9 @@ void CMissile::render(HDC _dc)
 void CMissile::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherObj = _pOther->GetObj();
+    CMonster* pMonsObj = (CMonster*)_pOther->GetObj();
 
-	if (pOtherObj->GetName() == L"Monster")
+	if (GetName() != L"MsMissile" && pOtherObj->GetName() == L"Monster" && !pMonsObj->GetsignalDead() && !m_bHit)
 	{
 		m_pTex = CResMgr::GetInst()->LoadTexture(L"MissileTex1", L"texture\\Missile_explosion.png");
 		CreaeteAnimator();
@@ -208,10 +212,11 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 		
 		for (int i = 0; i < pAnim->GetMaxFrame(); ++i)
 		{
-			pAnim->GetFrame(i).vOffset = Vec2(0.f, -100.f);
+			pAnim->GetFrame(i).vOffset = Vec2(0.f, -80.f);
 		}
         m_bHit = true;
-		m_fVec = 5.f;
+        SetCollideroff();
+		m_fVec = 10.f;
 	}
 }
 

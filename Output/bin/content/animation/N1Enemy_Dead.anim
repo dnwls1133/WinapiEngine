@@ -11,7 +11,7 @@ texture\Enemies\normal1_enemy_Dead.png
 [Left_Top]
 0 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -21,9 +21,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 1
 [Left_Top]
-190 0
+240 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -33,9 +33,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 2
 [Left_Top]
-380 0
+480 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -45,9 +45,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 3
 [Left_Top]
-570 0
+720 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -57,9 +57,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 4
 [Left_Top]
-760 0
+960 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -69,9 +69,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 5
 [Left_Top]
-950 0
+1200 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -81,9 +81,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 6
 [Left_Top]
-1140 0
+1440 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -93,9 +93,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 7
 [Left_Top]
-1330 0
+1680 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -105,9 +105,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 8
 [Left_Top]
-1520 0
+1920 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -117,9 +117,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 9
 [Left_Top]
-1710 0
+2160 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -129,9 +129,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 10
 [Left_Top]
-1900 0
+2400 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -141,9 +141,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 11
 [Left_Top]
-2090 0
+2640 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]
@@ -153,9 +153,9 @@ texture\Enemies\normal1_enemy_Dead.png
 [Frame_Index]
 12
 [Left_Top]
-2280 0
+2880 0
 [Slice_Size]
-190 190
+240 240
 [Offset]
 0 0
 [Duration]

@@ -22,6 +22,7 @@ void DeleteObject(CObject* _pObj)
 	CEventMgr::GetInst()->AddEvent(even);
 }
 
+
 void ChangeScene(SCENE_TYPE _eNext)
 {
 	tEvent even = {};

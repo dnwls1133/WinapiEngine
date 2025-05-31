@@ -1,7 +1,4 @@
 
-#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CSceneMgr.cpp"
-
-
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CScene_Start.cpp"
 
 
@@ -12,6 +9,9 @@
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CSound.cpp"
+
+
+#include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CSoundMgr.cpp"
 
 
 #include "C:\Users\dnwls\Documents\GitHub\WinapiEngine\Engine\CState.cpp"
