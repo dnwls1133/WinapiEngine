@@ -1,8 +1,6 @@
 ﻿#pragma once
 #include "CState.h"
-
-
-class CIdleState :
+class CPatorl4State :
     public CState
 {
 private:
@@ -13,7 +11,7 @@ public:
     virtual void Exit();
 
 public:
-    CIdleState();
-    ~CIdleState();
+    CPatorl4State();
+    ~CPatorl4State();
 };
 

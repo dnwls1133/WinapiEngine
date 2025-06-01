@@ -44,6 +44,7 @@ public:
     virtual void OnCollisionEnter(CCollider* _pOther);
 public:
     void SetSpeed(float _f) { m_tInfo.fSpeed = _f;}
+    void SetDestPos(Vec2 _vPos) { m_tInfo.vDestPos = _vPos; }
     float GetSpeed() { return m_tInfo.fSpeed; }
     void SetAI(AI* _AI);
     const tMonInfo& GetInfo() { return m_tInfo; }

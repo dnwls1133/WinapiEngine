@@ -152,6 +152,9 @@
     <Filter Include="Engine\08. Module\AI\State\Run">
       <UniqueIdentifier>{ac03b4db-ff3e-4fb6-8dff-eb200a27fd21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\08. Module\AI\State\Boss">
+      <UniqueIdentifier>{7f341737-fa3a-49e6-9c0c-cfc46eae99ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -317,6 +320,12 @@
     <ClInclude Include="CPatorl3State.h">
       <Filter>Engine\08. Module\AI\State\Patrol</Filter>
     </ClInclude>
+    <ClInclude Include="CPatorl4State.h">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossPatorl1STate.h">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -476,6 +485,12 @@
     </ClCompile>
     <ClCompile Include="CPatorl3State.cpp">
       <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatorl4State.cpp">
+      <Filter>Engine\08. Module\AI\State\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossPatorl1STate.cpp">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

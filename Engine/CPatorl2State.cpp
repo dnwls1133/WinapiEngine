@@ -38,7 +38,7 @@ void CPatorl2State::update()
         if (m_fSTimeAcc >= 1.f)
         {
             m_fSTimeAcc = 0.f;
-            CreateMissile(vMonPos, vMonScale);
+            CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             GetMonster()->SetSpeed(350.f);
             ChangeAIState(GetAi(), MON_STATE::RUN);
         }
@@ -51,14 +51,14 @@ void CPatorl2State::update()
 
         if (m_fAdt > 0.5f)
         {
-            CreateMissile(vMonPos, vMonScale);
+            CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             m_fAdt = 0.f;
         }
         
         if (m_fSTimeAcc >= 1.5f)
         {
             
-            GetMonster()->SetSpeed(350.f);
+            GetMonster()->SetSpeed(450.f);
             ChangeAIState(GetAi(), MON_STATE::RUN);
         }
     }

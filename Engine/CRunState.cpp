@@ -45,7 +45,7 @@ void CRunState::update()
         m_fAdt += fDT;
         if (m_fAdt > 1.0f)
         {
-            CreateMissile(vMonPos, vMonScale);
+            CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             m_fAdt = 0.f;
         }
     }

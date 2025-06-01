@@ -74,12 +74,12 @@ CMonster::CMonster()
    //GetAnimator()->FindAnimation(L"E1Enemy_Dead")->Save(L"animation\\E1Enemy_Dead.anim");
 
    //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Move", L"texture\\Enemies\\Boss1_Enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 60);
+   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 60);
    ////Animation 저장
    //GetAnimator()->FindAnimation(L"Boss1Enemy_Move")->Save(L"animation\\Boss1Enemy_Move.anim");
 
    //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Dead", L"texture\\Enemies\\Boss1_Enemy_Dead.png");
-   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 50);
+   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 50);
    ////Animation 저장
    //GetAnimator()->FindAnimation(L"Boss1Enemy_Dead")->Save(L"animation\\Boss1Enemy_Dead.anim");
     }

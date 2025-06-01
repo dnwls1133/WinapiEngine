@@ -9,6 +9,8 @@
 #include "CPatorl1State.h"
 #include "CPatorl2State.h"
 #include "CPatorl3State.h"
+#include "CPatorl4State.h"
+#include "CBossPatorl1STate.h"
 #include "CDeadState.h"
 #include "CRunState.h"
 
@@ -179,7 +181,33 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     break;
     case MON_TYPE::RARE:
     {
+        pMon = new CMonster;
+        pMon->SetAnim(MON_TYPE::RARE);
 
+        pMon->SetPos(_vPos);
+        pMon->SetScale(Vec2(150.f, 150.f));
+        pMon->GetCollider()->SetScale(Vec2(150.f, 150.f));
+
+
+        tMonInfo info = {};
+        info.fAtt = 1.f;
+        info.fAttRange = 10.f;
+        info.fHP = 50.f;
+        info.fRecogRange = 3.f;
+        info.fSpeed = 100.f;
+        info.vDestPos = _vDPos;
+        info.ePattern = _eMType;
+        info.eMType = MON_TYPE::RARE;
+        info.vExitPos = _vEPos;
+        pMon->SetMonInfo(info);
+
+        AI* pAI = new AI;
+        pAI->AddState(new CIdleState);
+        pAI->AddState(new CBossPatorl1STate);
+        pAI->AddState(new CDeadState);
+        pAI->AddState(new CRunState);
+        pAI->SetCurState(MON_STATE::IDLE);
+        pMon->SetAI(pAI);
     }
         break;
     case MON_TYPE::EPIC:
@@ -219,7 +247,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
         pMon->SetAnim(MON_TYPE::EPIC2);
 
         pMon->SetPos(_vPos);
-        pMon->SetScale(Vec2(300.f, 300.f));
+        pMon->SetScale(Vec2(100.f, 100.f));
         pMon->GetCollider()->SetScale(Vec2(100.f, 100.f));
 
 
@@ -237,7 +265,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         AI* pAI = new AI;
         pAI->AddState(new CIdleState);
-        pAI->AddState(new CPatorl3State);
+        pAI->AddState(new CPatorl4State);
         pAI->AddState(new CDeadState);
         pAI->AddState(new CRunState);
         pAI->SetCurState(MON_STATE::IDLE);
