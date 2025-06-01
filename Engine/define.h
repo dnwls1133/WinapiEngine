@@ -89,6 +89,13 @@ enum class MON_STATE
     PATROL2,
     PATROL3,
     PATROL4,
+    PATROL5,
+    PATROL6,
+    PATROL7,
+    MBOSS0,
+    MBOSS1,
+    MBOSS2,
+    MBOSS3,
     TRACE,
     ATT,
     RUN,
@@ -106,6 +113,17 @@ enum class MISSILE_PTRN
     PTRN5,
     PTRN6,
 
+
+    END,
+};
+
+enum class MISSILE_TYPE
+{
+    SMALL,
+    SPIN,
+    MIDDLE,
+    BIG,
+    RECTANGLE,
 
     END,
 };

@@ -156,6 +156,7 @@
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CAttackState.h" />
     <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CBossPatorl1STate.h" />
     <ClInclude Include="CBtnUI.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCollider.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="CPatorl1State.h" />
     <ClInclude Include="CPatorl2State.h" />
     <ClInclude Include="CPatorl3State.h" />
+    <ClInclude Include="CPatorl4State.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CPlayerDead.h" />
     <ClInclude Include="CResMgr.h" />
@@ -215,6 +217,7 @@
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CAttackState.cpp" />
     <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CBossPatorl1STate.cpp" />
     <ClCompile Include="CBtnUI.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCollider.cpp" />
@@ -235,6 +238,7 @@
     <ClCompile Include="CPatorl1State.cpp" />
     <ClCompile Include="CPatorl2State.cpp" />
     <ClCompile Include="CPatorl3State.cpp" />
+    <ClCompile Include="CPatorl4State.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CPlayerDead.cpp" />
     <ClCompile Include="CResMgr.cpp" />

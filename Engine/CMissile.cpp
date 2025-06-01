@@ -55,14 +55,39 @@ void CMissile::init(GROUP_TYPE _eType)
 		break;
 	case GROUP_TYPE::PROJ_MONSTER:
 	{
-		m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex0", L"texture\\Monster_Middle_Bullet.png");
+		m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex0", L"texture\\Monster_Middle_Bullet1.png");
 		CreaeteAnimator();
-		GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(42.f, 42.f), Vec2(42.f, 0.f), 0.5f, 2);
-		GetAnimator()->Play(L"MonsterMissile0", true);
+		GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 0.5f, 4);
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex1", L"texture\\Monster_Middle_Bullet2.png");
+        GetAnimator()->CreateAnimation(L"MonsterMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(80.f, 0.f), 0.05f, 6);
+        //Animation 저장
+        GetAnimator()->FindAnimation(L"MonsterMissile0")->Save(L"animation\\MonsterMissile0.anim");
+        GetAnimator()->FindAnimation(L"MonsterMissile1")->Save(L"animation\\MonsterMissile1.anim");
+
+
+        GetAnimator()->Play(L"MonsterMissile0", true);
 	}
 	break;
 	}
 
+}
+void CMissile::ChangemType(MISSILE_TYPE _eType)
+{
+    switch (_eType)
+    {
+    case MISSILE_TYPE::SMALL:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\MonsterMissile0.anim");
+        GetAnimator()->Play(L"MonsterMissile0", true);
+    }
+    break;
+    case MISSILE_TYPE::SPIN:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\MonsterMissile1.anim");
+        GetAnimator()->Play(L"MonsterMissile1", true);
+    }
+    break;
+    }
 }
 void CMissile::update()
 {

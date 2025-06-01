@@ -25,7 +25,8 @@ void CIdleState::update()
 {
     // 가만히 있는다.
     CPlayer* pPlayer = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
-
+    Vec2 vBackPos = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetPos();
+    Vec2 vBackScale = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetScale();
     // Player 의 위치 체크
     Vec2 vPlayerPos = pPlayer->GetPos();
 
@@ -50,7 +51,7 @@ void CIdleState::update()
             m_fAdt += fDT;
             if (m_fAdt > 1.0f)
             {
-                CreateMissile(vMonPos, vMonScale);
+                CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
                 m_fAdt = 0.f;
             }
         }
@@ -69,6 +70,11 @@ void CIdleState::update()
             if (GetMonster()->GetInfo().ePattern == MISSILE_PTRN::PTRN1)
             {
                 ChangeAIState(GetAi(), MON_STATE::PATROL2);
+            }
+            else if(GetMonster()->GetInfo().ePattern == MISSILE_PTRN::PTRN3)
+            {
+                CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+                ChangeAIState(GetAi(), MON_STATE::RUN);
             }
             else
             {
@@ -106,12 +112,13 @@ void CIdleState::update()
         break;
         case MON_TYPE::EPIC2:
         {
-            ChangeAIState(GetAi(), MON_STATE::PATROL3);
+            ChangeAIState(GetAi(), MON_STATE::PATROL4);
         }
         break;
         case MON_TYPE::RARE:
         {
-
+            GetMonster()->SetDestPos(Vec2(vBackPos.x + 100.f, vBackPos.y - 200.f));
+            ChangeAIState(GetAi(), MON_STATE::MBOSS0);
         }
         break;
         case MON_TYPE::BOSS:

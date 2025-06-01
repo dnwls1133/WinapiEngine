@@ -61,7 +61,7 @@ void CPatorl3State::update()
             {
 
                 
-                CreateMissile3(vMonPos, vMonScale, m_fXdir);
+                CreateMissile3(vMonPos, vMonScale, m_fXdir, MISSILE_TYPE::SMALL);
                 m_fXdir += 2 * PI / 4.f * m_fFlip;
                 if (m_fXdir >= 2 * PI || m_fXdir <= -2 * PI)
                 {
@@ -82,12 +82,12 @@ void CPatorl3State::update()
     {
         if (2 * fDT >= m_fMTimeAcc && m_fMTimeAcc > fDT)
         {
-            CreateMissile(vMonPos, vMonScale);
+            CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
 
         }
         if (m_fMTimeAcc > 2.f)
         {
-            CreateMissile4(vMonPos, vMonScale);
+            CreateMissile4(vMonPos, vMonScale, MISSILE_TYPE::SPIN);
             GetMonster()->SetMissiletype(MISSILE_PTRN::PTRN1);
             m_fMTimeAcc = 0.f;
         }

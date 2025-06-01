@@ -10,7 +10,41 @@
 
 #include "CTimeMgr.h"
 
-void CreateMissile(Vec2 vMonPos, Vec2 vMonScale)
+void CreateStraightMissile(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)
+{
+    Vec2 vMissilePos = vMonPos;
+    vMissilePos.y += vMonScale.y / 2.f;
+
+    CScene* CurScene = CSceneMgr::GetInst()->GetCurScene();
+    Vec2 vMDPos = Vec2(0, -100);
+    vMDPos.x += 2 * PI / 36.f;
+   
+    vMDPos.Normalize();
+    // Missile Object
+    CMissile* pMissile = new CMissile;
+    pMissile->init(GROUP_TYPE::PROJ_MONSTER);
+    pMissile->SetPos(vMissilePos);
+    pMissile->SetScale(Vec2(20.f, 20.f));
+    pMissile->SetDir(vMDPos);
+    pMissile->SetVec(500);
+    pMissile->SetType(1);
+    pMissile->SetName(L"MsMissile");
+    pMissile->ChangemType(_eType);
+    CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
+    vMDPos.x -= 2 * PI / 36.f;
+    pMissile = new CMissile;
+    pMissile->init(GROUP_TYPE::PROJ_MONSTER);
+    pMissile->SetPos(vMissilePos);
+    pMissile->SetScale(Vec2(20.f, 20.f));
+    pMissile->SetDir(vMDPos);
+    pMissile->SetVec(500);
+    pMissile->SetType(1);
+    pMissile->SetName(L"MsMissile");
+    pMissile->ChangemType(_eType);
+    CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
+}
+
+void CreateMissile(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)
 {
     Vec2 vMissilePos = vMonPos;
     vMissilePos.y += vMonScale.y / 2.f;
@@ -43,11 +77,11 @@ void CreateMissile(Vec2 vMonPos, Vec2 vMonScale)
     pMissile->SetVec(500);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 }
 
-void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale)
+void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)
 {
     Vec2 vMissilePos = vMonPos;
     vMissilePos.y += vMonScale.y / 2.f;
@@ -80,7 +114,7 @@ void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale)
     pMissile->SetVec(300);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x += PI / 36.f;
     vpPos.Normalize();
@@ -91,6 +125,7 @@ void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale)
     pMissile->SetDir(vpPos);
     pMissile->SetVec(300);
     pMissile->SetType(1);
+    pMissile->ChangemType(_eType);
     pMissile->SetName(L"MsMissile");
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 
@@ -98,7 +133,7 @@ void CreateMissile1(Vec2 vMonPos, Vec2 vMonScale)
 
 
 
-void CreateMissile2(Vec2 vMonPos, Vec2 vMonScale)
+void CreateMissile2(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)
 {
     Vec2 vMissilePos = vMonPos;
     vMissilePos.y += vMonScale.y / 2.f;
@@ -131,7 +166,7 @@ void CreateMissile2(Vec2 vMonPos, Vec2 vMonScale)
     pMissile->SetVec(500);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x += PI / 36.f;
     vpPos.Normalize();
@@ -143,11 +178,12 @@ void CreateMissile2(Vec2 vMonPos, Vec2 vMonScale)
     pMissile->SetVec(500);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 
 }
 
-void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
+void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir, MISSILE_TYPE _eType)
 {
     Vec2 vMissilePos = vMonPos;
     vMissilePos.y += 50.f;
@@ -167,7 +203,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x *= -1;
     pMissile = new CMissile;
@@ -178,7 +214,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
    
     vMissilePos.x -= vMonScale.x / 2.f;
@@ -191,7 +227,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x *= -1;
     pMissile = new CMissile;
@@ -202,7 +238,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x *= -1;
     vMissilePos.x += vMonScale.x;
@@ -214,7 +250,7 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
     vpPos.x *= -1;
     pMissile = new CMissile;
@@ -225,11 +261,11 @@ void CreateMissile3(Vec2 vMonPos, Vec2 vMonScale,float fXDir)
     pMissile->SetVec(400);
     pMissile->SetType(1);
     pMissile->SetName(L"MsMissile");
-
+    pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 }
 
-void CreateMissile4(Vec2 vMonPos, Vec2 vMonScale)
+void CreateMissile4(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)
 {
     Vec2 vMissilePos = vMonPos;
     vMissilePos.y += 100.f;
@@ -250,10 +286,10 @@ void CreateMissile4(Vec2 vMonPos, Vec2 vMonScale)
         pMissile->SetPos(vMissilePos);
         pMissile->SetScale(Vec2(20.f, 20.f));
         pMissile->SetDir(vpPos);
-        pMissile->SetVec(500);
+        pMissile->SetVec(300);
         pMissile->SetType(1);
         pMissile->SetName(L"MsMissile");
-
+        pMissile->ChangemType(_eType);
         CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
         vpPos.x += 2 * PI / 18.f;
     }
@@ -271,10 +307,10 @@ void CreateMissile4(Vec2 vMonPos, Vec2 vMonScale)
         pMissile->SetPos(vMissilePos);
         pMissile->SetScale(Vec2(20.f, 20.f));
         pMissile->SetDir(vpPos);
-        pMissile->SetVec(500);
+        pMissile->SetVec(300);
         pMissile->SetType(1);
         pMissile->SetName(L"MsMissile");
-
+        pMissile->ChangemType(_eType);
         CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
         vpPos.x += 2 * PI / 18.f;
     }
@@ -291,10 +327,10 @@ void CreateMissile4(Vec2 vMonPos, Vec2 vMonScale)
         pMissile->SetPos(vMissilePos);
         pMissile->SetScale(Vec2(20.f, 20.f));
         pMissile->SetDir(vpPos);
-        pMissile->SetVec(500);
+        pMissile->SetVec(300);
         pMissile->SetType(1);
         pMissile->SetName(L"MsMissile");
-
+        pMissile->ChangemType(_eType);
         CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
         vpPos.x += 2 * PI / 18.f;
     }
