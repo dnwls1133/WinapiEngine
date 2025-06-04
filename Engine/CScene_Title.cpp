@@ -14,6 +14,7 @@
 #include "CResMgr.h"
 #include "CSound.h"
 #include "CSoundMgr.h"
+#include "CColliderMgr.h"
 
 #include "CBtnUI.h"
 #include "CMenuItem.h"
@@ -126,5 +127,6 @@ void CScene_Title::update()
 
 void CScene_Title::Exit()
 {
-
+    DeleteAll();
+    CColliderMgr::GetInst()->Reset();
 }

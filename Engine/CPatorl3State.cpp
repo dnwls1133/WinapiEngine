@@ -82,12 +82,12 @@ void CPatorl3State::update()
     {
         if (2 * fDT >= m_fMTimeAcc && m_fMTimeAcc > fDT)
         {
-            CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile(vMonPos, vMonScale,1,MISSILE_TYPE::BSMALL);
 
         }
         if (m_fMTimeAcc > 2.f)
         {
-            CreateMissile4(vMonPos, vMonScale, MISSILE_TYPE::SPIN);
+            CreateMissile4(vMonPos, vMonScale, 3,MISSILE_TYPE::SPIN);
             GetMonster()->SetMissiletype(MISSILE_PTRN::PTRN1);
             m_fMTimeAcc = 0.f;
         }

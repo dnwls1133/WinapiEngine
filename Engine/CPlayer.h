@@ -13,14 +13,14 @@ private:
     int         m_iHp;
     bool        m_bHit;
     int         m_iAtk;
-
+    int         m_iLvl;
 public:
     virtual void update();
     virtual void render(HDC _dc);
 
     int GetPlayerAtk() { return m_iAtk; }
 private:
-    void CreateMissile(int type);
+    void CreateMissile(int type,float _fVec, MISSILE_TYPE _etype);
     
     virtual void OnCollisionEnter(CCollider* _pOther);
 

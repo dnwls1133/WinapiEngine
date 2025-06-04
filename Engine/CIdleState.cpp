@@ -51,7 +51,7 @@ void CIdleState::update()
             m_fAdt += fDT;
             if (m_fAdt > 1.0f)
             {
-                CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+                CreateMissile(vMonPos, vMonScale,3, MISSILE_TYPE::SMALL);
                 m_fAdt = 0.f;
             }
         }
@@ -73,7 +73,7 @@ void CIdleState::update()
             }
             else if(GetMonster()->GetInfo().ePattern == MISSILE_PTRN::PTRN3)
             {
-                CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+                CreateMissile(vMonPos, vMonScale,3, MISSILE_TYPE::SMALL);
                 ChangeAIState(GetAi(), MON_STATE::RUN);
             }
             else

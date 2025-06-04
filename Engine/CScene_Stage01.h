@@ -5,12 +5,15 @@ class CScene_Stage01 :
 {
 private:
     vector<SpawnEvent> m_vEvents;
+    bool               m_bClear;
+    float              m_fClearAcc;
 public:
     virtual void update();
     virtual void Enter();
     virtual void render(HDC _dc);
     virtual void Exit();
 
+    void Clear() { m_bClear = true; }
     void InitEvents();
 public:
     CScene_Stage01();

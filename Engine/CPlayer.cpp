@@ -24,6 +24,7 @@ CPlayer::CPlayer()
     ,m_iAtk(2)
     ,dStartAcc(3.f)
     ,m_bHit(false)
+    ,m_iLvl(1)
 	
 {
 	//Texture 로딩하기
@@ -101,16 +102,83 @@ void CPlayer::update()
             {
                 vPos.x += 300.f * fDT;
             }
+            if (KEY_TAP(KEY::L))
+            {
+                m_iLvl = 5;
+            }
             if (KEY_HOLD((KEY::SPACE)))
             {
                 dAcc += fDT;
-                if (dAcc > 0.15f)
+                switch (m_iLvl)
                 {
-                    dAcc = 0;
-                    CreateMissile(0);
-                    CreateMissile(1);
-                    CreateMissile(2);
+                    case 1:
+                    {
+                        if (dAcc > 0.135f)
+                        {
+                            dAcc = 0;
+                            CreateMissile(0,1500.f,MISSILE_TYPE::LVL1);
+                            
+                        }
+                    }
+                    break;
+                    case 2:
+                    {
+                        if (dAcc > 0.135f)
+                        {
+                            dAcc = 0;
+                            CreateMissile(0, 1600.f, MISSILE_TYPE::LVL1);
+                            CreateMissile(0, 1500.f,MISSILE_TYPE::LVL1);
+                            CreateMissile(1, 1500.f,MISSILE_TYPE::LVL5);
+                            CreateMissile(2, 1500.f,MISSILE_TYPE::LVL5);
+                        }
+                    }
+                    break;
+                    case 3:
+                    {
+                        if (dAcc > 0.135f)
+                        {
+                            dAcc = 0;
+                            CreateMissile(0, 1800.f, MISSILE_TYPE::LVL2);
+                            CreateMissile(0, 1700.f,MISSILE_TYPE::LVL2);
+                            CreateMissile(1, 1700.f,MISSILE_TYPE::LVL5);
+                            CreateMissile(2, 1700.f,MISSILE_TYPE::LVL5);
+                            CreateMissile(3, 1700.f, MISSILE_TYPE::LVL5);
+                            CreateMissile(4, 1700.f, MISSILE_TYPE::LVL5);
+                        }
+                    }
+                    break;
+                    case 4:
+                    {
+                        if (dAcc > 0.125f)
+                        {
+                            dAcc = 0;
+                            CreateMissile(0, 1700.f,MISSILE_TYPE::LVL3);
+                            CreateMissile(1, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(2, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(3, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(4, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(5, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(6, 1700.f, MISSILE_TYPE::LVL6);
+                        }
+                    }
+                    break;
+                    case 5:
+                    {
+                        if (dAcc > 0.125f)
+                        {
+                            dAcc = 0;
+                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL3);
+                            CreateMissile(1, 1700.f, MISSILE_TYPE::LVL3);
+                            CreateMissile(2, 1700.f, MISSILE_TYPE::LVL3);
+                            CreateMissile(3, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(4, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(5, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(6, 1700.f, MISSILE_TYPE::LVL6);
+                        }
+                    }
+                    break;
                 }
+                
 
 
 
@@ -169,7 +237,7 @@ void CPlayer::render(HDC _dc)
         , bf);*/
 }
 
-void CPlayer::CreateMissile(int type)
+void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
 {
 	Vec2 vMissilePos = GetPos();
 	vMissilePos.y -= GetScale().y / 2.f;
@@ -177,16 +245,40 @@ void CPlayer::CreateMissile(int type)
 	{
 	case 1:
 	{
-		vMissilePos.x -= 30.f;
+		vMissilePos.x -= 20.f;
         vMissilePos.y += 20.f;
 	}
 		break;
 	case 2:
 	{
-		vMissilePos.x += 30.f;
+		vMissilePos.x += 20.f;
         vMissilePos.y += 20.f;
 	}
 		break;
+    case 3:
+    {
+        vMissilePos.x -= 35.f;
+        vMissilePos.y += 40.f;
+    }
+    break;
+    case 4:
+    {
+        vMissilePos.x += 35.f;
+        vMissilePos.y += 40.f;
+    }
+    break;
+    case 5:
+    {
+        vMissilePos.x += 50.f;
+        vMissilePos.y += 60.f;
+    }
+    break;
+    case 6:
+    {
+        vMissilePos.x -= 50.f;
+        vMissilePos.y += 60.f;
+    }
+    break;
 	}
 	// Missile Object
 	CMissile* pMissile = new CMissile;
@@ -194,7 +286,8 @@ void CPlayer::CreateMissile(int type)
 	pMissile->SetPos(vMissilePos);
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetDir(Vec2(0.f,1.f));
-	pMissile->SetVec(2000);
+    pMissile->ChangemType(_eType);
+	pMissile->SetVec(_fVec);
 	pMissile->SetType(0);
 	pMissile->SetName(L"Missile_Player");
 
@@ -214,13 +307,21 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 		pDead->SetName(L"Player_Dead");
 		CreateObject(pDead, GROUP_TYPE::DEAD_PLAYER);
 		--m_iHp;
+        m_iLvl = 1;
 		m_bHit = true;
 		Vec2 vPos = GetPos();
 		vPos.y = 1200;
 		SetPos(vPos);
 		SetCollideroff();
 	}
-		
+    if (pOtherObj->GetName() == L"Item")
+    {
+        if (m_iLvl < 5)
+        {
+            m_iLvl += 1;
+
+        }
+    }
 	
 }
 

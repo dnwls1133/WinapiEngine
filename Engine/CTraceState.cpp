@@ -33,7 +33,7 @@ void CTraceState::update()
     m_fAdt += fDT;
     if (m_fAdt > 0.5f)
     {
-        CreateMissile(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+        CreateMissile(vMonPos, vMonScale,3, MISSILE_TYPE::SMALL);
        // CreateMissile1(vMonPos, vMonScale);
         //CreateMissile2(vMonPos, vMonScale);
        // CreateMissile3(vMonPos, vMonScale);
