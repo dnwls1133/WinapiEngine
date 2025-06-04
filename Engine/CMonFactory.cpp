@@ -11,6 +11,9 @@
 #include "CPatorl3State.h"
 #include "CPatorl4State.h"
 #include "CBossPatorl1STate.h"
+#include "CBossPatorl2STate.h"
+#include "CBossPatorl3STate.h"
+#include "CBosPatorl4STate.h"
 #include "CDeadState.h"
 #include "CRunState.h"
 
@@ -36,12 +39,12 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
-        pMon->GetCollider()->SetScale(Vec2(50.f,50.f));
+        pMon->GetCollider()->SetScale(Vec2(50.f,25.f));
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 100.f;
+        info.fHP = 250.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 100.f;
         info.vDestPos = _vDPos;
@@ -66,12 +69,12 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(50.f, 50.f));
-        pMon->GetCollider()->SetScale(Vec2(50.f, 50.f));
+        pMon->GetCollider()->SetScale(Vec2(50.f, 25.f));
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 50.f;
+        info.fHP = 150.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 200.f;
         info.vDestPos = _vDPos;
@@ -97,7 +100,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
         pMon->SetPos(_vPos);
 
 
-        pMon->GetCollider()->SetScale(Vec2(25.f, 25.f));
+        pMon->GetCollider()->SetScale(Vec2(25.f, 20.f));
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
@@ -125,13 +128,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
         pMon->SetAnim(MON_TYPE::NORMAL4);
 
         pMon->SetPos(_vPos);
-        pMon->GetCollider()->SetScale(Vec2(25.f, 25.f));
+        pMon->GetCollider()->SetScale(Vec2(25.f, 20.f));
 
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 20.f;
+        info.fHP = 50.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 200.f;
         info.vDestPos = _vDPos;
@@ -155,13 +158,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
         pMon->SetAnim(MON_TYPE::NORMAL4);
 
         pMon->SetPos(_vPos);
-        pMon->GetCollider()->SetScale(Vec2(25.f, 25.f));
+        pMon->GetCollider()->SetScale(Vec2(25.f, 20.f));
 
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 20.f;
+        info.fHP = 50.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 300.f;
         info.vDestPos = _vDPos;
@@ -186,13 +189,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(150.f, 150.f));
-        pMon->GetCollider()->SetScale(Vec2(150.f, 150.f));
+        pMon->GetCollider()->SetScale(Vec2(150.f, 100.f));
 
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 50.f;
+        info.fHP = 8000.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 100.f;
         info.vDestPos = _vDPos;
@@ -204,6 +207,9 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
         AI* pAI = new AI;
         pAI->AddState(new CIdleState);
         pAI->AddState(new CBossPatorl1STate);
+        pAI->AddState(new CBossPatorl2STate);
+        pAI->AddState(new CBossPatorl3STate);
+        pAI->AddState(new CBosPatorl4STate);
         pAI->AddState(new CDeadState);
         pAI->AddState(new CRunState);
         pAI->SetCurState(MON_STATE::IDLE);
@@ -217,13 +223,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
-        pMon->GetCollider()->SetScale(Vec2(100.f, 100.f));
+        pMon->GetCollider()->SetScale(Vec2(100.f, 50.f));
 
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 500.f;
+        info.fHP = 1000.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 100.f;
         info.vDestPos = _vDPos;
@@ -248,13 +254,13 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
 
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
-        pMon->GetCollider()->SetScale(Vec2(100.f, 100.f));
+        pMon->GetCollider()->SetScale(Vec2(100.f, 50.f));
 
 
         tMonInfo info = {};
         info.fAtt = 1.f;
         info.fAttRange = 10.f;
-        info.fHP = 500.f;
+        info.fHP = 1000.f;
         info.fRecogRange = 3.f;
         info.fSpeed = 100.f;
         info.vDestPos = _vDPos;

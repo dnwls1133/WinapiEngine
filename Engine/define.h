@@ -34,6 +34,7 @@ enum class GROUP_TYPE
 	MONSTER, // 3
 	PROJ_PLAYER,// 4
 	PROJ_MONSTER,
+    ITEM,
 	BOSS,
     BACKBUFFER,
 	DEAD_PLAYER,
@@ -122,9 +123,15 @@ enum class MISSILE_TYPE
     SMALL,
     SPIN,
     MIDDLE,
+    BSMALL,
     BIG,
     RECTANGLE,
-
+    LVL1,
+    LVL2,
+    LVL3,
+    LVL4,
+    LVL5,
+    LVL6,
     END,
 };
 

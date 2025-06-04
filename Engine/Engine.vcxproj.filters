@@ -155,6 +155,9 @@
     <Filter Include="Engine\08. Module\AI\State\Boss">
       <UniqueIdentifier>{7f341737-fa3a-49e6-9c0c-cfc46eae99ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04.Object\Item">
+      <UniqueIdentifier>{190753e5-5588-425e-aeba-d9c7b9260f40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -326,6 +329,18 @@
     <ClInclude Include="CBossPatorl1STate.h">
       <Filter>Engine\08. Module\AI\State\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="CBossPatorl2STate.h">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossPatorl3STate.h">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CBosPatorl4STate.h">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>Engine\04.Object\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -491,6 +506,18 @@
     </ClCompile>
     <ClCompile Include="CBossPatorl1STate.cpp">
       <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossPatorl2STate.cpp">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossPatorl3STate.cpp">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CBosPatorl4STate.cpp">
+      <Filter>Engine\08. Module\AI\State\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>Engine\04.Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

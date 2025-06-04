@@ -156,7 +156,10 @@
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CAttackState.h" />
     <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CBosPatorl4STate.h" />
     <ClInclude Include="CBossPatorl1STate.h" />
+    <ClInclude Include="CBossPatorl2STate.h" />
+    <ClInclude Include="CBossPatorl3STate.h" />
     <ClInclude Include="CBtnUI.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCollider.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="CEenemi0.h" />
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CIdleState.h" />
+    <ClInclude Include="CItem.h" />
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CMenuItem.h" />
     <ClInclude Include="CMissile.h" />
@@ -217,7 +221,10 @@
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CAttackState.cpp" />
     <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CBosPatorl4STate.cpp" />
     <ClCompile Include="CBossPatorl1STate.cpp" />
+    <ClCompile Include="CBossPatorl2STate.cpp" />
+    <ClCompile Include="CBossPatorl3STate.cpp" />
     <ClCompile Include="CBtnUI.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCollider.cpp" />
@@ -227,6 +234,7 @@
     <ClCompile Include="CEenemi0.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
     <ClCompile Include="CIdleState.cpp" />
+    <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CMenuItem.cpp" />
     <ClCompile Include="CMissile.cpp" />

@@ -48,8 +48,32 @@ void CMissile::init(GROUP_TYPE _eType)
 	{
 		m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex0", L"texture\\Missile00.bmp");
 		CreaeteAnimator();
-		GetAnimator()->CreateAnimation(L"Missile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
-		GetAnimator()->Play(L"Missile0", true);
+
+
+		GetAnimator()->CreateAnimation(L"PlayerMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile0")->Save(L"animation\\PlayerMissile0.anim");
+
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex1", L"texture\\Player_Missile_LV1.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile1")->Save(L"animation\\PlayerMissile1.anim");
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex2", L"texture\\Player_Missile_LV2.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile2", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile2")->Save(L"animation\\PlayerMissile2.anim");
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex3", L"texture\\Player_Missile_LV3.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile3", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile3")->Save(L"animation\\PlayerMissile3.anim");
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex4", L"texture\\Player_Missile_LV4.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile4", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile4")->Save(L"animation\\PlayerMissile4.anim");
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex5", L"texture\\Player_Missile_LV5.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile5", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile5")->Save(L"animation\\PlayerMissile5.anim");
+        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex6", L"texture\\Player_Missile_LV6.png");
+        GetAnimator()->CreateAnimation(L"PlayerMissile6", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile6")->Save(L"animation\\PlayerMissile6.anim");
+
+
+		GetAnimator()->Play(L"PlayerMissile0", true);
 	}
 		
 		break;
@@ -57,13 +81,18 @@ void CMissile::init(GROUP_TYPE _eType)
 	{
 		m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex0", L"texture\\Monster_Middle_Bullet1.png");
 		CreaeteAnimator();
-		GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 0.5f, 4);
-        m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex1", L"texture\\Monster_Middle_Bullet2.png");
-        GetAnimator()->CreateAnimation(L"MonsterMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(80.f, 0.f), 0.05f, 6);
-        //Animation 저장
-        GetAnimator()->FindAnimation(L"MonsterMissile0")->Save(L"animation\\MonsterMissile0.anim");
-        GetAnimator()->FindAnimation(L"MonsterMissile1")->Save(L"animation\\MonsterMissile1.anim");
-
+		//GetAnimator()->CreateAnimation(L"MonsterMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 0.5f, 4);
+  //      m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex1", L"texture\\Monster_Middle_Bullet2.png");
+  //      GetAnimator()->CreateAnimation(L"MonsterMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(80.f, 0.f), 0.05f, 6);
+  //      m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex2", L"texture\\Monster_Huge_Bullet1.png");
+  //      GetAnimator()->CreateAnimation(L"MonsterMiddleMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(80.f, 80.f), Vec2(80.f, 0.f), 0.1f, 4);
+  //      m_pTex = CResMgr::GetInst()->LoadTexture(L"MonsterMissileTex3", L"texture\\Monster_Middle_Bullet3.png");
+  //      GetAnimator()->CreateAnimation(L"MonsterMiddleMissile2", m_pTex, Vec2(0.f, 0.f), Vec2(64.f, 64.f), Vec2(64.f, 0.f), 0.1f, 4);
+  //      //Animation 저장
+  //      GetAnimator()->FindAnimation(L"MonsterMissile0")->Save(L"animation\\MonsterMissile0.anim");
+  //      GetAnimator()->FindAnimation(L"MonsterMissile1")->Save(L"animation\\MonsterMissile1.anim");
+  //      GetAnimator()->FindAnimation(L"MonsterMiddleMissile1")->Save(L"animation\\MonsterMiddleMissile1.anim");
+  //      GetAnimator()->FindAnimation(L"MonsterMiddleMissile2")->Save(L"animation\\MonsterMiddleMissile2.anim");
 
         GetAnimator()->Play(L"MonsterMissile0", true);
 	}
@@ -79,12 +108,71 @@ void CMissile::ChangemType(MISSILE_TYPE _eType)
     {
         GetAnimator()->LoadAnimation(L"animation\\MonsterMissile0.anim");
         GetAnimator()->Play(L"MonsterMissile0", true);
+        GetCollider()->SetScale(Vec2(15.f, 15.f));
     }
     break;
     case MISSILE_TYPE::SPIN:
     {
         GetAnimator()->LoadAnimation(L"animation\\MonsterMissile1.anim");
         GetAnimator()->Play(L"MonsterMissile1", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::MIDDLE:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\MonsterMiddleMissile1.anim");
+        GetAnimator()->Play(L"MonsterMiddleMissile1", true);
+        GetCollider()->SetScale(Vec2(40.f, 40.f));
+    }
+    break;
+    case MISSILE_TYPE::BSMALL:
+    {
+
+        GetAnimator()->LoadAnimation(L"animation\\MonsterMiddleMissile2.anim");
+        GetAnimator()->Play(L"MonsterMiddleMissile2", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL1:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile1.anim");
+        GetAnimator()->Play(L"PlayerMissile1", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL2:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile2.anim");
+        GetAnimator()->Play(L"PlayerMissile2", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL3:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile3.anim");
+        GetAnimator()->Play(L"PlayerMissile3", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL4:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile4.anim");
+        GetAnimator()->Play(L"PlayerMissile4", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL5:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile5.anim");
+        GetAnimator()->Play(L"PlayerMissile5", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
+    }
+    break;
+    case MISSILE_TYPE::LVL6:
+    {
+        GetAnimator()->LoadAnimation(L"animation\\PlayerMissile6.anim");
+        GetAnimator()->Play(L"PlayerMissile6", true);
+        GetCollider()->SetScale(Vec2(20.f, 20.f));
     }
     break;
     }
@@ -123,16 +211,39 @@ void CMissile::update()
    
     if (GetName() == L"MsMissile")
     {
-        if (m_dAcc >= 0)
-        {
-            m_dAcc += fDT;
-        }
 
-        if (m_dAcc > 1.f)
+        switch (m_iType)
         {
-            m_fVec /= 2.f;
-            m_dAcc = -1.f;
+        case 3:
+        {
+            if (m_dAcc >= 0)
+            {
+                m_dAcc += fDT;
+            }
+
+            if (m_dAcc > 0.7f)
+            {
+                m_fVec /= 2.f;
+                m_dAcc = -1.f;
+            }
         }
+        break;
+        case 2:
+        {
+            if (m_dAcc >= 0)
+            {
+                m_dAcc += fDT;
+            }
+
+            if (m_dAcc > 0.5f)
+            {
+                m_fVec *= 1.5f;
+                m_dAcc = -1.f;
+            }
+        }
+        break;
+        }
+        
     }
 	vPos.x += m_fVec * m_vDir.x * fDT;
 	vPos.y -= m_fVec * m_vDir.y * fDT;
@@ -237,11 +348,11 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
 		
 		for (int i = 0; i < pAnim->GetMaxFrame(); ++i)
 		{
-			pAnim->GetFrame(i).vOffset = Vec2(0.f, -80.f);
+			pAnim->GetFrame(i).vOffset = Vec2(0.f, -20.f);
 		}
         m_bHit = true;
         SetCollideroff();
-		m_fVec = 10.f;
+		m_fVec = 100.f;
 	}
 }
 

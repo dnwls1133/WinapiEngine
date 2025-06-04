@@ -66,9 +66,26 @@ void CPatorl4State::update()
         {
             CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+           
+        }
+        if (2.4f + fDT >= m_fAdt && m_fAdt > 2.4f)
+        {
+            CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+
+        }
+        if (2.6f + fDT >= m_fAdt && m_fAdt > 2.6f)
+        {
+            CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+
+        }
+        if (2.8f + fDT >= m_fAdt && m_fAdt > 2.8f)
+        {
+            CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             m_fAdt = 0.f;
         }
-
        
         // CreateMissile3(vMonPos, vMonScale);
 

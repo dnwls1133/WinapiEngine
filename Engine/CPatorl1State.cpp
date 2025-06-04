@@ -63,16 +63,47 @@ void CPatorl1State::update()
     break;
     }
    
-    if (m_fAdt > 1.f)
+    if (m_fAdt > 0.8f)
     {
-        CreateMissile1(vMonPos, vMonScale,MISSILE_TYPE::SMALL);
-        CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-        if (m_fAdt > 1.f +fDT)
+        if (0.8f + fDT >= m_fAdt && m_fAdt > 0.8f)
         {
             CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
             CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+        }
+
+        if (1.0f + fDT >= m_fAdt && m_fAdt > 1.0f)
+        {
+            CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+           
+        }
+
+        if (1.2f + fDT >= m_fAdt && m_fAdt > 1.2f)
+        {
+            CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x + 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+
+            CreateMissile1(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
+            CreateMissile2(Vec2(vMonPos.x - 50.f, vMonPos.y), vMonScale, MISSILE_TYPE::SMALL);
             m_fAdt = 0.f;
         }
+       
+       
        
        // CreateMissile3(vMonPos, vMonScale);
        
