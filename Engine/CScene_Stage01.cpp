@@ -46,6 +46,8 @@ void CScene_Stage01::update()
     {
         if (m_fClearAcc == 0.f)
         {
+            CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
+            player->setclear();
             CCamera::GetInst()->FadeOut(3.f);
         }
         m_fClearAcc += fDT;
@@ -56,16 +58,20 @@ void CScene_Stage01::update()
             m_fClearAcc = 0;
         }
     }
-    for (auto& evt : m_vEvents)
+    else
     {
-        if (!evt.triggered && m_dAcc >= evt.triggerTime)
+        for (auto& evt : m_vEvents)
         {
-            CMonster* pMon = CMonFactory::CreateMonster(evt.type,evt.mtype,evt.spawnPos,evt.targetPos,evt.exitPos );
-            pMon->SetName(L"Monster");
-            AddObject(pMon, GROUP_TYPE::MONSTER);
-            evt.triggered = true;
+            if (!evt.triggered && m_dAcc >= evt.triggerTime)
+            {
+                CMonster* pMon = CMonFactory::CreateMonster(evt.type, evt.mtype, evt.spawnPos, evt.targetPos, evt.exitPos);
+                pMon->SetName(L"Monster");
+                AddObject(pMon, GROUP_TYPE::MONSTER);
+                evt.triggered = true;
+            }
         }
     }
+   
 
 
 }
@@ -156,7 +162,7 @@ void CScene_Stage01::InitEvents()
     RECT rBackrect = { (vBackPos.x - vBackScale.x / 2.f),(vBackPos.y - vBackScale.y / 2.f),(vBackPos.x + vBackScale.x / 2.f),(vBackPos.x + vBackScale.y / 2.f) };
 
 
-    for (int i = 0; i < 25; ++i)
+    for (int i = 1; i < 40; ++i)
     {
         if (i % 2 == 0)
         {

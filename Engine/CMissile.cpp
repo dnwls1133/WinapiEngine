@@ -50,10 +50,10 @@ void CMissile::init(GROUP_TYPE _eType)
 		CreaeteAnimator();
 
 
-		GetAnimator()->CreateAnimation(L"PlayerMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
-        GetAnimator()->FindAnimation(L"PlayerMissile0")->Save(L"animation\\PlayerMissile0.anim");
+		/*GetAnimator()->CreateAnimation(L"PlayerMissile0", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
+        GetAnimator()->FindAnimation(L"PlayerMissile0")->Save(L"animation\\PlayerMissile0.anim");*/
 
-        m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex1", L"texture\\Player_Missile_LV1.png");
+       /* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex1", L"texture\\Player_Missile_LV1.png");
         GetAnimator()->CreateAnimation(L"PlayerMissile1", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
         GetAnimator()->FindAnimation(L"PlayerMissile1")->Save(L"animation\\PlayerMissile1.anim");
         m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex2", L"texture\\Player_Missile_LV2.png");
@@ -70,10 +70,10 @@ void CMissile::init(GROUP_TYPE _eType)
         GetAnimator()->FindAnimation(L"PlayerMissile5")->Save(L"animation\\PlayerMissile5.anim");
         m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerMissileTex6", L"texture\\Player_Missile_LV6.png");
         GetAnimator()->CreateAnimation(L"PlayerMissile6", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 89.f), Vec2(50.f, 0.f), 0.5f, 4);
-        GetAnimator()->FindAnimation(L"PlayerMissile6")->Save(L"animation\\PlayerMissile6.anim");
+        GetAnimator()->FindAnimation(L"PlayerMissile6")->Save(L"animation\\PlayerMissile6.anim");*/
 
 
-		GetAnimator()->Play(L"PlayerMissile0", true);
+		//GetAnimator()->Play(L"PlayerMissile0", true);
 	}
 		
 		break;
@@ -94,7 +94,7 @@ void CMissile::init(GROUP_TYPE _eType)
   //      GetAnimator()->FindAnimation(L"MonsterMiddleMissile1")->Save(L"animation\\MonsterMiddleMissile1.anim");
   //      GetAnimator()->FindAnimation(L"MonsterMiddleMissile2")->Save(L"animation\\MonsterMiddleMissile2.anim");
 
-        GetAnimator()->Play(L"MonsterMissile0", true);
+        //GetAnimator()->Play(L"MonsterMissile0", true);
 	}
 	break;
 	}

@@ -21,10 +21,11 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
-    ,m_iAtk(2)
+    ,m_iAtk(50)
     ,dStartAcc(3.f)
     ,m_bHit(false)
     ,m_iLvl(1)
+    ,m_clear(false)
 	
 {
 	//Texture 로딩하기
@@ -57,67 +58,88 @@ CPlayer::~CPlayer()
 void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
-    if (dStartAcc > 0.f)
+    if (!m_clear)
     {
-        dStartAcc -= fDT;
-        vPos.y -= 100.f * fDT;
-        SetPos(vPos);
-    }
-    else
-    {
-        if (m_bHit == true)
+        if (dStartAcc > 0.f)
         {
-            dAcc += fDT;
-            if (dAcc < 1.5f)
-            {
-                vPos.y -= 300.f * fDT;
-            }
-
-            if (dAcc > 2.f)
-            {
-                dAcc = 0;
-                GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
-                GetAnimator()->Play(L"Player_walk", true);
-                SetCollideron();
-                m_bHit = false;
-            }
+            dStartAcc -= fDT;
+            vPos.y -= 100.f * fDT;
             SetPos(vPos);
-
         }
         else
         {
-            if (KEY_HOLD(KEY::W))
-            {
-                vPos.y -= 300.f * fDT;
-            }
-            if (KEY_HOLD(KEY::S))
-            {
-                vPos.y += 300.f * fDT;
-            }
-            if (KEY_HOLD(KEY::A))
-            {
-                vPos.x -= 300.f * fDT;
-            }
-            if (KEY_HOLD(KEY::D))
-            {
-                vPos.x += 300.f * fDT;
-            }
-            if (KEY_TAP(KEY::L))
-            {
-                m_iLvl = 5;
-            }
-            if (KEY_HOLD((KEY::SPACE)))
+            if (m_bHit == true)
             {
                 dAcc += fDT;
-                switch (m_iLvl)
+                if (dAcc < 1.5f)
                 {
+                    vPos.y -= 300.f * fDT;
+                }
+                else
+                {
+                    if (KEY_HOLD(KEY::W))
+                    {
+                        vPos.y -= 300.f * fDT;
+                    }
+                    if (KEY_HOLD(KEY::S))
+                    {
+                        vPos.y += 300.f * fDT;
+                    }
+                    if (KEY_HOLD(KEY::A))
+                    {
+                        vPos.x -= 300.f * fDT;
+                    }
+                    if (KEY_HOLD(KEY::D))
+                    {
+                        vPos.x += 300.f * fDT;
+                    }
+
+                }
+                if (dAcc > 2.f)
+                {
+                    dAcc = 0;
+                    GetAnimator()->LoadAnimation(L"animation\\player_walk_left.anim");
+                    GetAnimator()->Play(L"Player_walk", true);
+                    SetCollideron();
+                    m_bHit = false;
+                }
+                SetPos(vPos);
+
+            }
+            else
+            {
+                if (KEY_HOLD(KEY::W))
+                {
+                    vPos.y -= 300.f * fDT;
+                }
+                if (KEY_HOLD(KEY::S))
+                {
+                    vPos.y += 300.f * fDT;
+                }
+                if (KEY_HOLD(KEY::A))
+                {
+                    vPos.x -= 300.f * fDT;
+                }
+                if (KEY_HOLD(KEY::D))
+                {
+                    vPos.x += 300.f * fDT;
+                }
+                if (KEY_TAP(KEY::L))
+                {
+                    m_iLvl = 5;
+                }
+                if (KEY_HOLD((KEY::SPACE)))
+                {
+                    dAcc += fDT;
+                    switch (m_iLvl)
+                    {
                     case 1:
                     {
                         if (dAcc > 0.135f)
                         {
                             dAcc = 0;
-                            CreateMissile(0,1500.f,MISSILE_TYPE::LVL1);
-                            
+                            CreateMissile(0, 1500.f, MISSILE_TYPE::LVL1);
+
                         }
                     }
                     break;
@@ -126,10 +148,12 @@ void CPlayer::update()
                         if (dAcc > 0.135f)
                         {
                             dAcc = 0;
-                            CreateMissile(0, 1600.f, MISSILE_TYPE::LVL1);
-                            CreateMissile(0, 1500.f,MISSILE_TYPE::LVL1);
-                            CreateMissile(1, 1500.f,MISSILE_TYPE::LVL5);
-                            CreateMissile(2, 1500.f,MISSILE_TYPE::LVL5);
+                            CreateMissile(0, 1500.f, MISSILE_TYPE::LVL1);
+                            CreateMissile(1, 1500.f, MISSILE_TYPE::LVL1);
+                            CreateMissile(2, 1500.f, MISSILE_TYPE::LVL1);
+                            CreateMissile(3, 1500.f, MISSILE_TYPE::LVL4);
+                            CreateMissile(4, 1500.f, MISSILE_TYPE::LVL4);
+
                         }
                     }
                     break;
@@ -138,10 +162,10 @@ void CPlayer::update()
                         if (dAcc > 0.135f)
                         {
                             dAcc = 0;
-                            CreateMissile(0, 1800.f, MISSILE_TYPE::LVL2);
-                            CreateMissile(0, 1700.f,MISSILE_TYPE::LVL2);
-                            CreateMissile(1, 1700.f,MISSILE_TYPE::LVL5);
-                            CreateMissile(2, 1700.f,MISSILE_TYPE::LVL5);
+                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL2);
+                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL2);
+                            CreateMissile(1, 1700.f, MISSILE_TYPE::LVL5);
+                            CreateMissile(2, 1700.f, MISSILE_TYPE::LVL5);
                             CreateMissile(3, 1700.f, MISSILE_TYPE::LVL5);
                             CreateMissile(4, 1700.f, MISSILE_TYPE::LVL5);
                         }
@@ -152,7 +176,7 @@ void CPlayer::update()
                         if (dAcc > 0.125f)
                         {
                             dAcc = 0;
-                            CreateMissile(0, 1700.f,MISSILE_TYPE::LVL3);
+                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL3);
                             CreateMissile(1, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(2, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(3, 1700.f, MISSILE_TYPE::LVL6);
@@ -167,26 +191,36 @@ void CPlayer::update()
                         if (dAcc > 0.125f)
                         {
                             dAcc = 0;
-                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL3);
+
                             CreateMissile(1, 1700.f, MISSILE_TYPE::LVL3);
                             CreateMissile(2, 1700.f, MISSILE_TYPE::LVL3);
+                            CreateMissile(0, 1700.f, MISSILE_TYPE::LVL3);
                             CreateMissile(3, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(4, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(5, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(6, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(7, 1700.f, MISSILE_TYPE::LVL6);
+                            CreateMissile(8, 1700.f, MISSILE_TYPE::LVL6);
                         }
                     }
                     break;
+                    }
+
+
+
+
+
                 }
-                
-
-
-
-
+                SetPos(vPos);
             }
-            SetPos(vPos);
         }
     }
+    else {
+        vPos.y -= 300.f * fDT;
+        SetPos(vPos);
+    }
+   
+  
 	
 	
 	//GetAnimator()->update();
@@ -277,6 +311,18 @@ void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
     {
         vMissilePos.x -= 50.f;
         vMissilePos.y += 60.f;
+    }
+    break;
+    case 7:
+    {
+        vMissilePos.x += 65.f;
+        vMissilePos.y += 80.f;
+    }
+    break;
+    case 8:
+    {
+        vMissilePos.x -= 65.f;
+        vMissilePos.y += 80.f;
     }
     break;
 	}
