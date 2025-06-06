@@ -24,6 +24,7 @@ CMonster::CMonster()
 	, dAccTime1(0.)
 	, m_signaldead(false)
     , m_pAI(nullptr)
+    , m_bHit(false)
 {
 
     CreaeteCollider();
@@ -35,53 +36,43 @@ CMonster::CMonster()
     
    
     {
-         m_pTex = CResMgr::GetInst()->LoadTexture(L"E2Enemy_Move", L"texture\\Enemies\\Epic2_Enemy_Move.png");
-        GetAnimator()->CreateAnimation(L"E2Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(450.f, 450.f), Vec2(450.f, 0.f), 0.05f, 40);
-   //Animation 저장
-   GetAnimator()->FindAnimation(L"E2Enemy_Move")->Save(L"animation\\E2Enemy_Move.anim");
-   m_pTex = CResMgr::GetInst()->LoadTexture(L"E2Enemy_Dead", L"texture\\Enemies\\Epic2_Enemy_Dead.png");
-   GetAnimator()->CreateAnimation(L"E2Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(450.f, 450.f), Vec2(450.f, 0.f), 0.05f, 13);
-   //Animation 저장
-   GetAnimator()->FindAnimation(L"E2Enemy_Dead")->Save(L"animation\\E2Enemy_Dead.anim");
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N2Enemy_Move", L"texture\\Enemies\\normal2_enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"N2Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(150.f, 150.f), Vec2(150.f, 0.f), 0.05f, 40);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"N2Enemy_Move")->Save(L"animation\\N2Enemy_Move.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"E2Enemy_Hit", L"texture\\Enemies\\Epic2_Enemy_Hit.png");
+        //GetAnimator()->CreateAnimation(L"E2Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(450.f, 450.f), Vec2(450.f, 0.f), 0.05f, 40);
+        ////Animation 저장
+        // GetAnimator()->FindAnimation(L"E2Enemy_Hit")->Save(L"animation\\E2Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N2Enemy_Dead", L"texture\\Enemies\\normal2_enemy_Dead.png");
-   //GetAnimator()->CreateAnimation(L"N2Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(150.f, 150.f), Vec2(150.f, 0.f), 0.05f, 12);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"N2Enemy_Dead")->Save(L"animation\\N2Enemy_Dead.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"N1Enemy_Hit", L"texture\\Enemies\\normal1H_enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"N1Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 40);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"N1Enemy_Hit")->Save(L"animation\\N1Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N3Enemy_Move", L"texture\\Enemies\\normal3_enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"N3Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(100.f, 100.f), Vec2(100.f, 0.f), 0.05f, 20);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"N3Enemy_Move")->Save(L"animation\\N3Enemy_Move.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"N2Enemy_Hit", L"texture\\Enemies\\normal2_enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"N2Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(150.f, 150.f), Vec2(150.f, 0.f), 0.05f, 40);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"N2Enemy_Hit")->Save(L"animation\\N2Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"N4Enemy_Move", L"texture\\Enemies\\normal4_enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"N4Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(100.f, 100.f), Vec2(100.f, 0.f), 0.05f, 20);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"N4Enemy_Move")->Save(L"animation\\N4Enemy_Move.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"E1Enemy_Move", L"texture\\Enemies\\Epic1_Enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"E1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 40);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"E1Enemy_Move")->Save(L"animation\\E1Enemy_Move.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"N3Enemy_Hit", L"texture\\Enemies\\normal3_enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"N3Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(100.f, 100.f), Vec2(100.f, 0.f), 0.05f, 20);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"N3Enemy_Hit")->Save(L"animation\\N3Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"E1Enemy_Dead", L"texture\\Enemies\\Epic1_Enemy_Dead.png");
-   //GetAnimator()->CreateAnimation(L"E1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 13);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"E1Enemy_Dead")->Save(L"animation\\E1Enemy_Dead.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"N4Enemy_Hit", L"texture\\Enemies\\normal3_enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"N4Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(100.f, 100.f), Vec2(100.f, 0.f), 0.05f, 20);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"N4Enemy_Hit")->Save(L"animation\\N4Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Move", L"texture\\Enemies\\Boss1_Enemy_Move.png");
-   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Move", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 60);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"Boss1Enemy_Move")->Save(L"animation\\Boss1Enemy_Move.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"E1Enemy_Hit", L"texture\\Enemies\\Epic1_Enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"E1Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(300.f, 300.f), Vec2(300.f, 0.f), 0.05f, 40);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"E1Enemy_Hit")->Save(L"animation\\E1Enemy_Hit.anim");
 
-   //m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Dead", L"texture\\Enemies\\Boss1_Enemy_Dead.png");
-   //GetAnimator()->CreateAnimation(L"Boss1Enemy_Dead", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 50);
-   ////Animation 저장
-   //GetAnimator()->FindAnimation(L"Boss1Enemy_Dead")->Save(L"animation\\Boss1Enemy_Dead.anim");
+        // m_pTex = CResMgr::GetInst()->LoadTexture(L"Boss1Enemy_Hit", L"texture\\Enemies\\Boss1_Enemy_Hit.png");
+        // GetAnimator()->CreateAnimation(L"Boss1Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(400.f, 400.f), Vec2(400.f, 0.f), 0.05f, 60);
+        // //Animation 저장
+        // GetAnimator()->FindAnimation(L"Boss1Enemy_Hit")->Save(L"animation\\Boss1Enemy_Hit.anim");
+
+        
     }
    
    
@@ -101,6 +92,20 @@ void CMonster::update()
     Vec2 vBPos = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetPos();
     Vec2 vBScale = CSceneMgr::GetInst()->GetCurScene()->GetBackground()->GetScale();
     Vec2 vMonPos = GetPos();
+    if (m_bHit)
+    {
+        dAccTime0 += fDT;
+        if (dAccTime0 > 0.05f)
+        {
+            dAccTime0 = 0.f;
+            m_bHit = false;
+            if (m_signaldead == false)
+            {
+                SetAnim(m_tInfo.eMType);
+            }
+           
+        }
+    }
     if (vMonPos.x < vBPos.x - vBScale.x - 300.f
         || vMonPos.x > vBPos.x + vBScale.x + 300.f
         || vMonPos.y < vBPos.y - vBScale.y - 300.f
@@ -157,12 +162,68 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
     int iPAtk = pPlayerobj->GetPlayerAtk();
     if (pOtherobj->GetName() == L"Missile_Player")
     {
-      
+        m_bHit = true;
+        switch (m_tInfo.eMType)
+        {
+        case MON_TYPE::NORMAL1:
+        {
+            //GetAnimator()->LoadAnimation(L"animation\\N1EnemyH_Hit.anim");
+           // GetAnimator()->Play(L"N1EnemyH_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL2:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
+            GetAnimator()->Play(L"N2Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL3:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N3Enemy_Hit.anim");
+            GetAnimator()->Play(L"N3Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL4:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N4Enemy_Hit.anim");
+            GetAnimator()->Play(L"N4Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::RARE:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Hit.anim");
+            GetAnimator()->Play(L"Boss1Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::EPIC:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\E1Enemy_Hit.anim");
+            GetAnimator()->Play(L"E1Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::EPIC2:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\E2Enemy_Hit.anim");
+            GetAnimator()->Play(L"E2Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::BOSS:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
+            GetAnimator()->Play(L"N2Enemy_Hit", true);
+        }
+        break;
+        default:
+            break;
+        }
         m_tInfo.fHP -= iPAtk;
+
         if (m_tInfo.fHP < 0 && m_signaldead == false)
         {
+
             m_pAI->ChangeState(MON_STATE::DEAD);
             m_signaldead = true;
+            SetCollideroff();
             //DeleteObject(this);
         }
        

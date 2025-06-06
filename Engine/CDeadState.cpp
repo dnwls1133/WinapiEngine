@@ -52,7 +52,8 @@ void CDeadState::update()
 
 void CDeadState::Enter()
 {
-    switch (GetMonster()->GetInfo().eMType)
+    MON_TYPE eType = GetMonster()->GetInfo().eMType;
+    switch (eType)
     {
     case MON_TYPE::NORMAL1:
     {
@@ -123,6 +124,7 @@ void CDeadState::Enter()
          GetMonster()->GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Dead.anim");
          GetMonster()->GetAnimator()->Play(L"N2Enemy_Dead", false);
     }
+    break;
     }
 }
 
