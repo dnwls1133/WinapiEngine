@@ -41,30 +41,48 @@ void CDeadState::update()
             Exposion->SetName(L"Player_Dead");
             CreateObject(Exposion, GROUP_TYPE::DEAD_PLAYER);
         }
-        if (1.25f + fDT >= m_fAdt && m_fAdt > 1.25f)
+        if (1.15f + fDT >= m_fAdt && m_fAdt > 1.15f)
         {
             CExposion* Exposion1 = new CExposion;
             Exposion1->SetPos(Vec2(vPos.x + 70, vPos.y - 100));
             Exposion1->SetName(L"Player_Dead");
             CreateObject(Exposion1, GROUP_TYPE::DEAD_PLAYER);
         }
-        if (1.5f + fDT >= m_fAdt && m_fAdt > 1.5f)
+        if (1.3f + fDT >= m_fAdt && m_fAdt > 1.3f)
         {
             CExposion* Exposion2 = new CExposion;
             Exposion2->SetPos(Vec2(vPos.x - 100, vPos.y + 90));
             Exposion2->SetName(L"Player_Dead");
             CreateObject(Exposion2, GROUP_TYPE::DEAD_PLAYER);
         }
-        if (1.75f + fDT >= m_fAdt && m_fAdt > 1.75f)
+        if (1.45f + fDT >= m_fAdt && m_fAdt > 1.45f)
         {
             CExposion* Exposion3 = new CExposion;
             Exposion3->SetPos(Vec2(vPos.x + 60, vPos.y + 80));
             Exposion3->SetName(L"Player_Dead");
             CreateObject(Exposion3, GROUP_TYPE::DEAD_PLAYER);
         }
-        
-       
-       
+        if (1.6f + fDT >= m_fAdt && m_fAdt > 1.6f)
+        {
+            CExposion* Exposion3 = new CExposion;
+            Exposion3->SetPos(Vec2(vPos.x + 50, vPos.y + 70));
+            Exposion3->SetName(L"Player_Dead");
+            CreateObject(Exposion3, GROUP_TYPE::DEAD_PLAYER);
+        }
+        if (1.75f + fDT >= m_fAdt && m_fAdt > 1.75f)
+        {
+            CExposion* Exposion3 = new CExposion;
+            Exposion3->SetPos(Vec2(vPos.x - 60, vPos.y - 80));
+            Exposion3->SetName(L"Player_Dead");
+            CreateObject(Exposion3, GROUP_TYPE::DEAD_PLAYER);
+        }
+        if (1.8f + fDT >= m_fAdt && m_fAdt > 1.8f)
+        {
+            CExposion* Exposion3 = new CExposion;
+            Exposion3->SetPos(Vec2(vPos.x - 50, vPos.y + 110));
+            Exposion3->SetName(L"Player_Dead");
+            CreateObject(Exposion3, GROUP_TYPE::DEAD_PLAYER);
+        }
        
         if (m_fAdt > 5.0f)
         {

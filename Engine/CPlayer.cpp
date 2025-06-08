@@ -377,7 +377,14 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 
         }
     }
-	
+    if (pOtherObj->GetName() == L"Monster")
+    {
+        if (m_iLvl > 1)
+        {
+            m_iLvl -= 1;
+
+        }
+    }
 }
 
 
