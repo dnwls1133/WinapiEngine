@@ -346,13 +346,14 @@ void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherObj = _pOther->GetObj();
-    if (m_iHp <= 0)
-    {
-        CScene_Stage01* curscene = (CScene_Stage01*)CSceneMgr::GetInst()->GetCurScene();
-        curscene->Fail();
-    }
+  
 	if (pOtherObj->GetName() == L"MsMissile" && m_bHit == false)
 	{
+        if (m_iHp <= 0)
+        {
+            CScene_Stage01* curscene = (CScene_Stage01*)CSceneMgr::GetInst()->GetCurScene();
+            curscene->Fail();
+        }
         GetAnimator()->LoadAnimation(L"animation\\player_Invincible.anim");
         GetAnimator()->Play(L"Player_Invincible", true);
 		CPlayerDead* pDead = new CPlayerDead;
@@ -376,7 +377,14 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 
         }
     }
-	
+    if (pOtherObj->GetName() == L"Monster")
+    {
+        if (m_iLvl > 1)
+        {
+            m_iLvl -= 1;
+
+        }
+    }
 }
 
 

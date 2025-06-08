@@ -104,8 +104,8 @@ void CBossPatorl1STate::update()
                 if (m_fAdt > 0.2f)
                 {
 
-                    CreateStraightMissile(Vec2(vMonPos.x - vMonScale.x / 1.25f, vMonPos.y), vMonScale, 550.f,MISSILE_TYPE::SMALL);
-                    CreateStraightMissile(Vec2(vMonPos.x + vMonScale.x / 1.25f, vMonPos.y), vMonScale, 550.f,MISSILE_TYPE::SMALL);
+                    CreateStraightMissile(Vec2(vMonPos.x - vMonScale.x / 1.25f, vMonPos.y), vMonScale, 400.f,MISSILE_TYPE::SMALL);
+                    CreateStraightMissile(Vec2(vMonPos.x + vMonScale.x / 1.25f, vMonPos.y), vMonScale, 400.f,MISSILE_TYPE::SMALL);
 
                     m_fAdt = 0.f;
                 }
