@@ -341,6 +341,9 @@
     <ClInclude Include="CItem.h">
       <Filter>Engine\04.Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="CExposion.h">
+      <Filter>Engine\04.Object\Monster\Eenemis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -518,6 +521,9 @@
     </ClCompile>
     <ClCompile Include="CItem.cpp">
       <Filter>Engine\04.Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CExposion.cpp">
+      <Filter>Engine\04.Object\Monster\Eenemis</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

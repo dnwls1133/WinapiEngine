@@ -58,167 +58,53 @@ void CBosPatorl4STate::update()
     vMonPos += vDir * GetMonster()->GetInfo().fSpeed * fDT;
 
     m_fAdt += fDT;
+    m_fMTimeAcc += fDT;
     switch (GetMonster()->GetInfo().ePattern)
     {
     case MISSILE_PTRN::PTRN1:
     {
         if (m_fAdt > 0.5f)
         {
-            if (0.5f + fDT >= m_fAdt && m_fAdt > 0.5f)
+
+            for (int i = 0; i < 8; ++i)
             {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+                if (0.5f + (0.1f*i) + fDT >= m_fAdt && m_fAdt > 0.5f + (0.1f * i))
+                {
+                    CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
 
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y+ 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y+ 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y+ 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y+ 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y+ 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y+ 70.f), vMonScale, MISSILE_TYPE::SMALL);
-               
+                    CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y - 50.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y - 50.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y - 60.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y - 60.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y - 70.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y - 70.f), vMonScale, MISSILE_TYPE::SMALL);
 
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y+ 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y+ 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y+ 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y+ 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y+ 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y+ 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                
+
+                    CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y - 50.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y - 50.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y - 60.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y - 60.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y - 70.f), vMonScale, MISSILE_TYPE::SMALL);
+                    CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y - 70.f), vMonScale, MISSILE_TYPE::SMALL);
+
+                }
             }
-
-            if (0.6f + fDT >= m_fAdt && m_fAdt > 0.6f)
+            if (1.5f < m_fAdt)
             {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                
-
-            }
-
-            if (0.7f + fDT >= m_fAdt && m_fAdt > 0.7f)
-            {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-               
-               
-            }
-            if (0.8f + fDT >= m_fAdt && m_fAdt > 0.8f)
-            {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-               
-
-            }
-            if (0.9f + fDT >= m_fAdt && m_fAdt > 0.9f)
-            {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                
-
-            }
-            if (1.0f + fDT >= m_fAdt && m_fAdt > 1.0f)
-            {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                
-
-            }
-            if (1.1f + fDT >= m_fAdt && m_fAdt > 1.1f)
-            {
-                CreateMissile1(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(vMonPos, vMonScale, MISSILE_TYPE::SMALL);
-
-                CreateMissile1(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x + 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-
-
-                CreateMissile1(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 20.f, vMonPos.y + 50.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 40.f, vMonPos.y + 60.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile1(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                CreateMissile2(Vec2(vMonPos.x - 60.f, vMonPos.y + 70.f), vMonScale, MISSILE_TYPE::SMALL);
-                GetMonster()->SetMissiletype(MISSILE_PTRN::PTRN2);
                 m_fAdt = 0.f;
             }
+
+          
            
+        }
+
+        if (5.0f < m_fMTimeAcc)
+        {
+
+            m_fMTimeAcc = 0.f;
+            m_fAdt = 0;
+            GetMonster()->SetMissiletype(MISSILE_PTRN::PTRN2);
         }
     }
     break;

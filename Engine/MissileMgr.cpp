@@ -53,6 +53,28 @@ void CreateStraightMissile(Vec2 vMonPos, Vec2 vMonScale, float _speed, MISSILE_T
     pMissile->SetName(L"MsMissile");
     pMissile->ChangemType(_eType);
     CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
+    vMDPos.x -= 8 * PI / 30.f;
+    pMissile = new CMissile;
+    pMissile->init(GROUP_TYPE::PROJ_MONSTER);
+    pMissile->SetPos(vMissilePos);
+    pMissile->SetScale(Vec2(20.f, 20.f));
+    pMissile->SetDir(vMDPos);
+    pMissile->SetVec(_speed);
+    pMissile->SetType(1);
+    pMissile->SetName(L"MsMissile");
+    pMissile->ChangemType(_eType);
+    CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
+    vMDPos.x += 12 * PI / 30.f;
+    pMissile = new CMissile;
+    pMissile->init(GROUP_TYPE::PROJ_MONSTER);
+    pMissile->SetPos(vMissilePos);
+    pMissile->SetScale(Vec2(20.f, 20.f));
+    pMissile->SetDir(vMDPos);
+    pMissile->SetVec(_speed);
+    pMissile->SetType(1);
+    pMissile->SetName(L"MsMissile");
+    pMissile->ChangemType(_eType);
+    CreateObject(pMissile, GROUP_TYPE::PROJ_MONSTER);
 }
 
 void CreateStraightMissile1(Vec2 vMonPos, Vec2 vMonScale, MISSILE_TYPE _eType)

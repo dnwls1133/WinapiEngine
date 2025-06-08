@@ -25,6 +25,7 @@
 #include "CTraceState.h"
 CScene_Stage01::CScene_Stage01()
     :m_bClear(false)
+    ,m_bFail(false)
     ,m_fClearAcc(0.f)
 {
 }
@@ -35,11 +36,15 @@ CScene_Stage01::~CScene_Stage01()
 
 void CScene_Stage01::update()
 {
-    CScene::update();
+   
    
 
-
-    m_dAcc += fDT;
+    if (!m_bFail)
+    {
+        CScene::update();
+        m_dAcc += fDT;
+    }
+   
    
 
     if (m_bClear)
@@ -56,6 +61,31 @@ void CScene_Stage01::update()
            
             ChangeScene(SCENE_TYPE::TITLE);
             m_fClearAcc = 0;
+        }
+    }
+    else if (m_bFail)
+    {
+        if (m_fClearAcc == 0.f)
+        {
+            
+            //CCamera::GetInst()->FadeOut(0.5f);
+        }
+        m_fClearAcc += fDT;
+        if (m_fClearAcc > 0.5f)
+        {
+            if (KEY_TAP(KEY::SPACE))
+            {
+                CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
+                player->FullHP();
+                m_bFail = false;
+                m_fClearAcc = 0.f;
+            }
+            if (KEY_TAP(KEY::ESC))
+            {
+                ChangeScene(SCENE_TYPE::TITLE);
+                m_fClearAcc = 0.f;
+            }
+           
         }
     }
     else
@@ -149,6 +179,7 @@ void CScene_Stage01::Exit()
     DeleteAll();
     m_dAcc = 0;
     m_bClear = false;
+    m_bFail = false;
     m_fClearAcc = 0.f;
     m_vEvents.clear();
     CColliderMgr::GetInst()->Reset();

@@ -11,6 +11,7 @@
 
 
 #include "CScene.h"
+#include "CScene_Stage01.h"
 #include "CMissile.h"
 #include "CPlayerDead.h"
 
@@ -21,11 +22,12 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
-    ,m_iAtk(50)
+    ,m_iAtk(2)
     ,dStartAcc(3.f)
     ,m_bHit(false)
     ,m_iLvl(1)
     ,m_clear(false)
+    ,m_dead(false)
 	
 {
 	//Texture 로딩하기
@@ -58,7 +60,7 @@ CPlayer::~CPlayer()
 void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
-    if (!m_clear)
+    if (!m_clear && !m_dead)
     {
         if (dStartAcc > 0.f)
         {
@@ -77,19 +79,19 @@ void CPlayer::update()
                 }
                 else
                 {
-                    if (KEY_HOLD(KEY::W))
+                    if (KEY_HOLD(KEY::UP))
                     {
                         vPos.y -= 300.f * fDT;
                     }
-                    if (KEY_HOLD(KEY::S))
+                    if (KEY_HOLD(KEY::DOWN))
                     {
                         vPos.y += 300.f * fDT;
                     }
-                    if (KEY_HOLD(KEY::A))
+                    if (KEY_HOLD(KEY::LEFT))
                     {
                         vPos.x -= 300.f * fDT;
                     }
-                    if (KEY_HOLD(KEY::D))
+                    if (KEY_HOLD(KEY::RIGHT))
                     {
                         vPos.x += 300.f * fDT;
                     }
@@ -108,19 +110,19 @@ void CPlayer::update()
             }
             else
             {
-                if (KEY_HOLD(KEY::W))
+                if (KEY_HOLD(KEY::UP))
                 {
                     vPos.y -= 300.f * fDT;
                 }
-                if (KEY_HOLD(KEY::S))
+                if (KEY_HOLD(KEY::DOWN))
                 {
                     vPos.y += 300.f * fDT;
                 }
-                if (KEY_HOLD(KEY::A))
+                if (KEY_HOLD(KEY::LEFT))
                 {
                     vPos.x -= 300.f * fDT;
                 }
-                if (KEY_HOLD(KEY::D))
+                if (KEY_HOLD(KEY::RIGHT))
                 {
                     vPos.x += 300.f * fDT;
                 }
@@ -128,7 +130,7 @@ void CPlayer::update()
                 {
                     m_iLvl = 5;
                 }
-                if (KEY_HOLD((KEY::SPACE)))
+                if (KEY_HOLD((KEY::S)))
                 {
                     dAcc += fDT;
                     switch (m_iLvl)
@@ -215,7 +217,7 @@ void CPlayer::update()
             }
         }
     }
-    else {
+    else if(m_clear) {
         vPos.y -= 300.f * fDT;
         SetPos(vPos);
     }
@@ -344,6 +346,11 @@ void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
 {
 	CObject* pOtherObj = _pOther->GetObj();
+    if (m_iHp <= 0)
+    {
+        CScene_Stage01* curscene = (CScene_Stage01*)CSceneMgr::GetInst()->GetCurScene();
+        curscene->Fail();
+    }
 	if (pOtherObj->GetName() == L"MsMissile" && m_bHit == false)
 	{
         GetAnimator()->LoadAnimation(L"animation\\player_Invincible.anim");
@@ -360,6 +367,7 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 		SetPos(vPos);
 		SetCollideroff();
 	}
+
     if (pOtherObj->GetName() == L"Item")
     {
         if (m_iLvl < 5)
