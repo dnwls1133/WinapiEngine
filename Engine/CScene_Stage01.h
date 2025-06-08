@@ -6,6 +6,7 @@ class CScene_Stage01 :
 private:
     vector<SpawnEvent> m_vEvents;
     bool               m_bClear;
+    bool               m_bFail;
     float              m_fClearAcc;
 public:
     virtual void update();
@@ -14,6 +15,7 @@ public:
     virtual void Exit();
 
     void Clear() { m_bClear = true; }
+    void Fail() { m_bFail = true; }
     void InitEvents();
 public:
     CScene_Stage01();

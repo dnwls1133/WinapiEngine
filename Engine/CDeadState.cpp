@@ -10,6 +10,9 @@
 #include "CTexture.h"
 #include "CObject.h"
 #include "CMonster.h"
+
+#include "CExposion.h"
+
 #include "CItem.h"
 #include "CAnimation.h"
 #include "CAnimator.h"
@@ -28,6 +31,41 @@ void CDeadState::update()
     {
     case MON_TYPE::RARE:
     {
+        Vec2 vPos = GetMonster()->GetPos();
+        if (1.0f + fDT >= m_fAdt && m_fAdt > 1.0f)
+        {
+            CExposion* Exposion = new CExposion;
+
+
+            Exposion->SetPos(Vec2(vPos.x - 80, vPos.y - 70));
+            Exposion->SetName(L"Player_Dead");
+            CreateObject(Exposion, GROUP_TYPE::DEAD_PLAYER);
+        }
+        if (1.25f + fDT >= m_fAdt && m_fAdt > 1.25f)
+        {
+            CExposion* Exposion1 = new CExposion;
+            Exposion1->SetPos(Vec2(vPos.x + 70, vPos.y - 100));
+            Exposion1->SetName(L"Player_Dead");
+            CreateObject(Exposion1, GROUP_TYPE::DEAD_PLAYER);
+        }
+        if (1.5f + fDT >= m_fAdt && m_fAdt > 1.5f)
+        {
+            CExposion* Exposion2 = new CExposion;
+            Exposion2->SetPos(Vec2(vPos.x - 100, vPos.y + 90));
+            Exposion2->SetName(L"Player_Dead");
+            CreateObject(Exposion2, GROUP_TYPE::DEAD_PLAYER);
+        }
+        if (1.75f + fDT >= m_fAdt && m_fAdt > 1.75f)
+        {
+            CExposion* Exposion3 = new CExposion;
+            Exposion3->SetPos(Vec2(vPos.x + 60, vPos.y + 80));
+            Exposion3->SetName(L"Player_Dead");
+            CreateObject(Exposion3, GROUP_TYPE::DEAD_PLAYER);
+        }
+        
+       
+       
+       
         if (m_fAdt > 5.0f)
         {
             m_fAdt = 0;
@@ -105,6 +143,15 @@ void CDeadState::Enter()
         GetMonster()->GetAnimator()->FindAnimation(L"Boss1Enemy_Dead")->Save(L"animation\\Boss1Enemy_Dead.anim");
         GetMonster()->GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Dead.anim");
         GetMonster()->GetAnimator()->Play(L"Boss1Enemy_Dead", false);
+
+        
+
+       
+
+
+
+
+
     }
     break;
     case MON_TYPE::EPIC:
