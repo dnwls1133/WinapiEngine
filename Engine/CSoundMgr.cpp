@@ -17,7 +17,7 @@ CSoundMgr::~CSoundMgr()
 
 }
 
-void CSoundMgr::PlayBGM(CSound* const bgm_)
+void CSoundMgr::PlayBGM(CSound* const bgm_, bool isLoop)
 {
     if (m_pCurrentBGM)
     {
@@ -27,7 +27,7 @@ void CSoundMgr::PlayBGM(CSound* const bgm_)
 
     m_pCurrentBGM = bgm_;
     bgm_->SetVolume(m_fBGMVolume);
-    bgm_->Play(true);
+    bgm_->Play(isLoop);
 }
 
 void CSoundMgr::PlaySE(CSound* const se_)

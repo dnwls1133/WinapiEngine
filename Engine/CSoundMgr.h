@@ -6,7 +6,7 @@ class CSoundMgr
 {
     SINGLE(CSoundMgr);
 public:
-    void PlayBGM(CSound* const bgm_);
+    void PlayBGM(CSound* const bgm_, bool isLoop = true);
     void PlaySE(CSound* const se_);
 
     // void StopBGM();

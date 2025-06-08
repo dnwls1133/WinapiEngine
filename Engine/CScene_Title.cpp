@@ -82,23 +82,36 @@ void CScene_Title::Enter()
     );
     // AddObject(m_pManuelButton, GROUP_TYPE::UI);
 
+    m_pRankingButton = new CMenuItem(
+        CResMgr::GetInst()->LoadTexture(L"Ranking_Idle", L"texture\\Menu Items\\Score Ranking\\Sprite_Label_GameRanking_0.png"),
+        CResMgr::GetInst()->LoadTexture(L"Ranking_Hover", L"texture\\Menu Items\\Score Ranking\\Sprite_Label_GameRanking_1.png")
+    );
+    m_pRankingButton->SetPos(Vec2(290.0f, 680.0f));
+    m_pRankingButton->SetScale(Vec2(210.0f, 70.0f));
+    m_pRankingButton->SetClickedCallBack(
+        [](DWORD_PTR, DWORD_PTR) {
+            // ChangeScene(SCENE_TYPE::START);
+        },
+        (DWORD_PTR)0, (DWORD_PTR)0
+    );
+
     m_pExitButton = new CMenuItem(
         CResMgr::GetInst()->LoadTexture(L"QuitGame_Idle", L"texture\\Menu Items\\Quit Game\\Sprite_Label_QuitGame_0.png"),
         CResMgr::GetInst()->LoadTexture(L"QuitGame_Hover", L"texture\\Menu Items\\Quit Game\\Sprite_Label_QuitGame_1.png")
     );
-    m_pExitButton->SetPos(Vec2(290.0f, 680.0f));
+    m_pExitButton->SetPos(Vec2(290.0f, 760.0f));
     m_pExitButton->SetScale(Vec2(210.0f, 70.0f));
     m_pExitButton->SetClickedCallBack(
         [](DWORD_PTR, DWORD_PTR) {
             // ChangeScene(SCENE_TYPE::START);
-            // PostQuitMessage(0);
+            PostQuitMessage(0);
         },
         (DWORD_PTR)0, (DWORD_PTR)0
     );
     // AddObject(m_pExitButton, GROUP_TYPE::UI);
 
-    m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\AllClear.mp3");
-    CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme);
+    m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\BGM_Opening.mp3");
+    CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme, false);
 
     m_pBackground->PlayIntroAnimation();
     m_CurrentState = EState::Intro;
@@ -119,6 +132,7 @@ void CScene_Title::update()
 
             AddObject(m_pStartButton, GROUP_TYPE::UI);
             AddObject(m_pManuelButton, GROUP_TYPE::UI);
+            AddObject(m_pRankingButton, GROUP_TYPE::UI);
             AddObject(m_pExitButton, GROUP_TYPE::UI);
             return;
         }
