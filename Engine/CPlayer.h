@@ -15,11 +15,16 @@ private:
     int         m_iAtk;
     int         m_iLvl;
     bool        m_clear;
+    bool        m_dead;
 public:
     virtual void update();
     virtual void render(HDC _dc);
 
+    int getHP() { return m_iHp; }
+
+    void FullHP() { m_iHp = 3; }
     void setclear() { m_clear = true; }
+    void setdead() { m_dead = true; }
     int GetPlayerAtk() { return m_iAtk; }
 private:
     void CreateMissile(int type,float _fVec, MISSILE_TYPE _etype);

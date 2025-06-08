@@ -168,6 +168,7 @@
     <ClInclude Include="CDeadState.h" />
     <ClInclude Include="CEenemi0.h" />
     <ClInclude Include="CEventMgr.h" />
+    <ClInclude Include="CExposion.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CKeyMgr.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="CDeadState.cpp" />
     <ClCompile Include="CEenemi0.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
+    <ClCompile Include="CExposion.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
