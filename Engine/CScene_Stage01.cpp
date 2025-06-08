@@ -160,7 +160,7 @@ void CScene_Stage01::Enter()
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::PROJ_MONSTER);
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ITEM);
-   
+    CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
     //Camera 지정
 
     CCamera::GetInst()->SetLookAt(vResolution / 2.f);
@@ -193,7 +193,7 @@ void CScene_Stage01::InitEvents()
     RECT rBackrect = { (vBackPos.x - vBackScale.x / 2.f),(vBackPos.y - vBackScale.y / 2.f),(vBackPos.x + vBackScale.x / 2.f),(vBackPos.x + vBackScale.y / 2.f) };
 
 
-    for (int i = 1; i < 40; ++i)
+    for (int i = 1; i < 80; ++i)
     {
         if (i % 2 == 0)
         {

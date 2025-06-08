@@ -36,7 +36,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::NORMAL1);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
         pMon->GetCollider()->SetScale(Vec2(50.f,25.f));
@@ -66,7 +66,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::NORMAL2);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(50.f, 50.f));
         pMon->GetCollider()->SetScale(Vec2(50.f, 25.f));
@@ -96,7 +96,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::NORMAL3);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
 
 
@@ -126,7 +126,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::NORMAL4);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->GetCollider()->SetScale(Vec2(25.f, 20.f));
 
@@ -156,7 +156,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::NORMAL4);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->GetCollider()->SetScale(Vec2(25.f, 20.f));
 
@@ -186,7 +186,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::RARE);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(150.f, 150.f));
         pMon->GetCollider()->SetScale(Vec2(150.f, 100.f));
@@ -220,7 +220,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::EPIC);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
         pMon->GetCollider()->SetScale(Vec2(100.f, 50.f));
@@ -251,7 +251,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     {
         pMon = new CMonster;
         pMon->SetAnim(MON_TYPE::EPIC2);
-
+        pMon->SetName(L"Monster");
         pMon->SetPos(_vPos);
         pMon->SetScale(Vec2(100.f, 100.f));
         pMon->GetCollider()->SetScale(Vec2(100.f, 50.f));
@@ -280,7 +280,7 @@ CMonster* CMonFactory::CreateMonster(MON_TYPE _eType, MISSILE_PTRN _eMType,Vec2 
     break;
     case MON_TYPE::BOSS:
     {
-
+        pMon->SetName(L"Monster");
     }
         break;
     default:
