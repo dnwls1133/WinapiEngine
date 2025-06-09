@@ -66,12 +66,13 @@ void CScene_Stage01::update()
             CRankMgr::GetInst()->SetPlayer(nullptr);
             CSoundMgr::GetInst()->PlayBGM(m_pStageClear, false);
 
-            const Vec2 resolution = CCore::GetInst()->GetResolution();
-            auto clearCard = new CStageCard(false, L"Stage Clear");
-            clearCard->SetName(L"Stage Clear Card");
-            clearCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
-            clearCard->SetScale(Vec2(resolution.x, resolution.y));
-            AddObject(clearCard, GROUP_TYPE::UI);
+            // const Vec2 resolution = CCore::GetInst()->GetResolution();
+            // auto clearCard = new CStageCard(false, L"Stage Clear");
+            // clearCard->SetName(L"Stage Clear Card");
+            // clearCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
+            // clearCard->SetScale(Vec2(resolution.x, resolution.y));
+            // AddObject(clearCard, GROUP_TYPE::UI);
+            m_pClearCard = CResMgr::GetInst()->LoadTexture(L"Clear Card", L"texture\\Stage Cards\\StageClear\\slice_16.png");
 
             CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
             player->setclear();
@@ -93,14 +94,15 @@ void CScene_Stage01::update()
             CRankMgr::GetInst()->SetPlayer(nullptr);
             CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
 
-            const Vec2 resolution = CCore::GetInst()->GetResolution();
-            //CCamera::GetInst()->FadeOut(5.f);
+            // const Vec2 resolution = CCore::GetInst()->GetResolution();
+            // CCamera::GetInst()->FadeOut(5.f);
             // todo stage clear 패널 띄우기
-            auto failCard = new CStageCard(false, L"StageFail");
-            failCard->SetName(L"Stage Fail Card");
-            failCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
-            failCard->SetScale(Vec2(resolution.x, resolution.y));
-            AddObject(failCard, GROUP_TYPE::UI);
+            // auto failCard = new CStageCard(false, L"StageFail");
+            // failCard->SetName(L"Stage Fail Card");
+            // failCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
+            // failCard->SetScale(Vec2(resolution.x, resolution.y));
+            // AddObject(failCard, GROUP_TYPE::UI);
+            m_pFailCard = CResMgr::GetInst()->LoadTexture(L"Fail Card", L"texture\\Stage Cards\\StageFail\\slice_16.png");
         }
         m_fClearAcc += fDT;
       
@@ -166,6 +168,52 @@ void CScene_Stage01::render(HDC _dc)
         , 0
         , (int)resolution.x
         , (int)resolution.y);
+
+    if (m_pClearCard)
+    {
+        const Vec2 resolution = CCore::GetInst()->GetResolution();
+
+        const Vec2 position = Vec2(resolution.x / 2.0f, resolution.y / 2.0f);  // 중심 위치
+        const Vec2 scale = Vec2(resolution.x, resolution.y);     // 출력될 크기
+
+        const int width = static_cast<int>(m_pClearCard->Width());   // 원본 너비
+        const int height = static_cast<int>(m_pClearCard->Height());  // 원본 높이
+
+        TransparentBlt(
+            _dc,
+            static_cast<int>(position.x - width / 2),
+            static_cast<int>(position.y - height / 2),
+            width,
+            height,
+            m_pClearCard->GetDC(),
+            0, 0,
+            width, height,
+            RGB(255, 0, 255)
+        );
+    }
+
+    if (m_pFailCard)
+    {
+        const Vec2 resolution = CCore::GetInst()->GetResolution();
+
+        const Vec2 position = Vec2(resolution.x / 2.0f, resolution.y / 2.0f);  // 중심 위치
+        const Vec2 scale = Vec2(resolution.x, resolution.y);     // 출력될 크기
+
+        const int width = static_cast<int>(m_pFailCard->Width());   // 원본 너비
+        const int height = static_cast<int>(m_pFailCard->Height());  // 원본 높이
+
+        TransparentBlt(
+            _dc,
+            static_cast<int>(position.x - width / 2),
+            static_cast<int>(position.y - height / 2),
+            width,
+            height,
+            m_pFailCard->GetDC(),
+            0, 0,
+            width, height,
+            RGB(255, 0, 255)
+        );
+    }
 }
 void CScene_Stage01::Enter()
 {

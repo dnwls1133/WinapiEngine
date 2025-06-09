@@ -3,6 +3,7 @@
 
 class CSound;
 class CStageHUD;
+class CTexture;
 
 class CScene_Stage01 :
     public CScene
@@ -19,6 +20,9 @@ private:
     CSound* m_pBossTheme;           // 보스 테마.
     CSound* m_pStageClear;          // 스테이지 클리어 테마.
     CSound* m_pStageFail;           // 스테이지 페일 테마.
+
+    CTexture* m_pClearCard = nullptr;
+    CTexture* m_pFailCard = nullptr;;
 
 public:
     virtual void update();

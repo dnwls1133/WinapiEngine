@@ -26,6 +26,7 @@ public:
     virtual void render(HDC _dc);
 
     int getHP() { return m_iHp; }
+    int getLv() { return m_iLvl; }
 
     void FullHP() { m_iHp = 3; }
     void setclear() { m_clear = true; }
