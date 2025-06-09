@@ -49,6 +49,15 @@ public:
     }
 
     /**
+     * @brief 랭킹 다 가져오기.
+     * @return 모든 랭킹.
+     */
+    inline const auto& GetRankings() const
+    {
+        return m_vecGameRankings;
+    }
+
+    /**
      * @brief 현재 랭킹 데이터.
      */
     RankingData CurrentRanking;

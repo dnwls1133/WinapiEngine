@@ -33,7 +33,6 @@ CScene_Title::CScene_Title()
     m_pBackground->SetName(L"Background");
     m_pBackground->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
     m_pBackground->SetScale(Vec2(resolution.x, resolution.y));
-    AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
 
     // m_pLogo = new CTitleLogo();
     // m_pLogo->SetPos
@@ -110,7 +109,7 @@ CScene_Title::~CScene_Title()
 void CScene_Title::Enter()
 {
     CRankMgr::GetInst()->LoadRanking();
-
+    AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
     
     CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme, false);
 

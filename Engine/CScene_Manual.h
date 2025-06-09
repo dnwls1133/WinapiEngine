@@ -2,6 +2,7 @@
 
 #include "CScene.h"
 
+class CTexture;
 class CSound;
 class CMenuItem;
 
@@ -13,10 +14,12 @@ public:
     virtual ~CScene_Manual() override;
 
     virtual void Enter() override;
-    virtual void update() override;
+    virtual void render(HDC canvas_) override;
     virtual void Exit() override;
 
 private:
+    CTexture* m_pBackground;
+    CTexture* m_pPanel;
     CSound* m_pTheme;
     CMenuItem* m_pBackButton;
 

@@ -1,33 +1,21 @@
 [Ranking_Count]
-5
+3
 
 [Record]
 [Score]
 30000
 [Date]
-2025-05-12
+2025-06-11
 
 [Record]
 [Score]
 25000
 [Date]
-2025-05-10
+2025-06-11
 
 [Record]
 [Score]
 18000
 [Date]
-2025-04-28
-
-[Record]
-[Score]
-12000
-[Date]
-2025-04-15
-
-[Record]
-[Score]
-8500
-[Date]
-2025-04-01
+2025-06-11
 

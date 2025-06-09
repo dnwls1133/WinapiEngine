@@ -4,44 +4,6 @@
 #include "CPathMgr.h"
 #include "CRankMgr.h"
 
-inline const std::wstring ToString(int score)
-{
-    std::wstring result;
-    int count = 0;
-
-    if (score == 0)
-        return L"0";
-
-    while (score > 0) {
-        if (count > 0 && count % 3 == 0)
-            result = L"'" + result;
-
-        result = std::to_wstring(score % 10) + result;
-        score /= 10;
-        ++count;
-    }
-
-    return result;
-}
-
-
-
-inline const RankingData& GetFirstRanking()
-{
-    return CRankMgr::GetInst()->GetFirstRanking();
-}
-
-inline RankingData& GetCurrentRanking()
-{
-    return CRankMgr::GetInst()->CurrentRanking;
-}
-
-inline const RankingData& GetRanking(size_t index_)
-{
-    return CRankMgr::GetInst()->GetRanking(index_);
-}
-
-
 CStageHUD::CStageHUD()
     :CUI(false)
 {

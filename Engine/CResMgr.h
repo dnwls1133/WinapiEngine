@@ -16,5 +16,6 @@ public:
 
     CSound* const LoadSound(const wstring& key_, const wstring& relativePath_);
     CSound* const FindSound(const wstring& key_);
+
 };
 
