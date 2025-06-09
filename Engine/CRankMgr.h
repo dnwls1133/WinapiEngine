@@ -9,6 +9,8 @@ struct RankingData
     wstring DateTime;
 };
 
+class CPlayer;
+
 class CRankMgr
 {
     SINGLE(CRankMgr);
@@ -62,11 +64,35 @@ public:
      */
     RankingData CurrentRanking;
 
+    /**
+     * @brief 플레이어 반환.
+     * @return 플레이어.
+     */
+    CPlayer* GetPlayer()
+    {
+        return m_pPlayer;
+    }
+
+    /**
+     * @brief 플레이어 설정.
+     * @param player_ 설정할 플레이어.
+     */
+    inline void SetPlayer(CPlayer* const player_)
+    {
+        m_pPlayer = player_;
+    }
+
+    std::wstring GetCurrentDateTimeString();
+
 private:
     /**
      * @brief 게임 랭킹.
      */
     vector<RankingData> m_vecGameRankings;
 
+    /**
+     * @brief 플레이어.
+     */
+    CPlayer* m_pPlayer;
 };
 

@@ -27,6 +27,7 @@
 #include "CIdleState.h"
 #include "CTraceState.h"
 
+#include "CStageCard.h"
 #include "CStageHUD.h"
 
 CScene_Stage01::CScene_Stage01()
@@ -62,7 +63,16 @@ void CScene_Stage01::update()
         if (m_fClearAcc == 0.f)
         {
             m_pHud->SetActive(false);
+            CRankMgr::GetInst()->SetPlayer(nullptr);
             CSoundMgr::GetInst()->PlayBGM(m_pStageClear, false);
+
+            const Vec2 resolution = CCore::GetInst()->GetResolution();
+            auto clearCard = new CStageCard(false, L"Stage Clear");
+            clearCard->SetName(L"Stage Clear Card");
+            clearCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
+            clearCard->SetScale(Vec2(resolution.x, resolution.y));
+            AddObject(clearCard, GROUP_TYPE::UI);
+
             CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
             player->setclear();
             CCamera::GetInst()->FadeOut(3.f);
@@ -71,7 +81,7 @@ void CScene_Stage01::update()
         if (m_fClearAcc > 3.f)
         {
            
-            ChangeScene(SCENE_TYPE::TITLE);
+            ChangeScene(SCENE_TYPE::CREDITS);
             m_fClearAcc = 0;
         }
     }
@@ -80,12 +90,17 @@ void CScene_Stage01::update()
         if (m_fClearAcc == 0.f)
         {
             m_pHud->SetActive(false);
+            CRankMgr::GetInst()->SetPlayer(nullptr);
             CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
 
+            const Vec2 resolution = CCore::GetInst()->GetResolution();
             //CCamera::GetInst()->FadeOut(5.f);
             // todo stage clear 패널 띄우기
-
-
+            auto failCard = new CStageCard(false, L"StageFail");
+            failCard->SetName(L"Stage Fail Card");
+            failCard->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
+            failCard->SetScale(Vec2(resolution.x, resolution.y));
+            AddObject(failCard, GROUP_TYPE::UI);
         }
         m_fClearAcc += fDT;
       
@@ -173,6 +188,7 @@ void CScene_Stage01::Enter()
     AddObject(pObj, GROUP_TYPE::PLAYER);
 
     RegisterPlayer(pObj);
+    CRankMgr::GetInst()->SetPlayer(static_cast<CPlayer*>(pObj));
 
 
     // Monster Object 추가
@@ -201,6 +217,8 @@ void CScene_Stage01::Enter()
    // CCamera::GetInst()->Fadeout(5.f);
 
     CSoundMgr::GetInst()->PlayBGM(m_pStageTheme);
+
+   
 
     m_pHud = new CStageHUD;
     m_pHud->SetActive(true);

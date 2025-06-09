@@ -64,7 +64,7 @@ void CScene_Ranking::Enter()
         L"texture\\Panels\\Sprite_Panel_Rankings.png"
     );
 
-    m_pBackButton = new CMenuItem(
+    auto m_pBackButton = new CMenuItem(
         CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
         CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
     );

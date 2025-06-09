@@ -364,6 +364,7 @@
     <ClInclude Include="CScene_Manual.h">
       <Filter>Engine\05.Scene\Scene_Menuel</Filter>
     </ClInclude>
+    <ClInclude Include="CStageCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -556,5 +557,6 @@
       <Filter>Engine\05.Scene\Scene_Menuel</Filter>
     </ClCompile>
     <ClCompile Include="CStageHUD.cpp" />
+    <ClCompile Include="CStageCard.cpp" />
   </ItemGroup>
 </Project>

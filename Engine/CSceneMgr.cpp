@@ -6,7 +6,7 @@
 #include "CScene_Tool.h"
 #include "CScene_Stage01.h"
 #include "CScene_Manual.h"
-
+#include "CScene_Credits.h"
 
 CSceneMgr::CSceneMgr()
 	: m_arrScene{}
@@ -46,6 +46,9 @@ void CSceneMgr::init()
 
     m_arrScene[static_cast<UINT>(SCENE_TYPE::STAGE_01)] = new CScene_Stage01;
     m_arrScene[static_cast<UINT>(SCENE_TYPE::STAGE_01)]->SetName(L"Stage01 Scene");
+
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::CREDITS)] = new CScene_Credits;
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::CREDITS)]->SetName(L"Credits Scene");
 
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::TOOL)] = new CScene_Tool;
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::TOOL)]->SetName(L"Tool Scene");

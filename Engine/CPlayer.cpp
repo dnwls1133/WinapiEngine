@@ -24,7 +24,7 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
-    ,m_iAtk(2)
+    ,m_iAtk(1000)
     ,dStartAcc(3.f)
     ,m_bHit(false)
     ,m_iLvl(1)
