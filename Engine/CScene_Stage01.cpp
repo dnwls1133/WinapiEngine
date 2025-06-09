@@ -217,6 +217,11 @@ void CScene_Stage01::render(HDC _dc)
 }
 void CScene_Stage01::Enter()
 {
+    CRankMgr::GetInst()->CurrentRanking.Score = 0;
+
+    m_pStageClear = nullptr;
+    m_pFailCard = nullptr;
+
     Vec2 vResolution = CCore::GetInst()->GetResolution();
 
     // BackGround Object 추가
