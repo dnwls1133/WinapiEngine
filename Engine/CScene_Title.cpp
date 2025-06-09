@@ -134,6 +134,7 @@ void CScene_Title::update()
             AddObject(m_pManuelButton, GROUP_TYPE::UI);
             AddObject(m_pRankingButton, GROUP_TYPE::UI);
             AddObject(m_pExitButton, GROUP_TYPE::UI);
+
             return;
         }
     }

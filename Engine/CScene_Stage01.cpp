@@ -13,8 +13,11 @@
 #include "CKeyMgr.h"
 #include "CSceneMgr.h"
 #include "CTimeMgr.h"
+#include "CResMgr.h"
 
 #include "CTexture.h"
+#include "CSound.h"
+#include "CSoundMgr.h"
 #include "CCamera.h"
 
 #include "SelectGDI.h"
@@ -44,13 +47,14 @@ void CScene_Stage01::update()
         CScene::update();
         m_dAcc += fDT;
     }
-   
-   
+    
+    
 
     if (m_bClear)
     {
         if (m_fClearAcc == 0.f)
         {
+            CSoundMgr::GetInst()->PlayBGM(m_pStageClear, false);
             CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
             player->setclear();
             CCamera::GetInst()->FadeOut(3.f);
@@ -67,7 +71,7 @@ void CScene_Stage01::update()
     {
         if (m_fClearAcc == 0.f)
         {
-            
+            CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
             //CCamera::GetInst()->FadeOut(0.5f);
         }
         m_fClearAcc += fDT;
@@ -94,6 +98,13 @@ void CScene_Stage01::update()
         {
             if (!evt.triggered && m_dAcc >= evt.triggerTime)
             {
+                static bool trigger = false;
+                if (m_dAcc >= 130.f && !trigger)
+                {
+                    CSoundMgr::GetInst()->PlayBGM(m_pBossTheme);
+                    trigger = true;
+                }
+
                 CMonster* pMon = CMonFactory::CreateMonster(evt.type, evt.mtype, evt.spawnPos, evt.targetPos, evt.exitPos);
                 pMon->SetName(L"Monster");
                 AddObject(pMon, GROUP_TYPE::MONSTER);
@@ -126,6 +137,10 @@ void CScene_Stage01::Enter()
 {
     Vec2 vResolution = CCore::GetInst()->GetResolution();
 
+    m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_Stage0-0.mp3");
+    m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossPhase0.mp3");
+    m_pStageClear = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
+    m_pStageFail = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
 
     // BackGround Object 추가
     CObject* pBackgroundObj = new CBackground;
@@ -170,6 +185,8 @@ void CScene_Stage01::Enter()
     m_dAcc = 0.f;
     //Camera 효과 지정
    // CCamera::GetInst()->Fadeout(5.f);
+
+    CSoundMgr::GetInst()->PlayBGM(m_pStageTheme);
 }
 
 
