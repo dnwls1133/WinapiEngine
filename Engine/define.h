@@ -28,8 +28,8 @@
 enum class GROUP_TYPE
 {
 	DEFAULT, //0
-	TILE,
 	BACKGROUND,
+    TILE,
 	PLAYER, // 1
 	MONSTER, // 3
 	PROJ_PLAYER,// 4
