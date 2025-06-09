@@ -95,14 +95,15 @@ void CScene::render_tile(HDC _dc)
 {
     const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
 
-    Vec2 vCamLook = CCamera::GetInst()->GetLookAt();
+    
     Vec2 vResolution = CCore::GetInst()->GetResolution();
-    Vec2 vLeftTop = vCamLook - vResolution;
+    Vec2 vCamLook = Vec2(vResolution.x / 2.f, vResolution.y / 2.f);
+    Vec2 vLeftTop = vResolution - vCamLook;
 
     int iTileSize = TILE_SIZE;
 
-    int iLTCol = (int)vLeftTop.x / iTileSize;
-    int iLTRow = (int)vLeftTop.y / iTileSize;
+    int iLTCol = 0;
+    int iLTRow = 0;
 
     int LTiIdx = m_iTileX * iLTRow + iLTCol;
 

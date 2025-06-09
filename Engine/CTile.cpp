@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CTile.h"
 #include "CTexture.h"
 
@@ -32,7 +32,7 @@ void CTile::render(HDC _dc)
 	// 이미지 범위를 벗어난 인덱스
 	if (iMaxRaw <= iCurRow)
 	{
-		assert(nullptr);
+		//assert(nullptr);
 	}
 
 
