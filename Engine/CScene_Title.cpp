@@ -90,7 +90,7 @@ void CScene_Title::Enter()
     m_pRankingButton->SetScale(Vec2(210.0f, 70.0f));
     m_pRankingButton->SetClickedCallBack(
         [](DWORD_PTR, DWORD_PTR) {
-            // ChangeScene(SCENE_TYPE::START);
+            ChangeScene(SCENE_TYPE::STAGE_01);
         },
         (DWORD_PTR)0, (DWORD_PTR)0
     );
