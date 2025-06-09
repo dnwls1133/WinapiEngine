@@ -38,7 +38,8 @@ CPlayer::CPlayer()
 	GetCollider()->SetScale(Vec2(10.f, 15.f));
 	GetCollider()->SetOffsetPos(Vec2(0.f, 20.f));
 
-    CResMgr::GetInst()->LoadSound
+    m_pFireSE = CResMgr::GetInst()->LoadSound(L"Player Fire", L"sound\\SE\\SFX_FireDanmaku1.mp3");
+    m_pDeadSE = CResMgr::GetInst()->LoadSound(L"Player Dead", L"sound\\SE\\SFX_ObjectDead0.mp3");
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player\\Player_Walk.png");
 	CreaeteAnimator();
@@ -211,7 +212,7 @@ void CPlayer::update()
                     break;
                     }
 
-                    CSoundMgr::GetInst().PlaySE
+                    CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                 }
                 SetPos(vPos);
             }
