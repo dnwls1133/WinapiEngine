@@ -145,7 +145,7 @@ void CPlayer::update()
                         {
                             dAcc = 0;
                             CreateMissile(0, 1500.f, MISSILE_TYPE::LVL1);
-
+                            CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                         }
                     }
                     break;
@@ -159,7 +159,7 @@ void CPlayer::update()
                             CreateMissile(2, 1500.f, MISSILE_TYPE::LVL1);
                             CreateMissile(3, 1500.f, MISSILE_TYPE::LVL4);
                             CreateMissile(4, 1500.f, MISSILE_TYPE::LVL4);
-
+                            CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                         }
                     }
                     break;
@@ -174,6 +174,7 @@ void CPlayer::update()
                             CreateMissile(2, 1700.f, MISSILE_TYPE::LVL5);
                             CreateMissile(3, 1700.f, MISSILE_TYPE::LVL5);
                             CreateMissile(4, 1700.f, MISSILE_TYPE::LVL5);
+                            CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                         }
                     }
                     break;
@@ -189,6 +190,7 @@ void CPlayer::update()
                             CreateMissile(4, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(5, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(6, 1700.f, MISSILE_TYPE::LVL6);
+                            CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                         }
                     }
                     break;
@@ -207,12 +209,13 @@ void CPlayer::update()
                             CreateMissile(6, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(7, 1700.f, MISSILE_TYPE::LVL6);
                             CreateMissile(8, 1700.f, MISSILE_TYPE::LVL6);
+                            CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                         }
                     }
                     break;
                     }
 
-                    CSoundMgr::GetInst()->PlaySE(m_pFireSE);
+                   
                 }
                 SetPos(vPos);
             }

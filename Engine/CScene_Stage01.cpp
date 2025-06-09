@@ -72,25 +72,35 @@ void CScene_Stage01::update()
         if (m_fClearAcc == 0.f)
         {
             CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
-            //CCamera::GetInst()->FadeOut(0.5f);
+
+            //CCamera::GetInst()->FadeOut(5.f);
+            // todo stage clear 패널 띄우기
+
+
         }
         m_fClearAcc += fDT;
-        if (m_fClearAcc > 0.5f)
+      
+        if (KEY_TAP(KEY::SPACE))
         {
-            if (KEY_TAP(KEY::SPACE))
-            {
-                CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
-                player->FullHP();
-                m_bFail = false;
-                m_fClearAcc = 0.f;
-            }
-            if (KEY_TAP(KEY::ESC))
-            {
-                ChangeScene(SCENE_TYPE::TITLE);
-                m_fClearAcc = 0.f;
-            }
-           
+            CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
+            player->FullHP();
+            m_bFail = false;
+            m_fClearAcc = 0.f;
+            //CCamera::GetInst()->FadeIn(0.5f);
         }
+        if (5.f + fDT >= m_fClearAcc && m_fClearAcc > 5.f)
+        {
+            CCamera::GetInst()->FadeOut(5.f);
+        }
+        if (m_fClearAcc >= 10.f)
+        {
+            ChangeScene(SCENE_TYPE::TITLE);
+
+            m_fClearAcc = 0.f;
+
+
+        }
+        
     }
     else
     {
