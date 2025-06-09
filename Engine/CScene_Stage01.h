@@ -1,5 +1,8 @@
 ﻿#pragma once
 #include "CScene.h"
+
+class CSound;
+
 class CScene_Stage01 :
     public CScene
 {
@@ -8,6 +11,12 @@ private:
     bool               m_bClear;
     bool               m_bFail;
     float              m_fClearAcc;
+
+    CSound* m_pStageTheme;          // 스테이지 메인테마.
+    CSound* m_pBossTheme;           // 보스 테마.
+    CSound* m_pStageClear;          // 스테이지 클리어 테마.
+    CSound* m_pStageFail;           // 스테이지 페일 테마.
+
 public:
     virtual void update();
     virtual void Enter();

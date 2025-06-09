@@ -7,7 +7,7 @@
 #include "CTimeMgr.h"
 #include "CPathMgr.h"
 #include "CResMgr.h"
-
+#include "CSoundMgr.h"
 
 
 #include "CScene.h"
@@ -16,9 +16,11 @@
 #include "CPlayerDead.h"
 
 #include "CTexture.h"
+#include "CSound.h"
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
@@ -36,6 +38,8 @@ CPlayer::CPlayer()
 	GetCollider()->SetScale(Vec2(10.f, 15.f));
 	GetCollider()->SetOffsetPos(Vec2(0.f, 20.f));
 
+    m_pFireSE = CResMgr::GetInst()->LoadSound(L"Player Fire", L"sound\\SE\\SFX_FireDanmaku1.mp3");
+    m_pDeadSE = CResMgr::GetInst()->LoadSound(L"Player Dead", L"sound\\SE\\SFX_ObjectDead0.mp3");
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player\\Player_Walk.png");
 	CreaeteAnimator();
@@ -208,10 +212,7 @@ void CPlayer::update()
                     break;
                     }
 
-
-
-
-
+                    CSoundMgr::GetInst()->PlaySE(m_pFireSE);
                 }
                 SetPos(vPos);
             }

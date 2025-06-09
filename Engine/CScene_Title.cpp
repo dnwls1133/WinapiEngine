@@ -110,7 +110,7 @@ void CScene_Title::Enter()
     );
     // AddObject(m_pExitButton, GROUP_TYPE::UI);
 
-    m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\BGM_Opening.mp3");
+    m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\BGM_OpeningTheme.mp3");
     CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme, false);
 
     m_pBackground->PlayIntroAnimation();
@@ -134,6 +134,7 @@ void CScene_Title::update()
             AddObject(m_pManuelButton, GROUP_TYPE::UI);
             AddObject(m_pRankingButton, GROUP_TYPE::UI);
             AddObject(m_pExitButton, GROUP_TYPE::UI);
+
             return;
         }
     }

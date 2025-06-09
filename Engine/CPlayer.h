@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "CObject.h"
 class CTexture;
-
+class CSound;
 class CPlayer :
     public CObject
 {
@@ -16,6 +16,10 @@ private:
     int         m_iLvl;
     bool        m_clear;
     bool        m_dead;
+
+    CSound* m_pFireSE;
+    CSound* m_pDeadSE;
+
 public:
     virtual void update();
     virtual void render(HDC _dc);
