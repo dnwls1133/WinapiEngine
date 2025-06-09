@@ -22,8 +22,8 @@ CMenuItem::CMenuItem(CTexture* const idleTex_, CTexture* const hoverTex_)
     , m_pIdleTexture(idleTex_)
     , m_pHoverTexture(hoverTex_)
 {
-    m_pHoverSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\SFX_MenuSelect.mp3");
-    m_pClickSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\SFX_MenuClick.mp3");
+    m_pHoverSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\SE_MenuSelect.mp3");
+    m_pClickSound = CResMgr::GetInst()->LoadSound(L"Button Hover", L"sound\\SE\\SE_MenuClick.mp3");
 }
 
 void CMenuItem::MouseOn()

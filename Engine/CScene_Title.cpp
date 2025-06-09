@@ -21,6 +21,7 @@
 
 #include "CTitleLogo.h"
 #include "CTitleBackground.h"
+#include "CRankMgr.h"
 // include "CPanelUI.h"
 
 CScene_Title::CScene_Title()
@@ -38,6 +39,8 @@ CScene_Title::~CScene_Title()
 
 void CScene_Title::Enter()
 {
+    CRankMgr::GetInst()->LoadRanking();
+
     const Vec2 resolution = CCore::GetInst()->GetResolution();
     // CCamera::GetInst()->SetLookAt(vResolution / 2.f);
 
@@ -90,7 +93,7 @@ void CScene_Title::Enter()
     m_pRankingButton->SetScale(Vec2(210.0f, 70.0f));
     m_pRankingButton->SetClickedCallBack(
         [](DWORD_PTR, DWORD_PTR) {
-            ChangeScene(SCENE_TYPE::STAGE_01);
+            ChangeScene(SCENE_TYPE::RANKING);
         },
         (DWORD_PTR)0, (DWORD_PTR)0
     );
@@ -104,6 +107,7 @@ void CScene_Title::Enter()
     m_pExitButton->SetClickedCallBack(
         [](DWORD_PTR, DWORD_PTR) {
             // ChangeScene(SCENE_TYPE::START);
+            CRankMgr::GetInst()->SaveRanking();
             PostQuitMessage(0);
         },
         (DWORD_PTR)0, (DWORD_PTR)0

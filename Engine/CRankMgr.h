@@ -1,0 +1,58 @@
+﻿#pragma once
+
+/**
+ * @brief 게임 랭킹 데이터.
+ */
+struct RankingData
+{
+    int Score;
+    wstring DateTime;
+};
+
+class CRankMgr
+{
+    SINGLE(CRankMgr);
+public:
+    /**
+     * @brief 랭킹 데이터 -> .txt 파일
+     */
+    void SaveRanking();
+
+    /**
+     * @brief .txt 파일 -> 랭킹 데이터.
+     */
+    void LoadRanking();
+
+    /**
+     * @brief 지정한 랭킹 데이터 삽입하기.
+     * @param data_ 지정한 랭킹 데이터.
+     */
+    void AddRanking();
+
+    /**
+     * @brief 1등 데이터 가져오기.
+     * @return 
+     */
+    inline const RankingData& GetFirstRanking() const
+    {
+        return m_vecGameRankings[0];
+    }
+
+    inline const RankingData& GetRanking(size_t index_) const
+    {
+        return m_vecGameRankings[index_];
+    }
+
+    /**
+     * @brief 현재 랭킹 데이터.
+     */
+    RankingData CurrentRanking;
+
+private:
+    /**
+     * @brief 게임 랭킹.
+     */
+    vector<RankingData> m_vecGameRankings;
+
+};
+

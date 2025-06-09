@@ -11,12 +11,14 @@
 
 #include "AI.h"
 
-
 #include "CMissile.h"
 #include "CCollider.h"
 
 #include "CAnimator.h"
 #include "CAnimation.h"
+
+#include "CSound.h"
+#include "CSoundMgr.h"
 
 CMonster::CMonster()
 	: m_tInfo{}
@@ -34,7 +36,8 @@ CMonster::CMonster()
     CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"N34Enemy_Dead", L"texture\\Enemies\\normal34_Enemy_Dead.png");
     CreaeteAnimator();
     
-   
+    m_pHurtSE = CResMgr::GetInst()->LoadSound(L"Enemy Dead", L"sound\\SE\\SE_EnemyHurt.mp3");
+    m_pDeadSE = CResMgr::GetInst()->LoadSound(L"Enemy Dead", L"sound\\SE\\SE_EnemyHurt.mp3");
     {
         // m_pTex = CResMgr::GetInst()->LoadTexture(L"E2Enemy_Hit", L"texture\\Enemies\\Epic2_Enemy_Hit.png");
         //GetAnimator()->CreateAnimation(L"E2Enemy_Hit", m_pTex, Vec2(0.f, 0.f), Vec2(450.f, 450.f), Vec2(450.f, 0.f), 0.05f, 40);
@@ -220,13 +223,16 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
 
         if (m_tInfo.fHP < 0 && m_signaldead == false)
         {
-
+            CSoundMgr::GetInst()->PlaySE(m_pDeadSE);
             m_pAI->ChangeState(MON_STATE::DEAD);
             m_signaldead = true;
             SetCollideroff();
             //DeleteObject(this);
         }
-       
+        else
+        {
+            // CSoundMgr::GetInst()->PlaySE(m_pHurtSE);
+        }
     }
 
 }
