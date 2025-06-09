@@ -20,6 +20,8 @@
 #include "CSound.h"
 #include "CSoundMgr.h"
 
+#include "CRankMgr.h"
+
 CMonster::CMonster()
 	: m_tInfo{}
 	, dAccTime0(0.)
@@ -228,6 +230,9 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
             m_signaldead = true;
             SetCollideroff();
             //DeleteObject(this);
+
+            CRankMgr::GetInst()->CurrentRanking.Score +=
+                ((int)m_tInfo.eMType) * 1000;
         }
         else
         {

@@ -1,5 +1,5 @@
 ﻿#include "pch.h"
-#include "CScene_Ranking.h"
+#include "CScene_Manual.h"
 #include "CCore.h"
 #include "CRankMgr.h"
 #include "CMenuItem.h";
@@ -9,18 +9,18 @@
 #include "CResMgr.h"
 #include "CColliderMgr.h"
 
-CScene_Ranking::CScene_Ranking()
-{
-}
-
-CScene_Ranking::~CScene_Ranking()
+CScene_Manual::CScene_Manual()
 {
 
 }
 
-void CScene_Ranking::Enter()
+CScene_Manual::~CScene_Manual()
 {
-    // CRankMgr::GetInst()->LoadRanking();
+
+}
+
+void CScene_Manual::Enter()
+{
     m_pBackButton = new CMenuItem(
         CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
         CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
@@ -39,25 +39,13 @@ void CScene_Ranking::Enter()
     CSoundMgr::GetInst()->PlayBGM(m_pTheme, true);
 }
 
-void CScene_Ranking::update()
+void CScene_Manual::update()
 {
-    int lineHeight = 20; // 줄 간격
-    int y = 50;
-
-    std::wstring title = L"=== 랭킹 ===";
-    TextOut(CCore::GetInst()->GetMainDC(), 50, y, title.c_str(), (int)title.length());
-    y += lineHeight;
-
-    for (size_t i = 0; i < 5; ++i) {
-        const RankingData& rec = CRankMgr::GetInst()->GetRanking(i);
-
-        std::wstring line = std::to_wstring(i + 1) + L"위: 점수 " + std::to_wstring(rec.Score) + L", 날짜: " + rec.DateTime;
-        TextOut(CCore::GetInst()->GetMainDC(), 50, y, line.c_str(), (int)line.length());
-        y += lineHeight;
-    }
+    const wchar_t* const test = L"Not Yet!!";
+    TextOut(CCore::GetInst()->GetMainDC(), 50, 50, test, sizeof(test));
 }
 
-void CScene_Ranking::Exit()
+void CScene_Manual::Exit()
 {
     DeleteAll();
     CColliderMgr::GetInst()->Reset();

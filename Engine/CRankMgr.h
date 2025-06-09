@@ -31,13 +31,18 @@ public:
 
     /**
      * @brief 1등 데이터 가져오기.
-     * @return 
+     * @return 1등 데이터.
      */
     inline const RankingData& GetFirstRanking() const
     {
         return m_vecGameRankings[0];
     }
 
+    /**
+     * @brief 해당 번째 데이터 가져오기.
+     * @param index_ 가져올 번째.
+     * @return 해당 번째 랭킹 데이터.
+     */
     inline const RankingData& GetRanking(size_t index_) const
     {
         return m_vecGameRankings[index_];

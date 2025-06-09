@@ -5,6 +5,7 @@
 #include "CScene_Start.h"
 #include "CScene_Tool.h"
 #include "CScene_Stage01.h"
+#include "CScene_Manual.h"
 
 
 CSceneMgr::CSceneMgr()
@@ -33,6 +34,9 @@ void CSceneMgr::init()
 	// SCene 생성
     m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)] = new CScene_Title;
     m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)]->SetName(TEXT("Title Scene"));
+
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::MANUAL)] = new CScene_Manual;
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::MANUAL)]->SetName(L"Manual Scene");
 
     m_arrScene[static_cast<UINT>(SCENE_TYPE::RANKING)] = new CScene_Ranking;
     m_arrScene[static_cast<UINT>(SCENE_TYPE::RANKING)]->SetName(L"Ranking Scene");

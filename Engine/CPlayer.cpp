@@ -39,6 +39,7 @@ CPlayer::CPlayer()
 	GetCollider()->SetOffsetPos(Vec2(0.f, 20.f));
 
     m_pFireSE = CResMgr::GetInst()->LoadSound(L"Player Fire", L"sound\\SE\\SE_FireDanmaku.mp3");
+    m_pLvUpSE = CResMgr::GetInst()->LoadSound(L"Player Lv Up", L"sound\\SE\\SE_LevelUp.mp3");
     m_pDeadSE = CResMgr::GetInst()->LoadSound(L"Player Dead", L"sound\\SE\\SE_EnemyDead.mp3");
 
 	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerWalk", L"texture\\Player\\Player_Walk.png");
@@ -379,7 +380,7 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
         if (m_iLvl < 5)
         {
             m_iLvl += 1;
-
+            CSoundMgr::GetInst()->PlaySE(m_pLvUpSE);
         }
     }
     if (pOtherObj->GetName() == L"Monster")

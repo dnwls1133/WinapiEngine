@@ -18,6 +18,7 @@ private:
     bool        m_dead;
 
     CSound* m_pFireSE;
+    CSound* m_pLvUpSE;
     CSound* m_pDeadSE;
 
 public:

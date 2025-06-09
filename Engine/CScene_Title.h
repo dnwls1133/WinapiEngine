@@ -28,8 +28,7 @@ private:
 
     CTitleBackground* m_pBackground;    // 배경
 
-    CTitleLogo* m_pLogo;                   // 로고
-    CObject* m_pMessage;                // 메시지
+    CTitleLogo* m_pLogo;                // 로고
 
     CBtnUI* m_pStartButton;             // 시작 버튼
     CBtnUI* m_pManuelButton;            // 조작법 버튼
