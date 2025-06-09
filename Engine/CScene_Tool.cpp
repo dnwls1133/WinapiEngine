@@ -32,7 +32,7 @@ void CScene_Tool::Enter()
     CCore::GetInst()->DockMenu();
 
 	// 타일 생성
-	CreateTile(5, 5);
+	
 
 
 	Vec2 vResolution = CCore::GetInst()->GetResolution();
@@ -47,10 +47,15 @@ void CScene_Tool::Enter()
 	pBtnUI->SetScale(Vec2(100.f, 40.f));
 	pBtnUI->SetPos(Vec2(0.f, 0.f));
 	//pBtnUI->SetClickedCallBack(ChangeScene,0,0);
-    ((CBtnUI*)pBtnUI)->SetClickedCallBack(this, (SCENE_MEMFUNC)&CScene_Tool::SaveTileData);
+    ((CBtnUI*)pBtnUI)->SetClickedCallBack(this, (SCENE_MEMFUNC)&CScene_Tool::LoadTileData);
 	pPanelUI->AddChild(pBtnUI);
 	AddObject(pPanelUI, GROUP_TYPE::UI);
-    int a = 0; 
+    int a = 0;
+
+    CreateTile(5, 5);
+
+
+
 	//CUI* pClonePanel = pPanelUI->Clone();
 	//pClonePanel->SetPos(pClonePanel->GetPos() + Vec2(-300.f, 0.f));
 	//((CBtnUI*)pClonePanel->GetChildUI()[0])->SetClickedCallBack(this, (SCENE_MEMFUNC) & CScene_Tool::SaveTileData); // 명시적 캐스팅 중요
