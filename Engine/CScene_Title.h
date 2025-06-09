@@ -28,13 +28,6 @@ private:
 
     CTitleBackground* m_pBackground;    // 배경
 
-    CTitleLogo* m_pLogo;                // 로고
-
-    CBtnUI* m_pStartButton;             // 시작 버튼
-    CBtnUI* m_pManuelButton;            // 조작법 버튼
-    CBtnUI* m_pRankingButton;           // 랭킹 버튼
-    CBtnUI* m_pExitButton;              // 종료 버튼
-
     CSound* m_pTitleTheme;
 
     enum class EState

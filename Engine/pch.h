@@ -17,6 +17,9 @@
 #include <list>
 using std::list;
 
+#include <sstream>     // std::wstringstream
+#include <iomanip>     // std::put_time
+#include <ctime>
 
 #include <vector>
 using std::vector;
@@ -40,3 +43,4 @@ using namespace Gdiplus;
 #include "define.h"
 #include "struct.h"
 #include "func.h"
+

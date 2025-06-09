@@ -11,6 +11,16 @@
 
 CScene_Manual::CScene_Manual()
 {
+   
+}
+
+CScene_Manual::~CScene_Manual()
+{
+
+}
+
+void CScene_Manual::Enter()
+{
     m_pBackground = CResMgr::GetInst()->LoadTexture(
         L"Manuel Background",
         L"texture\\Sprite_Background_Manual.png"
@@ -33,20 +43,9 @@ CScene_Manual::CScene_Manual()
         },
         (DWORD_PTR)0, (DWORD_PTR)0
     );
-   
-    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
-}
-
-CScene_Manual::~CScene_Manual()
-{
-
-}
-
-void CScene_Manual::Enter()
-{
-    // AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
     AddObject(m_pBackButton, GROUP_TYPE::UI);
 
+    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
     CSoundMgr::GetInst()->PlayBGM(m_pTheme, true);
 }
 

@@ -11,31 +11,6 @@
 
 CScene_Ranking::CScene_Ranking()
 {
-    m_pBackground = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Background",
-        L"texture\\Sprite_Background_Rankings.png"
-    );
-
-    m_pPanel = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Panel",
-        L"texture\\Panels\\Sprite_Panel_Rankings.png"
-    );
-
-    m_pBackButton = new CMenuItem(
-        CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
-        CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
-    );
-    m_pBackButton->SetPos(Vec2(940.0f, 770.0f));
-    m_pBackButton->SetScale(Vec2(210.0f, 70.0f));
-    m_pBackButton->SetClickedCallBack(
-        [](DWORD_PTR, DWORD_PTR) {
-            ChangeScene(SCENE_TYPE::TITLE);
-        },
-        (DWORD_PTR)0, (DWORD_PTR)0
-    );
-
-    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
-
     AddFontResourceEx(L"fonts\\BMDOHYEON_ttf.ttf", FR_PRIVATE, NULL);
     AddFontResourceEx(L"fonts\\BMDOHYEON_ttf.ttf", FR_PRIVATE, NULL);
 
@@ -79,8 +54,31 @@ CScene_Ranking::~CScene_Ranking()
 
 void CScene_Ranking::Enter()
 {
-    CRankMgr::GetInst()->LoadRanking();
+    m_pBackground = CResMgr::GetInst()->LoadTexture(
+        L"Ranking Background",
+        L"texture\\Sprite_Background_Rankings.png"
+    );
+
+    m_pPanel = CResMgr::GetInst()->LoadTexture(
+        L"Ranking Panel",
+        L"texture\\Panels\\Sprite_Panel_Rankings.png"
+    );
+
+    auto m_pBackButton = new CMenuItem(
+        CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
+        CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
+    );
+    m_pBackButton->SetPos(Vec2(940.0f, 770.0f));
+    m_pBackButton->SetScale(Vec2(210.0f, 70.0f));
+    m_pBackButton->SetClickedCallBack(
+        [](DWORD_PTR, DWORD_PTR) {
+            ChangeScene(SCENE_TYPE::TITLE);
+        },
+        (DWORD_PTR)0, (DWORD_PTR)0
+    );
     AddObject(m_pBackButton, GROUP_TYPE::UI);
+
+    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
     CSoundMgr::GetInst()->PlayBGM(m_pTheme, true);
 }
 
@@ -149,18 +147,18 @@ void CScene_Ranking::render(HDC canvas_)
 
             HFONT hOld = (HFONT)SelectObject(canvas_, m_hScoreFont);
 
-            auto first = ToString(GetRanking(0).Score).c_str();
-            TextOut(canvas_, 300, 250, first, 11);
+            std::wstring first = ToString(GetRanking(0).Score);
+            TextOut(canvas_, 300, 250, first.c_str(), first.length());
 
             SetTextColor(canvas_, RGB(192, 192, 192));
 
-            auto second = ToString(GetRanking(1).Score).c_str();
-            TextOut(canvas_, 300, 460, second, 11);
+            std::wstring second = ToString(GetRanking(1).Score);
+            TextOut(canvas_, 300, 460, second.c_str(), second.length());
 
             SetTextColor(canvas_, RGB(205, 127, 50));
 
-            auto third = ToString(GetRanking(2).Score).c_str();
-            TextOut(canvas_, 300, 700, third, 11);
+            std::wstring third = ToString(GetRanking(2).Score);
+            TextOut(canvas_, 300, 700, third.c_str(), third.length());
 
             SelectObject(canvas_, hOld);
         }
@@ -170,14 +168,14 @@ void CScene_Ranking::render(HDC canvas_)
 
             HFONT hOld = (HFONT)SelectObject(canvas_, m_hDateFont);
 
-            auto first = GetRanking(0).DateTime.c_str();
-            TextOut(canvas_, 300, 350, first, 11);
+            std::wstring first = GetRanking(0).DateTime;
+            TextOut(canvas_, 300, 350, first.c_str(), first.length());
 
-            auto second = GetRanking(1).DateTime.c_str();
-            TextOut(canvas_, 300, 560, second, 11);
+            std::wstring second = GetRanking(1).DateTime.c_str();
+            TextOut(canvas_, 300, 560, second.c_str(), second.length());
 
-            auto third = GetRanking(2).DateTime.c_str();
-            TextOut(canvas_, 300, 800, third, 11);
+            std::wstring third = GetRanking(2).DateTime.c_str();
+            TextOut(canvas_, 300, 800, third.c_str(), third.length());
 
             SelectObject(canvas_, hOld);
         }

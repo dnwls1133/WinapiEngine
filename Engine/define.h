@@ -55,6 +55,7 @@ enum class SCENE_TYPE
     RANKING,
 	STAGE_01,
 	STAGE_02,
+    CREDITS,
 	END,
 };
 

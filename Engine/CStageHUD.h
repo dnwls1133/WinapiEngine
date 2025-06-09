@@ -24,8 +24,11 @@ public:
     }
 
 private:
-    wstring m_fontPath;
-    HFONT m_hFont;
+    HFONT m_hLabelFont;
+    HFONT m_hValueFont;
+
+    CTexture* m_pHeartFull;     // 꽉 찬 하트.
+    CTexture* m_pHeartEmpty;    // 빈 하트.
 
     bool m_bIsActive;
 

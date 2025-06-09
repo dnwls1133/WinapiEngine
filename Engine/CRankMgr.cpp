@@ -56,7 +56,7 @@ void CRankMgr::SaveRanking()
     for (const auto& rec : m_vecGameRankings) {
         fwprintf(pFile, L"[Record]\n");
         fwprintf(pFile, L"[Score]\n%d\n", rec.Score);
-        fwprintf(pFile, L"[Date]\n%s\n\n", rec.DateTime.c_str());
+        fwprintf(pFile, L"[Date]\n%ls\n\n", rec.DateTime.c_str());
     }
 
     fclose(pFile);
@@ -64,14 +64,32 @@ void CRankMgr::SaveRanking()
 
 void CRankMgr::AddRanking()
 {
+    CurrentRanking.DateTime = GetCurrentDateTimeString();
     m_vecGameRankings.push_back(CurrentRanking);
 
     std::sort(m_vecGameRankings.begin(), m_vecGameRankings.end(),
         [](const RankingData& a, const RankingData& b) {
-            return a.Score > b.Score; // 내림차순 정렬
+            return a.Score > b.Score; // 내림차순
         });
 
     if (m_vecGameRankings.size() > 5) {
-        m_vecGameRankings.resize(5); // 상위 5개만 남김
+        m_vecGameRankings.resize(5);
     }
+
+    SaveRanking(); // 파일에 저장
+    CurrentRanking.Score = 0; // 그 후 초기화
+    CurrentRanking.DateTime = L"";
+}
+
+std::wstring CRankMgr::GetCurrentDateTimeString()
+{
+    std::time_t t = std::time(nullptr);
+    std::tm localTime;
+    localtime_s(&localTime, &t);
+
+    wchar_t buffer[64];
+    // 직접 포맷팅 (wcsftime는 wchar_t 기반)
+    wcsftime(buffer, sizeof(buffer) / sizeof(wchar_t), L"%Y-%m-%d %H:%M:%S", &localTime);
+
+    return std::wstring(buffer);
 }
