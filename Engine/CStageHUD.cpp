@@ -6,6 +6,8 @@
 #include "CPlayer.h"
 #include "CResMgr.h"
 #include "CTexture.h"
+#include "CScene.h"
+#include "CSceneMgr.h"
 
 CStageHUD::CStageHUD()
     :CUI(false)
@@ -83,12 +85,29 @@ void CStageHUD::render(HDC canvas_)
         TextOut(canvas_, bgX + 20, y, str.c_str(), (int)str.length());
         SelectObject(canvas_, hOldFont);
     }
+    {
+        auto Player = static_cast<CPlayer*>(CSceneMgr::GetInst()->GetCurScene()->GetPlayer());
+        auto currentHP = Player->getHP();
+        auto currentLv = Player->getLv();
+        // HP: N/3 Lv. N
+
+        std::wstring str = std::format(L"HP: {}/3 Lv. {}", currentHP, currentLv);
+
+        HFONT hOldFont = (HFONT)SelectObject(canvas_, m_hLabelFont);
+        SetBkMode(canvas_, TRANSPARENT);
+        SetTextColor(canvas_, RGB(255, 255, 255));
+
+        int bgX = (1280 - 540) / 2;
+        int y = 40;
+        TextOut(canvas_, bgX + 20, y, str.c_str(), (int)str.length());
+        SelectObject(canvas_, hOldFont);
+    }
     // 하트 띄우는 로직.
     {
         const Vec2 position = GetPos();    // 중심 위치
         const Vec2 scale = GetScale();     // 하트 아이콘 크기 (픽셀 단위)
 
-        auto Player = CRankMgr::GetInst()->GetPlayer();
+        auto Player = static_cast<CPlayer*>(CSceneMgr::GetInst()->GetCurScene()->GetPlayer());
         assert(Player != nullptr);
         auto currentHP = Player->getHP();
 

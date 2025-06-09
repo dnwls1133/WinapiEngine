@@ -25,6 +25,7 @@ CStageCard::~CStageCard()
 
 void CStageCard::update()
 {
+    // 업데이트 다 돌면 멈추기.
     if (m_currentIndex >= m_MAX_INDEX)
         return;
 
