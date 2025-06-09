@@ -137,8 +137,8 @@ void CScene_Stage01::Enter()
 {
     Vec2 vResolution = CCore::GetInst()->GetResolution();
 
-    m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_Stage0-0.mp3");
-    m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossPhase0.mp3");
+    m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_StageTheme.mp3");
+    m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossTheme.mp3");
     m_pStageClear = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
     m_pStageFail = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
 
