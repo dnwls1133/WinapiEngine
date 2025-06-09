@@ -24,8 +24,8 @@ public:
     }
 
 private:
-    wstring m_fontPath;
-    HFONT m_hFont;
+    HFONT m_hLabelFont;
+    HFONT m_hValueFont;
 
     bool m_bIsActive;
 

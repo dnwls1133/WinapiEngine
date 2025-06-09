@@ -25,6 +25,17 @@
 // include "CPanelUI.h"
 
 CScene_Title::CScene_Title()
+    : CScene()
+{
+    
+}
+
+CScene_Title::~CScene_Title()
+{
+
+}
+
+void CScene_Title::Enter()
 {
     const Vec2 resolution = CCore::GetInst()->GetResolution();
     // CCamera::GetInst()->SetLookAt(vResolution / 2.f);
@@ -99,16 +110,9 @@ CScene_Title::CScene_Title()
     // AddObject(m_pExitButton, GROUP_TYPE::UI);
 
     m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\BGM_OpeningTheme.mp3");
-}
 
-CScene_Title::~CScene_Title()
-{
-
-}
-
-void CScene_Title::Enter()
-{
     CRankMgr::GetInst()->LoadRanking();
+    
     AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
     
     CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme, false);

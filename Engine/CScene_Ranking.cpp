@@ -11,31 +11,6 @@
 
 CScene_Ranking::CScene_Ranking()
 {
-    m_pBackground = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Background",
-        L"texture\\Sprite_Background_Rankings.png"
-    );
-
-    m_pPanel = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Panel",
-        L"texture\\Panels\\Sprite_Panel_Rankings.png"
-    );
-
-    m_pBackButton = new CMenuItem(
-        CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
-        CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
-    );
-    m_pBackButton->SetPos(Vec2(940.0f, 770.0f));
-    m_pBackButton->SetScale(Vec2(210.0f, 70.0f));
-    m_pBackButton->SetClickedCallBack(
-        [](DWORD_PTR, DWORD_PTR) {
-            ChangeScene(SCENE_TYPE::TITLE);
-        },
-        (DWORD_PTR)0, (DWORD_PTR)0
-    );
-
-    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
-
     AddFontResourceEx(L"fonts\\BMDOHYEON_ttf.ttf", FR_PRIVATE, NULL);
     AddFontResourceEx(L"fonts\\BMDOHYEON_ttf.ttf", FR_PRIVATE, NULL);
 
@@ -79,8 +54,31 @@ CScene_Ranking::~CScene_Ranking()
 
 void CScene_Ranking::Enter()
 {
-    CRankMgr::GetInst()->LoadRanking();
+    m_pBackground = CResMgr::GetInst()->LoadTexture(
+        L"Ranking Background",
+        L"texture\\Sprite_Background_Rankings.png"
+    );
+
+    m_pPanel = CResMgr::GetInst()->LoadTexture(
+        L"Ranking Panel",
+        L"texture\\Panels\\Sprite_Panel_Rankings.png"
+    );
+
+    m_pBackButton = new CMenuItem(
+        CResMgr::GetInst()->LoadTexture(L"Back Idle", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_0.png"),
+        CResMgr::GetInst()->LoadTexture(L"Back Hover", L"texture\\Menu Items\\Go Back\\Sprite_Label_GoBack_1.png")
+    );
+    m_pBackButton->SetPos(Vec2(940.0f, 770.0f));
+    m_pBackButton->SetScale(Vec2(210.0f, 70.0f));
+    m_pBackButton->SetClickedCallBack(
+        [](DWORD_PTR, DWORD_PTR) {
+            ChangeScene(SCENE_TYPE::TITLE);
+        },
+        (DWORD_PTR)0, (DWORD_PTR)0
+    );
     AddObject(m_pBackButton, GROUP_TYPE::UI);
+
+    m_pTheme = CResMgr::GetInst()->LoadSound(L"Menu Theme", L"sound\\BGM\\BGM_MenuTheme.mp3");
     CSoundMgr::GetInst()->PlayBGM(m_pTheme, true);
 }
 
