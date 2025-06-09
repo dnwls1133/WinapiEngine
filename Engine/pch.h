@@ -9,6 +9,7 @@
 #include <cmath>
 #include <assert.h>
 
+#include <algorithm>
 #include <format>
 #include <memory>
 #include <functional>

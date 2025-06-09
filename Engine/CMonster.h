@@ -22,6 +22,7 @@ struct tMonInfo
 
 class AI;
 class CTexture;
+class CSound;
 
 class CMonster :
     public CObject
@@ -34,6 +35,10 @@ protected:
     AI*         m_pAI;
     bool        m_signaldead;
     bool        m_bHit;
+
+    CSound* m_pHurtSE;
+    CSound* m_pDeadSE;
+
 public:
     virtual void update();
     virtual void render(HDC _dc);

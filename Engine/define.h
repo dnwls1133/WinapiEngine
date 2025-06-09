@@ -51,6 +51,8 @@ enum class SCENE_TYPE
 	START,
     TITLE,
     MAINMENU,
+    MENUAL,
+    RANKING,
 	STAGE_01,
 	STAGE_02,
 	END,

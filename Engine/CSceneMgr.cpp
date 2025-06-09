@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "CSceneMgr.h"
 #include "CScene_Title.h"
+#include "CScene_Ranking.h"
 #include "CScene_Start.h"
 #include "CScene_Tool.h"
 #include "CScene_Stage01.h"
@@ -30,8 +31,11 @@ CSceneMgr::~CSceneMgr()
 void CSceneMgr::init()
 {
 	// SCene 생성
-    m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)] = new CScene_Title();
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)] = new CScene_Title;
     m_arrScene[static_cast<UINT>(SCENE_TYPE::TITLE)]->SetName(TEXT("Title Scene"));
+
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::RANKING)] = new CScene_Ranking;
+    m_arrScene[static_cast<UINT>(SCENE_TYPE::RANKING)]->SetName(L"Ranking Scene");
 
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::START)] = new CScene_Start;
 	m_arrScene[static_cast<UINT>(SCENE_TYPE::START)]->SetName(L"Start Scene");
@@ -45,7 +49,7 @@ void CSceneMgr::init()
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage_01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage_02;
 
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::STAGE_01];
+	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::TITLE];
 	m_pCurScene->Enter();
 }
 

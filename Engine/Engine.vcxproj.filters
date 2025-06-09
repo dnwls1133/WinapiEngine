@@ -158,6 +158,9 @@
     <Filter Include="Engine\04.Object\Item">
       <UniqueIdentifier>{190753e5-5588-425e-aeba-d9c7b9260f40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05.Scene\Scene_Ranking">
+      <UniqueIdentifier>{8c051b3a-da35-4dbe-8f29-9e6ae5e21d8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -344,6 +347,11 @@
     <ClInclude Include="CExposion.h">
       <Filter>Engine\04.Object\Monster\Eenemis</Filter>
     </ClInclude>
+    <ClInclude Include="CRankMgr.h" />
+    <ClInclude Include="CGAMEMGR.H" />
+    <ClInclude Include="CScene_Ranking.h">
+      <Filter>Engine\05.Scene\Scene_Ranking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -524,6 +532,10 @@
     </ClCompile>
     <ClCompile Include="CExposion.cpp">
       <Filter>Engine\04.Object\Monster\Eenemis</Filter>
+    </ClCompile>
+    <ClCompile Include="CRankMgr.cpp" />
+    <ClCompile Include="CScene_Ranking.cpp">
+      <Filter>Engine\05.Scene\Scene_Ranking</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
