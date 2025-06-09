@@ -6,12 +6,12 @@ class CTexture;
 class CSound;
 class CMenuItem;
 
-class CScene_Ranking
+class CScene_Manual
     : public CScene
 {
 public:
-    CScene_Ranking();
-    virtual ~CScene_Ranking() override;
+    CScene_Manual();
+    virtual ~CScene_Manual() override;
 
     virtual void Enter() override;
     virtual void render(HDC canvas_) override;
@@ -23,7 +23,4 @@ private:
     CSound* m_pTheme;
     CMenuItem* m_pBackButton;
 
-    HFONT m_hScoreFont;         // 점수용
-    HFONT m_hDateFont;          // 날짜용
 };
-

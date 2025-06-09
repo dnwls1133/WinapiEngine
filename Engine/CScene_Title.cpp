@@ -25,22 +25,7 @@
 // include "CPanelUI.h"
 
 CScene_Title::CScene_Title()
-    : m_pBackground(nullptr)
-    , m_pLogo(nullptr)
-    , m_CurrentState(EState::None)
-    // , m_pMessage(nullptr)
 {
-}
-
-CScene_Title::~CScene_Title()
-{
-
-}
-
-void CScene_Title::Enter()
-{
-    CRankMgr::GetInst()->LoadRanking();
-
     const Vec2 resolution = CCore::GetInst()->GetResolution();
     // CCamera::GetInst()->SetLookAt(vResolution / 2.f);
 
@@ -48,7 +33,6 @@ void CScene_Title::Enter()
     m_pBackground->SetName(L"Background");
     m_pBackground->SetPos(Vec2(resolution.x / 2.0f, resolution.y / 2.0f));
     m_pBackground->SetScale(Vec2(resolution.x, resolution.y));
-    AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
 
     // m_pLogo = new CTitleLogo();
     // m_pLogo->SetPos
@@ -56,7 +40,7 @@ void CScene_Title::Enter()
     m_pLogo->SetName(L"Game Logo");
     m_pLogo->SetPos(Vec2(150.0f, 50.0f));
     m_pLogo->SetScale(Vec2(404.6f, 352.8f));
-   
+
     m_pStartButton = new CMenuItem(
         CResMgr::GetInst()->LoadTexture(L"StartGame_Idle", L"texture\\Menu Items\\Start Game\\Sprite_Label_StartGame_0.png"),
         CResMgr::GetInst()->LoadTexture(L"StartGame_Hover", L"texture\\Menu Items\\Start Game\\Sprite_Label_StartGame_1.png")
@@ -79,7 +63,7 @@ void CScene_Title::Enter()
     m_pManuelButton->SetScale(Vec2(160.0f, 70.0f));
     m_pManuelButton->SetClickedCallBack(
         [](DWORD_PTR, DWORD_PTR) {
-            // ChangeScene(SCENE_TYPE::START);
+            ChangeScene(SCENE_TYPE::MANUAL);
         },
         (DWORD_PTR)0, (DWORD_PTR)0
     );
@@ -115,6 +99,18 @@ void CScene_Title::Enter()
     // AddObject(m_pExitButton, GROUP_TYPE::UI);
 
     m_pTitleTheme = CResMgr::GetInst()->LoadSound(L"Title", L"sound\\BGM\\BGM_OpeningTheme.mp3");
+}
+
+CScene_Title::~CScene_Title()
+{
+
+}
+
+void CScene_Title::Enter()
+{
+    CRankMgr::GetInst()->LoadRanking();
+    AddObject(m_pBackground, GROUP_TYPE::BACKGROUND);
+    
     CSoundMgr::GetInst()->PlayBGM(m_pTitleTheme, false);
 
     m_pBackground->PlayIntroAnimation();

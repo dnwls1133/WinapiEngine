@@ -2,6 +2,7 @@
 #include "CScene.h"
 
 class CSound;
+class CStageHUD;
 
 class CScene_Stage01 :
     public CScene
@@ -11,6 +12,8 @@ private:
     bool               m_bClear;
     bool               m_bFail;
     float              m_fClearAcc;
+
+    CStageHUD* m_pHud;
 
     CSound* m_pStageTheme;          // 스테이지 메인테마.
     CSound* m_pBossTheme;           // 보스 테마.

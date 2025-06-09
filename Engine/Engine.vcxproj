@@ -169,7 +169,6 @@
     <ClInclude Include="CEenemi0.h" />
     <ClInclude Include="CEventMgr.h" />
     <ClInclude Include="CExposion.h" />
-    <ClInclude Include="CGAMEMGR.H" />
     <ClInclude Include="CRankMgr.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CItem.h" />
@@ -192,6 +191,8 @@
     <ClInclude Include="CRunState.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneMgr.h" />
+    <ClInclude Include="CScene_Credits.h" />
+    <ClInclude Include="CScene_Manual.h" />
     <ClInclude Include="CScene_Ranking.h" />
     <ClInclude Include="CScene_Stage01.h" />
     <ClInclude Include="CScene_Start.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="CScene_Tool.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
+    <ClInclude Include="CStageHUD.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
@@ -260,6 +262,8 @@
     <ClCompile Include="CRunState.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneMgr.cpp" />
+    <ClCompile Include="CScene_Credits.cpp" />
+    <ClCompile Include="CScene_Manual.cpp" />
     <ClCompile Include="CScene_Ranking.cpp" />
     <ClCompile Include="CScene_Stage01.cpp" />
     <ClCompile Include="CScene_Start.cpp" />
@@ -267,6 +271,7 @@
     <ClCompile Include="CScene_Tool.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
+    <ClCompile Include="CStageHUD.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />

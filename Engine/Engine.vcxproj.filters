@@ -161,6 +161,12 @@
     <Filter Include="Engine\05.Scene\Scene_Ranking">
       <UniqueIdentifier>{8c051b3a-da35-4dbe-8f29-9e6ae5e21d8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05.Scene\Scene_Credits">
+      <UniqueIdentifier>{bf132cc5-75e9-4d5d-a070-5d6ac65d0f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05.Scene\Scene_Menuel">
+      <UniqueIdentifier>{c20f090b-466a-4624-ac0b-389b9b2f0408}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -348,9 +354,15 @@
       <Filter>Engine\04.Object\Monster\Eenemis</Filter>
     </ClInclude>
     <ClInclude Include="CRankMgr.h" />
-    <ClInclude Include="CGAMEMGR.H" />
     <ClInclude Include="CScene_Ranking.h">
       <Filter>Engine\05.Scene\Scene_Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Credits.h">
+      <Filter>Engine\05.Scene\Scene_Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="CStageHUD.h" />
+    <ClInclude Include="CScene_Manual.h">
+      <Filter>Engine\05.Scene\Scene_Menuel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -537,5 +549,12 @@
     <ClCompile Include="CScene_Ranking.cpp">
       <Filter>Engine\05.Scene\Scene_Ranking</Filter>
     </ClCompile>
+    <ClCompile Include="CScene_Credits.cpp">
+      <Filter>Engine\05.Scene\Scene_Credits</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Manual.cpp">
+      <Filter>Engine\05.Scene\Scene_Menuel</Filter>
+    </ClCompile>
+    <ClCompile Include="CStageHUD.cpp" />
   </ItemGroup>
 </Project>

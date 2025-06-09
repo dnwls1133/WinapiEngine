@@ -26,11 +26,18 @@
 #include "CState.h"
 #include "CIdleState.h"
 #include "CTraceState.h"
+
+#include "CStageHUD.h"
+
 CScene_Stage01::CScene_Stage01()
     :m_bClear(false)
     ,m_bFail(false)
     ,m_fClearAcc(0.f)
 {
+    m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_StageTheme.mp3");
+    m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossTheme.mp3");
+    m_pStageClear = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
+    m_pStageFail = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
 }
 
 CScene_Stage01::~CScene_Stage01()
@@ -54,6 +61,7 @@ void CScene_Stage01::update()
     {
         if (m_fClearAcc == 0.f)
         {
+            m_pHud->SetActive(false);
             CSoundMgr::GetInst()->PlayBGM(m_pStageClear, false);
             CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
             player->setclear();
@@ -71,6 +79,7 @@ void CScene_Stage01::update()
     {
         if (m_fClearAcc == 0.f)
         {
+            m_pHud->SetActive(false);
             CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
 
             //CCamera::GetInst()->FadeOut(5.f);
@@ -147,11 +156,6 @@ void CScene_Stage01::Enter()
 {
     Vec2 vResolution = CCore::GetInst()->GetResolution();
 
-    m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_StageTheme.mp3");
-    m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossTheme.mp3");
-    m_pStageClear = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
-    m_pStageFail = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
-
     // BackGround Object 추가
     CObject* pBackgroundObj = new CBackground;
     pBackgroundObj->SetPos(Vec2(vResolution.x / 2.f, vResolution.y / 2.f));
@@ -197,9 +201,11 @@ void CScene_Stage01::Enter()
    // CCamera::GetInst()->Fadeout(5.f);
 
     CSoundMgr::GetInst()->PlayBGM(m_pStageTheme);
+
+    m_pHud = new CStageHUD;
+    m_pHud->SetActive(true);
+    AddObject(m_pHud, GROUP_TYPE::UI);
 }
-
-
 
 void CScene_Stage01::Exit()
 {
