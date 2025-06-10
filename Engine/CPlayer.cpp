@@ -13,6 +13,10 @@
 #include "CScene.h"
 #include "CScene_Stage01.h"
 #include "CMissile.h"
+#include "CBoomb.h"
+
+#include "CBackground.h"
+
 #include "CPlayerDead.h"
 
 #include "CTexture.h"
@@ -24,10 +28,11 @@
 CPlayer::CPlayer()
 	:dAcc(0.)
 	,m_iHp(3)
-    ,m_iAtk(5)
+    ,m_iAtk(2)
     ,dStartAcc(3.f)
     ,m_bHit(false)
     ,m_iLvl(1)
+    ,m_iBoomb(1)
     ,m_clear(false)
     ,m_dead(false)
 	
@@ -65,6 +70,9 @@ CPlayer::~CPlayer()
 void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
+    CBackground* back = (CBackground*)CSceneMgr::GetInst()->GetCurScene()->GetBackground();
+    Vec2 vBackpos = back->GetPos();
+    Vec2 vBackScale = back->GetScale();
     if (!m_clear && !m_dead)
     {
         if (dStartAcc > 0.f)
@@ -86,19 +94,35 @@ void CPlayer::update()
                 {
                     if (KEY_HOLD(KEY::UP))
                     {
-                        vPos.y -= 300.f * fDT;
+                        if (vPos.y >= vBackpos.y - vBackScale.y / 2.f)
+                        {
+                            vPos.y -= 300.f * fDT;
+                        }
+
                     }
                     if (KEY_HOLD(KEY::DOWN))
                     {
-                        vPos.y += 300.f * fDT;
+                        if (vPos.y <= vBackpos.y + vBackScale.y / 2.f)
+                        {
+                            vPos.y += 300.f * fDT;
+                        }
+
                     }
                     if (KEY_HOLD(KEY::LEFT))
                     {
-                        vPos.x -= 300.f * fDT;
+                        if (vPos.x >= vBackpos.x - vBackScale.x / 2.f)
+                        {
+                            vPos.x -= 300.f * fDT;
+                        }
+
                     }
                     if (KEY_HOLD(KEY::RIGHT))
                     {
-                        vPos.x += 300.f * fDT;
+                        if (vPos.x <= vBackpos.x + vBackScale.x / 2.f)
+                        {
+                            vPos.x += 300.f * fDT;
+                        }
+
                     }
 
                 }
@@ -117,19 +141,46 @@ void CPlayer::update()
             {
                 if (KEY_HOLD(KEY::UP))
                 {
-                    vPos.y -= 300.f * fDT;
+                    if (vPos.y >= vBackpos.y - vBackScale.y/2.f)
+                    {
+                        vPos.y -= 300.f * fDT;
+                    }
+                   
                 }
                 if (KEY_HOLD(KEY::DOWN))
                 {
-                    vPos.y += 300.f * fDT;
+                    if (vPos.y <= vBackpos.y + vBackScale.y / 2.f)
+                    {
+                        vPos.y += 300.f * fDT;
+                    }
+                    
                 }
                 if (KEY_HOLD(KEY::LEFT))
                 {
-                    vPos.x -= 300.f * fDT;
+                    if (vPos.x >= vBackpos.x - vBackScale.x / 2.f)
+                    {
+                        vPos.x -= 300.f * fDT;
+                    }
+                    
                 }
                 if (KEY_HOLD(KEY::RIGHT))
                 {
-                    vPos.x += 300.f * fDT;
+                    if (vPos.x <= vBackpos.x + vBackScale.x / 2.f)
+                    {
+                        vPos.x += 300.f * fDT;
+                    }
+                    
+                }
+                if (KEY_TAP(KEY::X))
+                {
+                    if (m_iBoomb > 0)
+                    {
+                        --m_iBoomb;
+                        CSound* m_pBoombSE = CResMgr::GetInst()->LoadSound(L"Player Boomb", L"sound\\SE\\vbomb2.mp3");
+                        CSoundMgr::GetInst()->PlaySE(m_pBoombSE);
+                        CreateBoomb();
+                    }
+                   
                 }
                 if (KEY_TAP(KEY::L))
                 {
@@ -347,6 +398,18 @@ void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
 	CreateObject(pMissile,GROUP_TYPE::PROJ_PLAYER);
 }
 
+void CPlayer::CreateBoomb()
+{
+    CBackground* back = (CBackground*)CSceneMgr::GetInst()->GetCurScene()->GetBackground();
+    Vec2 vBoombpos = back->GetPos();
+    CBoomb* pBoomb = new CBoomb;
+    pBoomb->SetPos(vBoombpos);
+    pBoomb->SetScale(Vec2(25.f, 25.f));
+    pBoomb->SetName(L"Boomb_Player");
+
+    CreateObject(pBoomb, GROUP_TYPE::PROJ_PLAYER);
+}
+
 
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
 {
@@ -355,7 +418,7 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 	if (pOtherObj->GetName() == L"MsMissile" && m_bHit == false)
 	{
         CSoundMgr::GetInst()->PlaySE(m_pDeadSE);
-        if (m_iHp <= 0)
+        if (m_iHp <= 1)
         {
             CScene_Stage01* curscene = (CScene_Stage01*)CSceneMgr::GetInst()->GetCurScene();
             curscene->Fail();
@@ -373,6 +436,7 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 		vPos.y = 1200;
 		SetPos(vPos);
 		SetCollideroff();
+        m_iBoomb = 1;
 	}
 
     if (pOtherObj->GetName() == L"Item")

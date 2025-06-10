@@ -365,6 +365,9 @@
       <Filter>Engine\05.Scene\Scene_Menuel</Filter>
     </ClInclude>
     <ClInclude Include="CStageCard.h" />
+    <ClInclude Include="CBoomb.h">
+      <Filter>Engine\04.Object\Missile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -558,5 +561,8 @@
     </ClCompile>
     <ClCompile Include="CStageHUD.cpp" />
     <ClCompile Include="CStageCard.cpp" />
+    <ClCompile Include="CBoomb.cpp">
+      <Filter>Engine\04.Object\Missile</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

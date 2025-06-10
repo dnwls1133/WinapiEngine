@@ -14,6 +14,7 @@ private:
     bool        m_bHit;
     int         m_iAtk;
     int         m_iLvl;
+    int         m_iBoomb;
     bool        m_clear;
     bool        m_dead;
 
@@ -28,13 +29,14 @@ public:
     int getHP() { return m_iHp; }
     int getLv() { return m_iLvl; }
 
+
     void FullHP() { m_iHp = 3; }
     void setclear() { m_clear = true; }
     void setdead() { m_dead = true; }
     int GetPlayerAtk() { return m_iAtk; }
 private:
     void CreateMissile(int type,float _fVec, MISSILE_TYPE _etype);
-    
+    void CreateBoomb();
     virtual void OnCollisionEnter(CCollider* _pOther);
 
     CLONE(CPlayer);

@@ -57,7 +57,7 @@ void CScene_Stage01::update()
     }
     
     
-
+  
     if (m_bClear)
     {
         if (m_fClearAcc == 0.f)
@@ -91,7 +91,7 @@ void CScene_Stage01::update()
         if (m_fClearAcc == 0.f)
         {
             m_pHud->SetActive(false);
-            CRankMgr::GetInst()->SetPlayer(nullptr);
+           
             CSoundMgr::GetInst()->PlayBGM(m_pFailTheme, false);
 
             // const Vec2 resolution = CCore::GetInst()->GetResolution();
@@ -112,14 +112,28 @@ void CScene_Stage01::update()
             player->FullHP();
             m_bFail = false;
             m_fClearAcc = 0.f;
+            m_pFailCard = nullptr;
+            if (m_dAcc >= 130.f)
+            {
+                CSoundMgr::GetInst()->PlayBGM(m_pBossTheme);
+            }
+            else
+            {
+                CSoundMgr::GetInst()->PlayBGM(m_pStageTheme);
+            }
+           
+            m_pHud->SetActive(true);
+
             //CCamera::GetInst()->FadeIn(0.5f);
         }
         if (5.f + fDT >= m_fClearAcc && m_fClearAcc > 5.f)
         {
+           
             CCamera::GetInst()->FadeOut(5.f);
         }
         if (m_fClearAcc >= 10.f)
         {
+            CRankMgr::GetInst()->SetPlayer(nullptr);
             ChangeScene(SCENE_TYPE::TITLE);
 
             m_fClearAcc = 0.f;
@@ -256,6 +270,7 @@ void CScene_Stage01::Enter()
     // 충돌 지정
     // Player 그룹과 Monster 그룹간의 충돌체크
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::PROJ_MONSTER);
+    CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PROJ_PLAYER, GROUP_TYPE::PROJ_MONSTER);
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ITEM);
     CColliderMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
