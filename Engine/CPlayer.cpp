@@ -440,7 +440,7 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
         }
         else
         {
-            CRankMgr::GetInst()->CurrentRanking.Score += 100;
+            CRankMgr::GetInst()->CurrentRanking.Score += 25;
         }
     }
     if (pOtherObj->GetName() == L"Monster")

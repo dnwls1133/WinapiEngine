@@ -147,6 +147,8 @@ void CScene_Stage01::update()
         if (KEY_TAP(KEY::SPACE))
         {
             CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
+            auto mujeokSE = CResMgr::GetInst()->LoadSound(L"Mujeok SE", L"sound\\SE\\SE_Mujeok.wav");
+            CSoundMgr::GetInst()->PlaySE(mujeokSE);
             player->isMujeok = true;
         }
 
