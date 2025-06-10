@@ -94,5 +94,10 @@ private:
      * @brief 플레이어.
      */
     CPlayer* m_pPlayer;
+
+    /**
+     * @brief 더티 플래그.
+     */
+    bool m_bIsDirty = false;
 };
 
