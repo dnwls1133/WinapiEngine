@@ -406,6 +406,9 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
   
 	if (pOtherObj->GetName() == L"MsMissile" && m_bHit == false)
 	{
+        if (isMujeok)
+            return;
+
         CSoundMgr::GetInst()->PlaySE(m_pDeadSE);
         if (m_iHp <= 1)
         {
@@ -430,14 +433,21 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 
     if (pOtherObj->GetName() == L"Item")
     {
+        CSoundMgr::GetInst()->PlaySE(m_pLvUpSE);
         if (m_iLvl < 5)
         {
             m_iLvl += 1;
-            CSoundMgr::GetInst()->PlaySE(m_pLvUpSE);
+        }
+        else
+        {
+            CRankMgr::GetInst()->CurrentRanking.Score += 100;
         }
     }
     if (pOtherObj->GetName() == L"Monster")
     {
+        if (isMujeok)
+            return;
+
         if (m_iLvl > 1)
         {
             m_iLvl -= 1;

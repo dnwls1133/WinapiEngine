@@ -233,7 +233,7 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
             //DeleteObject(this);
 
             CRankMgr::GetInst()->CurrentRanking.Score +=
-                ((int)m_tInfo.eMType) * 1000;
+                ((int)m_tInfo.eMType) * 250;
         }
        
     }
@@ -304,7 +304,7 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
             //DeleteObject(this);
 
             CRankMgr::GetInst()->CurrentRanking.Score +=
-                ((int)m_tInfo.eMType) * 1000;
+                ((int)m_tInfo.eMType) * 250;
         }
     }
 }

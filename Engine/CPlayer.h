@@ -34,6 +34,8 @@ public:
     void setclear() { m_clear = true; }
     void setdead() { m_dead = true; }
     int GetPlayerAtk() { return m_iAtk; }
+
+    bool isMujeok = false;
 private:
     void CreateMissile(int type,float _fVec, MISSILE_TYPE _etype);
     void CreateBoomb();

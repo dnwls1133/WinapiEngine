@@ -79,11 +79,12 @@ void CRankMgr::AddRanking()
         m_vecGameRankings.resize(3);
     }
 
+    m_bIsDirty = true;
+
     SaveRanking(); // 파일에 저장
+
     CurrentRanking.Score = 0; // 그 후 초기화
     CurrentRanking.DateTime = L"";
-
-    m_bIsDirty = true;
 }
 
 std::wstring CRankMgr::GetCurrentDateTimeString()
