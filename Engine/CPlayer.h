@@ -38,7 +38,7 @@ public:
     bool isMujeok = false;
 private:
     void CreateMissile(int type,float _fVec, MISSILE_TYPE _etype);
-    void CreateBoomb();
+
     virtual void OnCollisionEnter(CCollider* _pOther);
 
     CLONE(CPlayer);

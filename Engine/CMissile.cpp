@@ -354,12 +354,7 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
         SetCollideroff();
 		m_fVec = 100.f;
 	}
-    if (GetName() == L"MsMissile" && pOtherObj->GetName() == L"Boomb_Player" )
-    {
-       
-        SetCollideroff();
-        DeleteObject(this);
-    }
+    
 }
 
 void CMissile::OnCollision(CCollider* _pOther)
