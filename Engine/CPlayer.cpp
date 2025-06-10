@@ -171,17 +171,6 @@ void CPlayer::update()
                     }
                     
                 }
-                if (KEY_TAP(KEY::X))
-                {
-                    if (m_iBoomb > 0)
-                    {
-                        --m_iBoomb;
-                        CSound* m_pBoombSE = CResMgr::GetInst()->LoadSound(L"Player Boomb", L"sound\\SE\\vbomb2.mp3");
-                        CSoundMgr::GetInst()->PlaySE(m_pBoombSE);
-                        CreateBoomb();
-                    }
-                   
-                }
                 if (KEY_TAP(KEY::L))
                 {
                     m_iLvl = 5;
@@ -193,7 +182,7 @@ void CPlayer::update()
                     {
                     case 1:
                     {
-                        if (dAcc > 0.135f)
+                        if (dAcc > 0.15f)
                         {
                             dAcc = 0;
                             CreateMissile(0, 1500.f, MISSILE_TYPE::LVL1);
@@ -203,7 +192,7 @@ void CPlayer::update()
                     break;
                     case 2:
                     {
-                        if (dAcc > 0.135f)
+                        if (dAcc > 0.15f)
                         {
                             dAcc = 0;
                             CreateMissile(0, 1500.f, MISSILE_TYPE::LVL1);
@@ -217,7 +206,7 @@ void CPlayer::update()
                     break;
                     case 3:
                     {
-                        if (dAcc > 0.135f)
+                        if (dAcc > 0.15f)
                         {
                             dAcc = 0;
                             CreateMissile(0, 1700.f, MISSILE_TYPE::LVL2);
@@ -232,7 +221,7 @@ void CPlayer::update()
                     break;
                     case 4:
                     {
-                        if (dAcc > 0.125f)
+                        if (dAcc > 0.15f)
                         {
                             dAcc = 0;
                             CreateMissile(0, 1700.f, MISSILE_TYPE::LVL3);
@@ -248,7 +237,7 @@ void CPlayer::update()
                     break;
                     case 5:
                     {
-                        if (dAcc > 0.125f)
+                        if (dAcc > 0.15f)
                         {
                             dAcc = 0;
 

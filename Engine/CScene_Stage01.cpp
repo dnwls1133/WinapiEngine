@@ -148,11 +148,11 @@ void CScene_Stage01::update()
         {
             if (!evt.triggered && m_dAcc >= evt.triggerTime)
             {
-                static bool trigger = false;
-                if (m_dAcc >= 130.f && !trigger)
+               
+                if (130.f >= m_dAcc && m_dAcc > 130.f)
                 {
                     CSoundMgr::GetInst()->PlayBGM(m_pBossTheme);
-                    trigger = true;
+                   
                 }
 
                 CMonster* pMon = CMonFactory::CreateMonster(evt.type, evt.mtype, evt.spawnPos, evt.targetPos, evt.exitPos);
