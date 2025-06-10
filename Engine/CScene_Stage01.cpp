@@ -37,8 +37,8 @@ CScene_Stage01::CScene_Stage01()
 {
     m_pStageTheme = CResMgr::GetInst()->LoadSound(L"Stage Theme", L"sound\\BGM\\BGM_StageTheme.mp3");
     m_pBossTheme = CResMgr::GetInst()->LoadSound(L"Boss Theme", L"sound\\BGM\\BGM_BossTheme.mp3");
-    m_pStageClear = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
-    m_pStageFail = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
+    m_pClearTheme = CResMgr::GetInst()->LoadSound(L"Stage Clear", L"sound\\BGM\\BGM_StageClear.mp3");
+    m_pFailTheme = CResMgr::GetInst()->LoadSound(L"Stage Fail", L"sound\\BGM\\BGM_StageFail.mp3");
 }
 
 CScene_Stage01::~CScene_Stage01()
@@ -64,7 +64,7 @@ void CScene_Stage01::update()
         {
             m_pHud->SetActive(false);
             CRankMgr::GetInst()->SetPlayer(nullptr);
-            CSoundMgr::GetInst()->PlayBGM(m_pStageClear, false);
+            CSoundMgr::GetInst()->PlayBGM(m_pClearTheme, false);
 
             // const Vec2 resolution = CCore::GetInst()->GetResolution();
             // auto clearCard = new CStageCard(false, L"Stage Clear");
@@ -92,7 +92,7 @@ void CScene_Stage01::update()
         {
             m_pHud->SetActive(false);
             CRankMgr::GetInst()->SetPlayer(nullptr);
-            CSoundMgr::GetInst()->PlayBGM(m_pStageFail, false);
+            CSoundMgr::GetInst()->PlayBGM(m_pFailTheme, false);
 
             // const Vec2 resolution = CCore::GetInst()->GetResolution();
             // CCamera::GetInst()->FadeOut(5.f);
@@ -219,7 +219,7 @@ void CScene_Stage01::Enter()
 {
     CRankMgr::GetInst()->CurrentRanking.Score = 0;
 
-    m_pStageClear = nullptr;
+    m_pClearCard = nullptr;
     m_pFailCard = nullptr;
 
     Vec2 vResolution = CCore::GetInst()->GetResolution();
