@@ -46,6 +46,9 @@ void CRankMgr::LoadRanking()
 
 void CRankMgr::SaveRanking()
 {
+    if (!m_bIsDirty)
+        return;
+
     FILE* pFile = nullptr;
     _wfopen_s(&pFile, L"Ranking.txt", L"wt");
     assert(pFile);
@@ -72,13 +75,15 @@ void CRankMgr::AddRanking()
             return a.Score > b.Score; // 내림차순
         });
 
-    if (m_vecGameRankings.size() > 5) {
-        m_vecGameRankings.resize(5);
+    if (m_vecGameRankings.size() > 3) {
+        m_vecGameRankings.resize(3);
     }
 
     SaveRanking(); // 파일에 저장
     CurrentRanking.Score = 0; // 그 후 초기화
     CurrentRanking.DateTime = L"";
+
+    m_bIsDirty = true;
 }
 
 std::wstring CRankMgr::GetCurrentDateTimeString()
