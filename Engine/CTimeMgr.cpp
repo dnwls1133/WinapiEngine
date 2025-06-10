@@ -48,7 +48,7 @@ void CTimeMgr::update()
 
 void CTimeMgr::render()
 {
-
+#ifdef _DEBUG
 	++m_iCallCount;
 	m_dAcc += m_dDT; // DT 누적
 	if (m_dAcc >= 1.)
@@ -60,4 +60,5 @@ void CTimeMgr::render()
 		swprintf_s(szBuffer, L"FPS : %d, DT : %f", m_iFPS, m_dDT);
 		SetWindowText(CCore::GetInst()->GetMainHwnd(), szBuffer);
 	}
+#endif
 }
