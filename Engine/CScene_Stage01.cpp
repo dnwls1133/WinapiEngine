@@ -144,6 +144,12 @@ void CScene_Stage01::update()
     }
     else
     {
+        if (KEY_TAP(KEY::SPACE))
+        {
+            CPlayer* player = (CPlayer*)CSceneMgr::GetInst()->GetCurScene()->GetPlayer();
+            player->isMujeok = true;
+        }
+
         for (auto& evt : m_vEvents)
         {
             if (!evt.triggered && m_dAcc >= evt.triggerTime)

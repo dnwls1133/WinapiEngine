@@ -91,7 +91,15 @@ void CStageHUD::render(HDC canvas_)
         auto currentLv = Player->getLv();
         // HP: N/3 Lv. N
 
-        std::wstring str = std::format(L"HP: {}/3 Lv. {}", currentHP, currentLv);
+        std::wstring str = L"";
+        if (Player->isMujeok)
+        {
+            str = std::format(L"HP: MUJEOK!!! Lv. {}", currentLv);
+        }
+        else
+        {
+            str = std::format(L"HP: {}/3 Lv. {}", currentHP, currentLv);
+        }
 
         HFONT hOldFont = (HFONT)SelectObject(canvas_, m_hLabelFont);
         SetBkMode(canvas_, TRANSPARENT);
