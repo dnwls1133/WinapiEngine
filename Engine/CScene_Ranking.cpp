@@ -60,8 +60,8 @@ void CScene_Ranking::Enter()
     );
 
     m_pPanel = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Panel",
-        L"texture\\Panels\\Sprite_Panel_Rankings.png"
+       L"Ranking Panel",
+       L"texture\\Panels\\Sprite_Panel_Rankings.png"
     );
 
     auto m_pBackButton = new CMenuItem(

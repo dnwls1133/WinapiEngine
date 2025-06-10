@@ -17,7 +17,7 @@ CScene_Credits::CScene_Credits()
     );
 
     m_pPanel = CResMgr::GetInst()->LoadTexture(
-        L"Ranking Background",
+        L"Credits Panel",
         L"texture\\Panels\\Sprite_Panel_Credits.png"
     );
 
