@@ -156,6 +156,7 @@
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CAttackState.h" />
     <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CBoomb.h" />
     <ClInclude Include="CBosPatorl4STate.h" />
     <ClInclude Include="CBossPatorl1STate.h" />
     <ClInclude Include="CBossPatorl2STate.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CAttackState.cpp" />
     <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CBoomb.cpp" />
     <ClCompile Include="CBosPatorl4STate.cpp" />
     <ClCompile Include="CBossPatorl1STate.cpp" />
     <ClCompile Include="CBossPatorl2STate.cpp" />

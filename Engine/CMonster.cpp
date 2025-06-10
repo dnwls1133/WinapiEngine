@@ -118,6 +118,17 @@ void CMonster::update()
     {
         DeleteObject(this);
     }
+    if (m_tInfo.fHP < 0 && m_signaldead == false)
+    {
+        CSoundMgr::GetInst()->PlaySE(m_pDeadSE);
+        m_pAI->ChangeState(MON_STATE::DEAD);
+        m_signaldead = true;
+        SetCollideroff();
+        //DeleteObject(this);
+
+        CRankMgr::GetInst()->CurrentRanking.Score +=
+            ((int)m_tInfo.eMType) * 1000;
+    }
 }
 
 void CMonster::render(HDC _dc)
@@ -196,8 +207,8 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
         break;
         case MON_TYPE::RARE:
         {
-            GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Hit.anim");
-            GetAnimator()->Play(L"Boss1Enemy_Hit", true);
+            //GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Hit.anim");
+            //GetAnimator()->Play(L"Boss1Enemy_Hit", true);
         }
         break;
         case MON_TYPE::EPIC:
@@ -214,8 +225,8 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
         break;
         case MON_TYPE::BOSS:
         {
-            GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
-            GetAnimator()->Play(L"N2Enemy_Hit", true);
+           // GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
+           // GetAnimator()->Play(L"N2Enemy_Hit", true);
         }
         break;
         default:
@@ -223,23 +234,69 @@ void CMonster::OnCollisionEnter(CCollider* _pOther)
         }
         m_tInfo.fHP -= iPAtk;
 
-        if (m_tInfo.fHP < 0 && m_signaldead == false)
-        {
-            CSoundMgr::GetInst()->PlaySE(m_pDeadSE);
-            m_pAI->ChangeState(MON_STATE::DEAD);
-            m_signaldead = true;
-            SetCollideroff();
-            //DeleteObject(this);
-
-            CRankMgr::GetInst()->CurrentRanking.Score +=
-                ((int)m_tInfo.eMType) * 1000;
-        }
-        else
-        {
-            // CSoundMgr::GetInst()->PlaySE(m_pHurtSE);
-        }
+        
+       
     }
+    if (pOtherobj->GetName() == L"Boomb_Player")
+    {
+        m_bHit = true;
+        switch (m_tInfo.eMType)
+        {
+        case MON_TYPE::NORMAL1:
+        {
+            //GetAnimator()->LoadAnimation(L"animation\\N1EnemyH_Hit.anim");
+           // GetAnimator()->Play(L"N1EnemyH_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL2:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
+            GetAnimator()->Play(L"N2Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL3:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N3Enemy_Hit.anim");
+            GetAnimator()->Play(L"N3Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::NORMAL4:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\N4Enemy_Hit.anim");
+            GetAnimator()->Play(L"N4Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::RARE:
+        {
+           // GetAnimator()->LoadAnimation(L"animation\\Boss1Enemy_Hit.anim");
+           // GetAnimator()->Play(L"Boss1Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::EPIC:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\E1Enemy_Hit.anim");
+            GetAnimator()->Play(L"E1Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::EPIC2:
+        {
+            GetAnimator()->LoadAnimation(L"animation\\E2Enemy_Hit.anim");
+            GetAnimator()->Play(L"E2Enemy_Hit", true);
+        }
+        break;
+        case MON_TYPE::BOSS:
+        {
+           // GetAnimator()->LoadAnimation(L"animation\\N2Enemy_Hit.anim");
+            //GetAnimator()->Play(L"N2Enemy_Hit", true);
+        }
+        break;
+        default:
+            break;
+        }
+        m_tInfo.fHP -= 500;
 
+        
+    }
 }
 void CMonster::SetAI(AI* _AI)
 {

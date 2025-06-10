@@ -197,9 +197,9 @@ void CMissile::update()
             return;
         }
     }
-	else if (vPos.y > resolution.y || vPos.y < -100.f
-        || vPos.x > vBackPos.x + vBackScale.x/2 + 50.f
-        || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f && m_bHit==false)
+	else if (vPos.y > resolution.y + 200.f || vPos.y < -200.f
+        || vPos.x > vBackPos.x + vBackScale.x/2 + 200.f
+        || vPos.x < vBackPos.x - vBackScale.x/2 - 200.f && m_bHit==false)
 	{
 		DeleteObject(this);
         return;
@@ -354,6 +354,12 @@ void CMissile::OnCollisionEnter(CCollider* _pOther)
         SetCollideroff();
 		m_fVec = 100.f;
 	}
+    if (GetName() == L"MsMissile" && pOtherObj->GetName() == L"Boomb_Player" )
+    {
+       
+        SetCollideroff();
+        DeleteObject(this);
+    }
 }
 
 void CMissile::OnCollision(CCollider* _pOther)

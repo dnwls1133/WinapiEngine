@@ -42,7 +42,7 @@ CScene_Ranking::CScene_Ranking()
         L"배달의민족 도현"    // 글꼴 이름
     );
 
-    assert(m_hFont);
+    //assert(m_hFont);
 }
 
 CScene_Ranking::~CScene_Ranking()

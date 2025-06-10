@@ -5,7 +5,7 @@
 #include "CSound.h"
 
 CSoundMgr::CSoundMgr()
-    : m_fBGMVolume(0.5)
+    : m_fBGMVolume(0.8)
     , m_fSEVolume(0.5)
     , m_pCurrentBGM(nullptr)
 {
