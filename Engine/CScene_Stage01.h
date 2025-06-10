@@ -18,8 +18,8 @@ private:
 
     CSound* m_pStageTheme;          // 스테이지 메인테마.
     CSound* m_pBossTheme;           // 보스 테마.
-    CSound* m_pStageClear;          // 스테이지 클리어 테마.
-    CSound* m_pStageFail;           // 스테이지 페일 테마.
+    CSound* m_pClearTheme;          // 스테이지 클리어 테마.
+    CSound* m_pFailTheme;           // 스테이지 페일 테마.
 
     CTexture* m_pClearCard = nullptr;
     CTexture* m_pFailCard = nullptr;;
