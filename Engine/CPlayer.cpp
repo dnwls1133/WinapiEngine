@@ -13,7 +13,7 @@
 #include "CScene.h"
 #include "CScene_Stage01.h"
 #include "CMissile.h"
-#include "CBoomb.h"
+
 
 #include "CBackground.h"
 
@@ -387,17 +387,6 @@ void CPlayer::CreateMissile(int type,  float _fVec,MISSILE_TYPE _eType)
 	CreateObject(pMissile,GROUP_TYPE::PROJ_PLAYER);
 }
 
-void CPlayer::CreateBoomb()
-{
-    CBackground* back = (CBackground*)CSceneMgr::GetInst()->GetCurScene()->GetBackground();
-    Vec2 vBoombpos = back->GetPos();
-    CBoomb* pBoomb = new CBoomb;
-    pBoomb->SetPos(vBoombpos);
-    pBoomb->SetScale(Vec2(25.f, 25.f));
-    pBoomb->SetName(L"Boomb_Player");
-
-    CreateObject(pBoomb, GROUP_TYPE::PROJ_PLAYER);
-}
 
 
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
