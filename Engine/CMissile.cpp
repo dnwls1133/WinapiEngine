@@ -197,9 +197,9 @@ void CMissile::update()
             return;
         }
     }
-	else if (vPos.y > resolution.y + 200.f || vPos.y < -200.f
-        || vPos.x > vBackPos.x + vBackScale.x/2 + 200.f
-        || vPos.x < vBackPos.x - vBackScale.x/2 - 200.f && m_bHit==false)
+	else if (vPos.y > resolution.y || vPos.y < -50.f
+        || vPos.x > vBackPos.x + vBackScale.x/2 + 50.f
+        || vPos.x < vBackPos.x - vBackScale.x/2 - 50.f && m_bHit==false)
 	{
 		DeleteObject(this);
         return;

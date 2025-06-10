@@ -27,9 +27,10 @@ CBoomb::CBoomb()
     CreaeteAnimator();
 
 
-    GetAnimator()->CreateAnimation(L"PlayerBoom0", m_pTex, Vec2(0.f, 0.f), Vec2(540.f, 960.f), Vec2(540.f, 0.f), 0.025f, 40);
-    GetAnimator()->FindAnimation(L"PlayerBoom0")->Save(L"animation\\PlayerBoom0.anim");
+   /* GetAnimator()->CreateAnimation(L"PlayerBoom0", m_pTex, Vec2(0.f, 0.f), Vec2(540.f, 960.f), Vec2(540.f, 0.f), 0.025f, 40);
+    GetAnimator()->FindAnimation(L"PlayerBoom0")->Save(L"animation\\PlayerBoom0.anim");*/
 
+    GetAnimator()->LoadAnimation(L"animation\\PlayerBoom0.anim");
     GetAnimator()->Play(L"PlayerBoom0", false);
 }
 
@@ -54,6 +55,8 @@ void CBoomb::update()
 void CBoomb::render(HDC _dc)
 {
     Vec2 vres = CCore::GetInst()->GetResolution();
+   
+    component_render(_dc);
     BLENDFUNCTION bf = {};
 
     bf.BlendOp = AC_SRC_OVER;
@@ -69,7 +72,6 @@ void CBoomb::render(HDC _dc)
         , vres.x
         , vres.y
         , bf);
-    component_render(_dc);
 }
 
 void CBoomb::OnCollisionEnter(CCollider* _pOther)
